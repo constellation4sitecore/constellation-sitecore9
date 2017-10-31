@@ -1,0 +1,32 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+	<id>$id$</id>
+	<version>$version$</version>
+	<title>$title$</title>
+	<authors>Richard J. Cabral, Christopher Giddings</authors>
+	<owners>Richard J. Cabral</owners>
+	<projectUrl>https://github.com/sitecorerick/constellation.foundation.caching</projectUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>Sitecore Helix library to enhance access to Caching APIs.</summary>
+	<description>
+		Constellation is a collection of utilities for .NET CMS implementers.
+		The Foundation.Caching namespace contains a Cache facade class that allows a developer to cache an object to
+		either the Sitecore Cache or the System Web Cache.
+
+		In addition to providing quick access to these APIs, the facade also provides support for scoping cached objects at the following levels:
+		* Global
+		* Site
+		* Database
+
+		Configured for use with Sitecore 8.2.
+		Requires Sitecore 8.2 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+
+		Portions based on work by Christopher Giddings: https://cjgiddings.wordpress.com/2012/02/03/sitecore-caching-utility/ updated heavily
+		for modularity and to support Sitecore 8.2 caching APIs.
+	</description>
+	<releaseNotes>Extracted from a deprecated Constellation.Sitecore package. Suitable for use with Sitecore 8.2</releaseNotes>
+	<copyright>Copyright 2016</copyright>
+	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
+  </metadata>
+</package>

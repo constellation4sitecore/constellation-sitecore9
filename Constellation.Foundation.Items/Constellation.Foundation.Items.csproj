@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8BEE3BD9-54F0-4A00-BA52-5361C0494378}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Constellation.Foundation.Items</RootNamespace>
+    <AssemblyName>Constellation.Foundation.Items</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Sitecore.ContentSearch, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.ContentSearch.NoReferences.9.0.171002\lib\NET462\Sitecore.ContentSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Kernel.NoReferences.9.0.171002\lib\NET462\Sitecore.Kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FieldIDAttribute.cs" />
+    <Compile Include="FieldProperties\CheckboxProperty.cs" />
+    <Compile Include="FieldProperties\DateProperty.cs" />
+    <Compile Include="FieldProperties\DelimitedProperty.cs" />
+    <Compile Include="FieldProperties\FieldProperty.cs" />
+    <Compile Include="FieldProperties\FileProperty.cs" />
+    <Compile Include="FieldProperties\GroupedDroplinkProperty.cs" />
+    <Compile Include="FieldProperties\GroupedDroplistProperty.cs" />
+    <Compile Include="FieldProperties\HtmlProperty.cs" />
+    <Compile Include="FieldProperties\ImageProperty.cs" />
+    <Compile Include="FieldProperties\LinkProperty.cs" />
+    <Compile Include="FieldProperties\LookupProperty.cs" />
+    <Compile Include="FieldProperties\MultilistProperty.cs" />
+    <Compile Include="FieldProperties\NameValueListProperty.cs" />
+    <Compile Include="FieldProperties\ReferenceProperty.cs" />
+    <Compile Include="FieldProperties\TextProperty.cs" />
+    <Compile Include="FieldProperties\ValueLookupProperty.cs" />
+    <Compile Include="FieldProperties\WordDocumentProperty.cs" />
+    <Compile Include="FieldProperties\XmlProperty.cs" />
+    <Compile Include="IStandardTemplate.cs" />
+    <Compile Include="ItemCollectionExtensions.cs" />
+    <Compile Include="ItemExtensions.cs" />
+    <Compile Include="ItemFactory.cs" />
+    <Compile Include="SearchResultItemExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rules\Conditions\ItemDerivesFromTemplate.cs" />
+    <Compile Include="StandardTemplate.cs" />
+    <Compile Include="TemplateIDAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Instructions\Constellation.Sitecore.Items.Instructions.txt" />
+    <Content Include="License.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Constellation.Foundation.Items.nuspec" />
+    <None Include="packages.config" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

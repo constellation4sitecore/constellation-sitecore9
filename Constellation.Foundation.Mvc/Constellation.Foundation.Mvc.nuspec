@@ -1,0 +1,32 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+	<id>$id$</id>
+	<version>$version$</version>
+	<title>$title$</title>
+	<authors>Richard J. Cabral. Portions from Hedgehog</authors>
+	<owners>Richard J. Cabral</owners>
+	<projectUrl>https://github.com/sitecorerick/constellation.foundation.caching</projectUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
+	<description>
+		Constellation is a collection of utilities for .NET CMS implementers.
+		
+		The Foundation.Mvc assembly contains the following significant components:
+		
+		* Base controller that infers the name and location of its view from the supplied RenderingItem.
+		* Base view that exposes key Sitecore Editor state facts for presentation decisions.
+		* GetRenderer pipeline handler that infers the name of the controller to run based upon the supplied RenderingItem
+		* RenderRendering pipeline handler that replaces cache key generation with a stronger cache key algorithm to address
+		controller re-use.
+		* RenderRendering pipeline handler that minifies output HTML before handing it off to the Response and Sitecore's HTML cache.
+		* Configuration file for managing the settings for above.
+
+		Configured for use with Sitecore 8.2.
+		Requires Sitecore 8.2 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+	</description>
+	<releaseNotes>Changed location of config file to match Helix standards.</releaseNotes>
+	<copyright>Copyright 2016</copyright>
+	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation, Sitecore Mvc</tags>
+  </metadata>
+</package>

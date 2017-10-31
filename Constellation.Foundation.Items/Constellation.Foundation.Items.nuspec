@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+	<id>$id$</id>
+	<version>$version$</version>
+	<title>$title$</title>
+	<authors>Richard J. Cabral</authors>
+	<owners>Richard J. Cabral</owners>
+	<projectUrl>https://github.com/sitecorerick/constellation.foundation.items</projectUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>Sitecore Helix library that provides a strongly-typed Item framework for Sitecore.</summary>
+	<description>
+		Constellation.Foundation.Items is a framework for Sitecore. It contains a few basic Interfaces and Classes that can be used to construct objects
+		that represent Sitecore.Data.Items but include a few features not found in the native Sitecore API.
+
+		This library is intended to be paired with a code generation tool such as NVelocity or T4 templates. Code generation should use
+		Sitecore Data Template definitions to create Interfaces and Classes. These can be used to create instances of Items that support
+		multiple inheritance and contracts. Item objects typically have declared properties representing a given Item's fields.
+
+		Using Constellation.Foundation.Items makes Sitecore Items suitable for use with type-driven IoC or Dependency Injection scenarios,
+		such as MVC/MVP and MVVM patterns.
+
+		Includes example T4 templates and instructions for use with HedgeHog Team Development for Sitecore (TDS)
+
+		Configured for use with Sitecore 8.2.
+		Requires Sitecore 8.2 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+	</description>
+	<releaseNotes>Consolidated three NuGet packages for ease of subscription.</releaseNotes>
+	<copyright>Copyright 2016</copyright>
+	<tags>Sitecore</tags>
+  </metadata>
+</package>

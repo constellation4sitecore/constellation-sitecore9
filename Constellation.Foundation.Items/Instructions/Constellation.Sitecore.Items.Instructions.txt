@@ -1,0 +1,64 @@
+﻿Instructions
+============
+
+====================
+Strongly Typed Items
+====================
+Create interfaces that derive from Constellation.Sitecore.Items.IStandardTemplate
+Create classes that derive from Constellation.Sitecore.Items.StandardTemplate
+
+Use the TemplateIDAttribute and the FieldIDAttribute to decorate your classes & their properties.
+
+Use the ItemExtension methods AsStronglyTyped() and As<T> to cast Sitecore.Data.Items.Item objects
+to instances of your custom objects.
+
+I recommend using T4 Templates or NVelocity to automatically create interfaces & classes based on
+the template hierarchy of your Sitecore installation. see the Constellation.Sitecore.Items.TDS 
+NuGet package for an example.
+
+ItemDerivesFromTemplate Sitecore Rule Condition
+===============================================
+Create a new Condition in Sitecore using the following Type name:
+"Constellation.Sitecore.Rules.Conditions.ItemDerivesFromTemplate, Constellation.Sitecore.Items"
+
+Assuming you are using the Strongly Typed Items, you can use the above condition to detect inheritance.
+
+================
+Field Properties
+================
+The Constellation.Sitecore.Items.FieldProperties namespace contains the data api equivalents for fields, 
+ergo, if it doesn't have a CustomField it won't be converted by Constellation.Sitecore.Items. 
+The only fields that are included are the ones that are mapped using the FieldTypes.config. 
+System and Developer types are excluded due to their limited utility when dealing with presentation, 
+but feel free to add support for them.
+
+Fields
+======================
+
+------------
+Simple Types
+------------
+CheckboxField -> CheckboxProperty
+DateField -> DateProperty
+FileField -> FileProperty
+ImageField -> ImageProperty
+HtmlField -> HtmlProperty 
+TextField -> TextProperty
+WordDocumentField -> WordDocumentProperty
+
+----------
+List Types
+----------
+MultilistField -> MultilistProperty
+ValueLookupField -> ValueLookupProperty
+GroupedDroplinkField -> GroupedDroplinkProperty
+GroupedDroplistField -> GroupedDroplistProperty
+NameValueListField -> NameValueListProperty
+
+----------
+Link Types
+----------
+ReferenceField -> ReferenceProperty
+LinkField -> LinkProperty
+
+VersionLinkField Is not covered because it is reserved for Sitecore
