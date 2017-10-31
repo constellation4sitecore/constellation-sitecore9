@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+	<system.webServer>
+		<handlers>
+			<add verb="*" name="robots" path="robots.txt" type="Constellation.Feature.SitemapXml.RobotsTxtHandler, Constellation.Feature.SitemapXml" xdt:Transform="Remove" xdt:Locator="Match(path)" />
+			<add verb="*" name="sitemap" path="sitemap.xml" type="Constellation.Feature.SitemapXml.SitemapXmlHandler, Constellation.Feature.SitemapXml" xdt:Transform="Remove" xdt:Locator="Match(path)" />
+		</handlers>
+	</system.webServer>
+</configuration>
