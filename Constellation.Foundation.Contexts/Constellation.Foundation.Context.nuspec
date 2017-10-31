@@ -17,8 +17,8 @@
 		The purpose of this library is to provide scoped pipeline handlers to Sitecore to prevent developers from unintentionally executing
 		their customizations outside the scope of their current project/site/tenant/feature.
 
-		Configured for use with Sitecore 8.2.
-		Requires Sitecore 8.2 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+		Configured for use with Sitecore 9.0.
+		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
 	<releaseNotes>Extracted from the deprecated Constellation.Sitecore package. Suitable for use with Sitecore 8.2</releaseNotes>
 	<copyright>Copyright 2016</copyright>
