@@ -25,7 +25,7 @@
 		public LinkProperty(Field field)
 			: base(field)
 		{
-			this._linkField = field;
+			_linkField = field;
 		}
 		#endregion
 
@@ -35,8 +35,8 @@
 		/// </summary>
 		public string Anchor
 		{
-			get { return this._linkField.Anchor; }
-			set { this._linkField.Anchor = value; }
+			get => _linkField.Anchor;
+			set => _linkField.Anchor = value;
 		}
 
 		/// <summary>
@@ -44,20 +44,14 @@
 		/// </summary>
 		public string Class
 		{
-			get { return this._linkField.Class; }
-			set { this._linkField.Class = value; }
+			get => _linkField.Class;
+			set => _linkField.Class = value;
 		}
 
 		/// <summary>
 		/// Gets the path to the Sitecore Item.
 		/// </summary>
-		public string InternalPath
-		{
-			get
-			{
-				return this._linkField.InternalPath;
-			}
-		}
+		public string InternalPath => _linkField.InternalPath;
 
 		/// <summary>
 		/// Gets a value indicating whether the link is internal.
@@ -65,13 +59,7 @@
 		/// <value>
 		/// <c>true</c> if this link is internal; otherwise, <c>false</c>.
 		/// </value>
-		public bool IsInternal
-		{
-			get
-			{
-				return this._linkField.IsInternal;
-			}
-		}
+		public bool IsInternal => _linkField.IsInternal;
 
 		/// <summary>
 		/// Gets a value indicating whether this instance is media link.
@@ -79,13 +67,7 @@
 		/// <value>
 		/// <c>true</c> if this instance is media link; otherwise, <c>false</c>.
 		/// </value>
-		public bool IsMediaLink
-		{
-			get
-			{
-				return this._linkField.IsMediaLink;
-			}
-		}
+		public bool IsMediaLink => _linkField.IsMediaLink;
 
 		/// <summary>
 		/// Gets or sets the link type.
@@ -95,8 +77,8 @@
 		/// </value>
 		public string LinkType
 		{
-			get { return this._linkField.LinkType; }
-			set { this._linkField.LinkType = value; }
+			get => _linkField.LinkType;
+			set => _linkField.LinkType = value;
 		}
 
 		/// <summary>
@@ -105,13 +87,7 @@
 		/// <value>
 		/// The internal path.
 		/// </value>
-		public string MediaPath
-		{
-			get
-			{
-				return this._linkField.MediaPath;
-			}
-		}
+		public string MediaPath => _linkField.MediaPath;
 
 		/// <summary>
 		/// Gets or sets the query string in internal links.
@@ -121,8 +97,8 @@
 		/// </value>
 		public string QueryString
 		{
-			get { return this._linkField.QueryString; }
-			set { this._linkField.QueryString = value; }
+			get => _linkField.QueryString;
+			set => _linkField.QueryString = value;
 		}
 
 		/// <summary>
@@ -133,8 +109,8 @@
 		/// </value>
 		public string Target
 		{
-			get { return this._linkField.Target; }
-			set { this._linkField.Target = value; }
+			get => _linkField.Target;
+			set => _linkField.Target = value;
 		}
 
 		/// <summary>
@@ -145,8 +121,8 @@
 		/// </value>
 		public ID TargetID
 		{
-			get { return this._linkField.TargetID; }
-			set { this._linkField.TargetID = value; }
+			get => _linkField.TargetID;
+			set => _linkField.TargetID = value;
 		}
 
 		/// <summary>
@@ -155,13 +131,7 @@
 		/// <value>
 		/// The target item.
 		/// </value>
-		public Item TargetItem
-		{
-			get
-			{
-				return this._linkField.TargetItem;
-			}
-		}
+		public Item TargetItem => _linkField.TargetItem;
 
 		/// <summary>
 		/// Gets or sets the inner text of the tag.
@@ -171,8 +141,8 @@
 		/// </value>
 		public string Text
 		{
-			get { return this._linkField.Text; }
-			set { this._linkField.Text = value; }
+			get => _linkField.Text;
+			set => _linkField.Text = value;
 		}
 
 		/// <summary>
@@ -183,8 +153,8 @@
 		/// </value>
 		public new string Title
 		{
-			get { return this._linkField.Title; }
-			set { this._linkField.Title = value; }
+			get => _linkField.Title;
+			set => _linkField.Title = value;
 		}
 
 		/// <summary>
@@ -195,8 +165,8 @@
 		/// </value>
 		public string Url
 		{
-			get { return this._linkField.Url; }
-			set { this._linkField.Url = value; }
+			get => _linkField.Url;
+			set => _linkField.Url = value;
 		}
 		#endregion
 
@@ -229,7 +199,7 @@
 		/// <param name="itemLink">The item link.</param><param name="newLink">The new link.</param>
 		public override void Relink(ItemLink itemLink, Item newLink)
 		{
-			this._linkField.Relink(itemLink, newLink);
+			_linkField.Relink(itemLink, newLink);
 		}
 
 		/// <summary>
@@ -238,7 +208,7 @@
 		/// <param name="itemLink">The item link.</param>
 		public override void RemoveLink(ItemLink itemLink)
 		{
-			this._linkField.RemoveLink(itemLink);
+			_linkField.RemoveLink(itemLink);
 		}
 
 		/// <summary>
@@ -247,7 +217,7 @@
 		/// <param name="itemLink">The link.</param>
 		public override void UpdateLink(ItemLink itemLink)
 		{
-			this._linkField.UpdateLink(itemLink);
+			_linkField.UpdateLink(itemLink);
 		}
 
 		/// <summary>
@@ -256,7 +226,7 @@
 		/// <param name="result">The result.</param>
 		public override void ValidateLinks(LinksValidationResult result)
 		{
-			this._linkField.ValidateLinks(result);
+			_linkField.ValidateLinks(result);
 		}
 		#endregion
 	}

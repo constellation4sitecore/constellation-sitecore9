@@ -24,7 +24,7 @@
 		public NameValueListProperty(Field field)
 			: base(field)
 		{
-			this._nameValueListField = field;
+			_nameValueListField = field;
 		}
 		#endregion
 
@@ -37,8 +37,8 @@
 		/// </value>
 		public NameValueCollection NameValues
 		{
-			get { return this._nameValueListField.NameValues; }
-			set { this._nameValueListField.NameValues = value; }
+			get => _nameValueListField.NameValues;
+			set => _nameValueListField.NameValues = value;
 		}
 		#endregion
 

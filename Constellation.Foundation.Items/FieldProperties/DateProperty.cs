@@ -24,7 +24,7 @@
 		public DateProperty(Field field)
 			: base(field)
 		{
-			this._dateField = field;
+			_dateField = field;
 		}
 		#endregion
 
@@ -35,10 +35,8 @@
 		/// <value>
 		/// The date time.
 		/// </value>
-		public DateTime DateTime
-		{
-			get { return this._dateField.DateTime; }
-		}
+		public DateTime DateTime => _dateField.DateTime;
+
 		#endregion
 
 		#region Operators

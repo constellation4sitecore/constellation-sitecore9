@@ -24,7 +24,7 @@
 		public WordDocumentProperty(Field field)
 			: base(field)
 		{
-			this._wordDocumentField = field;
+			_wordDocumentField = field;
 		}
 		#endregion
 
@@ -35,13 +35,7 @@
 		/// <value>
 		/// The plain text.
 		/// </value>
-		public string PlainText
-		{
-			get
-			{
-				return this._wordDocumentField.PlainText;
-			}
-		}
+		public string PlainText => _wordDocumentField.PlainText;
 
 		/// <summary>
 		/// Gets the HTML.
@@ -49,13 +43,7 @@
 		/// <value>
 		/// The HTML.
 		/// </value>
-		public string Html
-		{
-			get
-			{
-				return this._wordDocumentField.Html;
-			}
-		}
+		public string Html => _wordDocumentField.Html;
 
 		/// <summary>
 		/// Gets the styles.
@@ -63,13 +51,7 @@
 		/// <value>
 		/// The styles.
 		/// </value>
-		public string Styles
-		{
-			get
-			{
-				return this._wordDocumentField.Styles;
-			}
-		}
+		public string Styles => _wordDocumentField.Styles;
 
 		/// <summary>
 		/// Gets the BLOB id.
@@ -77,13 +59,8 @@
 		/// <value>
 		/// The BLOB id.
 		/// </value>
-		public ID BlobId
-		{
-			get
-			{
-				return this._wordDocumentField.BlobId;
-			}
-		}
+		public ID BlobId => _wordDocumentField.BlobId;
+
 		#endregion
 
 		#region Operators
@@ -115,7 +92,7 @@
 		/// <param name="result">The result.</param><contract><requires name="result" condition="not null"/></contract>
 		public override void ValidateLinks(LinksValidationResult result)
 		{
-			this._wordDocumentField.ValidateLinks(result);
+			_wordDocumentField.ValidateLinks(result);
 		}
 		#endregion
 	}

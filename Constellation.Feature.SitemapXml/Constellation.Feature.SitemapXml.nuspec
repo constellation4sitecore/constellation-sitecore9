@@ -1,0 +1,34 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+	<id>$id$</id>
+	<version>$version$</version>
+	<title>$title$</title>
+	<authors>Richard J. Cabral</authors>
+	<owners>Richard J. Cabral</owners>
+	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>Sitecore Helix-style library that handles requests for /ROBOTS.TXT and /SITEMAP.XML dynamically based on Sitecore content.</summary>
+	<description>
+		Constellation is a collection of utilities for .NET CMS implementers.
+
+		The Feature.SitemapXml namespace contains Http Handlers which intercept the request before it hits Sitecore. The /robots.txt handler returns
+		a basic document stating that all agents have access to the sitemap.xml file. (there is an option to explicitly deny all agents as well).
+
+		For /sitemap.xml, the request is passed to a Sitemap Generator, which uses a Crawler to identify which Items to put in the resulting
+		XML document. The Generator also uses a Node class to parse the Items to identify what information belongs in each of the Items' records
+		in the XML output. Because this document can be expensive to generate, there is a built-in caching mechanism.
+		
+		This library supports "global" defaults in the Sitecore *.config files, as well as Site-specific settings.
+
+		The system will function on a basic level "out of the box". Developers are encouraged to extend/replace the crawler and node classes for their 
+		solution and/or individual Helix Projects within the solution to better suit their needs.
+
+		Configured for use with Sitecore 9.0.
+		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+	</description>
+	<releaseNotes>Compatible with Sitecore 9.0</releaseNotes>
+	<copyright>Copyright 2016</copyright>
+	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
+  </metadata>
+</package>

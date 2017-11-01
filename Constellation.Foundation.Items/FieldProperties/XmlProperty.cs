@@ -23,7 +23,7 @@
 		public XmlProperty(Field field)
 			: base(field)
 		{
-			this.xmlField = field;
+			xmlField = field;
 		}
 		#endregion
 
@@ -36,8 +36,8 @@
 		/// </value>
 		public string Root
 		{
-			get { return this.xmlField.Root; }
-			set { this.xmlField.Root = value; }
+			get => xmlField.Root;
+			set => xmlField.Root = value;
 		}
 
 		/// <summary>
@@ -46,10 +46,8 @@
 		/// <value>
 		/// The XML.
 		/// </value>
-		public XmlDocument Xml
-		{
-			get { return this.xmlField.Xml; }
-		}
+		public XmlDocument Xml => xmlField.Xml;
+
 		#endregion
 
 		#region Operators
@@ -94,7 +92,7 @@
 		/// </returns>
 		public string GetAttribute(string name)
 		{
-			return this.xmlField.GetAttribute(name);
+			return xmlField.GetAttribute(name);
 		}
 
 		/// <summary>
@@ -104,7 +102,7 @@
 		/// <param name="value">The attribute value.</param>
 		public void SetAttribute(string name, string value)
 		{
-			this.xmlField.SetAttribute(name, value);
+			xmlField.SetAttribute(name, value);
 		}
 		#endregion
 	}

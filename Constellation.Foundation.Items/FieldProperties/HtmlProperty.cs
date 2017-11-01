@@ -15,7 +15,7 @@
 		/// <summary>
 		/// The HtmlField to wrap.
 		/// </summary>
-		private readonly HtmlField htmlField;
+		private readonly HtmlField _htmlField;
 
 		#region Constructors
 		/// <inheritdoc />
@@ -26,7 +26,7 @@
 		public HtmlProperty(Field field)
 			: base(field)
 		{
-			this.htmlField = field;
+			_htmlField = field;
 		}
 		#endregion
 
@@ -72,7 +72,7 @@
 		/// <returns>The value stripped of all HTML elements.</returns>
 		public virtual string GetPlainText()
 		{
-			return this.htmlField.GetPlainText();
+			return _htmlField.GetPlainText();
 		}
 
 		/// <summary>
@@ -84,7 +84,7 @@
 		/// <contract><ensures condition="nullable"/></contract>
 		public override List<WebEditButton> GetWebEditButtons()
 		{
-			return this.htmlField.GetWebEditButtons();
+			return _htmlField.GetWebEditButtons();
 		}
 
 		/// <summary>
@@ -93,7 +93,7 @@
 		/// <param name="itemLink">The item link.</param><param name="newLink">The new link.</param><contract><requires name="itemLink" condition="not null"/><requires name="newLink" condition="not null"/></contract>
 		public override void Relink(ItemLink itemLink, Item newLink)
 		{
-			this.htmlField.Relink(itemLink, newLink);
+			_htmlField.Relink(itemLink, newLink);
 		}
 
 		/// <summary>
@@ -102,7 +102,7 @@
 		/// <param name="itemLink">The item link.</param><contract><requires name="itemLink" condition="not null"/></contract>
 		public override void RemoveLink(ItemLink itemLink)
 		{
-			this.htmlField.RemoveLink(itemLink);
+			_htmlField.RemoveLink(itemLink);
 		}
 
 		/// <summary>
@@ -111,7 +111,7 @@
 		/// <param name="result">The result.</param><contract><requires name="result" condition="not null"/></contract>
 		public override void ValidateLinks(LinksValidationResult result)
 		{
-			this.htmlField.ValidateLinks(result);
+			_htmlField.ValidateLinks(result);
 		}
 		#endregion
 	}

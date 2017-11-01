@@ -5,11 +5,11 @@
 	using Sitecore.Data.Items;
 	using Sitecore.Globalization;
 
-	/// <inheritdoc />
 	/// <summary>
 	/// Represents a Sitecore Item that descends from the Standard Template.
 	/// </summary>
 	[TemplateID("{1930BBEB-7805-471A-A3BE-4858AC7CF696}")]
+	// ReSharper disable once InheritdocConsiderUsage
 	public class StandardTemplate : CustomItem, IStandardTemplate
 	{
 		#region Constructors
@@ -29,118 +29,80 @@
 		/// <summary>
 		/// Gets a value indicating whether the Item (version) is empty.
 		/// </summary>
-		public bool Empty
-		{
-			get { return InnerItem.Empty; }
-		}
+		public bool Empty => InnerItem.Empty;
 
 		/// <inheritdoc />
 		/// <summary>
 		/// Gets a value indicating whether the Item has child Items.
 		/// </summary>
-		public bool HasChildren
-		{
-			get { return InnerItem.HasChildren; }
-		}
+		public bool HasChildren => InnerItem.HasChildren;
 
 		/// <inheritdoc />
 		/// <summary>
 		/// Gets a value indicating whether the Item has any clones.
 		/// </summary>
-		public bool HasClones
-		{
-			get { return InnerItem.HasClones; }
-		}
+		public bool HasClones => InnerItem.HasClones;
 
 		/// <inheritdoc />
 		/// <summary>
 		/// Gets the help object associated with this Item.
 		/// </summary>
-		public ItemHelp Help
-		{
-			get { return InnerItem.Help; }
-		}
+		public ItemHelp Help => InnerItem.Help;
 
 		/// <inheritdoc />
 		/// <summary>
 		/// Gets a value indicating whether the Item is a clone.
 		/// </summary>
-		public bool IsClone
-		{
-			get { return InnerItem.IsClone; }
-		}
+		public bool IsClone => InnerItem.IsClone;
 
 		/// <inheritdoc />
 		/// <summary>
 		/// Gets a value indicating whether the Item is an Item Clone.
 		/// </summary>
-		public bool IsItemClone
-		{
-			get { return InnerItem.IsItemClone; }
-		}
+		public bool IsItemClone => InnerItem.IsItemClone;
 
 		/// <inheritdoc />
 		/// <summary>
 		/// Gets the Item's Key (lowercased Item.Name).
 		/// </summary>
-		public string Key
-		{
-			get { return InnerItem.Key; }
-		}
+		public string Key => InnerItem.Key;
 
 		/// <inheritdoc />
 		/// <summary>
 		/// Gets the current Item Version's Language.
 		/// </summary>
-		public Language Language
-		{
-			get { return InnerItem.Language; }
-		}
+		public Language Language => InnerItem.Language;
 
 		/// <inheritdoc />
 		/// <summary>
 		/// Gets a value indicating whether the Item has been modified.
 		/// </summary>
-		public bool Modified
-		{
-			get { return InnerItem.Modified; }
-		}
+		public bool Modified => InnerItem.Modified;
 
 		/// <inheritdoc />
 		/// <summary>
 		/// Gets the ID of the Item's Parent.
 		/// </summary>
-		public ID ParentID
-		{
-			get { return InnerItem.ParentID; }
-		}
+		public ID ParentID => InnerItem.ParentID;
 
 		/// <inheritdoc />
 		/// <summary>
 		/// Gets the ID of the Item's Data Template.
 		/// </summary>
-		public ID TemplateID
-		{
-			get { return InnerItem.TemplateID; }
-		}
+		public ID TemplateID => InnerItem.TemplateID;
 
 		/// <inheritdoc />
 		/// <summary>
 		/// Gets the name of the Item's Data Template.
 		/// </summary>
-		public string TemplateName
-		{
-			get { return InnerItem.TemplateName; }
-		}
+		public string TemplateName => InnerItem.TemplateName;
 
 		/// <inheritdoc />
 		/// <summary>
 		/// Gets the Item's Version.
 		/// </summary>
-		public Version Version
-		{
-			get { return InnerItem.Version; }
-		}
+		public Version Version => InnerItem.Version;
+
 		#endregion
 
 		#region Operators
@@ -173,7 +135,7 @@
 		/// <returns>The field with the matching name or null.</returns>
 		protected Field GetField(string name)
 		{
-			return this.InnerItem.Fields[name];
+			return InnerItem.Fields[name];
 		}
 
 		/// <summary>
@@ -183,7 +145,7 @@
 		/// <returns>The field with the matching ID or null.</returns>
 		protected Field GetField(ID id)
 		{
-			return this.InnerItem.Fields[id];
+			return InnerItem.Fields[id];
 		}
 		#endregion
 	}

@@ -20,12 +20,12 @@
 		/// <summary>
 		/// The internal list of candidate types. Do not reference this list directly.
 		/// </summary>
-		private static IDictionary<ID, Type> candidateClasses;
+		private static IDictionary<ID, Type> _candidateClasses;
 
 		/// <summary>
 		/// The internal list of candidate types. Do not reference this list directly.
 		/// </summary>
-		private static IDictionary<ID, Type> candidateInterfaces;
+		private static IDictionary<ID, Type> _candidateInterfaces;
 		#endregion
 
 		#region Properties
@@ -36,20 +36,15 @@
 		{
 			get
 			{
-				return candidateClasses ?? (candidateClasses = CreateCandidateClassesList());
+				return _candidateClasses ?? (_candidateClasses = CreateCandidateClassesList());
 			}
 		}
 
 		/// <summary>
 		/// Gets an initialized list of types.
 		/// </summary>
-		public static IDictionary<ID, Type> CandidateInterfaces
-		{
-			get
-			{
-				return candidateInterfaces ?? (candidateInterfaces = CreateCandidateInterfacesList());
-			}
-		}
+		public static IDictionary<ID, Type> CandidateInterfaces => _candidateInterfaces ?? (_candidateInterfaces = CreateCandidateInterfacesList());
+
 		#endregion
 
 		#region Methods
@@ -60,12 +55,7 @@
 		/// <returns>The Type represented by that ID</returns>
 		public static Type GetTemplateInterfaceType(ID id)
 		{
-			if (CandidateInterfaces.ContainsKey(id))
-			{
-				return CandidateInterfaces[id];
-			}
-
-			return null;
+			return CandidateInterfaces.ContainsKey(id) ? CandidateInterfaces[id] : null;
 		}
 
 		/// <summary>
@@ -76,10 +66,9 @@
 		internal static StandardTemplate GetStronglyTypedItem(Item item)
 		{
 			Assert.IsNotNull(item, "item cannot be null.");
-			Type type;
-			if (CandidateClasses.TryGetValue(item.TemplateID, out type))
+			if (CandidateClasses.TryGetValue(item.TemplateID, out var type))
 			{
-				return Activator.CreateInstance(type, new object[] { item }) as StandardTemplate;
+				return Activator.CreateInstance(type, item) as StandardTemplate;
 			}
 
 			return new StandardTemplate(item);
@@ -96,24 +85,23 @@
 		{
 			var list = new Dictionary<ID, Type>();
 
-			Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+			var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 
-			foreach (Assembly assembly in assemblies)
+			foreach (var assembly in assemblies)
 			{
 				var types = GetLoadableTypes(assembly);
 
-				foreach (Type type in types)
+				foreach (var type in types)
 				{
-					if (type.IsClass)
-					{
-						ID templateID = GetTemplateIDFromAttribute(type);
+					if (!type.IsClass) continue;
 
-						if (!ID.IsNullOrEmpty(templateID))
-						{
-							Log.Info("ItemFactory added: " + templateID, type);
-							list.Add(templateID, type);
-						}
-					}
+					// ReSharper disable once InconsistentNaming
+					var templateID = GetTemplateIDFromAttribute(type);
+
+					if (ID.IsNullOrEmpty(templateID)) continue;
+
+					Log.Info("ItemFactory added: " + templateID, type);
+					list.Add(templateID, type);
 				}
 			}
 
@@ -129,9 +117,9 @@
 		{
 			var list = new Dictionary<ID, Type>();
 
-			Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+			var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 
-			foreach (Assembly assembly in assemblies)
+			foreach (var assembly in assemblies)
 			{
 				var types = new List<Type>();
 
@@ -144,19 +132,16 @@
 							types.Add(type);
 						}
 					}
-#pragma warning disable 168
-					// ReSharper disable UnusedVariable
-					catch (ReflectionTypeLoadException e)
-					// ReSharper restore UnusedVariable
-#pragma warning restore 168
+					catch (ReflectionTypeLoadException)
 					{
 						// We can't use that particular type.
 					}
 				}
 
-				foreach (Type type in types)
+				foreach (var type in types)
 				{
-					ID templateID = GetTemplateIDFromAttribute(type);
+					// ReSharper disable once InconsistentNaming
+					var templateID = GetTemplateIDFromAttribute(type);
 
 					if (!ID.IsNullOrEmpty(templateID))
 					{
@@ -176,6 +161,7 @@
 		/// </summary>
 		/// <param name="type">The type to inspect.</param>
 		/// <returns>The ID of the related Sitecore Template.</returns>
+		// ReSharper disable once InconsistentNaming
 		private static ID GetTemplateIDFromAttribute(Type type)
 		{
 			try
@@ -185,9 +171,7 @@
 
 				if (attributes.Length > 0)
 				{
-					var attribute = attributes[0] as TemplateIDAttribute;
-
-					if (attribute != null && !attribute.ID.IsNull)
+					if (attributes[0] is TemplateIDAttribute attribute && !attribute.ID.IsNull)
 					{
 						return attribute.ID;
 					}

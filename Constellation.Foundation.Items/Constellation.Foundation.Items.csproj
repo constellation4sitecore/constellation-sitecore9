@@ -74,7 +74,7 @@
     <Compile Include="TemplateIDAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Instructions\Constellation.Sitecore.Items.Instructions.txt" />
+    <Content Include="Instructions\Constellation.Foundation.Items.Instructions.txt" />
     <Content Include="License.txt" />
   </ItemGroup>
   <ItemGroup>

@@ -26,10 +26,8 @@
 		/// <summary>
 		/// Gets the FieldRenderer output for this property.
 		/// </summary>
-		public string Text
-		{
-			get { return FieldRenderer.Render(InnerField.Item, this.Name); }
-		}
+		public string Text => FieldRenderer.Render(InnerField.Item, Name);
+
 		#endregion
 
 		#region Operators
@@ -74,7 +72,7 @@
 		/// </returns>
 		public override string ToString()
 		{
-			return this.Text;
+			return Text;
 		}
 		#endregion
 	}

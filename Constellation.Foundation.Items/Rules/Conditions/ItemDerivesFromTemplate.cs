@@ -1,15 +1,10 @@
-﻿namespace Constellation.Foundation.Rules.Conditions
+﻿using Sitecore.Data;
+using Sitecore.Diagnostics;
+using Sitecore.Rules;
+using Sitecore.Rules.Conditions;
+
+namespace Constellation.Foundation.Items.Rules.Conditions
 {
-	using Constellation.Foundation.Items;
-
-	using Sitecore.Data;
-
-	using Sitecore.Diagnostics;
-
-	using Sitecore.Rules;
-
-	using Sitecore.Rules.Conditions;
-
 	/// <summary>
 	/// Rule that walks the supplied Item's template inheritance hierarchy looking
 	/// for a match to the TemplateID provided by the rule context.
@@ -21,7 +16,7 @@
 		/// <summary>
 		/// The template Id.
 		/// </summary>
-		private ID templateId;
+		private ID _templateId;
 
 		#region Constructors
 		/// <summary>
@@ -29,7 +24,7 @@
 		/// </summary>
 		public ItemDerivesFromTemplate()
 		{
-			this.templateId = ID.Null;
+			_templateId = ID.Null;
 		}
 
 		/// <summary>
@@ -39,7 +34,7 @@
 		public ItemDerivesFromTemplate(ID templateId)
 		{
 			Assert.ArgumentNotNull(templateId, "templateId");
-			this.templateId = templateId;
+			_templateId = templateId;
 		}
 		#endregion
 
@@ -48,15 +43,12 @@
 		/// </summary>
 		public ID TemplateId
 		{
-			get
-			{
-				return this.templateId;
-			}
+			get => _templateId;
 
 			set
 			{
 				Assert.ArgumentNotNull(value, "value");
-				this.templateId = value;
+				_templateId = value;
 			}
 		}
 
@@ -76,7 +68,7 @@
 				return false;
 			}
 
-			var template = ItemFactory.GetTemplateInterfaceType(this.TemplateId);
+			var template = ItemFactory.GetTemplateInterfaceType(TemplateId);
 			return template != null && template.IsInstanceOfType(item);
 		}
 	}

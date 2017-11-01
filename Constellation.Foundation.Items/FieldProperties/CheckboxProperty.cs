@@ -2,6 +2,7 @@
 {
 	using Sitecore.Data.Fields;
 
+	/// <inheritdoc />
 	/// <summary>
 	/// Facade for the Sitecore CheckboxField.
 	/// </summary>
@@ -13,14 +14,15 @@
 		private readonly CheckboxField _checkboxField;
 
 		#region Constructors
+		/// <inheritdoc />
 		/// <summary>
-		/// Initializes a new instance of the <see cref="CheckboxProperty"/> class.
+		/// Initializes a new instance of the <see cref="T:Constellation.Foundation.Items.FieldProperties.CheckboxProperty" /> class.
 		/// </summary>
 		/// <param name="field">The Sitecore field to wrap.</param>
 		public CheckboxProperty(Field field)
 			: base(field)
 		{
-			this._checkboxField = field;
+			_checkboxField = field;
 		}
 		#endregion
 
@@ -33,8 +35,8 @@
 		/// </value>
 		public bool Checked
 		{
-			get { return this._checkboxField.Checked; }
-			set { this._checkboxField.Checked = value; }
+			get => _checkboxField.Checked;
+			set => _checkboxField.Checked = value;
 		}
 		#endregion
 

@@ -13,8 +13,7 @@ Use the ItemExtension methods AsStronglyTyped() and As<T> to cast Sitecore.Data.
 to instances of your custom objects.
 
 I recommend using T4 Templates or NVelocity to automatically create interfaces & classes based on
-the template hierarchy of your Sitecore installation. see the Constellation.Sitecore.Items.TDS 
-NuGet package for an example.
+the template hierarchy of your Sitecore installation.
 
 ItemDerivesFromTemplate Sitecore Rule Condition
 ===============================================

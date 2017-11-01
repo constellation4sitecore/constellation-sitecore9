@@ -25,7 +25,7 @@
 		public ReferenceProperty(Field field)
 			: base(field)
 		{
-			this._referenceField = field;
+			_referenceField = field;
 		}
 		#endregion
 
@@ -38,8 +38,8 @@
 		/// </value>
 		public string Path
 		{
-			get { return this._referenceField.Path; }
-			set { this._referenceField.Path = value; }
+			get => _referenceField.Path;
+			set => _referenceField.Path = value;
 		}
 
 		/// <summary>
@@ -48,10 +48,8 @@
 		/// <value>
 		/// The target ID.
 		/// </value>
-		public ID TargetID
-		{
-			get { return this._referenceField.TargetID; }
-		}
+		// ReSharper disable once InconsistentNaming
+		public ID TargetID => _referenceField.TargetID;
 
 		/// <summary>
 		/// Gets the target item.
@@ -59,10 +57,8 @@
 		/// <value>
 		/// The target item.
 		/// </value>
-		public Item TargetItem
-		{
-			get { return this._referenceField.TargetItem; }
-		}
+		public Item TargetItem => _referenceField.TargetItem;
+
 		#endregion
 
 		#region Operators
@@ -96,7 +92,7 @@
 		/// </param>
 		public override void Relink(ItemLink itemLink, Item newLink)
 		{
-			this._referenceField.Relink(itemLink, newLink);
+			_referenceField.Relink(itemLink, newLink);
 		}
 
 		/// <summary>
@@ -105,7 +101,7 @@
 		/// <param name="itemLink">The item link.</param>
 		public override void RemoveLink(ItemLink itemLink)
 		{
-			this._referenceField.RemoveLink(itemLink);
+			_referenceField.RemoveLink(itemLink);
 		}
 
 		/// <summary>
@@ -114,7 +110,7 @@
 		/// <param name="result">The result.</param>
 		public override void ValidateLinks(LinksValidationResult result)
 		{
-			this._referenceField.ValidateLinks(result);
+			_referenceField.ValidateLinks(result);
 		}
 		#endregion
 	}

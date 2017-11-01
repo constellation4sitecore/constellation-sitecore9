@@ -15,7 +15,7 @@
 		/// <summary>
 		/// The Image Field to wrap.
 		/// </summary>
-		private readonly ImageField imageField;
+		private readonly ImageField _imageField;
 
 		#region Constructors
 		/// <inheritdoc />
@@ -26,7 +26,7 @@
 		public ImageProperty(Field field)
 			: base(field)
 		{
-			this.imageField = field;
+			_imageField = field;
 		}
 		#endregion
 
@@ -39,8 +39,8 @@
 		/// </value>
 		public string Alt
 		{
-			get { return this.imageField.Alt; }
-			set { this.imageField.Alt = value; }
+			get => _imageField.Alt;
+			set => _imageField.Alt = value;
 		}
 
 		/// <summary>
@@ -51,8 +51,8 @@
 		/// </value>
 		public string Border
 		{
-			get { return this.imageField.Border; }
-			set { this.imageField.Border = value; }
+			get => _imageField.Border;
+			set => _imageField.Border = value;
 		}
 
 		/// <summary>
@@ -63,8 +63,8 @@
 		/// </value>
 		public string Class
 		{
-			get { return this.imageField.Class; }
-			set { this.imageField.Class = value; }
+			get => _imageField.Class;
+			set => _imageField.Class = value;
 		}
 
 		/// <summary>
@@ -75,8 +75,8 @@
 		/// </value>
 		public string Height
 		{
-			get { return this.imageField.Height; }
-			set { this.imageField.Height = value; }
+			get => _imageField.Height;
+			set => _imageField.Height = value;
 		}
 
 		/// <summary>
@@ -87,8 +87,8 @@
 		/// </value>
 		public string HSpace
 		{
-			get { return this.imageField.HSpace; }
-			set { this.imageField.HSpace = value; }
+			get => _imageField.HSpace;
+			set => _imageField.HSpace = value;
 		}
 
 		/// <summary>
@@ -97,10 +97,7 @@
 		/// <value>
 		/// <c>true</c> if the image is internal; otherwise, <c>false</c>.
 		/// </value>
-		public bool IsInternal
-		{
-			get { return this.imageField.IsInternal; }
-		}
+		public bool IsInternal => _imageField.IsInternal;
 
 		/// <summary>
 		/// Gets or sets the link type.
@@ -110,8 +107,8 @@
 		/// </value>
 		public string LinkType
 		{
-			get { return this.imageField.LinkType; }
-			set { this.imageField.LinkType = value; }
+			get => _imageField.LinkType;
+			set => _imageField.LinkType = value;
 		}
 
 		/// <summary>
@@ -122,8 +119,8 @@
 		/// </value>
 		public Database MediaDatabase
 		{
-			get { return this.imageField.MediaDatabase; }
-			set { this.imageField.MediaDatabase = value; }
+			get => _imageField.MediaDatabase;
+			set => _imageField.MediaDatabase = value;
 		}
 
 		/// <summary>
@@ -134,8 +131,8 @@
 		/// </value>
 		public ID MediaID
 		{
-			get { return this.imageField.MediaID; }
-			set { this.imageField.MediaID = value; }
+			get => _imageField.MediaID;
+			set => _imageField.MediaID = value;
 		}
 
 		/// <summary>
@@ -144,10 +141,7 @@
 		/// <value>
 		/// The media item.
 		/// </value>
-		public Item MediaItem
-		{
-			get { return this.imageField.MediaItem; }
-		}
+		public Item MediaItem => _imageField.MediaItem;
 
 		/// <summary>
 		/// Gets or sets the language of the media item to use.
@@ -157,8 +151,8 @@
 		/// </value>
 		public Language MediaLanguage
 		{
-			get { return this.imageField.MediaLanguage; }
-			set { this.imageField.MediaLanguage = value; }
+			get => _imageField.MediaLanguage;
+			set => _imageField.MediaLanguage = value;
 		}
 
 		/// <summary>
@@ -169,8 +163,8 @@
 		/// </value>
 		public Version MediaVersion
 		{
-			get { return this.imageField.MediaVersion; }
-			set { this.imageField.MediaVersion = value; }
+			get => _imageField.MediaVersion;
+			set => _imageField.MediaVersion = value;
 		}
 
 		/// <summary>
@@ -181,8 +175,8 @@
 		/// </value>
 		public string VSpace
 		{
-			get { return this.imageField.VSpace; }
-			set { this.imageField.VSpace = value; }
+			get => _imageField.VSpace;
+			set => _imageField.VSpace = value;
 		}
 
 		/// <summary>
@@ -193,8 +187,8 @@
 		/// </value>
 		public string Width
 		{
-			get { return this.imageField.Width; }
-			set { this.imageField.Width = value; }
+			get => _imageField.Width;
+			set => _imageField.Width = value;
 		}
 		#endregion
 
@@ -227,7 +221,7 @@
 		/// <param name="itemLink">The item link.</param><param name="newLink">The new link.</param><contract><requires name="itemLink" condition="not null"/><requires name="newLink" condition="not null"/></contract>
 		public override void Relink(ItemLink itemLink, Item newLink)
 		{
-			this.imageField.Relink(itemLink, newLink);
+			_imageField.Relink(itemLink, newLink);
 		}
 
 		/// <summary>
@@ -236,7 +230,7 @@
 		/// <param name="itemLink">The item link.</param><contract><requires name="itemLink" condition="not null"/></contract>
 		public override void RemoveLink(ItemLink itemLink)
 		{
-			this.imageField.RemoveLink(itemLink);
+			_imageField.RemoveLink(itemLink);
 		}
 
 		/// <summary>
@@ -245,7 +239,7 @@
 		/// <param name="itemLink">The link.</param><contract><requires name="itemLink" condition="not null"/></contract>
 		public override void UpdateLink(ItemLink itemLink)
 		{
-			this.imageField.UpdateLink(itemLink);
+			_imageField.UpdateLink(itemLink);
 		}
 
 		/// <summary>
@@ -254,7 +248,7 @@
 		/// <param name="result">The result.</param><contract><requires name="result" condition="not null"/></contract>
 		public override void ValidateLinks(LinksValidationResult result)
 		{
-			this.imageField.ValidateLinks(result);
+			_imageField.ValidateLinks(result);
 		}
 		#endregion
 	}

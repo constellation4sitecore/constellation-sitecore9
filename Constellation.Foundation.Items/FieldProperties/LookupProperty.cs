@@ -25,7 +25,7 @@
 		public LookupProperty(Field field)
 			: base(field)
 		{
-			this._lookupField = field;
+			_lookupField = field;
 		}
 		#endregion
 
@@ -37,13 +37,7 @@
 		/// The target ID.
 		/// </value>
 		/// <contract><ensures condition="not null"/></contract>
-		public ID TargetID
-		{
-			get
-			{
-				return this._lookupField.TargetID;
-			}
-		}
+		public ID TargetID => _lookupField.TargetID;
 
 		/// <summary>
 		/// Gets the target item.
@@ -51,13 +45,8 @@
 		/// <value>
 		/// The target item.
 		/// </value>
-		public Item TargetItem
-		{
-			get
-			{
-				return this._lookupField.TargetItem;
-			}
-		}
+		public Item TargetItem => _lookupField.TargetItem;
+
 		#endregion
 
 		#region Operators
@@ -89,7 +78,7 @@
 		/// <param name="itemLink">The item link.</param><param name="newLink">The new link.</param><contract><requires name="itemLink" condition="not null"/><requires name="newLink" condition="not null"/></contract>
 		public override void Relink(ItemLink itemLink, Item newLink)
 		{
-			this._lookupField.Relink(itemLink, newLink);
+			_lookupField.Relink(itemLink, newLink);
 		}
 
 		/// <summary>
@@ -98,7 +87,7 @@
 		/// <param name="itemLink">The item link.</param><contract><requires name="itemLink" condition="not null"/></contract>
 		public override void RemoveLink(ItemLink itemLink)
 		{
-			this._lookupField.RemoveLink(itemLink);
+			_lookupField.RemoveLink(itemLink);
 		}
 
 		/// <summary>
@@ -107,7 +96,7 @@
 		/// <param name="result">The result.</param><contract><requires name="result" condition="not null"/></contract>
 		public override void ValidateLinks(LinksValidationResult result)
 		{
-			this._lookupField.ValidateLinks(result);
+			_lookupField.ValidateLinks(result);
 		}
 		#endregion
 	}

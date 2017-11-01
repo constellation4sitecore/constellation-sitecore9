@@ -6,7 +6,7 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://github.com/sitecorerick/constellation.Foundation.Contexts</projectUrl>
+	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library to support context-aware pipeline, event and rule handlers.</summary>
 	<description>

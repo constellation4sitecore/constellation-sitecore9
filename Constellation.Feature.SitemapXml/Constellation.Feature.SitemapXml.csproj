@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Config\Include\Constellation.Feature.SitemapXml.config" />
+    <None Include="Constellation.Feature.SitemapXml.nuspec" />
     <None Include="packages.config" />
     <Content Include="Web.config.uninstall.xdt" />
     <None Include="Web.config.install.xdt" />

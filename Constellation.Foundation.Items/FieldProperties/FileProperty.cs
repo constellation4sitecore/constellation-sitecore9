@@ -26,7 +26,7 @@
 		public FileProperty(Field field)
 			: base(field)
 		{
-			this.fileField = field;
+			fileField = field;
 		}
 
 		#endregion
@@ -41,8 +41,8 @@
 		/// <contract><requires name="value" condition="not null"/><ensures condition="not null"/></contract>
 		public Database MediaDatabase
 		{
-			get { return this.fileField.MediaDatabase; }
-			set { this.fileField.MediaDatabase = value; }
+			get => fileField.MediaDatabase;
+			set => fileField.MediaDatabase = value;
 		}
 
 		/// <summary>
@@ -54,8 +54,8 @@
 		/// <contract><requires name="value" condition="not null"/><ensures condition="not null"/></contract>
 		public Language MediaLanguage
 		{
-			get { return this.fileField.MediaLanguage; }
-			set { this.fileField.MediaLanguage = value; }
+			get => fileField.MediaLanguage;
+			set => fileField.MediaLanguage = value;
 		}
 
 		/// <summary>
@@ -67,8 +67,8 @@
 		/// <contract><requires name="value" condition="not null"/><ensures condition="not null"/></contract>
 		public ID MediaID
 		{
-			get { return this.fileField.MediaID; }
-			set { this.fileField.MediaID = value; }
+			get => fileField.MediaID;
+			set => fileField.MediaID = value;
 		}
 
 		/// <summary>
@@ -77,10 +77,7 @@
 		/// <value>
 		/// The media item.
 		/// </value>
-		public Item MediaItem
-		{
-			get { return this.fileField.MediaItem; }
-		}
+		public Item MediaItem => fileField.MediaItem;
 
 		/// <summary>
 		/// Gets or sets the version of the media item to use.
@@ -91,8 +88,8 @@
 		/// <contract><requires name="value" condition="not null"/><ensures condition="nullable"/></contract>
 		public Version MediaVersion
 		{
-			get { return this.fileField.MediaVersion; }
-			set { this.fileField.MediaVersion = value; }
+			get => fileField.MediaVersion;
+			set => fileField.MediaVersion = value;
 		}
 
 		/// <summary>
@@ -104,8 +101,8 @@
 		/// <contract><requires name="value" condition="not null"/><ensures condition="not null"/></contract>
 		public string Src
 		{
-			get { return this.fileField.Src; }
-			set { this.fileField.Src = value; }
+			get => fileField.Src;
+			set => fileField.Src = value;
 		}
 		#endregion
 
@@ -138,7 +135,7 @@
 		/// <param name="itemLink">The item link.</param><param name="newLink">The new link.</param><contract><requires name="itemLink" condition="not null"/><requires name="newLink" condition="not null"/></contract>
 		public override void Relink(ItemLink itemLink, Item newLink)
 		{
-			this.fileField.Relink(itemLink, newLink);
+			fileField.Relink(itemLink, newLink);
 		}
 
 		/// <summary>
@@ -147,7 +144,7 @@
 		/// <param name="itemLink">The item link.</param><contract><requires name="itemLink" condition="not null"/></contract>
 		public override void RemoveLink(ItemLink itemLink)
 		{
-			this.fileField.RemoveLink(itemLink);
+			fileField.RemoveLink(itemLink);
 		}
 
 		/// <summary>
@@ -156,7 +153,7 @@
 		/// <param name="itemLink">The link.</param><contract><requires name="itemLink" condition="not null"/></contract>
 		public override void UpdateLink(ItemLink itemLink)
 		{
-			this.fileField.UpdateLink(itemLink);
+			fileField.UpdateLink(itemLink);
 		}
 
 		/// <summary>
@@ -165,7 +162,7 @@
 		/// <param name="result">The result.</param><contract><requires name="result" condition="not null"/></contract>
 		public override void ValidateLinks(LinksValidationResult result)
 		{
-			this.fileField.ValidateLinks(result);
+			fileField.ValidateLinks(result);
 		}
 		#endregion
 	}

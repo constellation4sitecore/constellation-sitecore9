@@ -16,7 +16,7 @@
 		/// <summary>
 		/// The Field to wrap.
 		/// </summary>
-		private readonly DelimitedField delimitedField;
+		private readonly DelimitedField _delimitedField;
 
 		#region Constructors
 		/// <inheritdoc />
@@ -27,19 +27,20 @@
 		public DelimitedProperty(Field field)
 			: base(field)
 		{
-			this.delimitedField = new DelimitedField(field, this.Separator);
+			_delimitedField = new DelimitedField(field, Separator);
 		}
 
+		/// <inheritdoc />
 		/// <summary>
-		/// Initializes a new instance of the <see cref="DelimitedProperty"/> class.
+		/// Initializes a new instance of the <see cref="T:Constellation.Foundation.Items.FieldProperties.DelimitedProperty" /> class.
 		/// </summary>
 		/// <param name="field">The field to wrap.</param>
 		/// <param name="separator">The character to use for delimiting values.</param>
 		public DelimitedProperty(Field field, char separator)
 			: base(field)
 		{
-			this.delimitedField = new DelimitedField(field, separator);
-			this.Separator = separator;
+			_delimitedField = new DelimitedField(field, separator);
+			Separator = separator;
 		}
 		#endregion
 
@@ -50,10 +51,7 @@
 		/// <value>
 		/// The count.
 		/// </value>
-		public int Count
-		{
-			get { return this.delimitedField.Count; }
-		}
+		public int Count => _delimitedField.Count;
 
 		/// <summary>
 		/// Gets an array of values.
@@ -61,10 +59,7 @@
 		/// <value>
 		/// The members of the array.
 		/// </value>
-		public string[] Items
-		{
-			get { return this.delimitedField.Items; }
-		}
+		public string[] Items => _delimitedField.Items;
 
 		/// <summary>
 		/// Gets the value as <see cref="T:Sitecore.Text.ListString"/>.
@@ -72,15 +67,12 @@
 		/// <value>
 		/// The list.
 		/// </value>
-		public ListString List
-		{
-			get { return this.delimitedField.List; }
-		}
+		public ListString List => _delimitedField.List;
 
 		/// <summary>
 		/// Gets the character to use for delimiting.
 		/// </summary>
-		public char Separator { get; private set; }
+		public char Separator { get; }
 		#endregion
 
 		#region Indexers
@@ -89,10 +81,8 @@
 		/// </summary>
 		/// <param name="index">The index of the value to return.</param>
 		/// <returns>The string at the specified index.</returns>
-		public string this[int index]
-		{
-			get { return this.delimitedField[index]; }
-		}
+		public string this[int index] => _delimitedField[index];
+
 		#endregion
 
 		#region Operators
@@ -127,7 +117,7 @@
 		/// </returns>
 		public string Add(string item)
 		{
-			return this.delimitedField.Add(item);
+			return _delimitedField.Add(item);
 		}
 
 		/// <summary>
@@ -140,7 +130,7 @@
 		/// </returns>
 		public string Add(string item, bool includeBlank)
 		{
-			return this.delimitedField.Add(item, includeBlank);
+			return _delimitedField.Add(item, includeBlank);
 		}
 
 		/// <summary>
@@ -152,7 +142,7 @@
 		/// </returns>
 		public int CharIndexOf(string item)
 		{
-			return this.delimitedField.CharIndexOf(item);
+			return _delimitedField.CharIndexOf(item);
 		}
 
 		/// <summary>
@@ -164,7 +154,7 @@
 		/// </returns>
 		public bool Contains(string item)
 		{
-			return this.delimitedField.Contains(item);
+			return _delimitedField.Contains(item);
 		}
 
 		/// <summary>
@@ -175,7 +165,7 @@
 		/// </returns>
 		public IEnumerator GetEnumerator()
 		{
-			return this.delimitedField.GetEnumerator();
+			return _delimitedField.GetEnumerator();
 		}
 
 		/// <summary>
@@ -187,7 +177,7 @@
 		/// </returns>
 		public int IndexOf(string item)
 		{
-			return this.delimitedField.IndexOf(item);
+			return _delimitedField.IndexOf(item);
 		}
 
 		/// <summary>
@@ -199,7 +189,7 @@
 		/// </returns>
 		public string Remove(string item)
 		{
-			return this.delimitedField.Remove(item);
+			return _delimitedField.Remove(item);
 		}
 
 		/// <summary>
@@ -212,7 +202,7 @@
 		/// </returns>
 		public string Replace(string item, string with)
 		{
-			return this.delimitedField.Replace(item, with);
+			return _delimitedField.Replace(item, with);
 		}
 
 		/// <summary>
@@ -223,7 +213,7 @@
 		/// </returns>
 		public override string ToString()
 		{
-			return this.delimitedField.ToString();
+			return _delimitedField.ToString();
 		}
 
 		/// <summary>
@@ -232,7 +222,7 @@
 		/// <param name="itemLink">The item link.</param><param name="newLink">The new link.</param>
 		public override void Relink(ItemLink itemLink, Item newLink)
 		{
-			this.delimitedField.Relink(itemLink, newLink);
+			_delimitedField.Relink(itemLink, newLink);
 		}
 
 		/// <summary>
@@ -241,7 +231,7 @@
 		/// <param name="itemLink">The item link.</param>
 		public override void RemoveLink(ItemLink itemLink)
 		{
-			this.delimitedField.RemoveLink(itemLink);
+			_delimitedField.RemoveLink(itemLink);
 		}
 
 		/// <summary>
@@ -250,7 +240,7 @@
 		/// <param name="result">The result.</param>
 		public override void ValidateLinks(LinksValidationResult result)
 		{
-			this.delimitedField.ValidateLinks(result);
+			_delimitedField.ValidateLinks(result);
 		}
 		#endregion
 	}

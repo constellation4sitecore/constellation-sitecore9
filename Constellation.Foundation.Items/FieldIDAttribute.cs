@@ -4,6 +4,7 @@
 
 	using System;
 
+	/// <inheritdoc />
 	/// <summary>
 	/// Specifies what Sitecore Field a given property represents.
 	/// </summary>
@@ -13,8 +14,9 @@
 	// ReSharper restore InconsistentNaming
 	{
 		#region Constructors
+		/// <inheritdoc />
 		/// <summary>
-		/// Initializes a new instance of the <see cref="FieldIDAttribute"/> class.
+		/// Initializes a new instance of the <see cref="T:Constellation.Foundation.Items.FieldIDAttribute" /> class.
 		/// </summary>
 		/// <param name="id">The ID of the Field.</param>
 		public FieldIDAttribute(ID id)
@@ -22,8 +24,9 @@
 			ID = id;
 		}
 
+		/// <inheritdoc />
 		/// <summary>
-		/// Initializes a new instance of the <see cref="FieldIDAttribute"/> class.
+		/// Initializes a new instance of the <see cref="T:Constellation.Foundation.Items.FieldIDAttribute" /> class.
 		/// </summary>
 		/// <param name="id">The ID of the Field as a Guid.</param>
 		public FieldIDAttribute(Guid id)
@@ -31,8 +34,9 @@
 			ID = new ID(id);
 		}
 
+		/// <inheritdoc />
 		/// <summary>
-		/// Initializes a new instance of the <see cref="FieldIDAttribute"/> class.
+		/// Initializes a new instance of the <see cref="T:Constellation.Foundation.Items.FieldIDAttribute" /> class.
 		/// </summary>
 		/// <param name="id">The ID of the Field as a String.</param>
 		public FieldIDAttribute(string id)
@@ -45,7 +49,8 @@
 		/// <summary>
 		/// Gets The ID of the Field.
 		/// </summary>
-		public ID ID { get; private set; }
+		// ReSharper disable once InconsistentNaming
+		public ID ID { get; }
 		#endregion
 
 	}

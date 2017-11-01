@@ -27,82 +27,52 @@
 		/// <summary>
 		/// Gets a value indicating whether the field can be read in the current context.
 		/// </summary>
-		public bool CanRead
-		{
-			get { return InnerField.CanRead; }
-		}
+		public bool CanRead => InnerField.CanRead;
 
 		/// <summary>
 		/// Gets a value indicating whether the field can be written in the current context.
 		/// </summary>
-		public bool CanWrite
-		{
-			get { return InnerField.CanWrite; }
-		}
+		public bool CanWrite => InnerField.CanWrite;
 
 		/// <summary>
 		/// Gets a value indicating whether the field's value is a Standard Value.
 		/// </summary>
-		public bool ContainsStandardValue
-		{
-			get { return InnerField.ContainsStandardValue; }
-		}
+		public bool ContainsStandardValue => InnerField.ContainsStandardValue;
 
 		/// <summary>
 		/// Gets a value indicating whether the field's value is inherited from another Item.
 		/// </summary>
-		public bool InheritsValueFromOtherItem
-		{
-			get { return InnerField.InheritsValueFromOtherItem; }
-		}
+		public bool InheritsValueFromOtherItem => InnerField.InheritsValueFromOtherItem;
 
 		/// <summary>
 		/// Gets the Database for the field.
 		/// </summary>
-		public Database Database
-		{
-			get { return InnerField.Database; }
-		}
+		public Database Database => InnerField.Database;
 
 		/// <summary>
 		/// Gets the field definition.
 		/// </summary>
-		public TemplateField Definition
-		{
-			get { return InnerField.Definition; }
-		}
+		public TemplateField Definition => InnerField.Definition;
 
 		/// <summary>
 		/// Gets the field description.
 		/// </summary>
-		public string Description
-		{
-			get { return InnerField.Description; }
-		}
+		public string Description => InnerField.Description;
 
 		/// <summary>
 		/// Gets the field display name. (Includes field Title.)
 		/// </summary>
-		public string DisplayName
-		{
-			get { return InnerField.DisplayName; }
-		}
+		public string DisplayName => InnerField.DisplayName;
 
 		/// <summary>
 		/// Gets the field's Section Name.
 		/// </summary>
-		public string SectionDisplayName
-		{
-			get { return InnerField.SectionDisplayName; }
-		}
+		public string SectionDisplayName => InnerField.SectionDisplayName;
 
 		/// <summary>
 		/// Gets a value indicating whether the field has a blob stream.
 		/// </summary>
-		public bool HasBlobStream
-		{
-			get { return InnerField.HasBlobStream; }
-		}
+		public bool HasBlobStream => InnerField.HasBlobStream;
 
 		/// <summary>
 		/// Gets a value indicating whether the field's value is not null or empty.
@@ -125,215 +95,139 @@
 		/// <summary>
 		/// Gets the URL for external help text.
 		/// </summary>
-		public string HelpLink
-		{
-			get { return InnerField.HelpLink; }
-		}
+		public string HelpLink => InnerField.HelpLink;
 
 		/// <summary>
 		/// Gets the field's ID.
 		/// </summary>
 		// ReSharper disable InconsistentNaming
-		public ID ID
+		public ID ID => InnerField.ID;
 		// ReSharper restore InconsistentNaming
-		{
-			get { return InnerField.ID; }
-		}
+
 
 		/// <summary>
 		/// Gets the field's inherited value.
 		/// </summary>
-		public string InheritedValue
-		{
-			get { return InnerField.InheritedValue; }
-		}
+		public string InheritedValue => InnerField.InheritedValue;
 
 		/// <summary>
 		/// Gets a value indicating whether the field is a Blob.
 		/// </summary>
-		public bool IsBlobField
-		{
-			get { return InnerField.IsBlobField; }
-		}
+		public bool IsBlobField => InnerField.IsBlobField;
 
 		/// <summary>
 		/// Gets a value indicating whether the field's value has been modified for this instance.
 		/// </summary>
-		public bool IsModified
-		{
-			get { return InnerField.IsModified; }
-		}
+		public bool IsModified => InnerField.IsModified;
 
 		/// <summary>
 		/// Gets the Item that the field belongs to.
 		/// </summary>
-		public Item Item
-		{
-			get { return InnerField.Item; }
-		}
+		public Item Item => InnerField.Item;
 
 		/// <summary>
 		/// Gets the field Item's Key.
 		/// </summary>
-		public string Key
-		{
-			get { return InnerField.Key; }
-		}
+		public string Key => InnerField.Key;
 
 		/// <summary>
 		/// Gets the field Item's Language.
 		/// </summary>
-		public Language Language
-		{
-			get { return InnerField.Language; }
-		}
+		public Language Language => InnerField.Language;
 
 		/// <summary>
 		/// Gets the field Item's Name (also used as an index in the Item's Fields collection).
 		/// </summary>
-		public string Name
-		{
-			get { return InnerField.Name; }
-		}
+		public string Name => InnerField.Name;
 
 		/// <summary>
 		/// Gets a value indicating whether the field has been reset to blank.
 		/// </summary>
-		public bool ResetBlank
-		{
-			get { return InnerField.ResetBlank; }
-		}
+		public bool ResetBlank => InnerField.ResetBlank;
 
 		/// <summary>
 		/// Gets the Field's Section Item.
 		/// </summary>
-		public string Section
-		{
-			get { return InnerField.Section; }
-		}
+		public string Section => InnerField.Section;
 
 		/// <summary>
 		/// Gets the translated name of the field's section.
 		/// </summary>
 		// ReSharper disable InconsistentNaming
-		public string SectionNameByUILocale
+		public string SectionNameByUILocale => InnerField.SectionNameByUILocale;
 		// ReSharper restore InconsistentNaming
-		{
-			get { return InnerField.SectionNameByUILocale; }
-		}
 
 		/// <summary>
 		/// Gets the Sort Order for the field's section.
 		/// </summary>
-		public int SectionSortorder
-		{
-			get { return InnerField.SectionSortorder; }
-		}
+		public int SectionSortorder => InnerField.SectionSortorder;
 
 		/// <summary>
 		/// Gets a value indicating whether the field's value is shared across languages.
 		/// </summary>
-		public bool Shared
-		{
-			get { return InnerField.Shared; }
-		}
+		public bool Shared => InnerField.Shared;
 
 		/// <summary>
 		/// Gets a value indicating whether the field's value should be translated.
 		/// </summary>
-		public bool ShouldBeTranslated
-		{
-			get { return InnerField.ShouldBeTranslated; }
-		}
+		public bool ShouldBeTranslated => InnerField.ShouldBeTranslated;
 
 		/// <summary>
 		/// Gets the field's Sort Order used within the scope of the Field's Section.
 		/// </summary>
-		public int Sortorder
-		{
-			get { return InnerField.Sortorder; }
-		}
+		public int Sortorder => InnerField.Sortorder;
 
 		/// <summary>
 		/// Gets the field's data source.
 		/// </summary>
-		public string Source
-		{
-			get { return InnerField.Source; }
-		}
+		public string Source => InnerField.Source;
 
 		/// <summary>
 		/// Gets the field's CSS settings, used in the Content Editor.
 		/// </summary>
-		public string Style
-		{
-			get { return InnerField.Style; }
-		}
+		public string Style => InnerField.Style;
 
 		/// <summary>
 		/// Gets the field's Title. (Rarely used.)
 		/// </summary>
-		public string Title
-		{
-			get { return InnerField.Title; }
-		}
+		public string Title => InnerField.Title;
 
 		/// <summary>
 		/// Gets the field's ToolTip. (Field's Long Description help text.)
 		/// </summary>
-		public string ToolTip
-		{
-			get { return InnerField.ToolTip; }
-		}
+		public string ToolTip => InnerField.ToolTip;
 
 		/// <summary>
 		/// Gets a value indicating whether the field's value is translatable.
 		/// </summary>
-		public bool Translatable
-		{
-			get { return InnerField.Translatable; }
-		}
+		public bool Translatable => InnerField.Translatable;
 
 		/// <summary>
 		/// Gets the Sitecore field "type", which is a string.
 		/// </summary>
-		public string Type
-		{
-			get { return InnerField.Type; }
-		}
+		public string Type => InnerField.Type;
 
 		/// <summary>
 		/// Gets the field type key (believed to be the lowercase name of the Type).
 		/// </summary>
-		public string TypeKey
-		{
-			get { return InnerField.TypeKey; }
-		}
+		public string TypeKey => InnerField.TypeKey;
 
 		/// <summary>
 		/// Gets a value indicating whether the field's value applies to all versions of the Item 
 		/// for a given language.
 		/// </summary>
-		public bool Unversioned
-		{
-			get { return InnerField.Unversioned; }
-		}
+		public bool Unversioned => InnerField.Unversioned;
 
 		/// <summary>
 		/// Gets a RegEx string for old-style validation.
 		/// </summary>
-		public string Validation
-		{
-			get { return InnerField.Validation; }
-		}
+		public string Validation => InnerField.Validation;
 
 		/// <summary>
 		/// Gets a validation message applying to old-style RegEx validation.
 		/// </summary>
-		public string ValidationText
-		{
-			get { return InnerField.ValidationText; }
-		}
+		public string ValidationText => InnerField.ValidationText;
+
 		#endregion
 
 		#region Operators

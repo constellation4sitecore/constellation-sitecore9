@@ -84,11 +84,13 @@
 		/// <summary>
 		/// Gets the ID of the Item's Parent.
 		/// </summary>
+		// ReSharper disable once InconsistentNaming
 		ID ParentID { get; }
 
 		/// <summary>
 		/// Gets the ID of the Item's Data Template.
 		/// </summary>
+		// ReSharper disable once InconsistentNaming
 		ID TemplateID { get; }
 
 		/// <summary>

@@ -24,7 +24,7 @@
 		public ValueLookupProperty(Field field)
 			: base(field)
 		{
-			this._valueLookupField = field;
+			_valueLookupField = field;
 		}
 		#endregion
 
@@ -57,7 +57,7 @@
 		/// <param name="itemLink">The item link.</param><param name="newLink">The new link.</param>
 		public override void Relink(ItemLink itemLink, Item newLink)
 		{
-			this._valueLookupField.Relink(itemLink, newLink);
+			_valueLookupField.Relink(itemLink, newLink);
 		}
 
 		/// <summary>
@@ -66,7 +66,7 @@
 		/// <param name="itemLink">The item link.</param>
 		public override void RemoveLink(ItemLink itemLink)
 		{
-			this._valueLookupField.RemoveLink(itemLink);
+			_valueLookupField.RemoveLink(itemLink);
 		}
 
 		/// <summary>
@@ -75,7 +75,7 @@
 		/// <param name="itemLink">The link.</param>
 		public override void UpdateLink(ItemLink itemLink)
 		{
-			this._valueLookupField.UpdateLink(itemLink);
+			_valueLookupField.UpdateLink(itemLink);
 		}
 
 		/// <summary>
@@ -84,7 +84,7 @@
 		/// <param name="result">The result.</param>
 		public override void ValidateLinks(LinksValidationResult result)
 		{
-			this._valueLookupField.ValidateLinks(result);
+			_valueLookupField.ValidateLinks(result);
 		}
 		#endregion
 	}

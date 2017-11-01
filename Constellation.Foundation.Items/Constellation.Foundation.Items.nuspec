@@ -11,9 +11,16 @@
 	<summary>Sitecore Helix library that provides a strongly-typed Item framework for Sitecore.</summary>
 	<description>
 		Constellation.Foundation.Items is a framework for Sitecore. It contains a few basic Interfaces and Classes that can be used to construct objects
-		that represent Sitecore.Data.Items but include a few features not found in the native Sitecore API.
+		that represent Sitecore.Data.Items but include a few features not found in the native Sitecore API. For Example:
+		
+		* Support for inheritance chains without having to navigate through all Data Template definitions.
+		* Ability to limit Item-based method parameters to particular "types" of Items without having to perform inspections on the parameter inside the local scope.
+		* Ability to limit View Models to a specific Item "type".
+		
+		Unlike Custom Item Generator and Glass Mapper, Full inheritance chains are supported, as well as Interface versions of all Data Template definitions to allow 
+		for contract-basd parameter specifications.
 
-		This library is intended to be paired with a code generation tool such as NVelocity or T4 templates. Code generation should use
+		This library is best when paired with a code generation tool such as NVelocity or T4 templates. Code generation should use
 		Sitecore Data Template definitions to create Interfaces and Classes. These can be used to create instances of Items that support
 		multiple inheritance and contracts. Item objects typically have declared properties representing a given Item's fields.
 
