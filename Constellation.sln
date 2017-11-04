@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Foundation.Data", "Constellation.Foundation.Data\Constellation.Foundation.Data.csproj", "{219879EB-1E95-4820-AAAC-D066312BF5D6}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Feature.SitemapXml", "Constellation.Feature.SitemapXml\Constellation.Feature.SitemapXml.csproj", "{D17D41AB-018C-482E-B4E7-500D00C4E2A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Feature.UrlFriendlyPageNames", "Constellation.Feature.UrlFriendlyPageNames\Constellation.Feature.UrlFriendlyPageNames.csproj", "{6897FE47-0E4C-4941-B83F-7FBE12A7F15D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Foundation.SupportingItemManagement", "Constellation.Foundation.SupportingItemManagement\Constellation.Foundation.SupportingItemManagement.csproj", "{BFB19B3D-B65C-463B-B53B-80FB2C1D7367}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{6897FE47-0E4C-4941-B83F-7FBE12A7F15D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6897FE47-0E4C-4941-B83F-7FBE12A7F15D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6897FE47-0E4C-4941-B83F-7FBE12A7F15D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFB19B3D-B65C-463B-B53B-80FB2C1D7367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFB19B3D-B65C-463B-B53B-80FB2C1D7367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFB19B3D-B65C-463B-B53B-80FB2C1D7367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFB19B3D-B65C-463B-B53B-80FB2C1D7367}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{8BEE3BD9-54F0-4A00-BA52-5361C0494378} = {5A7B7ADA-7121-4A30-B215-7C1C57FC2197}
 		{D17D41AB-018C-482E-B4E7-500D00C4E2A9} = {CE4CC29C-1EB0-416B-BB74-F3DD917D0D0E}
 		{6897FE47-0E4C-4941-B83F-7FBE12A7F15D} = {CE4CC29C-1EB0-416B-BB74-F3DD917D0D0E}
+		{BFB19B3D-B65C-463B-B53B-80FB2C1D7367} = {5A7B7ADA-7121-4A30-B215-7C1C57FC2197}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {510028F4-B956-492B-9FC6-FD09D5A7B880}

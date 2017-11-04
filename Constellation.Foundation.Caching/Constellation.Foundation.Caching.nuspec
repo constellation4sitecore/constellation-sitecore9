@@ -19,8 +19,8 @@
 		* Site
 		* Database
 
-		Configured for use with Sitecore 8.2.
-		Requires Sitecore 8.2 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+		Configured for use with Sitecore 8.2+
+		Requires Sitecore NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 
 		Portions based on work by Christopher Giddings: https://cjgiddings.wordpress.com/2012/02/03/sitecore-caching-utility/ updated heavily
 		for modularity and to support Sitecore 8.2 caching APIs.

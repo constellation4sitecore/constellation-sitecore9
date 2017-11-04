@@ -60,7 +60,9 @@
     <Compile Include="SitemapNode.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Config\Include\Constellation.Feature.SitemapXml.config" />
+    <None Include="App_Config\Include\Constellation\Constellation.Feature.SitemapXml.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Constellation.Feature.SitemapXml.nuspec" />
     <None Include="packages.config" />
     <Content Include="Web.config.uninstall.xdt" />
