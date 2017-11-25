@@ -1,5 +1,6 @@
 ﻿namespace Constellation.Foundation.Mvc
 {
+	/// <inheritdoc />
 	/// <summary>
 	/// An implementation of System.Web.Mvc.WebViewPage that includes a few
 	/// Sitecore context properties useful for View-specific logic.
@@ -36,6 +37,7 @@
 		}
 	}
 
+	/// <inheritdoc />
 	/// <summary>
 	/// An implementation of System.Web.Mvc.WebViewPage`1[] that includes a few
 	/// Sitecore context properties useful for View-specific logic.

@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.NoReferences.9.0.171002\lib\NET462\Sitecore.Kernel.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -60,13 +61,13 @@
     <Compile Include="SitemapNode.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Config\Include\Constellation\Constellation.Feature.SitemapXml.config">
+    <Content Include="App_Config\Include\Constellation\Constellation.Feature.SitemapXml.config">
       <SubType>Designer</SubType>
-    </None>
+    </Content>
     <None Include="Constellation.Feature.SitemapXml.nuspec" />
     <None Include="packages.config" />
     <Content Include="Web.config.uninstall.xdt" />
-    <None Include="Web.config.install.xdt" />
+    <Content Include="Web.config.install.xdt" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

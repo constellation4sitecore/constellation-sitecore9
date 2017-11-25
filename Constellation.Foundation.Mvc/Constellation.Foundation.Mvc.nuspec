@@ -6,7 +6,7 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral. Portions from Hedgehog</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://github.com/sitecorerick/constellation.foundation.caching</projectUrl>
+	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
@@ -22,11 +22,11 @@
 		* RenderRendering pipeline handler that minifies output HTML before handing it off to the Response and Sitecore's HTML cache.
 		* Configuration file for managing the settings for above.
 
-		Configured for use with Sitecore 8.2.
-		Requires Sitecore 8.2 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+		Configured for use with Sitecore 9.0.
+		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Changed location of config file to match Helix standards.</releaseNotes>
-	<copyright>Copyright 2016</copyright>
+	<releaseNotes>Upgraded to work with Sitecore 9.0.</releaseNotes>
+	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>
 </package>

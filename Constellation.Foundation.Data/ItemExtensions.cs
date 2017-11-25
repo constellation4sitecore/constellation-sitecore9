@@ -38,7 +38,7 @@ namespace Constellation.Foundation.Data
 					return null;
 				}
 
-				if (current.IsDerived(templateId))
+				if (current.IsDerivedFrom(templateId))
 				{
 					return current;
 				}
@@ -123,7 +123,7 @@ namespace Constellation.Foundation.Data
 		/// <param name="item">The context item.</param>
 		/// <param name="templateName">Template to check.</param>
 		/// <returns>True if template matches, false if no match or either parameter is null.</returns>
-		public static bool IsDerived(this Item item, string templateName)
+		public static bool IsDerivedFrom(this Item item, string templateName)
 		{
 			if (string.IsNullOrEmpty(templateName))
 			{
@@ -131,7 +131,7 @@ namespace Constellation.Foundation.Data
 			}
 
 			var templateItem = item.Database.Templates[templateName];
-			return item.IsDerived(templateItem);
+			return item.IsDerivedFrom(templateItem);
 		}
 
 		/// <summary>
@@ -140,7 +140,7 @@ namespace Constellation.Foundation.Data
 		/// <param name="item">The context item.</param>
 		/// <param name="templateId">Template to check.</param>
 		/// <returns>True if template matches, false if no match or either parameter is null.</returns>
-		public static bool IsDerived(this Item item, ID templateId)
+		public static bool IsDerivedFrom(this Item item, ID templateId)
 		{
 			if (templateId.IsNull)
 			{
@@ -148,7 +148,7 @@ namespace Constellation.Foundation.Data
 			}
 
 			var templateItem = item.Database.Templates[templateId];
-			return item.IsDerived(templateItem);
+			return item.IsDerivedFrom(templateItem);
 		}
 
 		/// <summary>
@@ -157,7 +157,7 @@ namespace Constellation.Foundation.Data
 		/// <param name="item">The context item.</param>
 		/// <param name="templateToCompare">Template to check.</param>
 		/// <returns>True if template matches, false if no match or either parameter is null.</returns>
-		public static bool IsDerived(this Item item, TemplateItem templateToCompare)
+		public static bool IsDerivedFrom(this Item item, TemplateItem templateToCompare)
 		{
 			if (item == null)
 			{
@@ -181,7 +181,7 @@ namespace Constellation.Foundation.Data
 				return false;
 			}
 
-			return itemTemplate.ID == templateToCompare.ID || TemplateIsDerived(itemTemplate, templateToCompare);
+			return itemTemplate.ID == templateToCompare.ID || TemplateIsDerivedFrom(itemTemplate, templateToCompare);
 		}
 
 		/// <summary>
@@ -207,7 +207,7 @@ namespace Constellation.Foundation.Data
 
 			foreach (Item child in children)
 			{
-				if (child.IsDerived(templateId))
+				if (child.IsDerivedFrom(templateId))
 				{
 					childrenDerivedFrom.Add(child);
 				}
@@ -269,22 +269,22 @@ namespace Constellation.Foundation.Data
 		/// <param name="template">The template being examined.</param>
 		/// <param name="templateToCompare">The proposed ancestor.</param>
 		/// <returns>True if template matches.</returns>
-		private static bool TemplateIsDerived(TemplateItem template, TemplateItem templateToCompare)
+		private static bool TemplateIsDerivedFrom(TemplateItem template, TemplateItem templateToCompare)
 		{
-			var result = false;
-
 			foreach (var baseTemplate in template.BaseTemplates)
 			{
 				if (baseTemplate.ID == templateToCompare.ID)
 				{
-					result = true;
-					break;
+					return true;
 				}
 
-				result = TemplateIsDerived(baseTemplate, templateToCompare);
+				if (TemplateIsDerivedFrom(baseTemplate, templateToCompare))
+				{
+					return true;
+				}
 			}
 
-			return result;
+			return false;
 		}
 	}
 }

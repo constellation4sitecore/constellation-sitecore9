@@ -1,0 +1,29 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+	<id>$id$</id>
+	<version>$version$</version>
+	<title>$title$</title>
+	<authors>Richard J. Cabral, Chris Lees, Ed Lane</authors>
+	<owners>Richard J. Cabral</owners>
+	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>Sitecore Helix library extending Item with utilities to check ancestry, template derivation, and to retrieve Item children of a specific template.</summary>
+	<description>
+		Constellation is a collection of utilities for .NET CMS implementers.
+		The Foundation.Data namespace contains an Item extension class that allows the developer to:
+		- Get an Item's ancestor based on Template
+		- Test an Item's Template inheritance
+		- Retrieve an Item's children based on a specific Template
+		- Retrieve the URL for the Item using the currently active LinkManager configuration.
+		- Determine if the Item is in the Context Site.
+		- Find or create an Item's child given a name and a Template ID.
+
+		Configured for use with Sitecore 9.0.
+		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+	</description>
+	<releaseNotes>Suitable for use with Sitecore 9.0</releaseNotes>
+	<copyright>Copyright 2017</copyright>
+	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
+  </metadata>
+</package>
