@@ -10,20 +10,20 @@
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
-		Constellation is a collection of utilities for .NET CMS implementers.
+Constellation is a collection of utilities for .NET CMS implementers.
 		
-		The Foundation.Mvc assembly contains the following significant components:
+The Foundation.Mvc assembly contains the following significant components:
 		
-		* Base controller that infers the name and location of its view from the supplied RenderingItem.
-		* Base view that exposes key Sitecore Editor state facts for presentation decisions.
-		* GetRenderer pipeline handler that infers the name of the controller to run based upon the supplied RenderingItem
-		* RenderRendering pipeline handler that replaces cache key generation with a stronger cache key algorithm to address
-		controller re-use.
-		* RenderRendering pipeline handler that minifies output HTML before handing it off to the Response and Sitecore's HTML cache.
-		* Configuration file for managing the settings for above.
+* Base controller that infers the name and location of its view from the supplied RenderingItem.
+* Base view that exposes key Sitecore Editor state facts for presentation decisions.
+* GetRenderer pipeline handler that infers the name of the controller to run based upon the supplied RenderingItem
+* RenderRendering pipeline handler that replaces cache key generation with a stronger cache key algorithm to address
+controller re-use.
+* RenderRendering pipeline handler that minifies output HTML before handing it off to the Response and Sitecore's HTML cache.
+* Configuration file for managing the settings for above.
 
-		Configured for use with Sitecore 9.0.
-		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+Configured for use with Sitecore 9.0.
+Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
 	<releaseNotes>Area support in view path resolution. Config is now an example by default to prevent overwriting implementations.</releaseNotes>
 	<copyright>Copyright 2017</copyright>

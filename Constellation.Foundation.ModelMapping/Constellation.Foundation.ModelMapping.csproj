@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Foundation.Mvc, Version=9.0.1.17567, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Mvc.9.0.1.17567\lib\net462\Constellation.Foundation.Mvc.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Mvc, Version=9.0.1.26264, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\Aras\packages\Constellation.Foundation.Mvc.9.0.1.26264\lib\net462\Constellation.Foundation.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -78,11 +78,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapper.cs" />
+    <Compile Include="MappingAttributes\RenderAsUrlAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MappingAttributes\FieldRendererParamsAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.Mvc.config" />
+    <None Include="App_Config\Include\Constellation\Constellation.Foundation.Mvc.config.example" />
     <None Include="Constellation.Foundation.ModelMapping.nuspec">
       <SubType>Designer</SubType>
     </None>

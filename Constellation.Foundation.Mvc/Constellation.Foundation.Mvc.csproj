@@ -82,9 +82,9 @@
   <ItemGroup>
     <Content Include="app.config" />
     <Content Include="License.txt" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.Mvc.config.example">
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Mvc.config.example">
       <SubType>Designer</SubType>
-    </None>
+    </Content>
     <None Include="Constellation.Foundation.Mvc.nuspec">
       <SubType>Designer</SubType>
     </None>

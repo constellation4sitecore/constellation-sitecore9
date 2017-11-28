@@ -10,25 +10,25 @@
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix-style library for transforming human-entered Item Names into SEO-friendly URL slugs.</summary>
 	<description>
-		Constellation is a collection of utilities for .NET CMS implementers.
+Constellation is a collection of utilities for .NET CMS implementers.
 
-		This small Feature contains a Sitecore Rule Action which must be installed (see provided package) in order to take advantage
-		of this library.
+This small Feature contains a Sitecore Rule Action which must be installed (see provided package) in order to take advantage
+of this library.
 		
-		To use, an Item Saved rule must be created. The rule must have a condition that specifies that an Item is a "page" and therefore
-		needs an SEO-friendly URL. The rule action should be the one included in this kit. Rule options include:
-		- Replace Diacritics
-		- Clear Display Name (recommended so that marketers see the actual Item name and therefore URL slug for pages)
-		- Specify illegal characters to remove
-		- Replace spaces or remove spaces from names
-		- Force lowercase
+To use, an Item Saved rule must be created. The rule must have a condition that specifies that an Item is a "page" and therefore
+needs an SEO-friendly URL. The rule action should be the one included in this kit. Rule options include:
+- Replace Diacritics
+- Clear Display Name (recommended so that marketers see the actual Item name and therefore URL slug for pages)
+- Specify illegal characters to remove
+- Replace spaces or remove spaces from names
+- Force lowercase
 		
-		It is up to the implementer to determine the nature of "page" Items. We recommend looking at Constellation.Foundation.Datasources for
-		rule conditions that are suitable for this specific task.
+It is up to the implementer to determine the nature of "page" Items. We recommend looking at Constellation.Foundation.Datasources for
+rule conditions that are suitable for this specific task.
 		
 
-		Configured for use with Sitecore 9.0.
-		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+Configured for use with Sitecore 9.0.
+Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
 	<releaseNotes>Compatible with Sitecore 9.0</releaseNotes>
 	<copyright>Copyright 2017</copyright>

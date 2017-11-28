@@ -100,21 +100,21 @@ namespace Constellation.Foundation.Mvc
 		/// <returns>The virtual path to the view.</returns>
 		public string ResolveViewPath()
 		{
-			var path = NameConverter.ConvertItemPathToClassPath(RenderingItem.InnerItem.Paths.FullPath).ToLower();
+
 			var area = RenderingItem.InnerItem["Area"];
 			var viewRoot = ViewRootPath;
 			var renderingRoot = RenderingItemPathRoot;
 
 			if (!string.IsNullOrEmpty(area))
 			{
-				viewRoot = viewRoot.Replace("$Area", area);
-				renderingRoot = renderingRoot.Replace("$Area", area);
-
+				renderingRoot = renderingRoot.Replace("$Area", area).ToLower();
+				viewRoot = viewRoot.Replace("$Area", area).ToLower();
 			}
 
-			var modified = path.Replace(renderingRoot, string.Empty);
+			var path = NameConverter.ConvertItemPathToClassPath(RenderingItem.InnerItem.Paths.FullPath).ToLower();
+			var truncatedPath = path.Replace(renderingRoot, string.Empty);
 
-			var viewLocation = viewRoot + modified + ".cshtml";
+			var viewLocation = viewRoot + truncatedPath + ".cshtml";
 
 			return viewLocation;
 		}
