@@ -1,0 +1,28 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+	<id>$id$</id>
+	<version>$version$</version>
+	<title>$title$</title>
+	<authors>Richard J. Cabral</authors>
+	<owners>Richard J. Cabral</owners>
+	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
+	<description>
+		Constellation is a collection of utilities for .NET CMS implementers.
+		
+		The Foundation.ModelMapping library is inspired by AutoMapper and is designed to provide a quick, non-ORM method of
+		mapping Sitecore Items to ViewModels. There is zero configuration. Point the mapper at an Item and specify the output
+		type and the Mapper will attempt to match Item fields to model properties, calling FieldRenderer on the field and
+		mapping the result to the Model object. Attributes allow for a degree of traffic control. Don't forget to use
+		@Html.Raw() on your Model outputs to support Page/Experience Editor mode.
+
+		Configured for use with Sitecore 9.0.
+		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+	</description>
+	<releaseNotes>Inital Release</releaseNotes>
+	<copyright>Copyright 2017</copyright>
+	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation, Sitecore Mvc</tags>
+  </metadata>
+</package>

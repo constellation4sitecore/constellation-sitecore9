@@ -21,14 +21,14 @@
 
 			var builder = new StringBuilder();
 
-			if (originalStartsWithSlash)
-			{
-				builder.Append("/");
-			}
-
 			for (var i = 0; i < names.Length; i++)
 			{
 				var name = names[i];
+
+				if (string.IsNullOrEmpty(name))
+				{
+					continue;
+				}
 
 				if (i > 0 || originalStartsWithSlash)
 				{

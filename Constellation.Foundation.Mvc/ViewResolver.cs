@@ -7,8 +7,6 @@ namespace Constellation.Foundation.Mvc
 	/// </summary>
 	public class ViewResolver
 	{
-		private readonly RenderingItem _renderingItem;
-
 		private string _renderingItemPathRoot;
 
 		private string _viewRootPath;
@@ -19,10 +17,13 @@ namespace Constellation.Foundation.Mvc
 		/// <param name="renderingItem">The renderingItem to use when creating the view's filepath.</param>
 		public ViewResolver(RenderingItem renderingItem)
 		{
-			this._renderingItem = renderingItem;
+			RenderingItem = renderingItem;
 		}
 
 		#region Properties
+
+		protected RenderingItem RenderingItem { get; set; }
+
 		/// <summary>
 		/// Gets or sets the portion of the RenderingItem's FullPath that should be truncated
 		/// when attempting to resolve the Rendering's View path on disk. Default value
@@ -68,6 +69,7 @@ namespace Constellation.Foundation.Mvc
 			{
 				if (string.IsNullOrEmpty(_viewRootPath))
 				{
+
 					var setting = Sitecore.Configuration.Settings.GetSetting("Constellation.Foundation.Mvc.ViewRootPath");
 
 					if (string.IsNullOrEmpty(setting))
@@ -98,9 +100,21 @@ namespace Constellation.Foundation.Mvc
 		/// <returns>The virtual path to the view.</returns>
 		public string ResolveViewPath()
 		{
-			var path = NameConverter.ConvertItemPathToClassPath(_renderingItem.InnerItem.Paths.FullPath);
-			var modified = path.Replace(RenderingItemPathRoot, string.Empty);
-			var viewLocation = _viewRootPath + modified + ".cshtml";
+			var path = NameConverter.ConvertItemPathToClassPath(RenderingItem.InnerItem.Paths.FullPath).ToLower();
+			var area = RenderingItem.InnerItem["Area"];
+			var viewRoot = ViewRootPath;
+			var renderingRoot = RenderingItemPathRoot;
+
+			if (!string.IsNullOrEmpty(area))
+			{
+				viewRoot = viewRoot.Replace("$Area", area);
+				renderingRoot = renderingRoot.Replace("$Area", area);
+
+			}
+
+			var modified = path.Replace(renderingRoot, string.Empty);
+
+			var viewLocation = viewRoot + modified + ".cshtml";
 
 			return viewLocation;
 		}

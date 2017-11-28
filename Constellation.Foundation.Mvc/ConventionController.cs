@@ -1,4 +1,6 @@
-﻿namespace Constellation.Foundation.Mvc
+﻿using Sitecore.Data.Items;
+
+namespace Constellation.Foundation.Mvc
 {
 	using Sitecore.Mvc.Presentation;
 	using System.Web.Mvc;
@@ -25,7 +27,7 @@
 		public ActionResult Index()
 		{
 			var viewPath = GetViewPath();
-			var model = GetModel();
+			var model = GetModel(RenderingContext.Current.Rendering.Item, RenderingContext.Current.ContextItem);
 			return Render(viewPath, model);
 		}
 
@@ -47,6 +49,6 @@
 			return resolver.ResolveViewPath();
 		}
 
-		protected abstract object GetModel();
+		protected abstract object GetModel(Item datasource, Item contextItem);
 	}
 }

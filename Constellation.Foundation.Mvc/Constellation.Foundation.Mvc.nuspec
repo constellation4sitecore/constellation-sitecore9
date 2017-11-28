@@ -25,7 +25,7 @@
 		Configured for use with Sitecore 9.0.
 		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Upgraded to work with Sitecore 9.0.</releaseNotes>
+	<releaseNotes>Area support in view path resolution. Config is now an example by default to prevent overwriting implementations.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>

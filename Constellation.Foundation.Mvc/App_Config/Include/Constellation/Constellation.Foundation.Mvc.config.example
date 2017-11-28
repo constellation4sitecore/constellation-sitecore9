@@ -11,7 +11,7 @@
 				Direct replacement for Sitecore's default GetControllerRenderer, and is backwards compatible.
 				-->
 				<processor 
-					patch:instead="Sitecore.Mvc.Pipelines.Response.GetRenderer.GetControllerRenderer, Sitecore.Mvc" 
+					patch:instead="*[@type='Sitecore.Mvc.Pipelines.Response.GetRenderer.GetControllerRenderer, Sitecore.Mvc']" 
 					type="Constellation.Foundation.Mvc.Pipelines.GetRenderer.GetControllerRenderer, Constellation.Foundation.Mvc"
 				/>
 
@@ -43,16 +43,21 @@
 			Rendering Item Path Root
 			Specifies the portion of the RenderingItem's Full Path to ignore when constructing the file system path to the matching View.
 			You do not have to use filesystem-friendly names, the ViewResolver will attempt to construct a filesystem-friendly path at runtime.
-			Default: "/sitecore/layout/renderings"
+			
+			The $Area token
+			
+			Default: "/sitecore/layout/renderings/projects/$Area"
 			-->
-			<setting name="Constellation.Foundation.Mvc.RenderingItemPathRoot" value="/sitecore/layout/renderings" />
+			<setting name="Constellation.Foundation.Mvc.RenderingItemPathRoot" value="/sitecore/layout/renderings/projects/$Area" />
 
 			<!--  
 			View Root Path
 			Specifies the starting folder location on disk to prefix the RenderingItem's path when using that path to resolve a View.
-			Default: "~/Views"
+			
+			The $Area token can be used to specify the value of the Area name specified in the Rendering Item.
+			Default: "~/Areas/$Area/Views"
 			-->
-			<setting name="Constellation.Foundation.Mvc.ViewRootPath" value="~/Views" />
+			<setting name="Constellation.Foundation.Mvc.ViewRootPath" value="~/Areas/$Area/Views" />
 		</settings>
 	</sitecore>
 </configuration>

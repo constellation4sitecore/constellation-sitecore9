@@ -54,7 +54,9 @@
     <None Include="Constellation.Feature.UrlFriendlyPageNames.nuspec">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Installation-Packages\Constellation-Feature-UrlFriendlyPageNames-9.0.0.0.zip" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
