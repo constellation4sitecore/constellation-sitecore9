@@ -78,6 +78,12 @@ namespace Constellation.Foundation.ModelMapping
 					continue;
 				}
 
+				if (field.Type == "Checkbox" && property.PropertyType == typeof(bool))
+				{
+					property.SetValue(model, ((CheckboxField)field).Checked);
+					continue;
+				}
+
 				if (property.PropertyType == typeof(int) && int.TryParse(field.Value, out var result))
 				{
 					property.SetValue(model, result);
