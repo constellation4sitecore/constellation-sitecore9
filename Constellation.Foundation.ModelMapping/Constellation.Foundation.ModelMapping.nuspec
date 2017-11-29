@@ -10,16 +10,25 @@
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
-		Constellation is a collection of utilities for .NET CMS implementers.
+Constellation is a collection of utilities for .NET CMS implementers.
 		
-		The Foundation.ModelMapping library is inspired by AutoMapper and is designed to provide a quick, non-ORM method of
-		mapping Sitecore Items to ViewModels. There is zero configuration. Point the mapper at an Item and specify the output
-		type and the Mapper will attempt to match Item fields to model properties, calling FieldRenderer on the field and
-		mapping the result to the Model object. Attributes allow for a degree of traffic control. Don't forget to use
-		@Html.Raw() on your Model outputs to support Page/Experience Editor mode.
+The Foundation.ModelMapping library is inspired by AutoMapper and is designed to provide a quick, non-ORM method of
+mapping Sitecore Items to ViewModels. String properties on your ViewModel will be mapped to FieldRendered values from fields with the 
+same names. Integer, DateTime, and Uri property types can also be handled automatically, although you will not get page editor support
+for these types. There are a number of Attributes that you can assign to your ViewModel's properties to change the behavior of the Mapper.
 
-		Configured for use with Sitecore 9.0.
-		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+Usage: TModel viewModel = ModelMapper.MapItemToNew&lt;TModel&gt;(sourceItem);
+
+Constraints:
+- Your ViewModel must have a public, parameterless constructor.
+- Only Writable, Public Instance properties will be mapped.
+- Within Sitecore, your field names can be human-legible. ModelMapper will attempt to convert the field name to a valid Property name. Simpler names work best. 
+You can use the Field's Display Name for better human legibility and keep the Field's actual name closer to a legit C# entity name.
+
+This initial release does not support MultiList based field mapping. Stay tuned!
+
+Configured for use with Sitecore 9.0.
+Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
 	<releaseNotes>Inital Release</releaseNotes>
 	<copyright>Copyright 2017</copyright>

@@ -10,14 +10,22 @@ using System.Reflection;
 
 namespace Constellation.Foundation.ModelMapping
 {
-	public class Mapper
+	public static class ModelMapper
 	{
-		public T Map<T>(Item item)
+		public static T MapItemToNew<T>(Item item)
+			where T : new()
+		{
+			var model = new T();
+
+			MapTo(item, model);
+
+			return model;
+		}
+
+		public static void MapTo<T>(Item item, T model)
 			where T : new()
 		{
 			var type = typeof(T);
-
-			var model = new T();
 
 			foreach (Field field in item.Fields)
 			{
@@ -52,6 +60,16 @@ namespace Constellation.Foundation.ModelMapping
 					continue;
 				}
 
+				if (property.GetCustomAttribute<DoNotMapAttribute>() != null)
+				{
+					continue;
+				}
+
+				if (property.GetCustomAttribute<RawValueOnlyAttribute>() != null)
+				{
+					property.SetValue(model, field.Value);
+				}
+
 				var paramsAttribute = property.GetCustomAttribute<FieldRendererParamsAttribute>();
 
 				if (paramsAttribute != null)
@@ -59,6 +77,22 @@ namespace Constellation.Foundation.ModelMapping
 					property.SetValue(model, FieldRenderer.Render(item, field.Name, paramsAttribute.Params));
 					continue;
 				}
+
+				if (property.PropertyType == typeof(int) && int.TryParse(field.Value, out var result))
+				{
+					property.SetValue(model, result);
+					continue;
+				}
+
+				if (property.PropertyType == typeof(DateTime))
+				{
+					DateField dateField = field;
+
+					property.SetValue(model, dateField.DateTime);
+					continue;
+				}
+				// End of the easy stuff. Now we have to make some decisions.
+
 
 				var urlAttribute = property.GetCustomAttribute<RenderAsUrlAttribute>();
 
@@ -139,24 +173,8 @@ namespace Constellation.Foundation.ModelMapping
 					continue;
 				}
 
-				if (property.PropertyType == typeof(int) && int.TryParse(field.Value, out var result))
-				{
-					property.SetValue(model, result);
-					continue;
-				}
-
-				if (property.PropertyType == typeof(DateTime))
-				{
-					DateField dateField = field;
-
-					property.SetValue(model, dateField.DateTime);
-					continue;
-				}
-
 				property.SetValue(model, field.Value);
 			}
-
-			return model;
 		}
 	}
 }
