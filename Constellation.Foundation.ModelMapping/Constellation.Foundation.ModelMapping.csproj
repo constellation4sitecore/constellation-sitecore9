@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Constellation.Foundation.Data, Version=9.0.0.26659, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Data.9.0.0.26659\lib\net462\Constellation.Foundation.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Constellation.Foundation.Mvc, Version=9.0.1.26264, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\Aras\packages\Constellation.Foundation.Mvc.9.0.1.26264\lib\net462\Constellation.Foundation.Mvc.dll</HintPath>
     </Reference>
@@ -77,6 +80,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FieldMappers\CheckboxFieldMapper.cs" />
+    <Compile Include="FieldMappers\DateFieldMapper.cs" />
+    <Compile Include="FieldMappers\FieldMapper.cs" />
+    <Compile Include="FieldMappers\FieldMapStatus.cs" />
+    <Compile Include="FieldMappers\GeneralLinkFieldMapper.cs" />
+    <Compile Include="FieldMappers\LinkFieldMapper.cs" />
+    <Compile Include="FieldMappers\MediaFieldMapper.cs" />
+    <Compile Include="FieldMappers\NumberFieldMapper.cs" />
+    <Compile Include="FieldMappers\TextFieldMapper.cs" />
     <Compile Include="ItemExtensions.cs" />
     <Compile Include="MappingAttributes\DoNotMapAttribute.cs" />
     <Compile Include="MappingAttributes\RawValueOnlyAttribute.cs" />
