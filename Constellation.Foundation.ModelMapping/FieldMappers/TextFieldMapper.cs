@@ -1,12 +1,12 @@
 ﻿using Sitecore.Data.Fields;
-using System.Reflection;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
-	public class TextFieldMapper : FieldMapper
+	public class TextFieldMapper : FieldMapper<string>
 	{
-		public TextFieldMapper(object modelInstance, PropertyInfo property, Field field) : base(modelInstance, property, field)
+		protected override string ExtractTypedValueFromField()
 		{
+			return Field.Value; // This will never get called, since raw values are handled via Attributes.
 		}
 	}
 }

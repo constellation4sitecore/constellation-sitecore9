@@ -1,6 +1,5 @@
 ﻿using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping.FieldMappers;
-using Constellation.Foundation.Mvc;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
@@ -26,7 +25,7 @@ namespace Constellation.Foundation.ModelMapping
 		{
 			var type = typeof(T);
 
-			// Deal with Name, DisplayName, ID, and URL
+			// Map Item attributes such as Name, DisplayName, ID, and URL to model properties
 			var nameProperty = type.GetProperty("Name", BindingFlags.Instance | BindingFlags.Public);
 
 			if (nameProperty != null)
@@ -62,6 +61,7 @@ namespace Constellation.Foundation.ModelMapping
 				}
 			}
 
+			// Here's the interesting part where we map Item fields to model properties.
 			foreach (Field field in item.Fields)
 			{
 				if (string.IsNullOrEmpty(field.Value))
@@ -69,60 +69,29 @@ namespace Constellation.Foundation.ModelMapping
 					continue; // no point in working to send a null value.
 				}
 
-				var propertyName = field.Name.AsPropertyName();
-				var property = type.GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public);
+				// Get field mappers
+				var mappers = ModelMapperConfiguration.Current.GetMappersForFieldType(field.Type);
 
-				if (property == null || !property.CanWrite)
+				foreach (Type mapperType in mappers)
 				{
-					continue; // Didn't find anything we can work with.
-				}
+					try
+					{
+						var mapper = (IFieldMapper)Activator.CreateInstance(mapperType);
 
-				FieldMapStatus status;
+						if (mapper.Map(model, field) != FieldMapStatus.Success)
+						{
+							Log.Warn($"Mapping field {field.Name} on Item {item.Name} to Model {type.Name} failed.", typeof(ModelMapper));
+						}
 
-				// For now we want to ignore list fields
-				switch (field.Type)
-				{
-					case "Checkbox":
-						status = new CheckboxFieldMapper(model, property, field).Map();
-						break;
-					case "Date":
-					case "DateTime":
-						status = new DateFieldMapper(model, property, field).Map();
-						break;
-					case "Number":
-						status = new NumberFieldMapper(model, property, field).Map();
-						break;
-					case "Droplink":
-					case "Droptree":
-						status = new LinkFieldMapper(model, property, field).Map();
-						break;
-					case "File":
-					case "Image":
-						status = new MediaFieldMapper(model, property, field).Map();
-						break;
-					case "General Link":
-					case "General Link with Search":
-						status = new GeneralLinkFieldMapper(model, property, field).Map();
-						break;
-					case "Checklist":
-					case "Droplist":
-					case "Grouped Droplink":
-					case "Grouped Droplist":
-					case "Multilist":
-					case "Multilist with Search":
-					case "Name Lookup Value List":
-					case "Name Value List":
-					case "Treelist":
-					case "TreelistEx":
-						continue;
-					default:
-						status = new TextFieldMapper(model, property, field).Map();
-						break;
-				}
-
-				if (status != FieldMapStatus.Success)
-				{
-					Log.Warn($"Mapping field {field.Name} on Item {item.Name} to Model {type.Name}.{property.Name} failed.", typeof(ModelMapper));
+					}
+					catch (TypeLoadException ex)
+					{
+						Log.Error($"ModelMapper was unable to create FieldMapper type {mapperType.Name}", ex, typeof(ModelMapper));
+					}
+					catch (Exception ex)
+					{
+						Log.Error($"Mapping field {field.Name} on Item {item.Name} to Model {type.Name} failed.", ex, typeof(ModelMapper));
+					}
 				}
 			}
 		}

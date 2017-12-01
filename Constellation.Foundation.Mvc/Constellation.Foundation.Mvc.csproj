@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Constellation.Foundation.Data, Version=9.0.1.20794, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Data.9.0.1.20794\lib\net462\Constellation.Foundation.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
@@ -76,15 +79,14 @@
     <Compile Include="ConventionController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NameConverter.cs" />
-    <Compile Include="StringExtensions.cs" />
     <Compile Include="ViewResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.config" />
-    <Content Include="License.txt" />
     <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Mvc.config.example">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="License.txt" />
     <None Include="Constellation.Foundation.Mvc.nuspec">
       <SubType>Designer</SubType>
     </None>

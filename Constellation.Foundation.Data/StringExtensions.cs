@@ -1,4 +1,4 @@
-﻿namespace Constellation.Foundation.Mvc
+﻿namespace Constellation.Foundation.Data
 {
 	using System;
 	using System.Collections.Generic;
@@ -8,7 +8,7 @@
 	using System.Text;
 
 	/// <summary>
-	/// String object extensions used during T4 Constellation.Sitecore.Items item generation.
+	/// String object extensions used to convert Sitecore Item and Field names to C# compatible names.
 	/// </summary>
 	/// <remarks>
 	/// This extension library was forked from Hedgehog Development's T4 starter kit. 

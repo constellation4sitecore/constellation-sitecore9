@@ -1,4 +1,5 @@
-﻿using Constellation.Foundation.ModelMapping.MappingAttributes;
+﻿using Constellation.Foundation.Data;
+using Constellation.Foundation.ModelMapping.MappingAttributes;
 using Sitecore.Data.Fields;
 using Sitecore.Diagnostics;
 using Sitecore.Web.UI.WebControls;
@@ -7,27 +8,56 @@ using System.Reflection;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
-	public abstract class FieldMapper
+	public abstract class FieldMapper<T> : IFieldMapper
 	{
-		protected FieldMapper(object modelInstance, PropertyInfo property, Field field)
-		{
-			Model = modelInstance;
-			Field = field;
-			Property = property;
-		}
+		#region Fields
+
+		private string _propertyName = null;
+		private PropertyInfo _property = null;
+		#endregion
 
 		#region Properties
-		protected object Model { get; }
+		protected object Model { get; set; }
 
-		protected Field Field { get; }
+		protected Field Field { get; set; }
 
-		protected PropertyInfo Property { get; }
+		protected virtual string PropertyName
+		{
+			get
+			{
+				if (_propertyName == null)
+				{
+					_propertyName = Field.Name.AsPropertyName();
+				}
+
+				return _propertyName;
+			}
+		}
+
+		protected PropertyInfo Property
+		{
+			get
+			{
+				if (_property == null)
+				{
+					_property = Model.GetType().GetProperty(PropertyName, BindingFlags.Instance | BindingFlags.Public);
+				}
+
+				return _property;
+			}
+		}
 
 		#endregion
 
-		public virtual FieldMapStatus Map()
+		public virtual FieldMapStatus Map(object modelInstance, Field field)
 		{
-			object value = null;
+			Model = modelInstance;
+			Field = field;
+
+			if (Property == null)
+			{
+				return FieldMapStatus.NoProperty;
+			}
 
 			if (Property.GetCustomAttribute<DoNotMapAttribute>() != null)
 			{
@@ -57,26 +87,19 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 					return FieldMapStatus.Success;
 				}
 
-				value = ExtractTypedValueFromField();
-
-				if (!PropertyIsTypeMatch(value))
+				if (!PropertyIsTargetedType())
 				{
 					return FieldMapStatus.TypeMismatch;
 				}
+
+				Property.SetValue(Model, ExtractTypedValueFromField());
+				return FieldMapStatus.Success;
 			}
 			catch (Exception ex)
 			{
-				Log.Error("Exception generated while transforming an Item field for ModelMapping", ex, this);
+				Log.Error($"Failed to convert Field {Field.Name} of Item {Field.Item.Name} to {typeof(T).Name}", ex, this);
 				return FieldMapStatus.Exception;
 			}
-
-			if (value == null)
-			{
-				return FieldMapStatus.FieldEmpty;
-			}
-
-			Property.SetValue(Model, value);
-			return FieldMapStatus.Success;
 		}
 
 		protected virtual string ExtractStringValueFromField()
@@ -84,21 +107,18 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			return FieldRenderer.Render(Field.Item, Field.Name);
 		}
 
-		protected virtual object ExtractTypedValueFromField()
-		{
-			return Field.Value;
-		}
+		protected abstract T ExtractTypedValueFromField();
 
 		#region Protected Helpers
 
 		protected bool PropertyIsString()
 		{
-			return PropertyIsTypeMatch(typeof(string));
+			return typeof(string).IsAssignableFrom(Property.PropertyType);
 		}
 
-		protected bool PropertyIsTypeMatch(object candidateValue)
+		protected virtual bool PropertyIsTargetedType()
 		{
-			return candidateValue.GetType().IsAssignableFrom(Property.PropertyType);
+			return typeof(T).IsAssignableFrom(Property.PropertyType);
 		}
 		#endregion
 

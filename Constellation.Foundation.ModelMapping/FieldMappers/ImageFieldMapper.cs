@@ -6,12 +6,8 @@ using System.Reflection;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
-	public class MediaFieldMapper : FieldMapper
+	public class ImageFieldMapper : FieldMapper<Uri>
 	{
-		public MediaFieldMapper(object modelInstance, PropertyInfo property, Field field) : base(modelInstance, property, field)
-		{
-		}
-
 		protected override string ExtractStringValueFromField()
 		{
 			var urlAttribute = Property.GetCustomAttribute<RenderAsUrlAttribute>();
@@ -24,7 +20,7 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			return GetUrlFromField();
 		}
 
-		protected override object ExtractTypedValueFromField()
+		protected override Uri ExtractTypedValueFromField()
 		{
 			var url = GetUrlFromField();
 
@@ -38,24 +34,11 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 		private string GetUrlFromField()
 		{
-			if (Field.Type == "File")
+			var targetImage = ((ImageField)Field).MediaItem;
+
+			if (targetImage != null)
 			{
-				var targetFile = ((FileField)Field).MediaItem;
-
-				if (targetFile != null)
-				{
-					return MediaManager.GetMediaUrl(targetFile);
-				}
-			}
-
-			if (Field.Type == "Image")
-			{
-				var targetImage = ((ImageField)Field).MediaItem;
-
-				if (targetImage != null)
-				{
-					return MediaManager.GetMediaUrl(targetImage);
-				}
+				return MediaManager.GetMediaUrl(targetImage);
 			}
 
 			return string.Empty;

@@ -1,11 +1,12 @@
 ﻿using Constellation.Foundation.ModelMapping.MappingAttributes;
 using Sitecore.Data.Fields;
+using Sitecore.Resources.Media;
 using System;
 using System.Reflection;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
-	public class GeneralLinkFieldMapper : FieldMapper<Uri>
+	public class FileFieldMapper : FieldMapper<Uri>
 	{
 		protected override string ExtractStringValueFromField()
 		{
@@ -16,12 +17,31 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 				return base.ExtractStringValueFromField();
 			}
 
-			return ((LinkField)Field).GetFriendlyUrl();
+			return GetUrlFromField();
 		}
 
 		protected override Uri ExtractTypedValueFromField()
 		{
-			return new Uri(((LinkField)Field).GetFriendlyUrl());
+			var url = GetUrlFromField();
+
+			if (!string.IsNullOrEmpty(url))
+			{
+				return new Uri(GetUrlFromField());
+			}
+
+			return null;
+		}
+
+		private string GetUrlFromField()
+		{
+			var targetFile = ((FileField)Field).MediaItem;
+
+			if (targetFile != null)
+			{
+				return MediaManager.GetMediaUrl(targetFile);
+			}
+
+			return string.Empty;
 		}
 	}
 }

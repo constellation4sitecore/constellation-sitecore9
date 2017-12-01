@@ -1,16 +1,11 @@
 ﻿using Sitecore.Data.Fields;
-using System.Reflection;
+using System;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
-	public class DateFieldMapper : FieldMapper
+	public class DateFieldMapper : FieldMapper<DateTime>
 	{
-		public DateFieldMapper(object modelInstance, PropertyInfo property, Field field) : base(modelInstance, property, field)
-		{
-
-		}
-
-		protected override object ExtractTypedValueFromField()
+		protected override DateTime ExtractTypedValueFromField()
 		{
 			return ((DateField)Field).DateTime;
 		}

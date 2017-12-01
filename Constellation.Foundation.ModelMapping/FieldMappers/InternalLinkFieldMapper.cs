@@ -6,12 +6,8 @@ using System.Reflection;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
-	public class LinkFieldMapper : FieldMapper
+	public class InternalLinkFieldMapper : FieldMapper<Uri>
 	{
-		public LinkFieldMapper(object modelInstance, PropertyInfo property, Field field) : base(modelInstance, property, field)
-		{
-		}
-
 		protected override string ExtractStringValueFromField()
 		{
 			var urlAttribute = Property.GetCustomAttribute<RenderAsUrlAttribute>();
@@ -24,7 +20,7 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			return ((LinkField)Field).TargetItem.GetUrl();
 		}
 
-		protected override object ExtractTypedValueFromField()
+		protected override Uri ExtractTypedValueFromField()
 		{
 			return new Uri(((LinkField)Field).TargetItem.GetUrl());
 		}

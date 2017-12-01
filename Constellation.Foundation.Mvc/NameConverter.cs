@@ -1,5 +1,6 @@
 ﻿namespace Constellation.Foundation.Mvc
 {
+	using Constellation.Foundation.Data;
 	using System.Text;
 
 	/// <summary>
