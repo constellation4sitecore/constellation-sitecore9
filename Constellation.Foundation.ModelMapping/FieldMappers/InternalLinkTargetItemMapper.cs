@@ -12,7 +12,7 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 		protected override object GetValueToAssign()
 		{
-			LinkField field = Field;
+			InternalLinkField field = Field;
 
 			var item = field.TargetItem;
 

@@ -43,6 +43,8 @@ namespace Constellation.Foundation.ModelMapping
 		protected SortedDictionary<string, ICollection<Type>> FieldMapperTypes { get; }
 
 		public Type DefaultFieldMapperType { get; private set; }
+
+		public bool ContinueOnError { get; private set; }
 		#endregion
 
 		#region Methods
@@ -72,6 +74,22 @@ namespace Constellation.Foundation.ModelMapping
 			output.DefaultFieldMapperType = libraryNode?.Attributes?["defaultFieldMapper"].Value == null
 				? typeof(TextFieldMapper)
 				: Type.GetType(libraryNode.Attributes["defaultFieldMapper"].Value);
+
+			var continueString = libraryNode?.Attributes?["continueOnError"].Value;
+
+			if (string.IsNullOrEmpty(continueString))
+			{
+				continueString = "true";
+			}
+
+			if (bool.TryParse(continueString, out var continueResult))
+			{
+				output.ContinueOnError = continueResult;
+			}
+			else
+			{
+				throw new Exception("Configuration Error. Constellation.Foundation.ModelMapping.config contains a non-boolean value for the \"continueOnError\" Attribute. Valid values are \"true\" or \"false\"");
+			}
 
 			if (libraryNode == null || !libraryNode.HasChildNodes) return output;
 

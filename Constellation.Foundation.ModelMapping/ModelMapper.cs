@@ -61,6 +61,8 @@ namespace Constellation.Foundation.ModelMapping
 				}
 			}
 
+			item.Fields.ReadAll();
+
 			// Here's the interesting part where we map Item fields to model properties.
 			foreach (Field field in item.Fields)
 			{
@@ -78,11 +80,32 @@ namespace Constellation.Foundation.ModelMapping
 					{
 						var mapper = (IFieldMapper)Activator.CreateInstance(mapperType);
 
-						if (mapper.Map(model, field) != FieldMapStatus.Success)
-						{
-							Log.Warn($"Mapping field {field.Name} on Item {item.Name} to Model {type.Name} failed.", typeof(ModelMapper));
-						}
+						var status = mapper.Map(model, field);
 
+						switch (status)
+						{
+							case FieldMapStatus.Exception:
+								Log.Error($"Mapping field {field.Name} on Item {item.Name}: Exception handled by field mapper.", typeof(ModelMapper));
+								break;
+							case FieldMapStatus.TypeMismatch:
+								Log.Warn($"Mapping field {field.Name} on Item {item.Name} to Model {type.Name} failed.", typeof(ModelMapper));
+								break;
+							case FieldMapStatus.ExplicitIgnore:
+								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: explicitly ignored", typeof(ModelMapper));
+								break;
+							case FieldMapStatus.FieldEmpty:
+								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: field was empty.", typeof(ModelMapper));
+								break;
+							case FieldMapStatus.NoProperty:
+								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: no matching property name.", typeof(ModelMapper));
+								break;
+							case FieldMapStatus.ValueEmpty:
+								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: processed value was empty.", typeof(ModelMapper));
+								break;
+							case FieldMapStatus.Success:
+								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: success.", typeof(ModelMapper));
+								break;
+						}
 					}
 					catch (TypeLoadException ex)
 					{

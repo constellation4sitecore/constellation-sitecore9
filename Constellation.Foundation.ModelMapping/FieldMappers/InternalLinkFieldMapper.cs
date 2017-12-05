@@ -17,12 +17,12 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 				return base.ExtractStringValueFromField();
 			}
 
-			return ((LinkField)Field).TargetItem.GetUrl();
+			return ((InternalLinkField)Field).TargetItem.GetUrl();
 		}
 
 		protected override Uri ExtractTypedValueFromField()
 		{
-			return new Uri(((LinkField)Field).TargetItem.GetUrl());
+			return new Uri(((InternalLinkField)Field).TargetItem.GetUrl());
 		}
 	}
 }

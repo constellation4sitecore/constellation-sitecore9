@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Foundation.Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Foundation.ModelMapping", "Constellation.Foundation.ModelMapping\Constellation.Foundation.ModelMapping.csproj", "{2DB5373A-5FDE-42A1-BE27-709D185F501D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Feature.StaticNavigation", "Constellation.Feature.StaticNavigation\Constellation.Feature.StaticNavigation.csproj", "{6B93D67C-B3B1-411C-9B89-39CDDE234403}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Feature.Navigation", "Constellation.Feature.Navigation\Constellation.Feature.Navigation.csproj", "{6B93D67C-B3B1-411C-9B89-39CDDE234403}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
