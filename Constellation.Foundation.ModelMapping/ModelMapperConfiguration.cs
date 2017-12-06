@@ -45,6 +45,8 @@ namespace Constellation.Foundation.ModelMapping
 		public Type DefaultFieldMapperType { get; private set; }
 
 		public bool ContinueOnError { get; private set; }
+
+		public bool IgnoreStandardFields { get; private set; }
 		#endregion
 
 		#region Methods
@@ -71,7 +73,7 @@ namespace Constellation.Foundation.ModelMapping
 
 			var libraryNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/modelMapping");
 
-			output.DefaultFieldMapperType = libraryNode?.Attributes?["defaultFieldMapper"].Value == null
+			output.DefaultFieldMapperType = libraryNode?.Attributes?["defaultFieldMapper"]?.Value == null
 				? typeof(TextFieldMapper)
 				: Type.GetType(libraryNode.Attributes["defaultFieldMapper"].Value);
 
@@ -90,6 +92,23 @@ namespace Constellation.Foundation.ModelMapping
 			{
 				throw new Exception("Configuration Error. Constellation.Foundation.ModelMapping.config contains a non-boolean value for the \"continueOnError\" Attribute. Valid values are \"true\" or \"false\"");
 			}
+
+			var ignoreString = libraryNode?.Attributes?["ignoreStandardFields"]?.Value;
+
+			if (string.IsNullOrEmpty(ignoreString))
+			{
+				ignoreString = "true";
+			}
+
+			if (bool.TryParse(ignoreString, out var ignoreResult))
+			{
+				output.IgnoreStandardFields = ignoreResult;
+			}
+			else
+			{
+				throw new Exception("Configuration Error. Constellation.Foundation.ModelMapping.config contains a non-boolean value for the \"continueOnError\" Attribute. Valid values are \"true\" or \"false\"");
+			}
+
 
 			if (libraryNode == null || !libraryNode.HasChildNodes) return output;
 

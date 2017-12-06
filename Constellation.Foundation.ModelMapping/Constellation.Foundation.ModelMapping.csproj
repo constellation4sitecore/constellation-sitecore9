@@ -60,6 +60,7 @@
     <Compile Include="FieldMappers\InternalLinkFieldMapper.cs" />
     <Compile Include="FieldMappers\FileFieldMapper.cs" />
     <Compile Include="FieldMappers\ImageFieldMapper.cs" />
+    <Compile Include="FieldMappers\GeneralLinkTargetItemMapper.cs" />
     <Compile Include="FieldMappers\InternalLinkTargetItemMapper.cs" />
     <Compile Include="FieldMappers\MultilistFieldMapper.cs" />
     <Compile Include="FieldMappers\IntegerFieldMapper.cs" />

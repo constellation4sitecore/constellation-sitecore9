@@ -1,4 +1,6 @@
-﻿namespace Constellation.Feature.Navigation.Models
+﻿using Constellation.Foundation.ModelMapping.MappingAttributes;
+
+namespace Constellation.Feature.Navigation.Models
 {
 	/// <summary>
 	/// Item information essential to rendering a link to that Item.
@@ -18,6 +20,7 @@
 		/// <summary>
 		/// The Item's Navigation Title field value, if the Item inherits from Page Navigation Title (recommended for pages).
 		/// </summary>
+		[RawValueOnly]
 		public string NavigationTitle { get; set; }
 	}
 }

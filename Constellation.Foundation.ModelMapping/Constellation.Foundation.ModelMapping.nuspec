@@ -45,7 +45,7 @@ Extensible! See the Constellation.Foundation.ModelMapping.config file to change 
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Added Fields.ReadAll() to get standard values. Oops.</releaseNotes>
+	<releaseNotes>Fixed General Link attribute mapping. Fixed Multilist mapping, the type compatibility check was reversed.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>

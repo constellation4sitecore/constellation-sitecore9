@@ -55,5 +55,31 @@ namespace Constellation.Feature.Navigation.Models
 		/// Any Navigation Link Items that are children of the current Navigation Link Item.
 		/// </summary>
 		public ICollection<NavigationLink> ChildLinks { get; set; }
+
+		public string GetBestLinkText()
+		{
+			if (UseThisDisplayName)
+			{
+				return DisplayName;
+
+			}
+
+			if (!string.IsNullOrEmpty(LinkText))
+			{
+				return LinkText;
+			}
+
+			if (!string.IsNullOrEmpty(LinkTargetItem?.NavigationTitle))
+			{
+				return LinkTargetItem.NavigationTitle;
+			}
+
+			if (!string.IsNullOrEmpty(LinkTargetItem?.DisplayName))
+			{
+				return LinkTargetItem.DisplayName;
+			}
+
+			return DisplayName;
+		}
 	}
 }

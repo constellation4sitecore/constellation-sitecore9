@@ -16,10 +16,14 @@
 				Fields that do not have explicit field mappers will be mapped using the defaultFieldMapper type provided here. Default value is:
 				"Constellation.Foundation.ModelMapping.FieldMappers.TextFieldMapper, Constellation.FoundationModelMapping"
 				
+				ignoreStandardFields causes field mapping to ignore Sitecore fields where field names start with a double-underscore. Default is "true"
+				
 				continueOnError allows for exceptions to be handled and logged by the ModelMapper. Setting this to false will cause ModelMapper to re-throw the exception.
+				default is "true".
 				-->
 				<modelMapping 
 					defaultFieldMapper="Constellation.Foundation.ModelMapping.FieldMappers.TextFieldMapper, Constellation.Foundation.ModelMapping"
+					ignoreStandardFields="true"
 					continueOnError="true">
 					<field type="Checkbox">
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.CheckboxFieldMapper, Constellation.Foundation.ModelMapping"/>
@@ -65,7 +69,7 @@
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTargetMapper, Constellation.Foundation.ModelMapping"/>
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTextMapper, Constellation.Foundation.ModelMapping"/>
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTitleMapper, Constellation.Foundation.ModelMapping"/>
-						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.InternalLinkTargetItemMapper, Constellation.Foundation.ModelMapping"/>
+						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTargetItemMapper, Constellation.Foundation.ModelMapping"/>
 					</field>
 					<field type="General Link with Search">
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkFieldMapper, Constellation.Foundation.ModelMapping"/>
@@ -73,7 +77,7 @@
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTargetMapper, Constellation.Foundation.ModelMapping"/>
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTextMapper, Constellation.Foundation.ModelMapping"/>
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTitleMapper, Constellation.Foundation.ModelMapping"/>
-						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.InternalLinkTargetItemMapper, Constellation.Foundation.ModelMapping"/>
+						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTargetItemMapper, Constellation.Foundation.ModelMapping"/>
 					</field>
 					<field type="Checklist">
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.MultilistFieldMapper, Constellation.Foundation.ModelMapping"/>

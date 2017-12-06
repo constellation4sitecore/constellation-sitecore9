@@ -24,7 +24,9 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 			var listType = typeof(List<>).MakeGenericType(itemType);
 
-			return listType.IsAssignableFrom(Property.PropertyType);
+			var canAssign = Property.PropertyType.IsAssignableFrom(listType);
+
+			return canAssign;
 		}
 
 		protected override IEnumerable ExtractTypedValueFromField()

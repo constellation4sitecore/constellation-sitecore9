@@ -13,7 +13,7 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 		{
 			LinkField field = Field;
 
-			return field.Target;
+			return field.Text;
 		}
 	}
 }

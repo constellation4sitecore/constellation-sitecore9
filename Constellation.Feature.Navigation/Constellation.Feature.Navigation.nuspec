@@ -30,15 +30,21 @@ Can be nested.
 
 - NavigationRepository - Static class that accepts a Navigation Menu item and assembles a full tree-like ViewModel for immediate processing in your View.
 
+When using NavigationLink objects, there are usually several opportunities to supply the text of a given link. NavigationLink.GetBestLinkText() evaluates all of them and attempts to
+supply the best fit. The strategy is based on overriding the concept of "name". Here are the rules:
+- If Use This Display Name is checked on the NavigationLink item, it wins.
+- If the Link.Text is supplied by the user, it wins.
+- If the Link.TargetItem exists and inherits from Page Navigation Title, and the field value is not null, it wins.
+- If the Link.TargetItem exists its DisplayName is used.
+- Assuming all other things are not true, use the NavigationLink's DisplayName. Note that in this condition if you intended to point to a Sitecore Item, you have a bad link.
 
-
-You must install the included package to get the Templates required to use the rules in this library.
+You must install the included package to get the Templates required to use this library.
 
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 Requires the installation of the included Package.
 	</description>
-	<releaseNotes>Updated ModelMapper dependency</releaseNotes>
+	<releaseNotes>Ensured FieldRenderer is not applied to Properties on TargetItem. Added GetBestLinkText()</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
   </metadata>

@@ -66,6 +66,11 @@ namespace Constellation.Foundation.ModelMapping
 			// Here's the interesting part where we map Item fields to model properties.
 			foreach (Field field in item.Fields)
 			{
+				if (ModelMapperConfiguration.Current.IgnoreStandardFields && field.Name.StartsWith("__"))
+				{
+					continue; // save some time.
+				}
+
 				if (string.IsNullOrEmpty(field.Value))
 				{
 					continue; // no point in working to send a null value.
