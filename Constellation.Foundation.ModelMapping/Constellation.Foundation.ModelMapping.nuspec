@@ -14,10 +14,12 @@ Constellation is a collection of utilities for .NET CMS implementers.
 		
 The Foundation.ModelMapping library is inspired by AutoMapper and is designed to provide a quick, non-ORM method of
 mapping Sitecore Items to ViewModels. String properties on your ViewModel will be mapped to FieldRendered values from fields with the 
-same names. Integer, DateTime, and Uri property types can also be handled automatically, although you will not get page editor support
+same names. Integer and DateTime property types can also be handled automatically, although you will not get page editor support
 for these types. There are a number of Attributes that you can assign to your ViewModel's properties to change the behavior of the Mapper.
 
 Usage: TModel viewModel = ModelMapper.MapItemToNew&lt;TModel&gt;(sourceItem);
+Or: TModel viewmodel = item.MapToNew&lt;TModel&gt;();
+Or: ModelMapper.MapTo(item, model);
 
 Constraints:
 - Your ViewModel must have a public, parameterless constructor.
@@ -29,7 +31,7 @@ The following Model properties are mapped to Item properties rather than Item fi
 - ID - Maps to the Item.ID - Make sure you use Sitecore.Data.ID as the property type.
 - Name - Maps to the Item.Name 
 - DisplayName - Maps to Item.DisplayName
-- Url - can be a string or a Uri type. Causes the current context LinkManager to generate a Url for the Item.
+- Url - Should be a string, not a Uri. Causes the current context LinkManager to generate a Url for the Item.
 
 Support for XML Field Attributes
 - ImageField.Alt - use Model.FieldNameAlt
@@ -38,14 +40,14 @@ Support for XML Field Attributes
 - etc.
 
 Support for LinkField.TargetItem - use Model.FieldNameTargetItem and supply a class with public properties and a parameterless constructor.
-Support for MultilistField.GetItems - use Model.FieldName and supply a generic ICollection of type "T" where "T" is new() and has properties you can map.
+Support for MultilistField.GetItems - use Model.FieldName and supply a generic ICollection&lt;T&gt; where "T" is new() and has properties you can map.
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Fixed General Link attribute mapping. Fixed Multilist mapping, the type compatibility check was reversed.</releaseNotes>
+	<releaseNotes>Removed the Generic constraint from MapTo because under certain conditions it was not finding all of the Model's properties.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>

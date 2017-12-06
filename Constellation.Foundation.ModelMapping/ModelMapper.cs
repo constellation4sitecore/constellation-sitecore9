@@ -20,10 +20,9 @@ namespace Constellation.Foundation.ModelMapping
 			return model;
 		}
 
-		public static void MapTo<T>(Item item, T model)
-			where T : new()
+		public static void MapTo(Item item, object model)
 		{
-			var type = typeof(T);
+			var type = model.GetType();
 
 			// Map Item attributes such as Name, DisplayName, ID, and URL to model properties
 			var nameProperty = type.GetProperty("Name", BindingFlags.Instance | BindingFlags.Public);
@@ -51,14 +50,7 @@ namespace Constellation.Foundation.ModelMapping
 
 			if (urlProperty != null)
 			{
-				if (urlProperty.PropertyType == typeof(Uri))
-				{
-					urlProperty.SetValue(model, new Uri(item.GetUrl()));
-				}
-				else
-				{
-					urlProperty.SetValue(model, item.GetUrl());
-				}
+				urlProperty.SetValue(model, item.GetUrl());
 			}
 
 			item.Fields.ReadAll();

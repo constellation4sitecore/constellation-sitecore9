@@ -52,14 +52,10 @@ namespace Constellation.Foundation.Caching
 				else
 				{
 					// Try to get it from Sitecore or make a new one.
-					cache = CacheManager.FindCacheByName(key) ?? new Sitecore.Caching.Cache(key, Settings.GetSetting("Caching.CacheSize", "100MB"));
+					//cache = ICache.FindCacheByName(key) ?? new Sitecore.Caching.Cache(key, Settings.GetSetting("Caching.CacheSize", "100MB"));
+
+					cache = Sitecore.Caching.CacheManager.GetNamedInstance(key, Sitecore.StringUtil.ParseSizeString(Settings.GetSetting("Caching.CacheSize", "100MB")), true);
 				}
-
-				// Pre-8.2 technique below
-				//cache = Sitecore.Caching.Cache.GetNamedInstance(cacheKey, global::Sitecore.StringUtil.ParseSizeString(global::Sitecore.Configuration.Settings.GetSetting("Caching.CacheSize", "100MB")));
-
-				// add new reference to the collection
-				CacheCollection.Add(key, cache);
 			}
 
 			return cache;
