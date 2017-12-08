@@ -47,7 +47,7 @@ Extensible! See the Constellation.Foundation.ModelMapping.config file to change 
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Removed the Generic constraint from MapTo because under certain conditions it was not finding all of the Model's properties.</releaseNotes>
+	<releaseNotes>Removed Uri support on File and Image fields due to Uri instances not liking relative URLs.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>
