@@ -47,6 +47,7 @@
     <Compile Include="Models\LinkGroup.cs" />
     <Compile Include="Models\NavigationLink.cs" />
     <Compile Include="Models\NavigationMenu.cs" />
+    <Compile Include="Models\NavigationNode.cs" />
     <Compile Include="Models\TargetItem.cs" />
     <Compile Include="NavigationRepository.cs" />
     <Compile Include="NavigationTemplateIDs.cs" />
@@ -55,11 +56,11 @@
   <ItemGroup>
     <Content Include="License.txt" />
     <None Include="app.config" />
-    <Content Include="Installation-Packages\Constellation-Feature-Navigation-9.0.0.0.zip" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config.example" />
     <None Include="Constellation.Feature.Navigation.nuspec">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Installation-Packages\Constellation-Feature-Navigation-9.0.6.0.zip" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

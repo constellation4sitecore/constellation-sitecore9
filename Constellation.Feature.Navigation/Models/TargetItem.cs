@@ -22,5 +22,15 @@ namespace Constellation.Feature.Navigation.Models
 		/// </summary>
 		[RawValueOnly]
 		public string NavigationTitle { get; set; }
+
+		public string GetBestLinkText()
+		{
+			if (!string.IsNullOrEmpty(NavigationTitle))
+			{
+				return NavigationTitle;
+			}
+
+			return DisplayName;
+		}
 	}
 }

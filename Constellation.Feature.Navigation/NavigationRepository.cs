@@ -3,6 +3,7 @@ using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
+using System.Collections.Generic;
 
 namespace Constellation.Feature.Navigation
 {
@@ -26,6 +27,92 @@ namespace Constellation.Feature.Navigation
 			ProcessGroupChildren(datasource, output);
 
 			return output;
+		}
+
+		/// <summary>
+		/// Returns a tree of Navigation Nodes that can be used to make the typical margin-hosted
+		/// expanding navigation found on C-shaped websites the world over. Runs from the nearest
+		/// Landing Page ancestor to the children of the Context Item
+		/// </summary>
+		/// <param name="contextItem">The Context Item</param>
+		/// <returns>A tree of NavigationNodes or null.</returns>
+		public static NavigationNode GetSectionNavigation(Item contextItem)
+		{
+			Assert.ArgumentNotNull(contextItem, "contextItem");
+
+			var landing = GetNearestLandingPage(contextItem);
+
+			if (landing == null)
+			{
+				return null;
+			}
+
+			var model = landing.MapToNew<NavigationNode>();
+			model.IsActive = true;
+
+			model.Children = GetDescendants(landing, contextItem);
+
+
+			return model;
+		}
+
+		private static ICollection<NavigationNode> GetDescendants(Item parent, Item context)
+		{
+			var nodes = new List<NavigationNode>();
+			var childItems = parent.GetChildren();
+
+			foreach (Item item in childItems)
+			{
+				if (!item.IsDerivedFrom(NavigationTemplateIDs.PageID))
+				{
+					continue;
+				}
+
+				// Add it to the list
+				var node = item.MapToNew<NavigationNode>();
+
+				nodes.Add(node);
+
+				if (!item.Axes.IsAncestorOf(context))
+				{
+					continue;
+				}
+
+				// Unfold the item.
+				node.IsActive = true;
+				node.Children = GetDescendants(item, context);
+			}
+
+			return nodes;
+		}
+
+		private static Item GetNearestLandingPage(Item context)
+		{
+			while (true)
+			{
+				if (context == null)
+				{
+					return null;
+				}
+
+				if (context.ID == NavigationTemplateIDs.SitecoreContentNodeID)
+				{
+					return null;
+				}
+
+
+				if (!context.IsDerivedFrom(NavigationTemplateIDs.PageID))
+				{
+					return null;
+				}
+
+				if (context.IsDerivedFrom(NavigationTemplateIDs.LandingPageID))
+				{
+					return context;
+				}
+
+				context = context.Parent;
+			}
 		}
 
 		private static void ProcessGroupChildren(Item parent, LinkGroup parentGroup)
