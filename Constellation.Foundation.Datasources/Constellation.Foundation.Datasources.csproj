@@ -57,12 +57,13 @@
     <Compile Include="Rules\Conditions\ItemSupportsSubcontent.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Installation-Packages\Constellation-Foundation-Datasources-9.0.0.0.zip" />
     <Content Include="License.txt" />
     <None Include="Constellation.Foundation.Datasources.nuspec">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Installation-Packages\Constellation-Foundation-Datasources-9.0.1.0.zip" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
