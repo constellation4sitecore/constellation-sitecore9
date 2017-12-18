@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Controllers\PageMetadataController.cs" />
     <Compile Include="Controllers\PageSearchEngineDirectivesController.cs" />
+    <Compile Include="Controllers\SocialMetadataController.cs" />
     <Compile Include="Models\PageMetadata.cs" />
     <Compile Include="Models\PageSearchEngineDirectives.cs" />
     <Compile Include="Models\PageSocialMetadata.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="PageMetadataRepository.cs" />
     <Compile Include="PageTaggingTemplateIDs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocialMetadataRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="License.txt" />

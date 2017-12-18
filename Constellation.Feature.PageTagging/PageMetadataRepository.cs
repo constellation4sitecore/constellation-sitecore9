@@ -16,7 +16,7 @@ namespace Constellation.Feature.PageTagging
 			return model;
 		}
 
-		private static void FillAuthorAndPublisher(Item context, PageMetadata model)
+		public static void FillAuthorAndPublisher(Item context, PageMetadata model)
 		{
 			while (true)
 			{

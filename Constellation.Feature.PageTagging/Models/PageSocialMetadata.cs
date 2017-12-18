@@ -2,7 +2,7 @@
 
 namespace Constellation.Feature.PageTagging.Models
 {
-	public class PageSocialMetadata
+	public class PageSocialMetadata : PageMetadata
 	{
 		[RenderAsUrl()]
 		public string SocialThumbnail { get; set; }
