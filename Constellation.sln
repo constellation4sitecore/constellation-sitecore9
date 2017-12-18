@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Feature.Navig
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Feature.PageTagging", "Constellation.Feature.PageTagging\Constellation.Feature.PageTagging.csproj", "{FFE80401-E801-4358-A13F-6AD2ECBFED44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Feature.ItemSorting", "Constellation.Feature.ItemSorting\Constellation.Feature.ItemSorting.csproj", "{6C8A3EE6-E142-4BFE-8150-CDF1A5AB76A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{FFE80401-E801-4358-A13F-6AD2ECBFED44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFE80401-E801-4358-A13F-6AD2ECBFED44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFE80401-E801-4358-A13F-6AD2ECBFED44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C8A3EE6-E142-4BFE-8150-CDF1A5AB76A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C8A3EE6-E142-4BFE-8150-CDF1A5AB76A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C8A3EE6-E142-4BFE-8150-CDF1A5AB76A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C8A3EE6-E142-4BFE-8150-CDF1A5AB76A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +115,7 @@ Global
 		{2DB5373A-5FDE-42A1-BE27-709D185F501D} = {5A7B7ADA-7121-4A30-B215-7C1C57FC2197}
 		{6B93D67C-B3B1-411C-9B89-39CDDE234403} = {CE4CC29C-1EB0-416B-BB74-F3DD917D0D0E}
 		{FFE80401-E801-4358-A13F-6AD2ECBFED44} = {CE4CC29C-1EB0-416B-BB74-F3DD917D0D0E}
+		{6C8A3EE6-E142-4BFE-8150-CDF1A5AB76A4} = {CE4CC29C-1EB0-416B-BB74-F3DD917D0D0E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {510028F4-B956-492B-9FC6-FD09D5A7B880}

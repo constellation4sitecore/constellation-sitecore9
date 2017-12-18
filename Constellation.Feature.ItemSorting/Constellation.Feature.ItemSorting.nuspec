@@ -1,0 +1,47 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+	<id>$id$</id>
+	<version>$version$</version>
+	<title>$title$</title>
+	<authors>Richard J. Cabral</authors>
+	<owners>Richard J. Cabral</owners>
+	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>Sitecore Helix library for building out static navigation that doesn't necessarily reflect the shape or names of Items in the content tree.</summary>
+	<description>
+Constellation is a collection of utilities for .NET CMS implementers.
+The Feature.Navigation library solves the frequently occurring problem of managing a collection of Items that users will not organize themselves, but which they
+expect to be organized. Examples include Events in an Event Calendar, Press Releases, and Employee Bios. Users want them sorted by date and dictionary order, but
+Sitecore offers little help beyond Subitems Sorting. Additionally, after a few dozen Items, users expect these entries to be grouped into folders. Enter this library!
+
+This library features two simple Rule Actions:
+- MoveToAlphabeticalFolder
+- MoveToDateFolder
+
+Included in /Installation-Packages/ is a Sitecore Package with the appropriate Rule definitions. You must install the included package to get the actions required to 
+use this library.
+
+Rule Actions:
+Move Item to Alphabetical Folder - Allows you to specify the template of the folder to use for creating the alphabetical folders.
+Move Item to Date Folder - Allows you to specify the template of the folder to use for creating the date folders. Requires you to specify the Field on the Item being
+processed that should be used for categorization. Requires you to specify the depth of the associated folder tree. Options are /Year/, /Year/Month/, /Year/Month/Day/
+
+In all cases, the "root" of the classification folders is the first encountered Ancestor that is not of the specified folder type.
+
+Usage Details
+1. Create your "list" page that will serve as the root of the classification. In our example we'll use "News"
+2. For the Insert Options of your "list" page, include the ability to insert an Item of the type that requires classification. In our example, we'll use "Press Release"
+   (Note that Press Release must have a date field to use for classification. In our example we'll use the custom field "Release Date". You can use "__Updated" or "__Created" too.)
+3. Create a new Item Saved rule that specifies when an Item is of Template "Press Release" it should be moved to a Date Folder. Set the appropriate parameters.
+4. Enjoy!
+
+Configured for use with Sitecore 9.0.
+Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+Requires the installation of the included Package.
+	</description>
+	<releaseNotes>Initial Release</releaseNotes>
+	<copyright>Copyright 2017</copyright>
+	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
+  </metadata>
+</package>
