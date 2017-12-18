@@ -7,7 +7,8 @@ namespace Constellation.Feature.PageTagging.Models
 		[RenderAsUrl()]
 		public string SocialThumbnail { get; set; }
 
-		public TwitterCardType TwitterCardTypeTargetItem { get; set; }
+		[RawValueOnly]
+		public string TwitterCardType { get; set; }
 
 		[RawValueOnly]
 		public string TwitterSite { get; set; }

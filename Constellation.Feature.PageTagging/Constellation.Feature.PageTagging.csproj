@@ -75,11 +75,10 @@
   <ItemGroup>
     <Compile Include="Controllers\PageMetadataController.cs" />
     <Compile Include="Controllers\PageSearchEngineDirectivesController.cs" />
-    <Compile Include="Controllers\SocialMetadataController.cs" />
+    <Compile Include="Controllers\PageSocialMetadataController.cs" />
     <Compile Include="Models\PageMetadata.cs" />
     <Compile Include="Models\PageSearchEngineDirectives.cs" />
     <Compile Include="Models\PageSocialMetadata.cs" />
-    <Compile Include="Models\TwitterCardType.cs" />
     <Compile Include="PageMetadataRepository.cs" />
     <Compile Include="PageTaggingTemplateIDs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,10 +89,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config.example" />
+    <None Include="Constellation.Feature.PageTagging.nuspec" />
+    <Content Include="Installation-Packages\Constellation-Feature-PageTagging-9.0.0.0.zip" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Installation-Packages\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

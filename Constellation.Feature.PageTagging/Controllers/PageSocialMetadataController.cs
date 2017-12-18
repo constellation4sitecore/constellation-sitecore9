@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Constellation.Feature.PageTagging.Controllers
 {
-	public class SocialMetadataController : Controller
+	public class PageSocialMetadataController : Controller
 	{
 		private const string MetaName = "<meta name=\"{0}\" content=\"{1}\" />";
 		private const string MetaProperty = "<meta property=\"{0}\" content=\"{1}\" />";
@@ -18,18 +18,18 @@ namespace Constellation.Feature.PageTagging.Controllers
 
 			var builder = new StringBuilder();
 
-			if (string.IsNullOrEmpty(model.TwitterCreator) && string.IsNullOrEmpty(model.TwitterSite))
+			if (!string.IsNullOrEmpty(model.TwitterCreator) || !string.IsNullOrEmpty(model.TwitterSite))
 			{
-				builder.AppendLine(string.Format(MetaName, "twitter:card", model.TwitterCardTypeTargetItem.Name));
+				builder.AppendLine(string.Format(MetaName, "twitter:card", model.TwitterCardType));
 
 				if (!string.IsNullOrEmpty(model.TwitterCreator))
 				{
-					builder.AppendLine(string.Format(MetaName, "twitter.creator", model.TwitterCreator));
+					builder.AppendLine(string.Format(MetaName, "twitter:creator", model.TwitterCreator));
 				}
 
 				if (!string.IsNullOrEmpty(model.TwitterSite))
 				{
-					builder.AppendLine(string.Format(MetaName, "twitter.site", model.TwitterSite));
+					builder.AppendLine(string.Format(MetaName, "twitter:site", model.TwitterSite));
 				}
 			}
 

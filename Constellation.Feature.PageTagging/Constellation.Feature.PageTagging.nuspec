@@ -1,0 +1,49 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+	<id>$id$</id>
+	<version>$version$</version>
+	<title>$title$</title>
+	<authors>Richard J. Cabral</authors>
+	<owners>Richard J. Cabral</owners>
+	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>Sitecore Helix-style library that provides bare-essentials support for page metadata.</summary>
+	<description>
+		Constellation is a collection of utilities for .NET CMS implementers.
+
+		The Feature.PageTagging namespace contains controllers that will render the following meta tags when installed on page:
+		- name=keywords
+		- name=description
+		- name=publisher
+		- name=author
+		- name=robots
+		- name=twitter:card
+		- name=twitter:creator
+		- name=twitter:site
+		- property=og:url
+		- property=og:title
+		- property=og:description
+		- property=og:image
+
+		These tags provide good SEO support as well as good support for Facebook and Twitter.
+
+		The Sitecore Package in /Installation-Packages must be installed to take advantage of this library. The package includes:
+		- Data Templates for the fields required to support these tags. Your pages should inherit from these to take advantage of this library.
+		- List items where fields have a limited choice of values.
+		- Rendering definitions.
+
+		To use, in your Layout, at the appropriate location enter the following:
+		@Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page metadata")
+		@Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page search engine directives")
+		@Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page social metadata")
+
+
+		Configured for use with Sitecore 9.0.
+		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+	</description>
+	<releaseNotes>Config is now shipped as an example file to prevent overwriting implementations.</releaseNotes>
+	<copyright>Copyright 2017</copyright>
+	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
+  </metadata>
+</package>
