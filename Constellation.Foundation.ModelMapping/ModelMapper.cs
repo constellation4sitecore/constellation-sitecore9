@@ -4,14 +4,28 @@ using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace Constellation.Foundation.ModelMapping
 {
 	public static class ModelMapper
 	{
+		public static ICollection<T> MapToCollectionOf<T>(ICollection<Item> items)
+			where T : class, new()
+		{
+			var list = new List<T>();
+
+			foreach (var item in items)
+			{
+				list.Add(MapItemToNew<T>(item));
+			}
+
+			return list;
+		}
+
 		public static T MapItemToNew<T>(Item item)
-			where T : new()
+			where T : class, new()
 		{
 			var model = new T();
 
