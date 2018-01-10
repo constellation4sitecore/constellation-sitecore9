@@ -87,7 +87,7 @@ namespace Constellation.Foundation.ModelMapping
 				{
 					var parentModel = Activator.CreateInstance(parentProperty.PropertyType);
 
-					MapTo(item, parentModel);
+					MapTo(parent, parentModel);
 
 					parentProperty.SetValue(model, parentModel);
 				}
