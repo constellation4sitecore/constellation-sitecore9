@@ -16,9 +16,12 @@ namespace Constellation.Foundation.ModelMapping
 		{
 			var list = new List<T>();
 
-			foreach (var item in items)
+			if (items != null)
 			{
-				list.Add(MapItemToNew<T>(item));
+				foreach (var item in items)
+				{
+					list.Add(MapItemToNew<T>(item));
+				}
 			}
 
 			return list;
@@ -27,6 +30,11 @@ namespace Constellation.Foundation.ModelMapping
 		public static T MapItemToNew<T>(Item item)
 			where T : class, new()
 		{
+			if (item == null)
+			{
+				return null;
+			}
+
 			var model = new T();
 
 			MapTo(item, model);
@@ -36,6 +44,8 @@ namespace Constellation.Foundation.ModelMapping
 
 		public static void MapTo(Item item, object model)
 		{
+			Assert.ArgumentNotNull(item, "item");
+
 			var type = model.GetType();
 
 			// Map Item attributes such as Name, DisplayName, ID, and URL to model properties
@@ -65,6 +75,22 @@ namespace Constellation.Foundation.ModelMapping
 			if (urlProperty != null)
 			{
 				urlProperty.SetValue(model, item.GetUrl());
+			}
+
+			var parentProperty = type.GetProperty("Parent", BindingFlags.Instance | BindingFlags.Public);
+
+			if (parentProperty != null)
+			{
+				var parent = item.Parent;
+
+				if (parent != null)
+				{
+					var parentModel = Activator.CreateInstance(parentProperty.PropertyType);
+
+					MapTo(item, parentModel);
+
+					parentProperty.SetValue(model, parentModel);
+				}
 			}
 
 			item.Fields.ReadAll();

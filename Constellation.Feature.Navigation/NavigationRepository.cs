@@ -35,12 +35,13 @@ namespace Constellation.Feature.Navigation
 		/// Landing Page ancestor to the children of the Context Item
 		/// </summary>
 		/// <param name="contextItem">The Context Item</param>
+		/// <param name="traverseFolders">Specify whether to stop looking for landing pages at a folder or to continue past a folder to find the nearest landing page. Default is false.</param>
 		/// <returns>A tree of NavigationNodes or null.</returns>
-		public static NavigationNode GetSectionNavigation(Item contextItem)
+		public static NavigationNode GetSectionNavigation(Item contextItem, bool traverseFolders = false)
 		{
 			Assert.ArgumentNotNull(contextItem, "contextItem");
 
-			var landing = GetNearestLandingPage(contextItem);
+			var landing = GetNearestLandingPage(contextItem, traverseFolders);
 
 			if (landing == null)
 			{
@@ -86,7 +87,7 @@ namespace Constellation.Feature.Navigation
 			return nodes;
 		}
 
-		private static Item GetNearestLandingPage(Item context)
+		private static Item GetNearestLandingPage(Item context, bool traverseFolders)
 		{
 			while (true)
 			{
@@ -101,7 +102,7 @@ namespace Constellation.Feature.Navigation
 				}
 
 
-				if (!context.IsDerivedFrom(NavigationTemplateIDs.PageID))
+				if (!context.IsDerivedFrom(NavigationTemplateIDs.PageID) && !traverseFolders)
 				{
 					return null;
 				}
