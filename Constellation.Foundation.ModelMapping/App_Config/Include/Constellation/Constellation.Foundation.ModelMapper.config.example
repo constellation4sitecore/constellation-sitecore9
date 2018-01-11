@@ -66,6 +66,7 @@
 					<field type="General Link">
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkFieldMapper, Constellation.Foundation.ModelMapping"/>
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkAnchorMapper, Constellation.Foundation.ModelMapping"/>
+						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkClassMapper, Constellation.Foundation.ModelMapping"/>
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTargetMapper, Constellation.Foundation.ModelMapping"/>
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTextMapper, Constellation.Foundation.ModelMapping"/>
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTitleMapper, Constellation.Foundation.ModelMapping"/>

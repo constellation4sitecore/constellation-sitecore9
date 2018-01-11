@@ -50,6 +50,7 @@
     <Compile Include="FieldMappers\GeneralLinkFieldMapper.cs" />
     <Compile Include="FieldMappers\DecimalFieldMapper.cs" />
     <Compile Include="FieldMappers\GeneralLinkAnchorMapper.cs" />
+    <Compile Include="FieldMappers\GeneralLinkClassMapper.cs" />
     <Compile Include="FieldMappers\GeneralLinkTextMapper.cs" />
     <Compile Include="FieldMappers\ImageWidthMapper.cs" />
     <Compile Include="FieldMappers\ImageHeightMapper.cs" />
