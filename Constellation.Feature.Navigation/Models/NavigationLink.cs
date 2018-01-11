@@ -21,6 +21,11 @@ namespace Constellation.Feature.Navigation.Models
 		public string Link { get; set; }
 
 		/// <summary>
+		/// The Class value of the General Link field of this Navigation Link Item. Represents the CSS class to apply to the anchor tag.
+		/// </summary>
+		public string LinkClass { get; set; }
+
+		/// <summary>
 		/// The Title value of the General Link field of this Navigation Link Item. Represents the anchor link's title attribute.
 		/// </summary>
 		public string LinkTitle { get; set; }

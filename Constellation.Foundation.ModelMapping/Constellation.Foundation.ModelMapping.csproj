@@ -47,6 +47,7 @@
     <Compile Include="FieldMappers\FieldAttributeMapper.cs" />
     <Compile Include="FieldMappers\FieldMapper.cs" />
     <Compile Include="FieldMappers\FieldMapStatus.cs" />
+    <Compile Include="FieldMappers\GeneralLinkUrlMapper.cs" />
     <Compile Include="FieldMappers\GeneralLinkFieldMapper.cs" />
     <Compile Include="FieldMappers\DecimalFieldMapper.cs" />
     <Compile Include="FieldMappers\GeneralLinkAnchorMapper.cs" />

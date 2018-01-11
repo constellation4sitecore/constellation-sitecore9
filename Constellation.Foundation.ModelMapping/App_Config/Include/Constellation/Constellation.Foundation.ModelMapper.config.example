@@ -71,6 +71,7 @@
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTextMapper, Constellation.Foundation.ModelMapping"/>
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTitleMapper, Constellation.Foundation.ModelMapping"/>
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkTargetItemMapper, Constellation.Foundation.ModelMapping"/>
+						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkUrlMapper, Constellation.Foundation.ModelMapping"/>
 					</field>
 					<field type="General Link with Search">
 						<fieldMapper type="Constellation.Foundation.ModelMapping.FieldMappers.GeneralLinkFieldMapper, Constellation.Foundation.ModelMapping"/>
