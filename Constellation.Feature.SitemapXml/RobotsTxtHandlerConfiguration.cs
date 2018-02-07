@@ -39,10 +39,9 @@
 		{
 			RobotsTxtHandlerConfiguration output = new RobotsTxtHandlerConfiguration();
 
-			var node = Sitecore.Configuration.Factory.GetConfigNode("constellation/robotsTxtHandler");
+			var node = Sitecore.Configuration.Factory.GetConfigNode("constellation/robotsTxt");
 
-			bool allowed;
-			if (bool.TryParse(node.Attributes["allowed"].Value, out allowed))
+			if (bool.TryParse(node.Attributes["allowed"].Value, out var allowed))
 			{
 				output.Allowed = allowed;
 			}

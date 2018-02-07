@@ -49,17 +49,17 @@ namespace Constellation.Feature.SitemapXml
 			var output = new SitemapXmlHandlerConfiguration();
 
 
-			var crawlerNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/sitemapXmlHandler/defaultCrawler");
+			var crawlerNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/sitemapXml/defaultCrawler");
 
 			output.DefaultCrawlerType = crawlerNode?.Attributes?["type"]?.Value == null ? typeof(DefaultCrawler) : Type.GetType(crawlerNode.Attributes["type"].Value);
 
-			var siteMapNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/sitemapXmlHandler/defaultSitemapNode");
+			var siteMapNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/sitemapXml/defaultSitemapNode");
 
 			output.DefaultSitemapNodeType = siteMapNode?.Attributes?["type"]?.Value == null
 				? typeof(DefaultSitemapNode)
 				: Type.GetType(siteMapNode.Attributes["type"].Value);
 
-			var cacheTimeoutNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/sitemapXmlHanlder/defaultCacheTimeout");
+			var cacheTimeoutNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/sitemapXml/defaultCacheTimeout");
 			output.DefaultCacheTimeout = cacheTimeoutNode?.Attributes?["minutes"]?.Value == null
 				? 45
 				: int.Parse(cacheTimeoutNode.Attributes["minutes"].Value);
