@@ -1,4 +1,5 @@
-﻿using Sitecore.Sites;
+﻿using Sitecore.Data.Query;
+using Sitecore.Sites;
 using System.Text;
 using System.Xml;
 
@@ -30,11 +31,25 @@ namespace Constellation.Feature.SitemapXml
 			 */
 			var max = Sitecore.Configuration.Settings.MaxTreeDepth;
 
-			var query = new StringBuilder("query:" + site.StartPath);
+			var root = site.Database.GetItem(site.StartPath);
+
+			if (root == null)
+			{
+				return;
+			}
+
+			var rootNode = SitemapGenerator.CreateNode(root, site);
+
+			if (rootNode.IsPage && rootNode.IsListedInNavigation && rootNode.ShouldIndex)
+			{
+				SitemapGenerator.AppendUrlElement(doc, rootNode);
+			}
+
+			var path = new StringBuilder("./*");
 
 			for (var i = 0; i < max; i++)
 			{
-				var items = site.Database.SelectItems(query.ToString());
+				var items = Query.SelectItems(path.ToString(), root);
 
 				if (items != null)
 				{
@@ -49,7 +64,7 @@ namespace Constellation.Feature.SitemapXml
 					}
 				}
 
-				query.Append("/*");
+				path.Append("/*");
 			}
 		}
 	}

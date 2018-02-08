@@ -36,7 +36,17 @@ namespace Constellation.Feature.SitemapXml
 		/// <returns><c>true</c> if the object is intended to be represented in various page navigation scenarios.</returns>
 		protected override bool CheckIsListedInNavigation(Item item)
 		{
-			return item.Visualization.Layout != null;
+			if (item.Visualization.Layout != null)
+			{
+				if (item.Name == "*")
+				{
+					return false;
+				}
+
+				return true;
+			}
+
+			return false;
 		}
 
 		/// <inheritdoc />
@@ -50,6 +60,11 @@ namespace Constellation.Feature.SitemapXml
 		{
 			if (item.Visualization.Layout != null)
 			{
+				if (item.Name == "*")
+				{
+					return false;
+				}
+
 				return true;
 			}
 
@@ -67,6 +82,11 @@ namespace Constellation.Feature.SitemapXml
 		{
 			if (item.Visualization.Layout != null)
 			{
+				if (item.Name == "*")
+				{
+					return false;
+				}
+
 				return true;
 			}
 
