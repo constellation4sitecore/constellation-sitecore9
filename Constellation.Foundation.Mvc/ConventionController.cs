@@ -24,7 +24,7 @@ namespace Constellation.Foundation.Mvc
 		/// Fallback action based on known Sitecore and MVC defaults.
 		/// </summary>
 		/// <returns></returns>
-		public ActionResult Index()
+		public virtual ActionResult Index()
 		{
 			var viewPath = GetViewPath();
 			var model = GetModel(RenderingContext.Current.Rendering.Item, RenderingContext.Current.ContextItem);

@@ -25,7 +25,7 @@
 		Portions based on work by Christopher Giddings: https://cjgiddings.wordpress.com/2012/02/03/sitecore-caching-utility/ updated heavily
 		for modularity and to support Sitecore 9.0
 	</description>
-	<releaseNotes>Fixed a bug with cache creation/retrieval from Sitecore caches. They changed the behavior and I missed a step.</releaseNotes>
+	<releaseNotes>Relaxed constraint on Sitecore.Kernel and turned off copy local.</releaseNotes>
 	<copyright>Copyright 2016</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
   </metadata>

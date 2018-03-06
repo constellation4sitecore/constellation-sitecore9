@@ -8,20 +8,17 @@
 	<owners>Richard J. Cabral</owners>
 	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
-	<summary>Sitecore Helix library to support context-aware pipeline, event and rule handlers.</summary>
+	<summary>Sitecore Helix library with shims for multi-site/multi-language support in Sitecore</summary>
 	<description>
 		Constellation is a collection of utilities for .NET CMS implementers.
-		The Foundation.Context namespace contains a contract for context-sensitive objects along with a context evaluator that compares
-		the sensitive instances' runtime settings against their configured scope.
-
-		The purpose of this library is to provide scoped pipeline handlers and rules to Sitecore to prevent developers from unintentionally executing
-		their customizations outside the scope of their current tenant|site|request.
+		The Foundation.Datasources namespace contains extension methods for Item, Language, and SiteInfo specifically related
+		to determining and specifying language at runtime.
 
 		Configured for use with Sitecore 9.0.
 		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Reduced Sitecore.Kernel version restrictions, killed the Copy Local, which was causing issues.</releaseNotes>
-	<copyright>Copyright 2016</copyright>
+	<releaseNotes>Reduced restrictions on Sitecore.Kernel and turned off copy local.</releaseNotes>
+	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
   </metadata>
 </package>

@@ -87,13 +87,7 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 			LinkField linkField = Field;
 
-			if (linkField.IsInternal)
-			{
-				Property.SetValue(Model, linkField.TargetItem?.GetUrl());
-				return FieldMapStatus.Success;
-			}
-
-			Property.SetValue(Model, linkField.Url);
+			Property.SetValue(Model, linkField.GetFriendlyUrl()); // Sitecore API has all the tricks for getting specific URL types out of this field.
 			return FieldMapStatus.Success;
 		}
 	}
