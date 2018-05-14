@@ -48,7 +48,7 @@
 			
 			Default: "/sitecore/layout/renderings/projects/$Area"
 			-->
-			<setting name="Constellation.Foundation.Mvc.RenderingItemPathRoot" value="/sitecore/layout/renderings/project/$Area" />
+			<setting name="Constellation.Foundation.Mvc.RenderingItemPathRoot" value="/sitecore/layout/renderings/projects/$Area" />
 
 			<!--  
 			View Root Path

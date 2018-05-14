@@ -103,11 +103,11 @@ namespace Constellation.Foundation.Mvc
 
 			var area = RenderingItem.InnerItem["Area"];
 			var viewRoot = ViewRootPath;
-			var renderingRoot = RenderingItemPathRoot;
+			var renderingRoot = RenderingItemPathRoot.ToLower();
 
 			if (!string.IsNullOrEmpty(area))
 			{
-				renderingRoot = renderingRoot.Replace("$Area", area).ToLower();
+				renderingRoot = RenderingItemPathRoot.Replace("$Area", area).ToLower();
 				viewRoot = viewRoot.Replace("$Area", area).ToLower();
 			}
 

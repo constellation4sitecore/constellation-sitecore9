@@ -1,6 +1,6 @@
-﻿using Sitecore;
+﻿using System.Diagnostics.CodeAnalysis;
+using Sitecore;
 using Sitecore.Data.Items;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Constellation.Feature.UrlFriendlyPageNames
 {
@@ -68,7 +68,7 @@ namespace Constellation.Feature.UrlFriendlyPageNames
 				string name;
 				if (ItemNameManager.GetLocallyUniqueItemName(ruleContext.Item, this.IllegalCharacterRegEx, this.RemoveSpaces, this.ChangeCase, this.ReplaceDiacritics, out name))
 				{
-					using (new EditContext(ruleContext.Item, false, true))
+					using (new EditContext(ruleContext.Item, false, false))
 					{
 						ruleContext.Item.Name = name;
 
