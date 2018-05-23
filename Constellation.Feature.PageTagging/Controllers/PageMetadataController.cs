@@ -1,8 +1,6 @@
-﻿using Constellation.Feature.PageTagging.Models;
-using Constellation.Foundation.ModelMapping;
-using Sitecore.Mvc.Presentation;
-using System.Text;
+﻿using System.Text;
 using System.Web.Mvc;
+using Sitecore.Mvc.Presentation;
 
 namespace Constellation.Feature.PageTagging.Controllers
 {
@@ -10,7 +8,7 @@ namespace Constellation.Feature.PageTagging.Controllers
 	{
 		public ActionResult Index()
 		{
-			var model = RenderingContext.Current.ContextItem.MapToNew<PageMetadata>();
+			var model = PageMetadataRepository.GetMetadata(RenderingContext.Current.ContextItem);
 
 			var builder = new StringBuilder();
 

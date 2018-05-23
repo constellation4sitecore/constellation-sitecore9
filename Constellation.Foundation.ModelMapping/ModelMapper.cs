@@ -1,17 +1,34 @@
-﻿using Constellation.Foundation.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
+using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping.FieldMappers;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
 
 namespace Constellation.Foundation.ModelMapping
 {
 	public static class ModelMapper
 	{
+
 		public static ICollection<T> MapToCollectionOf<T>(ICollection<Item> items)
+			where T : class, new()
+		{
+			var list = new List<T>();
+
+			if (items != null)
+			{
+				foreach (var item in items)
+				{
+					list.Add(MapItemToNew<T>(item));
+				}
+			}
+
+			return list;
+		}
+
+		public static IEnumerable<T> MapToEnumerableOf<T>(IEnumerable<Item> items)
 			where T : class, new()
 		{
 			var list = new List<T>();
@@ -46,6 +63,12 @@ namespace Constellation.Foundation.ModelMapping
 		{
 			Assert.ArgumentNotNull(item, "item");
 
+			MapItemProperties(item, model);
+			MapItemFields(item, model);
+		}
+
+		private static void MapItemProperties(Item item, object model)
+		{
 			var type = model.GetType();
 
 			// Map Item attributes such as Name, DisplayName, ID, and URL to model properties
@@ -92,6 +115,11 @@ namespace Constellation.Foundation.ModelMapping
 					parentProperty.SetValue(model, parentModel);
 				}
 			}
+		}
+
+		private static void MapItemFields(Item item, object model)
+		{
+			var type = model.GetType();
 
 			item.Fields.ReadAll();
 

@@ -70,6 +70,7 @@
     <Compile Include="FieldMappers\IntegerFieldMapper.cs" />
     <Compile Include="FieldMappers\TextFieldMapper.cs" />
     <Compile Include="ItemExtensions.cs" />
+    <Compile Include="ItemListExtensions.cs" />
     <Compile Include="ListExtensions.cs" />
     <Compile Include="MappingAttributes\DoNotMapAttribute.cs" />
     <Compile Include="MappingAttributes\RawValueOnlyAttribute.cs" />
