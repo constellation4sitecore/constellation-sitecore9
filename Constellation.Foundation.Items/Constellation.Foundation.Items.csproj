@@ -75,7 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Instructions\Constellation.Foundation.Items.Instructions.txt" />
-    <Content Include="License.txt" />
+    <Content Include="Constellation.License.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Constellation.Foundation.Items.nuspec" />

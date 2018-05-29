@@ -40,7 +40,7 @@ Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 Requires the installation of the included Package.
 	</description>
-	<releaseNotes>Relaxed restrictions on Sitecore.Kernel. Turned off copy local</releaseNotes>
+	<releaseNotes>License file update.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
   </metadata>

@@ -72,7 +72,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="License.txt" />
+    <Content Include="Constellation.License.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -44,11 +44,11 @@
 			Specifies the portion of the RenderingItem's Full Path to ignore when constructing the file system path to the matching View.
 			You do not have to use filesystem-friendly names, the ViewResolver will attempt to construct a filesystem-friendly path at runtime.
 			
-			The $Area token
+			The $Area token can be used to specify the value of the Area name specified in the Rendering Item.
 			
-			Default: "/sitecore/layout/renderings/projects/$Area"
+			Default: "/sitecore/layout/renderings/project/$Area"
 			-->
-			<setting name="Constellation.Foundation.Mvc.RenderingItemPathRoot" value="/sitecore/layout/renderings/projects/$Area" />
+			<setting name="Constellation.Foundation.Mvc.RenderingItemPathRoot" value="/sitecore/layout/renderings/project/$Area" />
 
 			<!--  
 			View Root Path

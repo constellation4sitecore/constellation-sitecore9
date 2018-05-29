@@ -1,9 +1,10 @@
-﻿using Sitecore.Data;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Links;
-using System.Collections.Generic;
-using System.Globalization;
+using Sitecore.Web;
 
 namespace Constellation.Foundation.Data
 {
@@ -214,6 +215,30 @@ namespace Constellation.Foundation.Data
 			}
 
 			return childrenDerivedFrom;
+		}
+
+
+		/// <summary>
+		/// Gets the SiteInfo for the "site" that has a SiteRoot that is an ancestor of the
+		/// provided context item.
+		/// </summary>
+		/// <param name="context">The Item to interrogate</param>
+		/// <returns>The SiteInfo for the Item or null</returns>
+		public static SiteInfo GetSite(this Item context)
+		{
+			var path = context.Paths.FullPath;
+
+			var sites = Sitecore.Configuration.Factory.GetSiteInfoList();
+
+			foreach (var site in sites)
+			{
+				if (site.RootPath.StartsWith(path))
+				{
+					return site;
+				}
+			}
+
+			return null;
 		}
 
 		/// <summary>

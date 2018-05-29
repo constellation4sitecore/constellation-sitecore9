@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:patch="http://www.sitecore.net/xmlconfig/">
+	<sitecore>
+		<pipelines>
+			<initialize>
+				<!--
+				Kicks off the Package Verifier, which has a separate configuration area to keep the Initialize pipeline clear.
+				-->
+				<processor type="Constellation.Foundation.PackageVerification.Pipelines.Initialize.PackageVerifier, Constellation.Foundation.PackageVerification" />
+			</initialize>
+		</pipelines>
+		<constellation>
+			<!--
+			Package Verifier Configuration
+			
+			defaultProcessorType: Must descend from the default value - Constellation.Foundation.PackageVerification.PackageProcessor, Constellation.Foundation.PackageVerification
+			
+			package nodes: 
+					name: Just to make them easy to spot. Should be unique. Also allows you to sc:patch them!
+					packageFileName: the name of the .zip file. IMPORTANT: should already exist in data-folder/packages.
+					processorOverrideType: If you don't want to use the default processor.
+					
+					Artifacts: Items that will exist if the package referenced was previously installed. Should be something a user wouldn't modify.
+					You can supply more than one if you have to check multiple databases or disparate parts of the content tree.
+					Please note that the fewer artifacts you have to verify the better for performance reasons.
+					
+					id: the ID of the Item that should exist
+					database: the database where the Item lives, typically master or core.
+			
+			-->
+			<packageVerifier defaultProcessorType="Constellation.Foundation.PackageVerification.PackageProcessor, Constellation.Foundation.PackageVerification">
+				<package name="example" packageFileName="example.zip" processorOverrideType="">
+					<artifact id="{11111111-1111-1111-1111-111111111111}" database="master"/>
+					<artifact id="{11111111-1111-1111-1111-111111111111}" database="core"/>
+				</package>
+				<package name="example2" packageFileName="example2.zip" processorOverrideType="">
+					<artifact id="{11111111-1111-1111-1111-111111111111}" database="core"/>
+				</package>
+			</packageVerifier>
+		</constellation>
+	</sitecore>
+</configuration>

@@ -32,7 +32,7 @@ Includes example T4 templates and instructions for use with HedgeHog Team Develo
 Configured for use with Sitecore 8.2.
 Requires Sitecore 8.2 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Consolidated three NuGet packages for ease of subscription.</releaseNotes>
+	<releaseNotes>License file change.</releaseNotes>
 	<copyright>Copyright 2016</copyright>
 	<tags>Sitecore</tags>
   </metadata>

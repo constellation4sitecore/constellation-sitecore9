@@ -89,7 +89,7 @@
     <Compile Include="SocialMetadataRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="License.txt" />
+    <Content Include="Constellation.License.txt" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config.example" />
     <None Include="Constellation.Feature.PageTagging.nuspec" />
     <Content Include="Installation-Packages\Constellation-Feature-PageTagging-9.0.0.0.zip" />
