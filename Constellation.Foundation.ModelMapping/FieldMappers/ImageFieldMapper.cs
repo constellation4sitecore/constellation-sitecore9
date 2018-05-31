@@ -1,11 +1,12 @@
-﻿using Constellation.Foundation.Data;
+﻿using System;
+using System.Reflection;
+using System.Web;
+using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping.MappingAttributes;
 using Sitecore.Data.Fields;
 using Sitecore.Diagnostics;
 using Sitecore.Resources.Media;
 using Sitecore.Web.UI.WebControls;
-using System;
-using System.Reflection;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
@@ -75,6 +76,12 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 			if (paramsAttribute != null)
 			{
+				if (Property.IsHtml())
+				{
+					Property.SetValue(Model, new HtmlString(FieldRenderer.Render(Field.Item, Field.Name, paramsAttribute.Params)));
+					return FieldMapStatus.Success;
+				}
+
 				Property.SetValue(Model, FieldRenderer.Render(Field.Item, Field.Name, paramsAttribute.Params));
 				return FieldMapStatus.Success;
 			}
@@ -82,10 +89,14 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			// Place to handle more complex scenarios.
 			try
 			{
-				if (PropertyIsString())
+				if (Property.IsHtml())
 				{
+					Property.SetValue(Model, new HtmlString(ExtractStringValueFromField()));
+					return FieldMapStatus.Success;
+				}
 
-
+				if (Property.IsString())
+				{
 					Property.SetValue(Model, ExtractStringValueFromField());
 					return FieldMapStatus.Success;
 				}
@@ -121,11 +132,6 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			}
 
 			return string.Empty;
-		}
-
-		protected bool PropertyIsString()
-		{
-			return typeof(string).IsAssignableFrom(Property.PropertyType);
 		}
 	}
 }

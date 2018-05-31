@@ -1,8 +1,9 @@
-﻿using Constellation.Foundation.Data;
+﻿using System.Reflection;
+using System.Web;
+using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping.MappingAttributes;
 using Sitecore.Data.Fields;
 using Sitecore.Web.UI.WebControls;
-using System.Reflection;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
@@ -64,6 +65,12 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 			if (Property.GetCustomAttribute<RawValueOnlyAttribute>() != null)
 			{
+				if (Property.IsHtml())
+				{
+					Property.SetValue(Model, new HtmlString(Field.Value));
+					return FieldMapStatus.Success;
+				}
+
 				Property.SetValue(Model, Field.Value);
 				return FieldMapStatus.Success;
 			}
@@ -72,6 +79,12 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 			if (paramsAttribute != null)
 			{
+				if (Property.IsHtml())
+				{
+					Property.SetValue(Model, new HtmlString(FieldRenderer.Render(Field.Item, Field.Name, paramsAttribute.Params)));
+					return FieldMapStatus.Success;
+				}
+
 				Property.SetValue(Model, FieldRenderer.Render(Field.Item, Field.Name, paramsAttribute.Params));
 				return FieldMapStatus.Success;
 			}
@@ -81,6 +94,12 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			if (urlAttribute == null ||
 				urlAttribute.UseFieldRendererInEditor && Sitecore.Context.PageMode.IsExperienceEditorEditing)
 			{
+				if (Property.IsHtml())
+				{
+					Property.SetValue(Model, new HtmlString(FieldRenderer.Render(Field.Item, Field.Name)));
+					return FieldMapStatus.Success;
+				}
+
 				Property.SetValue(Model, FieldRenderer.Render(Field.Item, Field.Name));
 				return FieldMapStatus.Success;
 			}

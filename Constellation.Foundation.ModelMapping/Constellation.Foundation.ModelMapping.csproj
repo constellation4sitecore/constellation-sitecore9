@@ -79,6 +79,7 @@
     <Compile Include="ModelMapperConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MappingAttributes\FieldRendererParamsAttribute.cs" />
+    <Compile Include="PropertyInfoExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Constellation.License.txt" />

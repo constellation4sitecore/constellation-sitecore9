@@ -47,13 +47,13 @@ Context Navigation Components:
 the nearest LandingPage, its children, as well as the descendants of any children that are Ancestors of the Context Item. (will also create Children for the Context Item node 
 in the tree). Use this to produce the expanded navigation seen on many sites with deep content.
 
-You must install the included package to get the Templates required to use this library.
+The included package must be installed to get the Templates required to use this library. This should happen automatically after you build and deploy your project.
 
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 Requires the installation of the included Package.
 	</description>
-	<releaseNotes>License file update.</releaseNotes>
+	<releaseNotes>Will now auto-deploy the package to Sitecore as Sitecore initializes.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
   </metadata>

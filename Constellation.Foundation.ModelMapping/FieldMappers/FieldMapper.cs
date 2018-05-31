@@ -1,10 +1,11 @@
-﻿using Constellation.Foundation.Data;
+﻿using System;
+using System.Reflection;
+using System.Web;
+using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping.MappingAttributes;
 using Sitecore.Data.Fields;
 using Sitecore.Diagnostics;
 using Sitecore.Web.UI.WebControls;
-using System;
-using System.Reflection;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
@@ -14,9 +15,11 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 		private string _propertyName = null;
 		private PropertyInfo _property = null;
+
 		#endregion
 
 		#region Properties
+
 		protected object Model { get; set; }
 
 		protected Field Field { get; set; }
@@ -66,6 +69,12 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 			if (Property.GetCustomAttribute<RawValueOnlyAttribute>() != null)
 			{
+				if (Property.IsHtml())
+				{
+					Property.SetValue(Model, new HtmlString(Field.Value));
+					return FieldMapStatus.Success;
+				}
+
 				Property.SetValue(Model, Field.Value);
 				return FieldMapStatus.Success;
 			}
@@ -74,6 +83,12 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 			if (paramsAttribute != null)
 			{
+				if (Property.IsHtml())
+				{
+					Property.SetValue(Model, new HtmlString(FieldRenderer.Render(Field.Item, Field.Name, paramsAttribute.Params)));
+					return FieldMapStatus.Success;
+				}
+
 				Property.SetValue(Model, FieldRenderer.Render(Field.Item, Field.Name, paramsAttribute.Params));
 				return FieldMapStatus.Success;
 			}
@@ -81,13 +96,19 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			// Place to handle more complex scenarios.
 			try
 			{
-				if (PropertyIsString())
+				if (Property.IsHtml())
+				{
+					Property.SetValue(Model, new HtmlString(ExtractStringValueFromField()));
+					return FieldMapStatus.Success;
+				}
+
+				if (Property.IsString())
 				{
 					Property.SetValue(Model, ExtractStringValueFromField());
 					return FieldMapStatus.Success;
 				}
 
-				if (!PropertyIsTargetedType())
+				if (!PropertyTypeMatches())
 				{
 					return FieldMapStatus.TypeMismatch;
 				}
@@ -107,20 +128,11 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			return FieldRenderer.Render(Field.Item, Field.Name);
 		}
 
+		protected virtual bool PropertyTypeMatches()
+		{
+			return Property.Is<T>();
+		}
+
 		protected abstract T ExtractTypedValueFromField();
-
-		#region Protected Helpers
-
-		protected bool PropertyIsString()
-		{
-			return typeof(string).IsAssignableFrom(Property.PropertyType);
-		}
-
-		protected virtual bool PropertyIsTargetedType()
-		{
-			return typeof(T).IsAssignableFrom(Property.PropertyType);
-		}
-		#endregion
-
 	}
 }

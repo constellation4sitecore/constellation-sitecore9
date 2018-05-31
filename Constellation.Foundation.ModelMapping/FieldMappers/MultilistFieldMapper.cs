@@ -1,22 +1,21 @@
-﻿using Sitecore.Data.Fields;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sitecore.Data.Fields;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
 	public class MultilistFieldMapper : FieldMapper<IEnumerable>
 	{
-		protected override bool PropertyIsTargetedType()
+		protected override bool PropertyTypeMatches()
 		{
-			if (!base.PropertyIsTargetedType())
+			if (!Property.Is<IEnumerable>())
 			{
 				return false;
 			}
 
 			if (!Property.PropertyType.IsGenericType)
 			{
-
 				return false;
 			}
 
