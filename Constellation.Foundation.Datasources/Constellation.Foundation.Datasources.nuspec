@@ -10,21 +10,51 @@
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library for classifying content based on whether the content is a page, a page fragment, and/or reusable.</summary>
 	<description>
-		Constellation is a collection of utilities for .NET CMS implementers.
-		The Foundation.Datasources namespace contains contracts for specifying whether an Item is meant to (primarily) be a context datasource,
-		a subcontent datasource (unique to the hosting page) or a reusable page component (widget). This package includes rules for testing
-		items based on inheriting from specific Templates.
-		
-		To flag an Item for use by the rules included, ensure they inherit from the appropriate Templates/Foundation/Constellation/Datasources template:
-		* Context Datasource for pages.
-		* Subcontent Datasource for content that appears exclusively on the hosting page.
-		* Widget Datasource for content that can be shared by many pages.
-		
-		You must install the included package to get the Templates required to use the rules in this library.
+Constellation is a collection of utilities for .NET CMS implementers.
+The Foundation.Datasources library is an opinionated information architecture for Sitecore. It includes "base" templates and Item
+information rules to enforce the architecture.
 
-		Configured for use with Sitecore 9.0.
-		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
-		Requires the installation of the included Package.
+Core Architecture Concept:
+Web Site Items are one of the following types:
+
+Context Datasource: A "page" Item in Sitecore, has a URL, has presentation, loads a Layout and has placeholders for additional Renderings.
+
+Subcontent: A "page fragment" Item in Sitecore, specifically an Item designed to be used as the DataSource for a Rendering. It is required
+for the Rendering to render. Subcontent is optional page content, but is unique to the page it appears on.
+
+Widget: Also a "page fragment" Item in Sitecore, specifically an Item designed to be used as the DataSource for a Rendering. It is required
+for the Rendering to render. Widgets are optional page content, but are designed to be shared by multiple pages.
+
+
+The primary information architecture for this design involves the storage of SubContent vs Widgets. All Pages on a site should get a _subcontent
+folder beneath them which is where Items of type Subcontent should be stored. This allows for Renderings to specify their Datasource location
+as "./_subcontent"
+
+Widgets should be stored beneath the /tenant/site node (using Helix methodology) typically in a /widgets folder, possibly broken up by widget
+type or marketing intentions.
+
+You can use the following Rule Conditions to enforce this Information Architecture:
+* ItemIsContextDatasource
+* Item IsSubcontentDatasource
+* ItemIsWidgetDatasource
+* ItemSupportsSubcontent (in some cases Pages should not support subcontent, for example, wildcard pages or pages imported from an external system)
+
+You can use the following Rule Actions to enforce this Information Architecture:
+* CreateSubcontentFolder
+
+In general you need a rule like this:
+
+On Item Saved, if the Item Supports Subcontent, Create a Subcontent Folder (if none exists)
+
+After setting up this rule, ensure that your Renderings are organized into Widgets and Subcontent with appropriate Datasources established.
+
+
+Installation:
+Add this NuGet package to a Web Application project. After building and deploying, this library will automatically install the Sitecore package containing
+the necessary rules and templates to support this architecture.
+
+Configured for use with Sitecore 9.0.
+Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
 	<releaseNotes>Changed license file.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
