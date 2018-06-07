@@ -5,9 +5,10 @@
 [Bb]in/[Rr]elease*/
 *[Dd][Ss]_[Ss]tore
 [Dd]atabases/
-!App_Data/
 lib/license.xml
 lib/[Ss]itecore/*
+!App_Data/*
+!App_Data/packages/*
 !lib/[Ss]itecore/readme.[Mm][Dd]
 lib/[Ss]ystem/*
 !lib/[Ss]ystem/readme.[Mm][Dd]
