@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration  xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+	<webMarkupMin xmlns="http://tempuri.org/WebMarkupMin.Configuration.xsd" xdt:Transform="Remove">
+		<webExtensions enableMinification="true" disableMinificationInDebugMode="true" enableCompression="true" disableCompressionInDebugMode="true" maxResponseSize="100000" disableCopyrightHttpHeaders="true" />
+		<core>
+			<html whitespaceMinificationMode="Medium" removeHtmlComments="true" removeHtmlCommentsFromScriptsAndStyles="true" removeCdataSectionsFromScriptsAndStyles="true" useShortDoctype="true" useMetaCharsetTag="true" emptyTagRenderMode="NoSlash" removeOptionalEndTags="true" removeTagsWithoutContent="false" collapseBooleanAttributes="true" removeEmptyAttributes="true" attributeQuotesRemovalMode="KeepQuotes" removeRedundantAttributes="false" removeJsTypeAttributes="true" removeCssTypeAttributes="true" removeHttpProtocolFromAttributes="false" removeHttpsProtocolFromAttributes="false" removeJsProtocolFromAttributes="true" minifyEmbeddedCssCode="true" minifyInlineCssCode="true" minifyEmbeddedJsCode="true" minifyInlineJsCode="true" processableScriptTypeList="" minifyKnockoutBindingExpressions="false" minifyAngularBindingExpressions="false" customAngularDirectiveList="" />
+		</core>
+	</webMarkupMin>
+<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.2" /></startup></configuration>

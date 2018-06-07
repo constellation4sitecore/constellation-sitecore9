@@ -1,7 +1,7 @@
-﻿using Sitecore.Data.Items;
+﻿using System;
+using Sitecore.Data.Items;
 using Sitecore.Links;
 using Sitecore.Sites;
-using System;
 
 namespace Constellation.Feature.SitemapXml
 {

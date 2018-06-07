@@ -1,5 +1,8 @@
-﻿namespace Constellation.Foundation.Mvc.Pipelines.GetRenderer
+﻿using Constellation.Foundation.Data;
+
+namespace Constellation.Foundation.Mvc.Pipelines.GetRenderer
 {
+	using System;
 	using Sitecore.Data.Items;
 	using Sitecore.Data.Templates;
 	using Sitecore.Mvc.Configuration;
@@ -7,7 +10,6 @@
 	using Sitecore.Mvc.Names;
 	using Sitecore.Mvc.Pipelines.Response.GetRenderer;
 	using Sitecore.Mvc.Presentation;
-	using System;
 
 	public class GetControllerRenderer : GetRendererProcessor
 	{
@@ -83,7 +85,7 @@
 
 			if (controllerName.IsWhiteSpaceOrNull())
 			{
-				controllerName = NameConverter.ConvertItemNameToClassName(renderingItem.Name);
+				controllerName = renderingItem.Name.AsClassName();
 			}
 
 			return new Tuple<string, string>(controllerName, actionName);

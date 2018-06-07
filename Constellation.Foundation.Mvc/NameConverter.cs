@@ -1,7 +1,7 @@
 ﻿namespace Constellation.Foundation.Mvc
 {
-	using Constellation.Foundation.Data;
 	using System.Text;
+	using Constellation.Foundation.Data;
 
 	/// <summary>
 	/// Small utility to convert Sitecore Item names to C# compatible names in a variety of scenarios.
@@ -46,19 +46,5 @@
 
 			return builder.ToString();
 		}
-
-		/// <summary>
-		/// Takes a Sitecore-compatible phrase (ex: My Item Name) and converts it to a valid C# class name
-		/// (ex: MyItemName).
-		/// </summary>
-		/// <param name="name">The phrase to convert.</param>
-		/// <returns>A C# compatible class name.</returns>
-		public static string ConvertItemNameToClassName(string name)
-		{
-			return name.AsClassName();
-		}
-
-
-
 	}
 }
