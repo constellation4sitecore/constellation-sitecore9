@@ -1,7 +1,7 @@
 ﻿namespace Constellation.Foundation.Caching
 {
-	using Sitecore.Caching;
 	using System;
+	using Sitecore.Caching;
 
 	/// <summary>
 	/// A facade for accessing caching in both the Sitecore API as well as System.Web
@@ -99,7 +99,7 @@
 		/// </summary>
 		/// <param name="key">The unique key to save</param>
 		/// <param name="cachingData">The data to cache</param>
-		/// <param name="cacheTimer">The time we want to cache this data</param>
+		/// <param name="cacheTimer">Either a DateTime when the value should expire or a TimeSpan</param>
 		/// <param name="isNoSlidingExpiration">Is the cacheTimer an Absolute Expiration (default) or a sliding expiration</param>
 		/// <param name="useSitecoreCache">Do you want to use Sitecore cache or the HttpRuntime cache object</param>
 		/// <param name="globalCache">Is the data to be stored in the global cache or site specific cache</param>

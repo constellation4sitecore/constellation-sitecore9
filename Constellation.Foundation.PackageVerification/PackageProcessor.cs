@@ -29,7 +29,7 @@ namespace Constellation.Foundation.PackageVerification
 			}
 
 			InstallPackage(Details.PackageFileName);
-			Log.Info($"Constellation.Foundation.PackageVerification: package \"{Details.Name}\" installed.", this);
+			Log.Info($"Constellation.Foundation.PackageVerification: package \"{Details.Name}\" installation complete.", this);
 		}
 
 		protected virtual void InstallPackage(string packageFileName)
@@ -59,10 +59,12 @@ namespace Constellation.Foundation.PackageVerification
 		{
 			foreach (var artifact in Details.Artifacts)
 			{
-				if (!ArtifactVerified(artifact.Database, artifact.ID))
+				if (ArtifactVerified(artifact.Database, artifact.ID))
 				{
-					return false;
+					continue;
 				}
+
+				return false;
 			}
 
 			return true;
@@ -73,9 +75,23 @@ namespace Constellation.Foundation.PackageVerification
 		{
 			var db = Sitecore.Configuration.Factory.GetDatabase(database);
 
-			var item = db.GetItem(id);
+			using (new SecurityDisabler())
+			{
+				var item = db.GetItem(id);
 
-			return item != null;
+				if (item != null)
+				{
+					Log.Debug(
+						$"Constellation.Foundaiton.PackageVerification: item \"{id}\" in \"{database}\" with name {item.Name} found.",
+						this);
+					return true;
+				}
+
+				Log.Warn(
+					$"Constellation.Foundation.PackageVerification: item \"{id}\" in \"{database}\" for package \"{Details.Name}\" was not found",
+					this);
+				return false;
+			}
 		}
 	}
 }

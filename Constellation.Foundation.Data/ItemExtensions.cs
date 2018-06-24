@@ -226,13 +226,15 @@ namespace Constellation.Foundation.Data
 		/// <returns>The SiteInfo for the Item or null</returns>
 		public static SiteInfo GetSite(this Item context)
 		{
-			var path = context.Paths.FullPath;
+			var path = context.Paths.FullPath.ToLowerInvariant();
 
 			var sites = Sitecore.Configuration.Factory.GetSiteInfoList();
 
 			foreach (var site in sites)
 			{
-				if (site.RootPath.StartsWith(path))
+				var rootPath = site.RootPath.ToLowerInvariant();
+
+				if (path.StartsWith(rootPath))
 				{
 					return site;
 				}

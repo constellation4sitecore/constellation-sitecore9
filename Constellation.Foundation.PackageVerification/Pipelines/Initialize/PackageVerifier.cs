@@ -14,7 +14,7 @@ namespace Constellation.Foundation.PackageVerification.Pipelines.Initialize
 
 			foreach (var config in packages)
 			{
-				Log.Info($"Constellation.Foundation.PackageVerification processing {config.Name} package.", this);
+				Log.Info($"Constellation.Foundation.PackageVerification: processing \"{config.Name}\" package.", this);
 
 				try
 				{
@@ -30,7 +30,7 @@ namespace Constellation.Foundation.PackageVerification.Pipelines.Initialize
 				}
 				catch (Exception ex)
 				{
-					Log.Error($"Constellation.Foundation.PackageVerification failed processing {config.Name} package.", ex, this);
+					Log.Error($"Constellation.Foundation.PackageVerification failed processing \"{config.Name}\" package.", ex, this);
 					throw;
 				}
 			}

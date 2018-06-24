@@ -105,6 +105,19 @@ namespace Constellation.Foundation.PackageVerification
 
 				var artifactNodes = packageNode.ChildNodes;
 
+				/*
+					<packageVerifier defaultProcessorType="Constellation.Foundation.PackageVerification.PackageProcessor, Constellation.Foundation.PackageVerification">
+						<package name="example" packageFileName="example-9.0.6.0.zip">
+							<artifact id="{AE9999EE-92F0-4E91-9123-1093CCFBBEBD}" database="core"/>
+							<artifact id="{80B44127-950B-4023-9EDE-D74CE2760242}" database="core"/>
+							<artifact id="{DCF35CDA-E30C-4BE7-AE43-E56BE8AF07E5}" database="master" />
+							<artifact id="{3D2EC9DC-52EA-4355-97D1-34BBAD390E89}" database="master"/>
+						</package>
+					</packageVerifier>
+				 */
+
+
+
 				foreach (XmlNode artifactNode in artifactNodes)
 				{
 					if (artifactNode == null)
@@ -112,10 +125,32 @@ namespace Constellation.Foundation.PackageVerification
 						continue;
 					}
 
+					string id = artifactNode.Attributes?["id"]?.Value;
+
+					string database = artifactNode.Attributes?["database"]?.Value;
+
+					if (string.IsNullOrEmpty(id))
+					{
+						var ex = new Exception(
+							$"Failed parsing artifact id attribute for package \"{package.Name}\".");
+
+						Log.Error("Constellation.Foundation.PackageVerification: Error in loading Configuration.", ex, output);
+						throw ex;
+					}
+
+					if (string.IsNullOrEmpty(database))
+					{
+						var ex = new Exception(
+							$"Failed parsing artifact database attribute for package \"{package.Name}\".");
+
+						Log.Error("Constellation.Foundation.PackageVerification: Error in loading Configuration.", ex, output);
+						throw ex;
+					}
+
 					var artifact = new PackageArtifact
 					{
-						ID = ID.Parse(artifactNode?.Attributes?["id"]?.Value),
-						Database = artifactNode?.Attributes?["database"]?.Value
+						ID = ID.Parse(id),
+						Database = database
 					};
 
 					package.Artifacts.Add(artifact);
