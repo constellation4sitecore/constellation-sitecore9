@@ -19,8 +19,7 @@ This library features two simple Rule Actions:
 - MoveToAlphabeticalFolder
 - MoveToDateFolder
 
-Included in /Installation-Packages/ is a Sitecore Package with the appropriate Rule definitions. You must install the included package to get the actions required to 
-use this library.
+Included in /Installation-Packages/ is a Sitecore Package with the appropriate Rule definitions. The package should self-install after being deployed to your environment.
 
 Rule Actions:
 Move Item to Alphabetical Folder - Allows you to specify the template of the folder to use for creating the alphabetical folders.
@@ -38,7 +37,6 @@ Usage Details
 
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
-Requires the installation of the included Package.
 	</description>
 	<releaseNotes>License file update.</releaseNotes>
 	<copyright>Copyright 2017</copyright>

@@ -30,7 +30,7 @@ rule conditions that are suitable for this specific task.
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Moved the namespace for the rule action to match expected namespaces.</releaseNotes>
+	<releaseNotes>Nuget package update. Missing config file now part of the deployment.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Habitat, Sitecore SXA</tags>
   </metadata>
