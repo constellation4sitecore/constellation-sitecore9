@@ -9,7 +9,9 @@ namespace Constellation.Feature.PageAnalyticsScripts.Controllers
 	{
 		public ActionResult Index()
 		{
-			var model = RenderingContext.Current.ContextItem.MapToNew<PageAnalyticsScriptsModel>();
+			var item = RenderingContext.Current.Rendering.Item;
+
+			var model = item.MapToNew<PageAnalyticsScriptsModel>();
 
 			return Content(GetScriptToRender(model));
 		}
