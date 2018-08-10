@@ -1,2 +1,5 @@
-# constellation.foundation
-Sitecore Helix compatible Foundation library - The most core utilities of the collection
+# Constellation
+## Tools to make you faster and smarter about Sitecore development
+
+https://constellation4sitecore.com
+
