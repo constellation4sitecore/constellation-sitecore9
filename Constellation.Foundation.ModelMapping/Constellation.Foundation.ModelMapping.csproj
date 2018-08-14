@@ -30,9 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Foundation.Data, Version=9.0.3.25609, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Data.9.0.3.25609\lib\net462\Constellation.Foundation.Data.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Constellation.Foundation.Data, Version=9.0.5.28985, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Data.9.0.5.28985\lib\net462\Constellation.Foundation.Data.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.NoReferences.9.0.171002\lib\NET462\Sitecore.Kernel.dll</HintPath>
@@ -84,7 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Constellation.License.txt" />
-    <Content Include="License.txt" />
     <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <None Include="Constellation.Foundation.ModelMapping.nuspec">
       <SubType>Designer</SubType>

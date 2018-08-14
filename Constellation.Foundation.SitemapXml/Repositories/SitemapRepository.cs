@@ -42,7 +42,13 @@ namespace Constellation.Foundation.SitemapXml.Repositories
 		public static XmlDocument GetSitemap(SiteInfo site, bool forceRegenerate = false)
 		{
 			var key = typeof(SitemapRepository).FullName + site.Name;
-			var document = Cache.Get<XmlDocument>(key);
+
+			XmlDocument document = null;
+
+			if (SitemapXmlConfiguration.Current.CacheEnabled)
+			{
+				document = Cache.Get<XmlDocument>(key);
+			}
 
 			if (document == null || forceRegenerate)
 			{
@@ -50,9 +56,11 @@ namespace Constellation.Foundation.SitemapXml.Repositories
 
 				document = generator.Generate();
 
-				var cacheTimeout = site.GetSitemapXmlCacheTimeout();
-
-				Cache.Add(key, document, DateTime.Now.AddMinutes(cacheTimeout));
+				if (SitemapXmlConfiguration.Current.CacheEnabled)
+				{
+					var cacheTimeout = site.GetSitemapXmlCacheTimeout();
+					Cache.Add(key, document, DateTime.Now.AddMinutes(cacheTimeout));
+				}
 			}
 
 			return document;

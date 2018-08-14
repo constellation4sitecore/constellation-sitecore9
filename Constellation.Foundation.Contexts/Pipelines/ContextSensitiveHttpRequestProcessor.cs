@@ -1,10 +1,10 @@
 ﻿namespace Constellation.Foundation.Contexts.Pipelines
 {
+	using System.Diagnostics.CodeAnalysis;
+	using System.Web;
 	using Contexts;
 	using Sitecore.Diagnostics;
 	using Sitecore.Pipelines.HttpRequest;
-	using System.Diagnostics.CodeAnalysis;
-	using System.Web;
 
 	/// <summary>
 	/// Basic implementation of IContextSensitive for use with HttpPipeline processors.
@@ -182,7 +182,7 @@
 			}
 			else
 			{
-				Log.Info("Processing deferred because it is not executing the correct context", this);
+				Log.Debug("Processing deferred because it is not executing the correct context", this);
 				if (Log.IsDebugEnabled)
 				{
 					Log.Debug($"		ContextDatabase: {this.ContextDatabaseName}");

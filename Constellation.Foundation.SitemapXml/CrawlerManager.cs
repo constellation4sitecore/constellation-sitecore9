@@ -25,20 +25,34 @@ namespace Constellation.Foundation.SitemapXml
 		{
 			var nodes = new List<ISitemapNode>();
 
+			if (string.IsNullOrEmpty(Site.Scheme))
+			{
+				Log.Warn(
+					$"Constellation.Foundation.SitemapXml CrawlerManager: Will not run crawlers for site {Site.Name} because it does not declare a \"scheme\" attribute.",
+					this);
+				return nodes;
+			}
+
+			if (string.IsNullOrEmpty(Site.TargetHostName))
+			{
+				Log.Warn(
+					$"Constellation.Foundation.SitemapXml CrawlerManager: Will not run crawlers for site {Site.Name} because it does not declare a \"targetHostName\" attribute.",
+					this);
+				return nodes;
+			}
+
 			foreach (var type in Crawlers)
 			{
 				try
 				{
-					if (!(Activator.CreateInstance(type, new { Site }) is Crawler crawler))
-					{
-						throw new Exception($"Could not activate Crawler type \"{type.FullName}\"");
-					}
+					Crawler crawler = Activator.CreateInstance(type, new object[] { this.Site }) as Crawler;
 
 					nodes.AddRange(crawler.GetNodes());
 				}
 				catch (Exception ex)
 				{
 					Log.Error($"Constellation.Foundation.SitemapXml CrawlerManager: Error crawling site \"{Site.Name}\" using crawler \"{type.FullName}\"", ex, this);
+					throw;
 				}
 			}
 

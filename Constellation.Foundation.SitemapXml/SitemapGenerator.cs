@@ -80,20 +80,28 @@ namespace Constellation.Foundation.SitemapXml
 
 			var locElement = Document.CreateElement("loc");
 			locElement.InnerText = node.Location;
-
-			var lastModElement = Document.CreateElement("lastmod");
-			lastModElement.InnerText = node.LastModified.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
-
-			var changeFreqElement = Document.CreateElement("changefreq");
-			changeFreqElement.InnerText = node.ChangeFrequency.ToString().ToLower(CultureInfo.InvariantCulture);
-
-			var priorityElement = Document.CreateElement("priority");
-			priorityElement.InnerText = node.Priority.ToString(CultureInfo.InvariantCulture);
-
 			url.AppendChild(locElement);
-			url.AppendChild(lastModElement);
-			url.AppendChild(changeFreqElement);
-			url.AppendChild(priorityElement);
+
+			if (SitemapXmlConfiguration.Current.IncludeLastMod)
+			{
+				var lastModElement = Document.CreateElement("lastmod");
+				lastModElement.InnerText = node.LastModified.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+				url.AppendChild(lastModElement);
+			}
+
+			if (SitemapXmlConfiguration.Current.IncludeChangeFrequency)
+			{
+				var changeFreqElement = Document.CreateElement("changefreq");
+				changeFreqElement.InnerText = node.ChangeFrequency.ToString().ToLower(CultureInfo.InvariantCulture);
+				url.AppendChild(changeFreqElement);
+			}
+
+			if (SitemapXmlConfiguration.Current.IncludePriority)
+			{
+				var priorityElement = Document.CreateElement("priority");
+				priorityElement.InnerText = node.Priority.ToString(CultureInfo.InvariantCulture);
+				url.AppendChild(priorityElement);
+			}
 
 			// ReSharper disable PossibleNullReferenceException
 			Document.DocumentElement.AppendChild(url);

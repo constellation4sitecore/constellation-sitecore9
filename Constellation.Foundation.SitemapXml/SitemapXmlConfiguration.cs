@@ -44,7 +44,15 @@ namespace Constellation.Foundation.SitemapXml
 
 		public IDictionary<string, ICollection<Type>> SiteCrawlers { get; set; }
 
+		public bool CacheEnabled { get; private set; }
+
 		public int DefaultCacheTimeout { get; private set; }
+
+		public bool IncludeChangeFrequency { get; private set; }
+
+		public bool IncludeLastMod { get; private set; }
+
+		public bool IncludePriority { get; private set; }
 		#endregion
 
 
@@ -61,7 +69,12 @@ namespace Constellation.Foundation.SitemapXml
 
 		public ICollection<Type> GetCrawlersForSite(string siteName)
 		{
-			return SiteCrawlers[siteName];
+			if (SiteCrawlers.ContainsKey(siteName))
+			{
+				return SiteCrawlers[siteName];
+			}
+
+			return DefaultCrawlers;
 		}
 		#endregion
 
@@ -79,10 +92,19 @@ namespace Constellation.Foundation.SitemapXml
 				output.SitesToIgnore = ignoreAttribute.Split(',');
 			}
 
+			output.CacheEnabled = rootNode?.Attributes?["cacheEnabled"]?.Value != null && bool.Parse(rootNode.Attributes["cacheEnabled"].Value);
+
+
+
 			output.DefaultCacheTimeout = rootNode?.Attributes?["defaultCacheTimeout"]?.Value == null
 				? 45
-				: int.Parse(rootNode?.Attributes?["defaultCacheTimeout"]?.Value);
+				: int.Parse(rootNode.Attributes["defaultCacheTimeout"].Value);
 
+			output.IncludeChangeFrequency = rootNode?.Attributes?["includeChangeFrequency"]?.Value != null && bool.Parse(rootNode.Attributes["includeChangeFrequency"].Value);
+
+			output.IncludeLastMod = rootNode?.Attributes?["includeLastMod"]?.Value != null && bool.Parse(rootNode.Attributes["includeLastMod"].Value);
+
+			output.IncludePriority = rootNode?.Attributes?["includePriority"]?.Value != null && bool.Parse(rootNode.Attributes["includePriority"].Value);
 
 			var defaultNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/sitemapXml/crawlers/defaultCrawlers");
 
@@ -130,9 +152,8 @@ namespace Constellation.Foundation.SitemapXml
 
 				if (string.IsNullOrEmpty(site))
 				{
-					var ex = new Exception("\"crawlers/site\" configuration found with no \"name\" attribute defined.");
-					Log.Error("Constellation.Foundation.SitemapXml configuration error:", ex, output);
-					throw ex;
+					// It's not a valid node
+					continue;
 				}
 
 				var types = new List<Type>();

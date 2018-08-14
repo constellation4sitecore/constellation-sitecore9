@@ -30,9 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Foundation.Contexts, Version=9.0.2.26264, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Contexts.9.0.2.26264\lib\net462\Constellation.Foundation.Contexts.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Constellation.Foundation.Contexts, Version=9.0.3.19448, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Contexts.9.0.3.19448\lib\net462\Constellation.Foundation.Contexts.dll</HintPath>
     </Reference>
     <Reference Include="Constellation.Foundation.PackageVerification, Version=9.0.3.21612, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.0.3.21612\lib\net462\Constellation.Foundation.PackageVerification.dll</HintPath>

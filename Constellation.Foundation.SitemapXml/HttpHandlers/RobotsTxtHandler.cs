@@ -47,15 +47,14 @@ namespace Constellation.Foundation.SitemapXml.HttpHandlers
 				}
 
 				var site = SiteContextFactory.GetSiteContext(context.Request.Url.Host, context.Request.Url.LocalPath, context.Request.Url.Port);
-				var disallows = RobotsTxtConfiguration.Current.SiteDisallows[site.Name];
 
-				if (disallows != null)
+				if (RobotsTxtConfiguration.Current.SiteDisallows.ContainsKey(site.Name))
 				{
+					var disallows = RobotsTxtConfiguration.Current.SiteDisallows[site.Name];
 					foreach (var disallow in disallows)
 					{
 						builder.AppendLine($"Disallow: {disallow}");
 					}
-
 				}
 
 				builder.AppendLine();

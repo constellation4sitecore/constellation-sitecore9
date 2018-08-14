@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agents\SitemapXmlAgent.cs" />
     <Compile Include="ChangeFrequency.cs" />
     <Compile Include="CrawlerManager.cs" />
     <Compile Include="Crawlers\Crawler.cs" />
@@ -71,12 +72,14 @@
     <Content Include="App_Config\Include\Constellation\Constellation.Foundation.SitemapXml.config">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Constellation.Foundation.SitemapXml.nuspec" />
-    <None Include="packages.config" />
-    <None Include="Web.config.install.xdt" />
-    <None Include="Web.config.uninstall.xdt">
+    <None Include="Constellation.Foundation.SitemapXml.nuspec">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
+    <Content Include="Web.config.install.xdt" />
+    <Content Include="Web.config.uninstall.xdt">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Constellation.License.txt" />

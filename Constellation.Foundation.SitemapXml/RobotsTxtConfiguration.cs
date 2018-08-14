@@ -48,6 +48,7 @@ namespace Constellation.Foundation.SitemapXml
 		private RobotsTxtConfiguration()
 		{
 			GlobalDisallows = new List<string>();
+			SiteDisallows = new Dictionary<string, ICollection<string>>();
 		}
 
 		private static RobotsTxtConfiguration CreateNewConfiguration()
