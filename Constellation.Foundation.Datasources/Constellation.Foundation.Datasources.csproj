@@ -59,7 +59,6 @@
     <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Datasource.config" />
     <Content Include="App_Data\packages\PutPackagesHere.txt" />
     <Content Include="Constellation.License.txt" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
     <None Include="Constellation.Foundation.Datasources.nuspec">
       <SubType>Designer</SubType>
     </None>

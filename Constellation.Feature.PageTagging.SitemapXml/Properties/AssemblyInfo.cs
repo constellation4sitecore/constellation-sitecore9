@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Constellation.Foundation.PackageVerification")]
+[assembly: AssemblyTitle("Constellation.Feature.PageTagging.SitemapXml")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Constellation.Foundation.PackageVerification")]
+[assembly: AssemblyProduct("Constellation.Feature.PageTagging.SitemapXml")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("667ff248-5da7-4ab3-8507-06e84aeb2d82")]
+[assembly: Guid("e1d07a16-3543-4f79-bd70-a98ed8f696ec")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("9.0.4.*")]
-[assembly: AssemblyFileVersion("9.0.4.0")]
+[assembly: AssemblyVersion("9.0.0.*")]
+[assembly: AssemblyFileVersion("9.0.0.0")]

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FFE80401-E801-4358-A13F-6AD2ECBFED44}</ProjectGuid>
+    <ProjectGuid>{E1D07A16-3543-4F79-BD70-A98ED8F696EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Constellation.Feature.PageTagging</RootNamespace>
-    <AssemblyName>Constellation.Feature.PageTagging</AssemblyName>
+    <RootNamespace>Constellation.Feature.PageTagging.SitemapXml</RootNamespace>
+    <AssemblyName>Constellation.Feature.PageTagging.SitemapXml</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,9 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Constellation.Feature.PageTagging, Version=9.0.12.22427, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Feature.PageTagging.9.0.12.22427\lib\net462\Constellation.Feature.PageTagging.dll</HintPath>
+    </Reference>
+    <Reference Include="Constellation.Foundation.Caching, Version=9.0.3.24083, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Caching.9.0.3.24083\lib\net462\Constellation.Foundation.Caching.dll</HintPath>
+    </Reference>
     <Reference Include="Constellation.Foundation.Data, Version=9.0.5.28985, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Data.9.0.5.28985\lib\net462\Constellation.Foundation.Data.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Constellation.Foundation.ModelMapping, Version=9.0.23.20463, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.0.23.20463\lib\net462\Constellation.Foundation.ModelMapping.dll</HintPath>
@@ -40,18 +45,14 @@
     <Reference Include="Constellation.Foundation.PackageVerification, Version=9.0.4.16508, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.0.4.16508\lib\net462\Constellation.Foundation.PackageVerification.dll</HintPath>
     </Reference>
+    <Reference Include="Constellation.Foundation.SitemapXml, Version=9.0.4.17250, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.SitemapXml.9.0.4.17250\lib\net462\Constellation.Foundation.SitemapXml.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.NoReferences.9.0.171002\lib\NET462\Sitecore.Kernel.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sitecore.Mvc, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Mvc.NoReferences.9.0.171002\lib\NET462\Sitecore.Mvc.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
@@ -59,55 +60,43 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\PageMetadataController.cs" />
-    <Compile Include="Controllers\PageSearchEngineDirectivesController.cs" />
-    <Compile Include="Controllers\PageSocialMetadataController.cs" />
-    <Compile Include="Models\PageMetadata.cs" />
-    <Compile Include="Models\PageSearchEngineDirectives.cs" />
-    <Compile Include="Models\PageSocialMetadata.cs" />
-    <Compile Include="PageMetadataRepository.cs" />
-    <Compile Include="PageTaggingTemplateIDs.cs" />
+    <Compile Include="Crawler.cs" />
+    <Compile Include="Models\ChangeFrequency.cs" />
+    <Compile Include="Models\PageSitemapBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SocialMetadataRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
-    <Content Include="App_Config\Include\Constellation\Constellation.Feature.PageTagging.config" />
-    <Content Include="App_Data\packages\Constellation-Feature-PageTagging-Data.zip" />
-    <Content Include="Constellation.License.txt" />
-    <None Include="Constellation.Feature.PageTagging.nuspec" />
-    <None Include="packages.config" />
+    <Compile Include="SitemapNode.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.SitemapXml.PageTagging.Override.config" />
+    <Content Include="App_Data\packages\PutPackagesHere.txt" />
+    <Content Include="Constellation.License.txt" />
+    <None Include="App_Config\Include\Constellation\Constellation.Feature.PageTagging.config" />
+    <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
+    <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
+    <None Include="App_Config\Include\Constellation\Constellation.Foundation.SitemapXml.config" />
+    <None Include="App_Data\packages\Constellation-Feature-PageTagging-Data.zip" />
+    <Content Include="App_Data\packages\Constellation-Feature-PageTagging-SitemapXml-Data.zip" />
+    <None Include="Constellation.Feature.PageTagging.SitemapXml.nuspec" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

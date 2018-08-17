@@ -34,7 +34,7 @@ namespace Constellation.Feature.PageTagging
 
 				if (context == null)
 				{
-					return; // weird. Shouldn't happen, but if it doesn, we're OK.
+					return; // weird. Shouldn't happen, but if it does, we're OK.
 				}
 
 				if (!context.IsDerivedFrom(PageTaggingTemplateIDs.PageSocialMetadataID))
