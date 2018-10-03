@@ -35,12 +35,10 @@
 		Because maintaining these scripts requires knowledge of Javascript and Marketing Technology, it is recommended that only
 		users familiar with the Presentation Details dialog maintain these objects.
 
-
-
 		Configured for use with Sitecore 9.0.
 		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Ensured that the auto-item-installer only runs on your CM server.</releaseNotes>
+	<releaseNotes>Ensured analytics scripts don't appear on page when you're in anything but "normal" page mode.</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
   </metadata>

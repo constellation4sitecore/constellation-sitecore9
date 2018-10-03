@@ -9,6 +9,11 @@ namespace Constellation.Feature.PageAnalyticsScripts.Controllers
 	{
 		public ActionResult Index()
 		{
+			if (!Sitecore.Context.PageMode.IsNormal)
+			{
+				return Content("<!-- Page Analytics will appear here -->");
+			}
+
 			var item = RenderingContext.Current.Rendering.Item;
 
 			var model = item.MapToNew<PageAnalyticsScriptsModel>();
