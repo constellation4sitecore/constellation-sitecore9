@@ -2,7 +2,7 @@
 using Sitecore;
 using Sitecore.Data.Items;
 
-namespace Constellation.Feature.UrlFriendlyPageNames
+namespace Constellation.Feature.UrlFriendlyPageNames.Rules.Actions
 {
 	/// <summary>
 	/// A Sitecore Rule Action that adjusts the name of an Item to support the desired URL-friendly parameters.

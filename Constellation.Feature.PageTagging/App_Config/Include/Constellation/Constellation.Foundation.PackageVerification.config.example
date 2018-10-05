@@ -1,25 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration xmlns:patch="http://www.sitecore.net/xmlconfig/"  xmlns:role="http://www.sitecore.net/xmlconfig/role/">
-	<!-- 
-	
-	
-	
-	DO NOT MODIFY THIS FILE. 
-	
-	USE SITECORE PATCH CONFIGS TO CHANGE BEHAVIOR. 
-	
-	ANY CHANGES TO THIS FILE MAY BE OVERWRITTEN IN A FUTURE RELEASE
-	
-	
-	
-	-->
 	<sitecore>
 		<pipelines>
 			<initialize>
 				<!--
 				Kicks off the Package Verifier, which has a separate configuration area to keep the Initialize pipeline clear.
 				-->
-				<processor
+				<processor 
 					type="Constellation.Foundation.PackageVerification.Pipelines.Initialize.PackageVerifier, Constellation.Foundation.PackageVerification"
 					role:require="Standalone or ContentManagement" />
 			</initialize>
@@ -43,14 +30,14 @@
 					database: the database where the Item lives, typically master or core.
 			
 			-->
-			<packageVerifier defaultProcessorType="Constellation.Foundation.PackageVerification.PackageProcessor, Constellation.Foundation.PackageVerification">
-				<package name="Constellation.Foundation.Datasources" packageFileName="Constellation-Foundation-Datasources-9.0.1.0.zip" processorOverrideType="">
-					<artifact id="{F7EDCAC5-6804-44C6-9CD0-1FE9EB8CEC2C}" database="master"/>
-					<artifact id="{244E9CAA-2B2A-49C0-A888-539A3524F29F}" database="master"/>
-					<artifact id="{9263EBC2-082B-4097-8AAA-49914D47C289}" database="master"/>
-					<artifact id="{4AFF54F9-40D9-47A1-B066-3799AA9EED9C}" database="master"/>
-					<artifact id="{9EB5993E-37B9-4354-A3B9-88160BC067AF}" database="master"/>
-					<artifact id="{982DFB13-FA09-434C-A30F-5048F87C4350}" database="master"/>
+			<packageVerifier 
+				defaultProcessorType="Constellation.Foundation.PackageVerification.PackageProcessor, Constellation.Foundation.PackageVerification">
+				<package name="example" packageFileName="example.zip" processorOverrideType="">
+					<artifact id="{11111111-1111-1111-1111-111111111111}" database="master"/>
+					<artifact id="{11111111-1111-1111-1111-111111111111}" database="core"/>
+				</package>
+				<package name="example2" packageFileName="example2.zip" processorOverrideType="">
+					<artifact id="{11111111-1111-1111-1111-111111111111}" database="core"/>
 				</package>
 			</packageVerifier>
 		</constellation>

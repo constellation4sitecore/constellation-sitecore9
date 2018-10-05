@@ -33,8 +33,8 @@
     <Reference Include="Constellation.Foundation.Contexts, Version=9.0.3.19448, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Contexts.9.0.3.19448\lib\net462\Constellation.Foundation.Contexts.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.PackageVerification, Version=9.0.4.16508, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.0.4.16508\lib\net462\Constellation.Foundation.PackageVerification.dll</HintPath>
+    <Reference Include="Constellation.Foundation.PackageVerification, Version=9.0.5.23264, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.0.5.23264\lib\net462\Constellation.Foundation.PackageVerification.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.NoReferences.9.0.171002\lib\NET462\Sitecore.Kernel.dll</HintPath>
@@ -50,10 +50,10 @@
     <Compile Include="Rules\Actions\SetUrlFriendlyName.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\packages\PutPackagesHere.txt" />
-    <Content Include="Constellation.License.txt" />
     <Content Include="App_Config\Include\Constellation\Constellation.Feature.UrlFriendlyPageNames.config" />
     <Content Include="App_Data\packages\Constellation-Feature-UrlFriendlyPageNames-9.0.6.0.zip" />
+    <Content Include="App_Data\packages\PutPackagesHere.txt" />
+    <Content Include="Constellation.License.txt" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
     <None Include="Constellation.Feature.UrlFriendlyPageNames.nuspec">
       <SubType>Designer</SubType>

@@ -43,7 +43,7 @@ namespace Constellation.Foundation.PackageVerification
 					IProcessingContext context = new SimpleProcessingContext();
 					IItemInstallerEvents events =
 						new DefaultItemInstallerEvents(
-							new BehaviourOptions(InstallMode.Overwrite, MergeMode.Undefined));
+							new BehaviourOptions(InstallMode.Merge, MergeMode.Clear));
 
 					context.AddAspect(events);
 					IFileInstallerEvents events1 = new DefaultFileInstallerEvents(true);
