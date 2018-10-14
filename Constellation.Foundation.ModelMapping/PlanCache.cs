@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Sitecore.Data;
 using Sitecore.Diagnostics;
 
 namespace Constellation.Foundation.ModelMapping
@@ -43,28 +44,33 @@ namespace Constellation.Foundation.ModelMapping
 		#endregion
 
 		#region Methods
-		public static MappingPlan GetPlan(string typeFullName)
+
+		public static MappingPlan GetPlan(string typeFullName, ID templateID)
 		{
-			if (!_current.Cache.ContainsKey(typeFullName))
+			var key = GetKey(typeFullName, templateID);
+
+			if (!_current.Cache.ContainsKey(key))
 			{
-				Log.Debug($"MappingPlan: No plan cached for class {typeFullName}.", typeof(PlanCache));
+				Log.Debug($"MappingPlan: No plan cached for class {typeFullName} and template {templateID}.", typeof(PlanCache));
 				return null;
 			}
 
-			return _current.Cache[typeFullName];
+			return _current.Cache[key];
 		}
 
 		public static void AddPlan(MappingPlan plan)
 		{
-			if (_current.Cache.ContainsKey(plan.TypeFullName))
+			var key = GetKey(plan);
+
+			if (_current.Cache.ContainsKey(key))
 			{
-				Log.Debug($"MappingPlan: Plan for class {plan.TypeFullName} already cached. Replacing.", typeof(PlanCache));
-				_current.Cache[plan.TypeFullName] = plan;
+				Log.Debug($"MappingPlan: Plan for class {plan.TypeFullName} and template {plan.TemplateID} already cached. Replacing.", typeof(PlanCache));
+				_current.Cache[key] = plan;
 				return;
 			}
 
 			Log.Debug($"ModelMapping.PlanCache: Plan for class {plan.TypeFullName} added.", typeof(PlanCache));
-			_current.Cache.Add(plan.TypeFullName, plan);
+			_current.Cache.Add(key, plan);
 
 		}
 
@@ -74,6 +80,18 @@ namespace Constellation.Foundation.ModelMapping
 
 			return output;
 		}
+
+		private static string GetKey(MappingPlan plan)
+		{
+			return GetKey(plan.TypeFullName, plan.TemplateID);
+		}
+
+		private static string GetKey(string typeFullName, ID templateID)
+		{
+			return typeFullName + templateID;
+		}
+
+
 		#endregion
 	}
 }

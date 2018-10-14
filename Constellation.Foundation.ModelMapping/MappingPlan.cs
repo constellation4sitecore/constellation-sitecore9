@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Sitecore.Data;
+using Sitecore.Diagnostics;
 
 namespace Constellation.Foundation.ModelMapping
 {
@@ -10,14 +11,18 @@ namespace Constellation.Foundation.ModelMapping
 		#endregion
 
 
-		public MappingPlan()
+		public MappingPlan(string typeFullName, ID templateID)
 		{
+			TypeFullName = typeFullName;
+			TemplateID = templateID;
 			FieldIDs = new List<ID>();
 		}
 
 
 		#region Properties
-		public string TypeFullName { get; set; }
+		public string TypeFullName { get; }
+
+		public ID TemplateID { get; }
 		#endregion
 
 		#region Methods
@@ -26,6 +31,7 @@ namespace Constellation.Foundation.ModelMapping
 			if (!FieldIDs.Contains(id))
 			{
 				FieldIDs.Add(id);
+				Log.Debug($"ModelMapping.MappingPlan: Added {id} to the Mapping Plan for type {TypeFullName} and template {TemplateID}", this);
 			}
 		}
 

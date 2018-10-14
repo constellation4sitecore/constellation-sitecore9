@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping.FieldMappers;
-using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
@@ -12,12 +11,6 @@ namespace Constellation.Foundation.ModelMapping
 {
 	public static class ModelMapper
 	{
-		#region Fields
-
-		private static PlanCache planCache;
-
-		#endregion
-
 		#region Methods
 		public static ICollection<T> MapToCollectionOf<T>(ICollection<Item> items)
 			where T : class, new()
@@ -73,14 +66,17 @@ namespace Constellation.Foundation.ModelMapping
 			MapItemProperties(item, model);
 
 			var type = model.GetType();
-			var plan = PlanCache.GetPlan(type.FullName);
+			var plan = PlanCache.GetPlan(type.FullName, item.TemplateID);
 
 			if (plan == null)
 			{
-				MapItemFields(item, model);
+				Log.Debug($"No plan for type {type.FullName} and template {item.TemplateID}. One will be recorded during the mapping.", typeof(ModelMapper));
+				MapItemFieldsAndCreatePlan(item, model);
 			}
 			else
 			{
+				Log.Debug($"Using plan for type {plan.TypeFullName} and template {plan.TemplateID} for mapping.",
+					typeof(ModelMapper));
 				MapItemFieldsFromPlan(item, model, plan);
 			}
 		}
@@ -136,10 +132,10 @@ namespace Constellation.Foundation.ModelMapping
 			}
 		}
 
-		private static void MapItemFields(Item item, object model)
+		private static void MapItemFieldsAndCreatePlan(Item item, object model)
 		{
 			var type = model.GetType();
-			var plan = new MappingPlan { TypeFullName = type.FullName };
+			var plan = new MappingPlan(type.FullName, item.TemplateID);
 
 			item.Fields.ReadAll();
 
@@ -219,12 +215,12 @@ namespace Constellation.Foundation.ModelMapping
 			Log.Debug($"Mapping Item {item.Name} using a cached mapping plan for {type.FullName}", typeof(ModelMapper));
 
 			item.Fields.ReadAll();
-			var fieldIDs = plan.GetFieldIDs();
+			var fieldNames = plan.GetFieldIDs();
 
 			// Here's the interesting part where we map Item fields to model properties.
-			foreach (ID id in fieldIDs)
+			foreach (var fieldName in fieldNames)
 			{
-				var field = item.Fields[id];
+				var field = item.Fields[fieldName];
 
 				// Get field mappers
 				var mappers = ModelMapperConfiguration.Current.GetMappersForFieldType(field.Type);
