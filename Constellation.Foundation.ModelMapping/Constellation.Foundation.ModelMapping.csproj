@@ -74,9 +74,11 @@
     <Compile Include="ListExtensions.cs" />
     <Compile Include="MappingAttributes\DoNotMapAttribute.cs" />
     <Compile Include="MappingAttributes\RawValueOnlyAttribute.cs" />
+    <Compile Include="MappingPlan.cs" />
     <Compile Include="ModelMapper.cs" />
     <Compile Include="MappingAttributes\RenderAsUrlAttribute.cs" />
     <Compile Include="ModelMapperConfiguration.cs" />
+    <Compile Include="PlanCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MappingAttributes\FieldRendererParamsAttribute.cs" />
     <Compile Include="PropertyInfoExtensions.cs" />

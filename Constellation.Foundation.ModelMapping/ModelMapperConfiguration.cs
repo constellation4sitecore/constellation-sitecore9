@@ -1,8 +1,8 @@
-﻿using Constellation.Foundation.ModelMapping.FieldMappers;
-using Sitecore.Diagnostics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Xml;
+using Constellation.Foundation.ModelMapping.FieldMappers;
+using Sitecore.Diagnostics;
 
 namespace Constellation.Foundation.ModelMapping
 {
@@ -11,7 +11,7 @@ namespace Constellation.Foundation.ModelMapping
 		#region Locals
 		private static volatile ModelMapperConfiguration _current;
 
-		private static object _lockObject = new object();
+		private static readonly object LockObject = new object();
 		#endregion
 
 		protected ModelMapperConfiguration()
@@ -27,7 +27,7 @@ namespace Constellation.Foundation.ModelMapping
 			{
 				if (_current == null)
 				{
-					lock (_lockObject)
+					lock (LockObject)
 					{
 						if (_current == null)
 						{

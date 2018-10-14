@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping.FieldMappers;
+using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
@@ -11,7 +12,13 @@ namespace Constellation.Foundation.ModelMapping
 {
 	public static class ModelMapper
 	{
+		#region Fields
 
+		private static PlanCache planCache;
+
+		#endregion
+
+		#region Methods
 		public static ICollection<T> MapToCollectionOf<T>(ICollection<Item> items)
 			where T : class, new()
 		{
@@ -64,8 +71,20 @@ namespace Constellation.Foundation.ModelMapping
 			Assert.ArgumentNotNull(item, "item");
 
 			MapItemProperties(item, model);
-			MapItemFields(item, model);
+
+			var type = model.GetType();
+			var plan = PlanCache.GetPlan(type.FullName);
+
+			if (plan == null)
+			{
+				MapItemFields(item, model);
+			}
+			else
+			{
+				MapItemFieldsFromPlan(item, model, plan);
+			}
 		}
+		#endregion
 
 		private static void MapItemProperties(Item item, object model)
 		{
@@ -120,6 +139,7 @@ namespace Constellation.Foundation.ModelMapping
 		private static void MapItemFields(Item item, object model)
 		{
 			var type = model.GetType();
+			var plan = new MappingPlan { TypeFullName = type.FullName };
 
 			item.Fields.ReadAll();
 
@@ -131,10 +151,80 @@ namespace Constellation.Foundation.ModelMapping
 					continue; // save some time.
 				}
 
-				if (string.IsNullOrEmpty(field.Value))
+				// Get field mappers
+				var mappers = ModelMapperConfiguration.Current.GetMappersForFieldType(field.Type);
+
+				try
 				{
-					continue; // no point in working to send a null value.
+					foreach (Type mapperType in mappers)
+					{
+						try
+						{
+							var mapper = (IFieldMapper)Activator.CreateInstance(mapperType);
+
+							var status = mapper.Map(model, field);
+
+							switch (status)
+							{
+								case FieldMapStatus.Exception:
+									Log.Error($"Mapping field {field.Name} on Item {item.Name}: Exception handled by field mapper.", typeof(ModelMapper));
+									break;
+								case FieldMapStatus.TypeMismatch:
+									Log.Warn($"Mapping field {field.Name} on Item {item.Name} to Model {type.Name} failed.", typeof(ModelMapper));
+									break;
+								case FieldMapStatus.ExplicitIgnore:
+									Log.Debug($"Mapping field {field.Name} on Item {item.Name}: explicitly ignored", typeof(ModelMapper));
+									break;
+								case FieldMapStatus.NoProperty:
+									Log.Debug($"Mapping field {field.Name} on Item {item.Name}: no matching property name.", typeof(ModelMapper));
+									break;
+								case FieldMapStatus.FieldEmpty:
+									Log.Debug($"Mapping field {field.Name} on Item {item.Name}: field was empty.", typeof(ModelMapper));
+									plan.AddField(field.ID);
+									break;
+								case FieldMapStatus.ValueEmpty:
+									Log.Debug($"Mapping field {field.Name} on Item {item.Name}: processed value was empty.", typeof(ModelMapper));
+									plan.AddField(field.ID);
+									break;
+								case FieldMapStatus.Success:
+									Log.Debug($"Mapping field {field.Name} on Item {item.Name}: success.", typeof(ModelMapper));
+									plan.AddField(field.ID);
+									break;
+							}
+						}
+						catch (TypeLoadException ex)
+						{
+							Log.Error($"ModelMapper was unable to create FieldMapper type {mapperType.Name}", ex, typeof(ModelMapper));
+							throw;
+						}
+						catch (Exception ex)
+						{
+							Log.Error($"Mapping field {field.Name} on Item {item.Name} to Model {type.Name} failed.", ex, typeof(ModelMapper));
+							throw;
+						}
+					}
+
+					PlanCache.AddPlan(plan);
 				}
+				catch (Exception)
+				{
+					Log.Warn($"ModelMapper did not cache the plan for {item.Name} because there were errors during the mapping process.", typeof(ModelMapper));
+				}
+			}
+		}
+
+		private static void MapItemFieldsFromPlan(Item item, object model, MappingPlan plan)
+		{
+			var type = model.GetType();
+			Log.Debug($"Mapping Item {item.Name} using a cached mapping plan for {type.FullName}", typeof(ModelMapper));
+
+			item.Fields.ReadAll();
+			var fieldIDs = plan.GetFieldIDs();
+
+			// Here's the interesting part where we map Item fields to model properties.
+			foreach (ID id in fieldIDs)
+			{
+				var field = item.Fields[id];
 
 				// Get field mappers
 				var mappers = ModelMapperConfiguration.Current.GetMappersForFieldType(field.Type);
@@ -158,11 +248,11 @@ namespace Constellation.Foundation.ModelMapping
 							case FieldMapStatus.ExplicitIgnore:
 								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: explicitly ignored", typeof(ModelMapper));
 								break;
-							case FieldMapStatus.FieldEmpty:
-								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: field was empty.", typeof(ModelMapper));
-								break;
 							case FieldMapStatus.NoProperty:
 								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: no matching property name.", typeof(ModelMapper));
+								break;
+							case FieldMapStatus.FieldEmpty:
+								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: field was empty.", typeof(ModelMapper));
 								break;
 							case FieldMapStatus.ValueEmpty:
 								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: processed value was empty.", typeof(ModelMapper));
