@@ -1,5 +1,5 @@
-﻿using Sitecore.Data.Fields;
-using System;
+﻿using System;
+using Sitecore.Data.Fields;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
@@ -20,7 +20,7 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			{
 				var targetModel = Activator.CreateInstance(Property.PropertyType);
 
-				ModelMapper.MapTo(item, targetModel);
+				MappingContext.Current.MapTo(item, targetModel);
 
 				return targetModel;
 			}

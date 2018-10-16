@@ -48,7 +48,7 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			{
 				var subModel = Activator.CreateInstance(itemType);
 
-				ModelMapper.MapTo(item, subModel);
+				MappingContext.Current.MapTo(item, subModel);
 
 				// ReSharper disable once PossibleNullReferenceException
 				addMethod.Invoke(list, new[] { subModel });

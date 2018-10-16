@@ -1,5 +1,5 @@
-﻿using Sitecore.Data.Items;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Sitecore.Data.Items;
 
 namespace Constellation.Foundation.ModelMapping
 {
@@ -8,7 +8,7 @@ namespace Constellation.Foundation.ModelMapping
 		public static ICollection<T> ToCollectionOf<T>(this ICollection<Item> items)
 			where T : class, new()
 		{
-			return ModelMapper.MapToCollectionOf<T>(items);
+			return MappingContext.Current.MapToCollectionOf<T>(items);
 		}
 	}
 }

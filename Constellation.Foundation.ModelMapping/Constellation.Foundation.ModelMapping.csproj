@@ -69,14 +69,17 @@
     <Compile Include="FieldMappers\MultilistFieldMapper.cs" />
     <Compile Include="FieldMappers\IntegerFieldMapper.cs" />
     <Compile Include="FieldMappers\TextFieldMapper.cs" />
+    <Compile Include="IModelMapper.cs" />
     <Compile Include="ItemExtensions.cs" />
     <Compile Include="ItemListExtensions.cs" />
     <Compile Include="ListExtensions.cs" />
     <Compile Include="MappingAttributes\DoNotMapAttribute.cs" />
     <Compile Include="MappingAttributes\RawValueOnlyAttribute.cs" />
+    <Compile Include="MappingContext.cs" />
     <Compile Include="MappingPlan.cs" />
-    <Compile Include="ModelMapper.cs" />
+    <Compile Include="ModelBuilder.cs" />
     <Compile Include="MappingAttributes\RenderAsUrlAttribute.cs" />
+    <Compile Include="ModelMapper.cs" />
     <Compile Include="ModelMapperConfiguration.cs" />
     <Compile Include="PlanCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,7 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Constellation.License.txt" />
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Constellation.Foundation.ModelMapping.nuspec">
       <SubType>Designer</SubType>
     </None>

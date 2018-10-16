@@ -10,16 +10,24 @@
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
+WARNING RELEASE 9.0.27 CONTAINS A BREAKING CHANGE
+
 Constellation is a collection of utilities for .NET CMS implementers.
-		
+
 The Foundation.ModelMapping library is inspired by AutoMapper and is designed to provide a quick, non-ORM method of
-mapping Sitecore Items to ViewModels. String properties on your ViewModel will be mapped to FieldRendered values from fields with the 
+mapping Sitecore Items to ViewModels. String properties on your ViewModel will be mapped to FieldRendered values from fields with the
 same names. Integer and DateTime property types can also be handled automatically, although you will not get page editor support
 for these types. There are a number of Attributes that you can assign to your ViewModel's properties to change the behavior of the Mapper.
 
-Usage: TModel viewModel = ModelMapper.MapItemToNew&lt;TModel&gt;(sourceItem);
+Usage:
+var modelMapper = (IModelMapper)ServiceLocator.ServiceProvider.GetService(typeof(IModelMapper)); // Dependency Injection of an IModelMapper is supported
+
+TModel viewModel = modelMapper.MapItemToNew&lt;TModel&gt;(sourceItem);
 Or: TModel viewmodel = item.MapToNew&lt;TModel&gt;();
-Or: ModelMapper.MapTo(item, model);
+Or: modelMapper.MapTo(item, model);
+		
+When using Item or ItemList extensions for mapping, the context IModelMapper is requested from the ServiceLocator, so any moc objects you use for testing
+are supported with these extension methods.
 
 Constraints:
 - Your ViewModel must have a public, parameterless constructor.
@@ -59,7 +67,7 @@ Extensible! See the Constellation.Foundation.ModelMapping.config file to change 
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Mapping plans are now specific to Model type and Item template ID to allow for mapping different Item types to the same Model.</releaseNotes>
+	<releaseNotes>Breaking change: ModelMapper must be an instance of IModelMapper. We recommend injecting the instance via your Constructors. As a quick fix for existing code, you can replace "ModelMapper" directly with "MappingContext.Current" which will perform the service lookup behind the scenes.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>

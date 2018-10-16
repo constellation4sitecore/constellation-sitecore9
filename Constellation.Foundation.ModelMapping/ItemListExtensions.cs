@@ -9,25 +9,25 @@ namespace Constellation.Foundation.ModelMapping
 		public static ICollection<T> ToCollectionOf<T>(this ICollection<Item> list)
 		where T : class, new()
 		{
-			return ModelMapper.MapToCollectionOf<T>(list);
+			return MappingContext.Current.MapToCollectionOf<T>(list);
 		}
 
 		public static ICollection<T> ToCollectionOf<T>(this ChildList list)
 			where T : class, new()
 		{
-			return ModelMapper.MapToCollectionOf<T>(list.InnerChildren);
+			return MappingContext.Current.MapToCollectionOf<T>(list.InnerChildren);
 		}
 
 		public static IEnumerable<T> ToEnumerableOf<T>(this IEnumerable<Item> list)
 		where T : class, new()
 		{
-			return ModelMapper.MapToEnumerableOf<T>(list);
+			return MappingContext.Current.MapToEnumerableOf<T>(list);
 		}
 
 		public static IEnumerable<T> ToEnumerableOf<T>(this ChildList list)
 		where T : class, new()
 		{
-			return ModelMapper.MapToEnumerableOf<T>(list);
+			return MappingContext.Current.MapToEnumerableOf<T>(list);
 		}
 	}
 }
