@@ -1,17 +1,42 @@
-﻿using Constellation.Feature.PageTagging.Models;
-using Constellation.Foundation.ModelMapping;
-using Sitecore.Mvc.Presentation;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using System.Web.Mvc;
+using Constellation.Feature.PageTagging.Models;
+using Constellation.Foundation.ModelMapping;
+using Sitecore.Data.Items;
+using Sitecore.Mvc.Presentation;
 
 namespace Constellation.Feature.PageTagging.Controllers
 {
 	public class PageSearchEngineDirectivesController : Controller
 	{
+		#region
+		public PageSearchEngineDirectivesController(IModelMapper modelMapper)
+		{
+			ModelMapper = modelMapper;
+		}
+		#endregion
+
+		#region Properties
+		protected IModelMapper ModelMapper { get; }
+		#endregion
+
 		public ActionResult Index()
 		{
-			var model = RenderingContext.Current.ContextItem.MapToNew<PageSearchEngineDirectives>();
+			var model = BuildModel(RenderingContext.Current.PageContext.Item);
+			var directives = GetDirectives(model);
+			var content = GetContent(directives);
+
+			return Content($"<meta name=\"robots=\" content=\"{content}\" />");
+		}
+
+		private PageSearchEngineDirectives BuildModel(Item contextItem)
+		{
+			return ModelMapper.MapItemToNew<PageSearchEngineDirectives>(contextItem);
+		}
+
+		private static IEnumerable<string> GetDirectives(PageSearchEngineDirectives model)
+		{
 
 			var directives = new List<string>();
 
@@ -54,6 +79,11 @@ namespace Constellation.Feature.PageTagging.Controllers
 				directives.Add("noodp");
 			}
 
+			return directives;
+		}
+
+		private static string GetContent(IEnumerable<string> directives)
+		{
 			var builder = new StringBuilder();
 
 			foreach (var directive in directives)
@@ -66,7 +96,7 @@ namespace Constellation.Feature.PageTagging.Controllers
 				builder.Append(directive);
 			}
 
-			return Content($"<meta name=\"robots=\" content=\"{builder}\" />");
+			return builder.ToString();
 		}
 	}
 }

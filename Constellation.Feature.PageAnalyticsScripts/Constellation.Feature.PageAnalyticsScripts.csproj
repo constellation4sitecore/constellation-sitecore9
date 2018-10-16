@@ -35,8 +35,8 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.0.23.20463, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.0.23.20463\lib\net462\Constellation.Foundation.ModelMapping.dll</HintPath>
+    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.0.27.22655, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.0.27.22655\lib\net462\Constellation.Foundation.ModelMapping.dll</HintPath>
     </Reference>
     <Reference Include="Constellation.Foundation.PackageVerification, Version=9.0.5.23264, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.0.5.23264\lib\net462\Constellation.Foundation.PackageVerification.dll</HintPath>
@@ -90,8 +90,8 @@
     <Content Include="App_Data\packages\PutPackagesHere.txt" />
     <Content Include="Constellation.License.txt" />
     <None Include="app.config" />
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <Content Include="App_Config\Include\Constellation\Constellation.Feature.PageAnalyticsScripts.config" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
     <None Include="Constellation.Feature.PageAnalyticsScripts.nuspec" />
     <Content Include="App_Data\packages\Constellation-Feature-PageAnalyticsScripts-9.0.0.0.zip" />

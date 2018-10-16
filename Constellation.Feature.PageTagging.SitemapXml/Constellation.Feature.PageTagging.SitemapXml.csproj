@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Feature.PageTagging, Version=9.0.13.26132, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Feature.PageTagging.9.0.13.26132\lib\net462\Constellation.Feature.PageTagging.dll</HintPath>
+    <Reference Include="Constellation.Feature.PageTagging, Version=9.0.14.27204, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Feature.PageTagging.9.0.14.27204\lib\net462\Constellation.Feature.PageTagging.dll</HintPath>
     </Reference>
     <Reference Include="Constellation.Foundation.Caching, Version=9.0.3.24083, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Caching.9.0.3.24083\lib\net462\Constellation.Foundation.Caching.dll</HintPath>
@@ -39,8 +39,8 @@
     <Reference Include="Constellation.Foundation.Data, Version=9.0.5.28985, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Data.9.0.5.28985\lib\net462\Constellation.Foundation.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.0.23.20463, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.0.23.20463\lib\net462\Constellation.Foundation.ModelMapping.dll</HintPath>
+    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.0.27.22655, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.0.27.22655\lib\net462\Constellation.Foundation.ModelMapping.dll</HintPath>
     </Reference>
     <Reference Include="Constellation.Foundation.PackageVerification, Version=9.0.5.23264, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.0.5.23264\lib\net462\Constellation.Foundation.PackageVerification.dll</HintPath>
@@ -87,12 +87,12 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="App_Config\Include\Constellation\Constellation.Foundation.SitemapXml.PageTagging.Override.config" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <Content Include="App_Data\packages\PutPackagesHere.txt" />
     <Content Include="Constellation.License.txt" />
-    <None Include="App_Config\Include\Constellation\Constellation.Feature.PageTagging.config" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Feature.PageTagging.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.SitemapXml.config" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.SitemapXml.config" />
     <Content Include="App_Data\packages\Constellation-Feature-PageTagging-SitemapXml-Data.zip" />
     <None Include="App_Data\packages\Constellation-Feature-PageTagging-Data.zip" />
     <None Include="Constellation.Feature.PageTagging.SitemapXml.nuspec" />

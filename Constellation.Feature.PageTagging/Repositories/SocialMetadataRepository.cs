@@ -3,13 +3,30 @@ using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping;
 using Sitecore.Data.Items;
 
-namespace Constellation.Feature.PageTagging
+namespace Constellation.Feature.PageTagging.Repositories
 {
-	public static class SocialMetadataRepository
+	public class SocialMetadataRepository : ISocialMetadataRepository
 	{
-		public static PageSocialMetadata GetMetadata(Item contextItem)
+		#region Constructor
+
+		public SocialMetadataRepository(IModelMapper modelMappper, IMetadataRepository pageMetadataRepository)
 		{
-			var model = contextItem.MapToNew<PageSocialMetadata>();
+			ModelMapper = modelMappper;
+			PageMetadataRepository = pageMetadataRepository;
+		}
+
+		#endregion
+
+		#region Properties
+		protected IModelMapper ModelMapper { get; }
+
+
+		protected IMetadataRepository PageMetadataRepository { get; }
+		#endregion
+
+		public PageSocialMetadata GetMetadata(Item contextItem)
+		{
+			var model = ModelMapper.MapItemToNew<PageSocialMetadata>(contextItem);
 
 			FillSocialMetadata(contextItem, model);
 
@@ -18,7 +35,7 @@ namespace Constellation.Feature.PageTagging
 			return model;
 		}
 
-		private static void FillSocialMetadata(Item context, PageSocialMetadata model)
+		private void FillSocialMetadata(Item context, PageSocialMetadata model)
 		{
 			while (true)
 			{

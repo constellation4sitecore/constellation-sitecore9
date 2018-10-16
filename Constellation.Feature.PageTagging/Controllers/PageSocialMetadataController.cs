@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Web.Mvc;
+using Constellation.Feature.PageTagging.Repositories;
 using Sitecore.Links;
 using Sitecore.Mvc.Presentation;
 
@@ -10,9 +11,21 @@ namespace Constellation.Feature.PageTagging.Controllers
 		private const string MetaName = "<meta name=\"{0}\" content=\"{1}\" />";
 		private const string MetaProperty = "<meta property=\"{0}\" content=\"{1}\" />";
 
+		#region Constructor
+
+		public PageSocialMetadataController(ISocialMetadataRepository repository)
+		{
+			Repository = repository;
+		}
+		#endregion
+
+		#region Properties
+		protected ISocialMetadataRepository Repository { get; }
+		#endregion
+
 		public ActionResult Index()
 		{
-			var model = SocialMetadataRepository.GetMetadata(RenderingContext.Current.ContextItem);
+			var model = Repository.GetMetadata(RenderingContext.Current.ContextItem);
 
 			var builder = new StringBuilder();
 
@@ -31,10 +44,12 @@ namespace Constellation.Feature.PageTagging.Controllers
 				}
 			}
 
-			var options = new UrlOptions();
-			options.AlwaysIncludeServerUrl = true;
-			options.LowercaseUrls = true;
-			options.SiteResolving = true;
+			var options = new UrlOptions
+			{
+				AlwaysIncludeServerUrl = true,
+				LowercaseUrls = true,
+				SiteResolving = true
+			};
 
 			var url = LinkManager.GetItemUrl(RenderingContext.Current.PageContext.Item, options);
 
@@ -52,6 +67,5 @@ namespace Constellation.Feature.PageTagging.Controllers
 
 			return Content(builder.ToString());
 		}
-
 	}
 }

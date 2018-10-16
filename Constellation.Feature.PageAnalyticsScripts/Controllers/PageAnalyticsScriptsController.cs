@@ -7,6 +7,18 @@ namespace Constellation.Feature.PageAnalyticsScripts.Controllers
 {
 	public abstract class PageAnalyticsScriptsController : Controller
 	{
+		#region Constructor
+
+		protected PageAnalyticsScriptsController(IModelMapper modelMapper)
+		{
+			ModelMapper = modelMapper;
+		}
+		#endregion
+
+		#region Properties
+		protected IModelMapper ModelMapper { get; }
+		#endregion
+
 		public ActionResult Index()
 		{
 			if (!Sitecore.Context.PageMode.IsNormal)
@@ -16,7 +28,7 @@ namespace Constellation.Feature.PageAnalyticsScripts.Controllers
 
 			var item = RenderingContext.Current.Rendering.Item;
 
-			var model = item.MapToNew<PageAnalyticsScriptsModel>();
+			var model = ModelMapper.MapItemToNew<PageAnalyticsScriptsModel>(item);
 
 			return Content(GetScriptToRender(model));
 		}

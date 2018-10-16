@@ -3,20 +3,31 @@ using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping;
 using Sitecore.Data.Items;
 
-namespace Constellation.Feature.PageTagging
+namespace Constellation.Feature.PageTagging.Repositories
 {
-	public static class PageMetadataRepository
+	public class MetadataRepository : IMetadataRepository
 	{
-		public static PageMetadata GetMetadata(Item contextItem)
+		#region Constructor
+		public MetadataRepository(IModelMapper modelMapper)
 		{
-			var model = contextItem.MapToNew<PageMetadata>();
+			ModelMapper = modelMapper;
+		}
+		#endregion
+
+		#region Properties
+		protected IModelMapper ModelMapper { get; }
+		#endregion
+
+		public PageMetadata GetMetadata(Item contextItem)
+		{
+			var model = ModelMapper.MapItemToNew<PageMetadata>(contextItem);
 
 			FillAuthorAndPublisher(contextItem, model);
 
 			return model;
 		}
 
-		public static void FillAuthorAndPublisher(Item context, PageMetadata model)
+		public void FillAuthorAndPublisher(Item context, PageMetadata model)
 		{
 			while (true)
 			{

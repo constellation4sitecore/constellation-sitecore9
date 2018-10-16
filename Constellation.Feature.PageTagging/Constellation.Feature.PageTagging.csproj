@@ -34,8 +34,8 @@
       <HintPath>..\packages\Constellation.Foundation.Data.9.0.5.28985\lib\net462\Constellation.Foundation.Data.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.0.23.20463, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.0.23.20463\lib\net462\Constellation.Foundation.ModelMapping.dll</HintPath>
+    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.0.27.22655, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.0.27.22655\lib\net462\Constellation.Foundation.ModelMapping.dll</HintPath>
     </Reference>
     <Reference Include="Constellation.Foundation.PackageVerification, Version=9.0.5.23264, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.0.5.23264\lib\net462\Constellation.Foundation.PackageVerification.dll</HintPath>
@@ -95,18 +95,20 @@
     <Compile Include="Models\PageMetadata.cs" />
     <Compile Include="Models\PageSearchEngineDirectives.cs" />
     <Compile Include="Models\PageSocialMetadata.cs" />
-    <Compile Include="PageMetadataRepository.cs" />
+    <Compile Include="Repositories\IMetadataRepository.cs" />
+    <Compile Include="Repositories\ISocialMetadataRepository.cs" />
+    <Compile Include="Repositories\MetadataRepository.cs" />
     <Compile Include="PageTaggingTemplateIDs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SocialMetadataRepository.cs" />
+    <Compile Include="Repositories\SocialMetadataRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <Content Include="App_Config\Include\Constellation\Constellation.Feature.PageTagging.config" />
-    <Content Include="App_Data\packages\Constellation-Feature-PageTagging-Data.zip" />
     <Content Include="App_Data\packages\PutPackagesHere.txt" />
     <Content Include="Constellation.License.txt" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
+    <Content Include="App_Data\packages\Constellation-Feature-PageTagging-Data.zip" />
     <None Include="Constellation.Feature.PageTagging.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>

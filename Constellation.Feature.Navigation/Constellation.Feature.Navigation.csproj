@@ -34,8 +34,8 @@
       <HintPath>..\packages\Constellation.Foundation.Data.9.0.5.28985\lib\net462\Constellation.Foundation.Data.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.0.23.20463, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.0.23.20463\lib\net462\Constellation.Foundation.ModelMapping.dll</HintPath>
+    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.0.27.22655, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.0.27.22655\lib\net462\Constellation.Foundation.ModelMapping.dll</HintPath>
     </Reference>
     <Reference Include="Constellation.Foundation.PackageVerification, Version=9.0.5.23264, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.0.5.23264\lib\net462\Constellation.Foundation.PackageVerification.dll</HintPath>
@@ -49,13 +49,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\INavigationRepository.cs" />
     <Compile Include="Models\ImageNavigationLink.cs" />
     <Compile Include="Models\LinkGroup.cs" />
     <Compile Include="Models\NavigationLink.cs" />
     <Compile Include="Models\NavigationMenu.cs" />
     <Compile Include="Models\NavigationNode.cs" />
     <Compile Include="Models\TargetItem.cs" />
-    <Compile Include="NavigationRepository.cs" />
+    <Compile Include="Repositories\NavigationRepository.cs" />
     <Compile Include="NavigationTemplateIDs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,8 +64,8 @@
     <Content Include="App_Data\packages\PutPackagesHere.txt" />
     <Content Include="Constellation.License.txt" />
     <None Include="app.config" />
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <Content Include="App_Config\Include\Constellation\Constellation.Feature.Navigation.config" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
     <None Include="Constellation.Feature.Navigation.nuspec">
       <SubType>Designer</SubType>

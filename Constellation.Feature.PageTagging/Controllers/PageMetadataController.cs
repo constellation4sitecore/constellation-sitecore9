@@ -1,14 +1,26 @@
 ﻿using System.Text;
 using System.Web.Mvc;
+using Constellation.Feature.PageTagging.Repositories;
 using Sitecore.Mvc.Presentation;
 
 namespace Constellation.Feature.PageTagging.Controllers
 {
 	public class PageMetadataController : Controller
 	{
+		#region
+		public PageMetadataController(IMetadataRepository repository)
+		{
+			Repository = repository;
+		}
+		#endregion
+
+		#region Properties
+		protected IMetadataRepository Repository { get; }
+		#endregion
+
 		public ActionResult Index()
 		{
-			var model = PageMetadataRepository.GetMetadata(RenderingContext.Current.ContextItem);
+			var model = Repository.GetMetadata(RenderingContext.Current.ContextItem);
 
 			var builder = new StringBuilder();
 
