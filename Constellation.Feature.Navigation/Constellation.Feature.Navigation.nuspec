@@ -11,25 +11,11 @@
 	<summary>Sitecore Helix library for building out static navigation that doesn't necessarily reflect the shape or names of Items in the content tree.</summary>
 	<description>
 VERSION 9.0.20 HAS BREAKING CHANGES FROM 9.0.19
-		
-		
+			
 Constellation is a collection of utilities for .NET CMS implementers.
-The Feature.Navigation library solves the frequently occurring problem that the primary navigation or footer navigation of a website does not necessarily
-share organization with the contents of the content tree. The reason may be differing SEO goals on URL construction, the need to name something differently
-in navigation as opposed to the Page's heading values, or the need to construct a cross-cutting menu that draws Items from a wide variety of locations. This
-library also gracefully handles the need to have external or document links within a static navigation system (such as a "fat footer").
+The Feature.Navigation library addresses the three most common forms of Navigation on Sitecore sites:
 		
-Declared (static) Navigation Components:
-- Navigation Menu - This is a marker item that specifies the root of a static navigation definition for a given website. There can be many of these on any particular
-website. It is recommended that these Items become the Datasource of your Navigation renderings.
-
-- Navigation Link - This is the conceptual member of a navigation and represent a hyperlink, visible to the user, that actually navigates somewhere else (as opposed to
-click-to-open style links or buttons) Includes the link as a General Link with all its available options, as well as a flag to indicate the link text should come
-from the Navigation Link Item's Display Name, which is the recommended approach to ensure the Navigation definition in Sitecore looks like what you see on page. Can be nested.
-- Image Navigation Link - Because there's always some navigation that is represented via icons rather than text. Inherits from above.
-
-- Link Group - Allows for the grouping of Navigation links into named groups. Very useful for pull-down navigation menu options, or Fat Footers with named columns.
-Can be nested.
+Declared (static) Navigation: (explicitly defined, may differ from the shape of the content tree)
 
 - DeclaredNavigationRepository.GetNavigation - Accepts a Navigation Menu item and assembles a full tree-like ViewModel for immediate processing in your View. If you need context highlighting in your navigation, be sure to pass in the Context Item as well.
 
@@ -41,23 +27,19 @@ supply the best fit. The strategy is based on overriding the concept of "name". 
 - If the Link.TargetItem exists its DisplayName is used.
 - Assuming all other things are not true, use the NavigationLink's DisplayName. Note that in this condition if you intended to point to a Sitecore Item, you have a bad link.
 
-Branch (Context) Navigation Components:
-- Page - This is a marker Template that should be assigned to any Template in your site that should be considered a page.
-- Landing Page - This is a marker Template that signals that start of local section navigation.  Descends from Page
-- List Page - This is a marker template that signals that child items are part of a large collection of like items, such as a Bucket. Descends from Page
+Branch (Context) Navigation: (implicitly defined. It follows the shape of the Content Tree)
 
 - BranchNavigationRepository.GetNavigation - Accepts the request Context Item (should be a Page) and generates a tree of BranchNodes representing
 the nearest LandingPage, its children, as well as the descendants of any children that are Ancestors of the Context Item. (will also create Children for the Context Item node 
 in the tree). Use this to produce the expanded navigation seen on many sites with deep content.
 
-Breadcrumbs:
-- Requires the use of the Page marker template described above so the crawler knows which Items are not pages and should be ignored.
+Breadcrumbs: (implicitly defined. It walks up the Content Tree to get the path)
 
 - BreadcrumbNavigationRepository.GetNavigation - Accepts the request Context Item and Context SiteInfo. Generates an array of Breadcrumb models you can enumerate on your View.
 The breadcrumbs will start on your Site's StartItem and end with the supplied Context Item, which will be marked IsContextItem so you can change your rendering behavior.
-Uses the Item.Axes.GetAncestors() method to generate the list of breadcrumbs. Skips over any Item not implementing Templates/Feature/Constellation/Navigation/Information Architecture/Page
+Uses the Item.Axes.GetAncestors() method to generate the list of breadcrumbs.
 
-The included package must be installed to get the Templates required to use this library. This should happen automatically after you build and deploy your project.
+The included package must be installed to use this library. This should happen automatically after you build and deploy your project.
 
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
