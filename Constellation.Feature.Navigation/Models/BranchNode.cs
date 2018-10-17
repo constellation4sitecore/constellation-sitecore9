@@ -5,18 +5,18 @@ namespace Constellation.Feature.Navigation.Models
 	/// <summary>
 	/// Represents a link to a page in a typical accordion or tree-based navigation scheme.
 	/// </summary>
-	public class NavigationNode : TargetItem
+	public class BranchNode : TargetItem
 	{
-		public NavigationNode()
+		public BranchNode()
 		{
-			Children = new List<NavigationNode>();
+			Children = new List<BranchNode>();
 		}
 
 		/// <summary>
 		/// The children of this page, if this page is an ancestor-or-current
 		/// of the Context Item.
 		/// </summary>
-		public ICollection<NavigationNode> Children { get; set; }
+		public ICollection<BranchNode> Children { get; set; }
 
 		/// <summary>
 		/// Indicates that this instance is an ancestor-or-current of the Context Item.

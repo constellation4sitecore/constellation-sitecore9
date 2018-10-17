@@ -1,4 +1,5 @@
 ﻿using Constellation.Foundation.ModelMapping.MappingAttributes;
+using Sitecore.Data;
 
 namespace Constellation.Feature.Navigation.Models
 {
@@ -7,6 +8,11 @@ namespace Constellation.Feature.Navigation.Models
 	/// </summary>
 	public class TargetItem
 	{
+		/// <summary>
+		/// The Item's ID
+		/// </summary>
+		public ID ID { get; set; }
+
 		/// <summary>
 		/// The Item's Display Name
 		/// </summary>

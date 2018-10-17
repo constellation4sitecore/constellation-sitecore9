@@ -6,7 +6,7 @@ namespace Constellation.Feature.Navigation.Models
 	/// Represents a named group of Navigation Links. Can be further
 	/// divided into sub-groups.
 	/// </summary>
-	public class LinkGroup
+	public class LinkGroup : DeclaredNode
 	{
 		public LinkGroup()
 		{
@@ -33,5 +33,10 @@ namespace Constellation.Feature.Navigation.Models
 		/// Any Link Group Items stored as children of the current Link Group Item.
 		/// </summary>
 		public ICollection<LinkGroup> ChildGroups { get; set; }
+
+		/// <summary>
+		/// Indicates that one of the Child Links or Child Groups of this group is an ancestor of the Request's Context Item
+		/// </summary>
+		public bool IsRelevantToContext { get; set; }
 	}
 }

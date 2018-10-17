@@ -1,12 +1,12 @@
-﻿using Constellation.Foundation.ModelMapping.MappingAttributes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Constellation.Foundation.ModelMapping.MappingAttributes;
 
 namespace Constellation.Feature.Navigation.Models
 {
 	/// <summary>
 	/// Represents a navigation menu option in HTML that has a destination.
 	/// </summary>
-	public class NavigationLink
+	public class NavigationLink : DeclaredNode
 	{
 		public NavigationLink()
 		{
