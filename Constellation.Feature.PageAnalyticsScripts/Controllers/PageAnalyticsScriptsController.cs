@@ -8,7 +8,6 @@ namespace Constellation.Feature.PageAnalyticsScripts.Controllers
 	public abstract class PageAnalyticsScriptsController : Controller
 	{
 		#region Constructor
-
 		protected PageAnalyticsScriptsController(IModelMapper modelMapper)
 		{
 			ModelMapper = modelMapper;

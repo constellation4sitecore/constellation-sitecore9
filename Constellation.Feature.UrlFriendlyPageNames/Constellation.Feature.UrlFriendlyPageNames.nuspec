@@ -19,7 +19,7 @@ To use, an Item Saved rule must be created. The rule must have a condition that 
 needs an SEO-friendly URL. The rule action should be the one included in this kit. Rule options include:
 - Replace Diacritics
 - Clear Display Name (recommended so that marketers see the actual Item name and therefore URL slug for pages)
-- Specify illegal characters to remove
+- Specify illegal characters to remove (Regex "\s" is a good choice.)
 - Replace spaces or remove spaces from names
 - Force lowercase
 		
@@ -30,8 +30,8 @@ rule conditions that are suitable for this specific task.
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Updated namespace of rule action to be more intuitive from a Sitecore perspective.</releaseNotes>
+	<releaseNotes>Small reference update, and changes to the basic instructions (above)</releaseNotes>
 	<copyright>Copyright 2017</copyright>
-	<tags>Sitecore, Sitecore Helix, Sitecore Habitat, Sitecore SXA</tags>
+	<tags>Sitecore, Sitecore Helix</tags>
   </metadata>
 </package>

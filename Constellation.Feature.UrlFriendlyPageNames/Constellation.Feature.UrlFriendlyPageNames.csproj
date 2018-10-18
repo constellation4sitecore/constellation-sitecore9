@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="Constellation.Foundation.Contexts, Version=9.0.3.19448, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Contexts.9.0.3.19448\lib\net462\Constellation.Foundation.Contexts.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Constellation.Foundation.PackageVerification, Version=9.0.5.23264, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.0.5.23264\lib\net462\Constellation.Foundation.PackageVerification.dll</HintPath>

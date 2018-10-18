@@ -49,28 +49,28 @@ namespace Constellation.Foundation.ModelMapping
 		{
 			var key = GetKey(typeFullName, templateID);
 
-			if (!_current.Cache.ContainsKey(key))
+			if (!Current.Cache.ContainsKey(key))
 			{
 				Log.Debug($"MappingPlan: No plan cached for class {typeFullName} and template {templateID}.", typeof(PlanCache));
 				return null;
 			}
 
-			return _current.Cache[key];
+			return Current.Cache[key];
 		}
 
 		public static void AddPlan(MappingPlan plan)
 		{
 			var key = GetKey(plan);
 
-			if (_current.Cache.ContainsKey(key))
+			if (Current.Cache.ContainsKey(key))
 			{
 				Log.Debug($"MappingPlan: Plan for class {plan.TypeFullName} and template {plan.TemplateID} already cached. Replacing.", typeof(PlanCache));
-				_current.Cache[key] = plan;
+				Current.Cache[key] = plan;
 				return;
 			}
 
 			Log.Debug($"ModelMapping.PlanCache: Plan for class {plan.TypeFullName} added.", typeof(PlanCache));
-			_current.Cache.Add(key, plan);
+			Current.Cache.Add(key, plan);
 
 		}
 

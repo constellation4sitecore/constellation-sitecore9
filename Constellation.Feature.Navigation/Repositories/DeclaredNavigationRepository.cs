@@ -1,6 +1,7 @@
 ﻿using Constellation.Feature.Navigation.Models;
 using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping;
+using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 
@@ -48,15 +49,14 @@ namespace Constellation.Feature.Navigation.Repositories
 			{
 				if (child.IsDerivedFrom(NavigationTemplateIDs.LinkGroupID))
 				{
-					var group = ModelMapper.MapItemToNew<LinkGroup>(child);
+					var group = BuildLinkGroup(parentGroup, child);
 					parentGroup.ChildGroups.Add(group);
 					ProcessGroupChildren(child, group, contextItem);
 					continue;
 				}
 
-				var link = BuildNavigationLink(child, contextItem);
+				var link = BuildNavigationLink(parentGroup, child, contextItem);
 				if (link == null) continue;
-
 				parentGroup.ChildLinks.Add(link);
 				ProcessLinkChildren(child, link, contextItem);
 			}
@@ -68,14 +68,22 @@ namespace Constellation.Feature.Navigation.Repositories
 
 			foreach (Item child in children)
 			{
-				var link = BuildNavigationLink(child, contextItem);
+				var link = BuildNavigationLink(parentLink, child, contextItem);
 				if (link == null) continue;
 				parentLink.ChildLinks.Add(link);
 				ProcessLinkChildren(child, link, contextItem);
 			}
 		}
 
-		private NavigationLink BuildNavigationLink(Item child, Item contextItem)
+		private LinkGroup BuildLinkGroup(DeclaredNode parent, Item child)
+		{
+			var group = ModelMapper.MapItemToNew<LinkGroup>(child);
+			group.Parent = parent;
+
+			return group;
+		}
+
+		private NavigationLink BuildNavigationLink(DeclaredNode parent, Item child, Item contextItem)
 		{
 			if (!child.IsDerivedFrom(NavigationTemplateIDs.NavigationLinkID))
 			{
@@ -89,20 +97,41 @@ namespace Constellation.Feature.Navigation.Repositories
 			{
 				link = ModelMapper.MapItemToNew<ImageNavigationLink>(child);
 			}
+			else
+			{
+				link = ModelMapper.MapItemToNew<NavigationLink>(child);
+			}
 
-			link = ModelMapper.MapItemToNew<NavigationLink>(child);
+			link.Parent = parent;
 
 			if (contextItem == null)
 			{
 				return link;
 			}
 
-			if (contextItem.Axes.IsAncestorOf(child))
+			if (LinkTargetIsAncestorOfContext(child, contextItem))
 			{
 				link.IsActive = true;
 			}
 
 			return link;
+		}
+
+		private static bool LinkTargetIsAncestorOfContext(Item linkItem, Item contextItem)
+		{
+			LinkField field = linkItem.Fields["Link"];
+
+			if (!field.IsInternal)
+			{
+				return false;
+			}
+
+			if (field.TargetItem == null)
+			{
+				return false;
+			}
+
+			return field.TargetItem.Axes.IsAncestorOf(contextItem);
 		}
 
 		private static void LogIncompatibleItemWarning(Item item)

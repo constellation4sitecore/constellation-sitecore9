@@ -67,7 +67,7 @@ Extensible! See the Constellation.Foundation.ModelMapping.config file to change 
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Breaking change: ModelMapper must be an instance of IModelMapper. We recommend injecting the instance via your Constructors. As a quick fix for existing code, you can replace "ModelMapper" directly with "MappingContext.Current" which will perform the service lookup behind the scenes.</releaseNotes>
+	<releaseNotes>Fixed a typo in the config file related to service registration.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>

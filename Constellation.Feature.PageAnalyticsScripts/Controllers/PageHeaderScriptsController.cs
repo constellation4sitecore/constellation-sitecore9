@@ -9,7 +9,6 @@ namespace Constellation.Feature.PageAnalyticsScripts.Controllers
 		{
 		}
 
-
 		protected override string GetScriptToRender(PageAnalyticsScriptsModel model)
 		{
 			return model.PageHeaderScript;
