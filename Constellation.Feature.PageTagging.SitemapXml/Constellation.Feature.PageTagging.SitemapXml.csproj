@@ -81,7 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Crawler.cs" />
+    <Compile Include="TreeCrawler.cs" />
     <Compile Include="Models\ChangeFrequency.cs" />
     <Compile Include="Models\PageSitemapBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

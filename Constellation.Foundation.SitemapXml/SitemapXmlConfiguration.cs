@@ -106,9 +106,9 @@ namespace Constellation.Foundation.SitemapXml
 
 			output.IncludePriority = rootNode?.Attributes?["includePriority"]?.Value != null && bool.Parse(rootNode.Attributes["includePriority"].Value);
 
-			var defaultNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/sitemapXml/crawlers/defaultCrawlers");
+			var defaultCrawlersNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/sitemapXml/crawlers/defaultCrawlers");
 
-			if (defaultNode == null || !defaultNode.HasChildNodes)
+			if (defaultCrawlersNode == null || !defaultCrawlersNode.HasChildNodes)
 			{
 				var ex = new Exception("No default crawlers configured.");
 
@@ -116,7 +116,7 @@ namespace Constellation.Foundation.SitemapXml
 				throw ex;
 			}
 
-			foreach (XmlNode crawlerNode in defaultNode.ChildNodes)
+			foreach (XmlNode crawlerNode in defaultCrawlersNode.ChildNodes)
 			{
 				var value = crawlerNode?.Attributes?["type"]?.Value;
 
