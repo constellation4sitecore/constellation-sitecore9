@@ -124,11 +124,33 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 		private string GetUrlFromField()
 		{
-			var targetImage = ((ImageField)Field).MediaItem;
+			ImageField field = Field;
+			var targetImage = field.MediaItem;
 
 			if (targetImage != null)
 			{
-				return MediaManager.GetMediaUrl(targetImage);
+
+				var options = new MediaUrlOptions()
+				{
+					Language = targetImage.Language
+				};
+
+				int width;
+				if (int.TryParse(field.Width, out width) && width > 0)
+				{
+					options.Width = width;
+				}
+
+				int height;
+				if (int.TryParse(field.Height, out height) && height > 0)
+				{
+					options.Height = height;
+				}
+
+				var innerUrl = MediaManager.GetMediaUrl(targetImage, options);
+				var url = HashingUtils.ProtectAssetUrl(innerUrl);
+
+				return url;
 			}
 
 			return string.Empty;

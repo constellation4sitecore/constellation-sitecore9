@@ -17,7 +17,6 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			if (linkField.IsInternal)
 			{
 				return linkField.TargetItem?.GetUrl();
-
 			}
 
 			return linkField.Url;

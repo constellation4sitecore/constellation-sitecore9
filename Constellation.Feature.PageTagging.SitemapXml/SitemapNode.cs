@@ -29,6 +29,11 @@ namespace Constellation.Feature.PageTagging.SitemapXml
 		{
 			var model = item.MapToNew<PageSitemapBehavior>();
 
+			if (model.ChangeFrequency == null)
+			{
+				return ChangeFrequency.Monthly;
+			}
+
 			switch (model.ChangeFrequency.DisplayName)
 			{
 				case "always":

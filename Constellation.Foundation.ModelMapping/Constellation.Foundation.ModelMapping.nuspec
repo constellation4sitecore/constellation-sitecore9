@@ -60,14 +60,12 @@ Support for XML Field Attributes
 Support for LinkField.TargetItem - use Model.FieldNameTargetItem and supply a class with public properties and a parameterless constructor.
 Support for MultilistField.GetItems - use Model.FieldName and supply a generic ICollection&lt;T&gt; where "T" is new() and has properties you can map.
 
-Now with the ability to map ICollection&lt;Item&gt; to ICollection&lt;TModel&gt;
-
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Fixed a typo in the config file related to service registration.</releaseNotes>
+	<releaseNotes>Now fully supports Sitecore's Media Protection on image URLs. Also now with Visual Studio ToolTips!</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>
