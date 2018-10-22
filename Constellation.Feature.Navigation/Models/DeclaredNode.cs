@@ -1,5 +1,8 @@
 ﻿namespace Constellation.Feature.Navigation.Models
 {
+	/// <summary>
+	/// A member of a "static" navigation menu.
+	/// </summary>
 	public class DeclaredNode
 	{
 		/// <summary>

@@ -8,6 +8,9 @@ namespace Constellation.Feature.Navigation.Models
 	/// </summary>
 	public class LinkGroup : DeclaredNode
 	{
+		/// <summary>
+		/// Creates a new instance of LinkGroup
+		/// </summary>
 		public LinkGroup()
 		{
 			ChildLinks = new List<NavigationLink>();

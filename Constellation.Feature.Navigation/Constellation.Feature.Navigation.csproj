@@ -75,12 +75,12 @@
     <Content Include="Constellation.License.txt" />
     <None Include="app.config" />
     <Content Include="App_Config\Include\Constellation\Constellation.Feature.Navigation.config" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
+    <Content Include="App_Data\packages\Constellation-Feature-Navigation-Items.zip" />
     <None Include="Constellation.Feature.Navigation.nuspec">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="App_Data\packages\Constellation-Feature-Navigation-9.0.6.0.zip" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

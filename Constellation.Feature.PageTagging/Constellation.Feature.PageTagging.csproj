@@ -111,9 +111,9 @@
     <Content Include="App_Data\packages\PutPackagesHere.txt" />
     <Content Include="Constellation.License.txt" />
     <None Include="app.config" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
-    <Content Include="App_Data\packages\Constellation-Feature-PageTagging-Data.zip" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
+    <Content Include="App_Data\packages\Constellation-Feature-PageTagging-Items.zip" />
     <None Include="Constellation.Feature.PageTagging.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>

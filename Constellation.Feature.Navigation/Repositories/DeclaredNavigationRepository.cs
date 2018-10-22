@@ -15,6 +15,10 @@ namespace Constellation.Feature.Navigation.Repositories
 	public class DeclaredNavigationRepository : IDeclaredNavigationRepository
 	{
 		#region Constructor
+		/// <summary>
+		/// Creates a new instance of DeclaredNaviationRepository
+		/// </summary>
+		/// <param name="modelMapper">The instance of IModelMapper to use for mapping Item fields to model properties, usually provided by dependency injection.</param>
 		public DeclaredNavigationRepository(IModelMapper modelMapper)
 		{
 			ModelMapper = modelMapper;
@@ -22,6 +26,9 @@ namespace Constellation.Feature.Navigation.Repositories
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// The instance of IModelMapper to use for mapping Item fields to model properties.
+		/// </summary>
 		protected IModelMapper ModelMapper { get; }
 		#endregion
 

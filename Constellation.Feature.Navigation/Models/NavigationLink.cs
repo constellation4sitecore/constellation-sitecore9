@@ -8,6 +8,9 @@ namespace Constellation.Feature.Navigation.Models
 	/// </summary>
 	public class NavigationLink : DeclaredNode
 	{
+		/// <summary>
+		/// Creates a new instance of NavigationLink
+		/// </summary>
 		public NavigationLink()
 		{
 			ChildLinks = new List<NavigationLink>();
@@ -61,6 +64,11 @@ namespace Constellation.Feature.Navigation.Models
 		/// </summary>
 		public ICollection<NavigationLink> ChildLinks { get; set; }
 
+		/// <summary>
+		/// Inspects all available title-style properties to find the "best fit" text for hyperlinks. If "UseThisDisplayName" is true, DisplayName is returned.
+		/// next, LinkText is checked and used if not empty. Next is the target Item's Navigation Title, and finally the TargetItem's Display Name.
+		/// </summary>
+		/// <returns>The inner text for an anchor tag.</returns>
 		public string GetBestLinkText()
 		{
 			if (UseThisDisplayName)

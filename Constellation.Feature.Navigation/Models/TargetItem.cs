@@ -29,6 +29,10 @@ namespace Constellation.Feature.Navigation.Models
 		[RawValueOnly]
 		public string NavigationTitle { get; set; }
 
+		/// <summary>
+		/// If NavigationTitle is not empty, returns NavigationTitle, else returns DisplayName
+		/// </summary>
+		/// <returns>A string to use as the text in hyperlinks.</returns>
 		public string GetBestLinkText()
 		{
 			if (!string.IsNullOrEmpty(NavigationTitle))

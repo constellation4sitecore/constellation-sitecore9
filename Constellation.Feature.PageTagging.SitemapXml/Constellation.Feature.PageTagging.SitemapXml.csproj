@@ -31,8 +31,8 @@
     <DocumentationFile>bin\Release\Constellation.Feature.PageTagging.SitemapXml.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Feature.PageTagging, Version=9.0.15.20990, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Feature.PageTagging.9.0.15.20990\lib\net462\Constellation.Feature.PageTagging.dll</HintPath>
+    <Reference Include="Constellation.Feature.PageTagging, Version=9.0.16.21320, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Feature.PageTagging.9.0.16.21320\lib\net462\Constellation.Feature.PageTagging.dll</HintPath>
     </Reference>
     <Reference Include="Constellation.Foundation.Caching, Version=9.0.4.23528, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Caching.9.0.4.23528\lib\net462\Constellation.Foundation.Caching.dll</HintPath>
@@ -94,12 +94,12 @@
     <Content Include="App_Data\packages\PutPackagesHere.txt" />
     <Content Include="Constellation.License.txt" />
     <None Include="app.config" />
+    <Content Include="App_Data\packages\Constellation-Feature-PageTagging-SitemapXml-Items.zip" />
     <Content Include="App_Config\Include\Constellation\Constellation.Feature.PageTagging.config" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
-    <Content Include="App_Data\packages\Constellation-Feature-PageTagging-SitemapXml-Data.zip" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.SitemapXml.config" />
-    <None Include="App_Data\packages\Constellation-Feature-PageTagging-Data.zip" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.SitemapXml.config" />
+    <Content Include="App_Data\packages\Constellation-Feature-PageTagging-Items.zip" />
     <None Include="Constellation.Feature.PageTagging.SitemapXml.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>

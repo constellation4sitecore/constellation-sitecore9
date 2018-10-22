@@ -28,6 +28,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Constellation.Feature.PageAnalyticsScripts.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Constellation.Foundation.Data, Version=9.0.6.23290, Culture=neutral, processorArchitecture=MSIL">
@@ -93,10 +94,10 @@
     <Content Include="Constellation.License.txt" />
     <None Include="app.config" />
     <Content Include="App_Config\Include\Constellation\Constellation.Feature.PageAnalyticsScripts.config" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
+    <Content Include="App_Data\packages\Constellation-Feature-PageAnalyticsScripts-Items.zip" />
     <None Include="Constellation.Feature.PageAnalyticsScripts.nuspec" />
-    <Content Include="App_Data\packages\Constellation-Feature-PageAnalyticsScripts-9.0.0.0.zip" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

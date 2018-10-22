@@ -7,6 +7,9 @@ namespace Constellation.Feature.Navigation.Models
 	/// </summary>
 	public class BranchNode : TargetItem
 	{
+		/// <summary>
+		/// Creats a new instance of BranchNode
+		/// </summary>
 		public BranchNode()
 		{
 			Children = new List<BranchNode>();

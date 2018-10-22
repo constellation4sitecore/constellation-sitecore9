@@ -7,9 +7,18 @@ using Sitecore.Diagnostics;
 
 namespace Constellation.Feature.Navigation.Repositories
 {
+	/// <summary>
+	/// Generates a tree of Navigation Nodes that can be used to make the typical margin-hosted
+	/// expanding navigation found on C-shaped websites the world over. Runs from the nearest
+	/// Landing Page ancestor to the children of the Context Item
+	/// </summary>
 	public class BranchNavigationRepository : IBranchNavigationRepository
 	{
 		#region Constructor
+		/// <summary>
+		/// Creates a new instance of BranchNavigationRepository
+		/// </summary>
+		/// <param name="modelMapper">The instance of IModelMapper to use for mapping Item fields to model properties, usually provided by dependency injection.</param>
 		public BranchNavigationRepository(IModelMapper modelMapper)
 		{
 			ModelMapper = modelMapper;
@@ -17,6 +26,9 @@ namespace Constellation.Feature.Navigation.Repositories
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// The instance of IModelMapper to use for mapping Item fields to model properties.
+		/// </summary>
 		protected IModelMapper ModelMapper { get; }
 		#endregion
 
