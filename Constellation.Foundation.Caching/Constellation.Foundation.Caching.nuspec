@@ -25,8 +25,8 @@
 		Portions based on work by Christopher Giddings: https://cjgiddings.wordpress.com/2012/02/03/sitecore-caching-utility/ updated heavily
 		for modularity and to support Sitecore 9.0
 	</description>
-	<releaseNotes>Updated the intellisense on the Cache.Add() method.</releaseNotes>
+	<releaseNotes>Now with Intellisense!</releaseNotes>
 	<copyright>Copyright 2016</copyright>
-	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
+	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
 </package>

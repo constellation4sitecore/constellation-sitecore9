@@ -5,10 +5,17 @@ using Sitecore.Data.Items;
 
 namespace Constellation.Feature.PageTagging.Repositories
 {
+	/// <summary>
+	/// A repository implementing ISocialMetadataRepository
+	/// </summary>
 	public class SocialMetadataRepository : ISocialMetadataRepository
 	{
 		#region Constructor
-
+		/// <summary>
+		/// Creates a new instance of SocialMetadataRepository
+		/// </summary>
+		/// <param name="modelMappper">An instance of IModelMapper, typically provided via Dependency Injection.</param>
+		/// <param name="pageMetadataRepository">An instance of IMetadataRepository, typically provided via Dependency Injection.</param>
 		public SocialMetadataRepository(IModelMapper modelMappper, IMetadataRepository pageMetadataRepository)
 		{
 			ModelMapper = modelMappper;
@@ -18,12 +25,20 @@ namespace Constellation.Feature.PageTagging.Repositories
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// The instance of IModelMapper to use for transferring values from Items to PageSocialMetadata models.
+		/// </summary>
 		protected IModelMapper ModelMapper { get; }
 
 
+		/// <summary>
+		/// The instance of IMetadataRepository used for retrieving valid Author and Publisher values.
+		/// </summary>
 		protected IMetadataRepository PageMetadataRepository { get; }
 		#endregion
 
+
+		/// <inheritdoc />
 		public PageSocialMetadata GetMetadata(Item contextItem)
 		{
 			var model = ModelMapper.MapItemToNew<PageSocialMetadata>(contextItem);

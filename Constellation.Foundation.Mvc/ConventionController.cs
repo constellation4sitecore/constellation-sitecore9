@@ -2,8 +2,8 @@
 
 namespace Constellation.Foundation.Mvc
 {
-	using Sitecore.Mvc.Presentation;
 	using System.Web.Mvc;
+	using Sitecore.Mvc.Presentation;
 
 	/// <summary>
 	/// A Controller that assumes the location of the matching view based upon the Rendering Item's path.
@@ -26,7 +26,7 @@ namespace Constellation.Foundation.Mvc
 		/// <returns></returns>
 		public virtual ActionResult Index()
 		{
-			var viewPath = GetViewPath();
+			var viewPath = GetViewPath(RenderingContext.Current.Rendering.RenderingItem);
 			var model = GetModel(RenderingContext.Current.Rendering.Item, RenderingContext.Current.ContextItem);
 			return Render(viewPath, model);
 		}
@@ -42,13 +42,24 @@ namespace Constellation.Foundation.Mvc
 			return View(viewPath, model);
 		}
 
-		protected virtual string GetViewPath()
+		/// <summary>
+		/// Passes the RenderingItem to the ViewResolver for path resolution.
+		/// </summary>
+		/// <param name="renderingItem">The RenderingContext RenderingItem</param>
+		/// <returns></returns>
+		protected virtual string GetViewPath(RenderingItem renderingItem)
 		{
-			var resolver = new ViewResolver(RenderingContext.Current.Rendering.RenderingItem);
+			var resolver = new ViewResolver(renderingItem);
 
 			return resolver.ResolveViewPath();
 		}
 
+		/// <summary>
+		/// Use this method to provide the model to pass to the view.
+		/// </summary>
+		/// <param name="datasource">The Rendering Datasource for the Rendering being processed.</param>
+		/// <param name="contextItem">The HttpRequest Context Item.</param>
+		/// <returns></returns>
 		protected abstract object GetModel(Item datasource, Item contextItem);
 	}
 }

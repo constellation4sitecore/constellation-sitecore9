@@ -19,6 +19,9 @@ namespace Constellation.Foundation.SitemapXml
 
 		#region Properties
 
+		/// <summary>
+		/// Access the current configuration here.
+		/// </summary>
 		public static SitemapXmlConfiguration Current
 		{
 			get
@@ -38,20 +41,44 @@ namespace Constellation.Foundation.SitemapXml
 			}
 		}
 
+		/// <summary>
+		/// Sites that should not have a sitemap.xml file.
+		/// </summary>
 		public ICollection<string> SitesToIgnore { get; private set; }
 
+		/// <summary>
+		/// The crawlers to use if a site does not have crawlers specified.
+		/// </summary>
 		public ICollection<Type> DefaultCrawlers { get; private set; }
 
+		/// <summary>
+		/// The crawlers defined for each site, keyed by site name.
+		/// </summary>
 		public IDictionary<string, ICollection<Type>> SiteCrawlers { get; set; }
 
+		/// <summary>
+		/// Whether generated sitemap.xml documents should be cached.
+		/// </summary>
 		public bool CacheEnabled { get; private set; }
 
+		/// <summary>
+		/// The length of time sitemap.xml documents should be cached. Can be overridden by each site.
+		/// </summary>
 		public int DefaultCacheTimeout { get; private set; }
 
+		/// <summary>
+		/// Whether the (obsolete) change frequency attribute should be written to nodes in the sitemap.xml document.
+		/// </summary>
 		public bool IncludeChangeFrequency { get; private set; }
 
+		/// <summary>
+		/// Whether the (obsolete) last modified attribute should be written to nodes in the sitemap.xml document.
+		/// </summary>
 		public bool IncludeLastMod { get; private set; }
 
+		/// <summary>
+		/// Whether the (obsolete) priority attribute should be written to nodes in the sitemap.xml document.
+		/// </summary>
 		public bool IncludePriority { get; private set; }
 		#endregion
 
@@ -67,6 +94,11 @@ namespace Constellation.Foundation.SitemapXml
 
 		#region Methods
 
+		/// <summary>
+		/// Returns a collection of crawler Types that should be executed for the provided site name.
+		/// </summary>
+		/// <param name="siteName">the name of the site.</param>
+		/// <returns>collection of crawler Types</returns>
 		public ICollection<Type> GetCrawlersForSite(string siteName)
 		{
 			if (SiteCrawlers.ContainsKey(siteName))

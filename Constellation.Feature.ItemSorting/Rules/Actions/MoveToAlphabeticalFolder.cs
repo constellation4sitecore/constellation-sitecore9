@@ -1,20 +1,20 @@
-﻿using Constellation.Foundation.Data;
+﻿using System.Globalization;
+using Constellation.Foundation.Data;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Rules;
 using Sitecore.Rules.Actions;
 using Sitecore.SecurityModel;
-using System.Globalization;
 
 namespace Constellation.Feature.ItemSorting.Rules.Actions
 {
 	/// <summary>
-	/// Considers the name of the currently active item and if it's not already,
-	/// moves it into an alphabetical folder (of the template type specified) based upon
+	/// Considers the name of the specified item and if it's not already,
+	/// moves it into an alphabetical folder based upon
 	/// the first letter of its Name property. This movement is relative to the nearest
 	/// root item of the alphabetical hierarchy.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="T">The Rule Context</typeparam>
 	public class MoveToAlphabeticalFolder<T> : RuleAction<T>
 		where T : RuleContext
 	{
@@ -26,6 +26,13 @@ namespace Constellation.Feature.ItemSorting.Rules.Actions
 		public string FolderTemplate { get; set; }
 		#endregion
 
+		/// <summary>
+		/// Sitecore calls this method when the Rule Action needs to be executed.
+		/// Determines the first letter of the provided Item's name. Finds or creates an Item
+		/// named after that letter one level above the provided Item. Moves the provided Item
+		/// into that folder.
+		/// </summary>
+		/// <param name="ruleContext">The Rule Context.</param>
 		public override void Apply(T ruleContext)
 		{
 			if (ruleContext.Item.TemplateID == new ID(this.FolderTemplate))

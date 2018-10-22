@@ -65,8 +65,8 @@ Extensible! See the Constellation.Foundation.ModelMapping.config file to change 
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Now fully supports Sitecore's Media Protection on image URLs. Also now with Visual Studio ToolTips!</releaseNotes>
+	<releaseNotes>Updated reference to Constellation.Foundation.Data</releaseNotes>
 	<copyright>Copyright 2017</copyright>
-	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation, Sitecore Mvc</tags>
+	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
 </package>

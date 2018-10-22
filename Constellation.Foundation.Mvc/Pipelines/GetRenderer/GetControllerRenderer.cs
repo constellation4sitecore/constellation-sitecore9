@@ -11,8 +11,16 @@ namespace Constellation.Foundation.Mvc.Pipelines.GetRenderer
 	using Sitecore.Mvc.Pipelines.Response.GetRenderer;
 	using Sitecore.Mvc.Presentation;
 
+	/// <summary>
+	/// MVC Render Pipeline processor that retrieves the name of the Controller class based on the
+	/// Full Path of the supplied Rendering Definition Item.
+	/// </summary>
 	public class GetControllerRenderer : GetRendererProcessor
 	{
+		/// <summary>
+		/// Sitecore calls this method from the pipeline.
+		/// </summary>
+		/// <param name="args">The pipeline args.</param>
 		public override void Process(GetRendererArgs args)
 		{
 			if (args.Result != null)
@@ -20,6 +28,12 @@ namespace Constellation.Foundation.Mvc.Pipelines.GetRenderer
 			args.Result = this.GetRenderer(args.Rendering, args);
 		}
 
+		/// <summary>
+		/// Gets a tuple representing the Controller and Action name.
+		/// </summary>
+		/// <param name="rendering">The rendering definition.</param>
+		/// <param name="args">The renderer args.</param>
+		/// <returns></returns>
 		protected virtual Tuple<string, string> GetControllerAndAction(Rendering rendering, GetRendererArgs args)
 		{
 			Tuple<string, string> tuple = GetFromProperties(rendering) ?? GetFromRenderingItem(rendering, args);
@@ -30,6 +44,12 @@ namespace Constellation.Foundation.Mvc.Pipelines.GetRenderer
 			return MvcSettings.ControllerLocator.GetControllerAndAction(tuple.Item1, tuple.Item2);
 		}
 
+		/// <summary>
+		/// Gets the ControllerRenderer.
+		/// </summary>
+		/// <param name="rendering">The Rendering Definition</param>
+		/// <param name="args">The Renderer Args</param>
+		/// <returns></returns>
 		protected virtual Renderer GetRenderer(Rendering rendering, GetRendererArgs args)
 		{
 			Tuple<string, string> controllerAndAction = this.GetControllerAndAction(rendering, args);

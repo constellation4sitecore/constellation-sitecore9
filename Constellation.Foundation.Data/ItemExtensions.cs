@@ -3,7 +3,9 @@ using System.Globalization;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
+using Sitecore.Globalization;
 using Sitecore.Links;
+using Sitecore.Resources.Media;
 using Sitecore.Web;
 
 namespace Constellation.Foundation.Data
@@ -101,6 +103,62 @@ namespace Constellation.Foundation.Data
 			}
 
 			return string.Empty;
+		}
+
+		/// <summary>
+		/// Gets the friendly URL of the MediaItem, including Media Asset Protection
+		/// </summary>
+		/// <param name="item">The Media Item</param>
+		/// <param name="language">Optional, the language version to retrieve.</param>
+		/// <param name="width">Optional, the desired width (in pixels).</param>
+		/// <param name="height">Optional, the desired height (in pixels).</param>
+		/// <param name="maxWidth">Optional, the maximum width (in pixels).</param>
+		/// <param name="maxHeight">Optional, the maximum height (in pixels).</param>
+		/// <returns>a Media URL with Media Asset Protection hash (if enabled).</returns>
+		public static string GetUrl(this MediaItem item, Language language = null, int width = 0, int height = 0, int maxWidth = 0, int maxHeight = 0)
+		{
+			var options = new MediaUrlOptions();
+
+			if (language != null)
+			{
+				options.Language = language;
+			}
+
+			if (width > 0)
+			{
+				options.Width = width;
+			}
+
+			if (height > 0)
+			{
+				options.Height = height;
+			}
+
+			if (maxWidth > 0)
+			{
+				options.MaxWidth = maxWidth;
+			}
+
+			if (maxHeight > 0)
+			{
+				options.MaxHeight = maxHeight;
+			}
+
+			return GetUrl(item, options);
+		}
+
+		/// <summary>
+		/// Gets the friendly URL of the MediaItem, including Media Asset Protection
+		/// </summary>
+		/// <param name="item">The Media Item</param>
+		/// <param name="options">The Url Options to use.</param>
+		/// <returns>a Media URL with Media Asset Protection hash (if enabled).</returns>
+		public static string GetUrl(this MediaItem item, MediaUrlOptions options)
+		{
+			var innerUrl = MediaManager.GetMediaUrl(item, options);
+			var url = HashingUtils.ProtectAssetUrl(innerUrl);
+
+			return url;
 		}
 
 		/// <summary>

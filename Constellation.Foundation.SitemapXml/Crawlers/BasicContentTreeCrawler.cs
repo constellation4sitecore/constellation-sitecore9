@@ -11,13 +11,31 @@ using Sitecore.Web;
 
 namespace Constellation.Foundation.SitemapXml.Crawlers
 {
+	/// <summary>
+	/// A Crawler that will start at the root of the provided Site and will create Sitemap Nodes for all Items
+	/// under that root Item if the Items have presentation details.
+	/// </summary>
+	/// <typeparam name="T">The Type of the SitemapNode to use in output.</typeparam>
 	public class BasicContentTreeCrawler<T> : Crawler
 	where T : ItemBasedSitemapNode, new()
 	{
+		/// <summary>
+		/// Creates a new instance of BasicContentTreeCrawler.
+		/// </summary>
+		/// <param name="site">The site that should be crawled.</param>
 		public BasicContentTreeCrawler(SiteInfo site) : base(site)
 		{
 		}
 
+		/// <summary>
+		/// Start at the root of the provided Site and create Sitemap Nodes for all Items
+		/// under that root Item if the Items have presentation details.
+		/// </summary>
+		/// <param name="site">the site to crawl</param>
+		/// <param name="database">the database to crawl</param>
+		/// <param name="language">Items must have a version in this language.</param>
+		/// <returns>A collection of SitemapNodes for inspection and inclusion in the sitemap.xml document.</returns>
+		/// <exception cref="Exception"></exception>
 		protected override ICollection<ISitemapNode> GetNodes(SiteInfo site, Database database, Language language)
 		{
 			var output = new List<ISitemapNode>();

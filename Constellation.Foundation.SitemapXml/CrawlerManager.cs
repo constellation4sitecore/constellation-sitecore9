@@ -7,20 +7,38 @@ using Sitecore.Web;
 
 namespace Constellation.Foundation.SitemapXml
 {
+	/// <summary>
+	/// Reads the active configuration and loads the correct crawlers for the supplied Site.
+	/// </summary>
 	public class CrawlerManager
 	{
 
+		/// <summary>
+		/// The Site to crawl.
+		/// </summary>
 		public SiteInfo Site { get; private set; }
 
+		/// <summary>
+		/// The crawlers that will be used to crawl the site.
+		/// </summary>
 		public ICollection<Type> Crawlers { get; private set; }
 
 
+		/// <summary>
+		/// Creates a new instance of CrawlerManager and specifies the Site that is to be crawled.
+		/// </summary>
+		/// <param name="site"></param>
 		public CrawlerManager(SiteInfo site)
 		{
 			this.Site = site;
 			Crawlers = SitemapXmlConfiguration.Current.GetCrawlersForSite(Site.Name);
 		}
 
+		/// <summary>
+		/// Loads all Crawlers for the Site and runs them, producing an output of Sitemap Nodes
+		/// that can be added to the sitemap.xml document.
+		/// </summary>
+		/// <returns>An enumerable of ISitemapNode. Note that these nodes should be inspected for suitability before adding them to the sitemap.xml document.</returns>
 		public IEnumerable<ISitemapNode> InitiateCrawl()
 		{
 			var nodes = new List<ISitemapNode>();
@@ -47,6 +65,7 @@ namespace Constellation.Foundation.SitemapXml
 				{
 					Crawler crawler = Activator.CreateInstance(type, new object[] { this.Site }) as Crawler;
 
+					// ReSharper disable once PossibleNullReferenceException
 					nodes.AddRange(crawler.GetNodes());
 				}
 				catch (Exception ex)

@@ -4,8 +4,15 @@ using Sitecore.Pipelines;
 
 namespace Constellation.Foundation.PackageVerification.Pipelines.Initialize
 {
+	/// <summary>
+	/// Creates a new instance of PackageVerifier
+	/// </summary>
 	public class PackageVerifier
 	{
+		/// <summary>
+		/// Called by the Sitecore Initialize Pipeline.
+		/// </summary>
+		/// <param name="args">The pipeline arguments.</param>
 		public void Process(PipelineArgs args)
 		{
 			var packages = PackageVerifierConfiguration.Current.Packages;

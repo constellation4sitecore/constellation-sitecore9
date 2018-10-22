@@ -5,9 +5,16 @@ using Sitecore.Data.Items;
 
 namespace Constellation.Feature.PageTagging.Repositories
 {
+	/// <summary>
+	/// An implementation of IMetadataRepository
+	/// </summary>
 	public class MetadataRepository : IMetadataRepository
 	{
 		#region Constructor
+		/// <summary>
+		/// Creates a new instance of MetadataRepository
+		/// </summary>
+		/// <param name="modelMapper">An instance of IModelMapper, typically provided via dependency injection.</param>
 		public MetadataRepository(IModelMapper modelMapper)
 		{
 			ModelMapper = modelMapper;
@@ -15,9 +22,13 @@ namespace Constellation.Feature.PageTagging.Repositories
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// The ModelMapper to use for mapping Items to the PageMetadata model.
+		/// </summary>
 		protected IModelMapper ModelMapper { get; }
 		#endregion
 
+		/// <inheritdoc />
 		public PageMetadata GetMetadata(Item contextItem)
 		{
 			var model = ModelMapper.MapItemToNew<PageMetadata>(contextItem);
@@ -27,6 +38,7 @@ namespace Constellation.Feature.PageTagging.Repositories
 			return model;
 		}
 
+		/// <inheritdoc />
 		public void FillAuthorAndPublisher(Item context, PageMetadata model)
 		{
 			while (true)

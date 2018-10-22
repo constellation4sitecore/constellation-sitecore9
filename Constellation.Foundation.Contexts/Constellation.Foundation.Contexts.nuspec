@@ -20,8 +20,8 @@
 		Configured for use with Sitecore 9.0.
 		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Suppressed a very chatty log entry for deferred HttpRequestPipeline handlers.</releaseNotes>
+	<releaseNotes>Now with Intellisense!</releaseNotes>
 	<copyright>Copyright 2016</copyright>
-	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
+	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
 </package>

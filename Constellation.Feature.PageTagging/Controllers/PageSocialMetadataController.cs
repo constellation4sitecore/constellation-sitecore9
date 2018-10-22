@@ -6,6 +6,12 @@ using Sitecore.Mvc.Presentation;
 
 namespace Constellation.Feature.PageTagging.Controllers
 {
+	/// <summary>
+	/// Assign to a Controller Rendering in Sitecore. Will create the following Metatags:
+	/// twitter:card, twitter:creator, twitter:site, og:url, og:title, og:description, og:image
+	/// assuming the Context Item inherits from the Page Social Metadata template
+	/// included in this Package.
+	/// </summary>
 	public class PageSocialMetadataController : Controller
 	{
 		private const string MetaName = "<meta name=\"{0}\" content=\"{1}\" />";
@@ -13,6 +19,10 @@ namespace Constellation.Feature.PageTagging.Controllers
 
 		#region Constructor
 
+		/// <summary>
+		/// Creates a new instance of PageSocialMetadataController
+		/// </summary>
+		/// <param name="repository">An instance of ISocialMetadataRepostiory, usually provided by dependency injection.</param>
 		public PageSocialMetadataController(ISocialMetadataRepository repository)
 		{
 			Repository = repository;
@@ -20,9 +30,17 @@ namespace Constellation.Feature.PageTagging.Controllers
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// The ISocialMetadataRepository to use for converting Item fields to the PageSocialMetadata model properties.
+		/// </summary>
 		protected ISocialMetadataRepository Repository { get; }
 		#endregion
 
+		/// <summary>
+		/// The Action that should be assigned to the Sitecore Controller Rendering. Note that "Index" is the default
+		/// value for Controller Actions in Sitecore configuration.
+		/// </summary>
+		/// <returns>A string containing the meta tags for which the Item had valid values.</returns>
 		public ActionResult Index()
 		{
 			var model = Repository.GetMetadata(RenderingContext.Current.ContextItem);

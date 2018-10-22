@@ -1,14 +1,20 @@
-﻿using Constellation.Foundation.Data;
+﻿using System.Globalization;
+using Constellation.Foundation.Data;
 using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Rules;
 using Sitecore.Rules.Actions;
 using Sitecore.SecurityModel;
-using System.Globalization;
 
 namespace Constellation.Feature.ItemSorting.Rules.Actions
 {
+	/// <summary>
+	/// Considers the specified Date field of the supplied Item and if it's not already,
+	/// moves it into a folder structure based upon the value of the specified Date field.
+	/// This movement is relative to the nearest root item of the date-based hierarchy.
+	/// </summary>
+	/// <typeparam name="T">The Rule Context</typeparam>
 	public class MoveToDateFolder<T> : RuleAction<T>
 		where T : RuleContext
 	{
@@ -54,6 +60,13 @@ namespace Constellation.Feature.ItemSorting.Rules.Actions
 		#endregion
 
 
+		/// <summary>
+		/// Sitecore calls this method when the Rule Action needs to be executed.
+		/// Determines the date value of the specified Field on the specified Item.
+		/// Finds or creates a date-based folder structure of the appropriate depth (based on the rule's settings).
+		/// Moves the specified Item into the date-based folder structure.
+		/// </summary>
+		/// <param name="ruleContext">The Rule Context.</param>
 		public override void Apply(T ruleContext)
 		{
 			var item = ruleContext.Item;

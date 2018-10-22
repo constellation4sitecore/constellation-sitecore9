@@ -3,28 +3,35 @@ using System.Collections.Generic;
 using System.Xml;
 using Sitecore.Data;
 using Sitecore.Diagnostics;
+using Sitecore.Install.Utils;
 
 namespace Constellation.Foundation.PackageVerification
 {
+	/// <summary>
+	/// Represents the configuration file settings for PackageVerifier.
+	/// </summary>
 	public class PackageVerifierConfiguration
 	{
 		#region Locals
 
 		private static volatile PackageVerifierConfiguration _current;
 
-		private static object _lockObject = new object();
+		private static readonly object LockObject = new object();
 
 		#endregion
 
 		#region Properties
 
+		/// <summary>
+		/// Gets (or creates) the current instance of Package Verifier's configuration.
+		/// </summary>
 		public static PackageVerifierConfiguration Current
 		{
 			get
 			{
 				if (_current == null)
 				{
-					lock (_lockObject)
+					lock (LockObject)
 					{
 						if (_current == null)
 						{
@@ -37,12 +44,31 @@ namespace Constellation.Foundation.PackageVerification
 			}
 		}
 
+		/// <summary>
+		/// Gets the default package processor type.
+		/// </summary>
 		public Type DefaultProcessorType { get; private set; }
 
+		/// <summary>
+		/// Gets the default install mode for packages.
+		/// </summary>
+		public InstallMode DefaultInstallMode { get; private set; }
+
+		/// <summary>
+		/// Gets the default merge mode for packages.
+		/// </summary>
+		public MergeMode DefaultMergeMode { get; private set; }
+
+		/// <summary>
+		/// Gets details for all of the packages that should be verified as installed.
+		/// </summary>
 		public ICollection<PackageDetails> Packages { get; private set; }
 
 		#endregion
 
+		/// <summary>
+		/// Creates a new instance of PackageVerifierConfiguration.
+		/// </summary>
 		protected PackageVerifierConfiguration()
 		{
 			Packages = new List<PackageDetails>();
@@ -73,6 +99,9 @@ namespace Constellation.Foundation.PackageVerification
 				output.DefaultProcessorType = typeof(PackageProcessor);
 			}
 
+			output.DefaultInstallMode = GetInstallMode(verifierNode.Attributes?["defaultInstallMode"]?.Value);
+			output.DefaultMergeMode = GetMergeMode(verifierNode.Attributes?["defaultMergeMode"]?.Value);
+
 			if (!verifierNode.HasChildNodes)
 			{
 				Log.Warn("Constellation.Foundation.PackageVerification didn't find any package configurations.", output);
@@ -87,8 +116,6 @@ namespace Constellation.Foundation.PackageVerification
 					continue;
 				}
 
-
-
 				var package = new PackageDetails();
 
 				output.Packages.Add(package);
@@ -96,6 +123,9 @@ namespace Constellation.Foundation.PackageVerification
 				package.Name = packageNode?.Attributes?["name"]?.Value;
 				package.PackageFileName = packageNode?.Attributes?["packageFileName"]?.Value;
 				package.ProcessorOverrideType = packageNode?.Attributes?["processorOverrideType"]?.Value;
+				package.InstallMode = GetInstallMode(packageNode?.Attributes?["installMode"]?.Value);
+				package.MergeMode = GetMergeMode(packageNode?.Attributes?["mergeMode"]?.Value);
+
 
 				if (!packageNode.HasChildNodes)
 				{
@@ -158,6 +188,52 @@ namespace Constellation.Foundation.PackageVerification
 			}
 
 			return output;
+		}
+
+		private static InstallMode GetInstallMode(string mode)
+		{
+			if (string.IsNullOrEmpty(mode))
+			{
+				return InstallMode.Undefined;
+			}
+
+			var installMode = mode.ToLower();
+
+			switch (installMode)
+			{
+				case "merge":
+					return InstallMode.Merge;
+				case "overwrite":
+					return InstallMode.Overwrite;
+				case "sidebyside":
+					return InstallMode.SideBySide;
+				case "skip":
+					return InstallMode.Skip;
+				default:
+					return InstallMode.Undefined;
+			}
+		}
+
+		private static MergeMode GetMergeMode(string mode)
+		{
+			if (string.IsNullOrEmpty(mode))
+			{
+				return MergeMode.Undefined;
+			}
+
+			var megeMode = mode.ToLower();
+
+			switch (megeMode)
+			{
+				case "append":
+					return MergeMode.Append;
+				case "clear":
+					return MergeMode.Clear;
+				case "merge":
+					return MergeMode.Merge;
+				default:
+					return MergeMode.Undefined;
+			}
 		}
 	}
 }

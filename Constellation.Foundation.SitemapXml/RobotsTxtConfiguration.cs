@@ -17,6 +17,9 @@ namespace Constellation.Foundation.SitemapXml
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// Access the current configuration values for robots.txt generation.
+		/// </summary>
 		public static RobotsTxtConfiguration Current
 		{
 			get
@@ -37,10 +40,19 @@ namespace Constellation.Foundation.SitemapXml
 			}
 		}
 
+		/// <summary>
+		/// Determines if robots are allowed to crawl any site on the current installation.
+		/// </summary>
 		public bool Allowed { get; private set; }
 
+		/// <summary>
+		/// List of disallow rows that should be included in all generated robots.txt files.
+		/// </summary>
 		public ICollection<string> GlobalDisallows { get; private set; }
 
+		/// <summary>
+		/// List of disallow rows for each site, keyed by site name.
+		/// </summary>
 		public IDictionary<string, ICollection<string>> SiteDisallows { get; private set; }
 
 		#endregion

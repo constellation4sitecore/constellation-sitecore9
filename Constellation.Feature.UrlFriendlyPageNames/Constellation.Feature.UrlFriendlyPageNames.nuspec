@@ -26,11 +26,13 @@ needs an SEO-friendly URL. The rule action should be the one included in this ki
 It is up to the implementer to determine the nature of "page" Items. We recommend looking at Constellation.Foundation.Datasources for
 rule conditions that are suitable for this specific task.
 		
+Note that the Illegal Characters option and the Replace Spaces option can conflict, a "-" will be removed if you use the "\W" regex,
+resulting in behavior similar to "Remove Spaces" We strongly recommend using "\s".
 
 Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Small reference update, and changes to the basic instructions (above)</releaseNotes>
+	<releaseNotes>Updated NuGet dependencies. Help text changes, now with Intellisense support!</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix</tags>
   </metadata>

@@ -3,7 +3,6 @@
 	using System;
 	using System.Collections.Generic;
 	using System.Diagnostics;
-	using System.Diagnostics.CodeAnalysis;
 	using System.Globalization;
 	using System.Text;
 
@@ -17,11 +16,13 @@
 	/// you may have running.; I have made some slight modifications to produce class 
 	/// names that I find a bit more pleasing.
 	/// </remarks>
-	[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
-	[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
 	public static class StringExtensions
 	{
-		[SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
+		/// <summary>
+		/// Convert the supplied string to a C# Namespace, Class or public Member name.
+		/// </summary>
+		/// <param name="word">The string to convert.</param>
+		/// <returns>a string suitable for use as a C# Namespace, Class or public Member name.</returns>
 		public static string TitleCase(this string word)
 		{
 			var newWord = System.Text.RegularExpressions.Regex.Replace(word, "([a-z](?=[A-Z])|[A-Z](?=[A-Z][a-z]))", "$1+");
@@ -30,6 +31,11 @@
 			return newWord;
 		}
 
+		/// <summary>
+		/// Convert the supplied string to a C# local variable name.
+		/// </summary>
+		/// <param name="word">The string to convert.</param>
+		/// <returns>a string suitable for use as a C# local variable name.</returns>
 		public static string CamelCase(this string word)
 		{
 			if (word == null)
@@ -48,6 +54,11 @@
 			return titleCase.Substring(0, 1).ToLower() + titleCase.Substring(1);
 		}
 
+		/// <summary>
+		/// Checks to see if the supplied string is meant to represent a C# interface name.
+		/// </summary>
+		/// <param name="word">The string to review.</param>
+		/// <returns>true if the supplied string starts with "I" followed by any other capital letter.</returns>
 		public static bool IsInterfaceWord(this string word)
 		{
 			// looks like an interface if... I[A-Z]xxxx
@@ -55,6 +66,11 @@
 			return word.Length > 2 && !word.Contains(" ") && (word[0] == 'I' && char.IsUpper(word, 1) && char.IsLower(word, 2));
 		}
 
+		/// <summary>
+		/// Converts the supplied string to a valid C# Interface name.
+		/// </summary>
+		/// <param name="word">The string to convert.</param>
+		/// <returns>a Title Case string prefixed with an "I"</returns>
 		public static string AsInterfaceName(this string word)
 		{
 			/*
@@ -75,17 +91,32 @@
 			return interfaceWord;
 		}
 
+		/// <summary>
+		/// Converts the supplied string to a valid C# Class name.
+		/// </summary>
+		/// <param name="word">The string to convert.</param>
+		/// <returns>A Title Case string.</returns>
 		public static string AsClassName(this string word)
 		{
 			// TitleCase the word
 			return GetFormattedWord(word, TitleCase);
 		}
 
+		/// <summary>
+		/// Converts the supplied string to a valid C# Property name.
+		/// </summary>
+		/// <param name="word">The string to convert.</param>
+		/// <returns>A Title Case string.</returns>
 		public static string AsPropertyName(this string word)
 		{
 			return GetFormattedWord(word, TitleCase);
 		}
 
+		/// <summary>
+		/// Converts the supplied string to a valid C# local field name.
+		/// </summary>
+		/// <param name="word">The string to convert.</param>
+		/// <returns>A Camel Case string prefixed with "_"</returns>
 		public static string AsFieldName(this string word)
 		{
 			// return _someParam. 

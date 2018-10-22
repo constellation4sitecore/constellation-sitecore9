@@ -14,9 +14,17 @@ namespace Constellation.Foundation.Datasources.Rules.Actions
 	public class CreateSubcontentFolder<T> : RuleAction<T>
 		where T : RuleContext
 	{
+		/// <summary>
+		/// The ID of the Subcontent folder template.
+		/// </summary>
 		// ReSharper disable once InconsistentNaming
 		protected readonly ID SubcontentFolderID = new ID("{3C8F34CC-2C10-4C2D-B7CC-74CA2F4FB341}");
 
+		/// <summary>
+		/// Called by Sitecore when executing the Rule Action.
+		/// Creates the Subcontent folder as a child of the supplied Item if it does not exist.
+		/// </summary>
+		/// <param name="ruleContext">The Rulecontext</param>
 		public override void Apply(T ruleContext)
 		{
 			using (new SecurityDisabler())

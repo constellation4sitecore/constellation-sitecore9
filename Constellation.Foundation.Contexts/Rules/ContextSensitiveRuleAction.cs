@@ -1,13 +1,13 @@
 ﻿namespace Constellation.Foundation.Contexts.Rules
 {
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
 	using Constellation.Foundation.Contexts;
 	using Sitecore.Data.Items;
 	using Sitecore.Diagnostics;
 	using Sitecore.Sites;
 	using Sitecore.Web;
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
 
 	/// <summary>
 	/// A Base for all custom Rule Actions that incorporates context sensitivity as well as preventing recursive rule running.
@@ -227,6 +227,10 @@
 		/// <param name="ruleContext">The context.</param>
 		protected abstract void Execute(T ruleContext);
 
+		/// <summary>
+		/// Sets the context properties based on the provided Item.
+		/// </summary>
+		/// <param name="item">The Item to derive context from.</param>
 		protected void SetContextProperties(Item item)
 		{
 			this.ContextDatabaseName = item.Database.Name;

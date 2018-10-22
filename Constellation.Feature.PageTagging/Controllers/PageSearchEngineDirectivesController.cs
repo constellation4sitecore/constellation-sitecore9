@@ -8,9 +8,18 @@ using Sitecore.Mvc.Presentation;
 
 namespace Constellation.Feature.PageTagging.Controllers
 {
+	/// <summary>
+	/// Assign to a Controller Rendering in Sitecore. Will create the
+	/// meta:robots tag based on the checked values on an Item that implements the
+	/// Page Search Engine Directives template.
+	/// </summary>
 	public class PageSearchEngineDirectivesController : Controller
 	{
 		#region
+		/// <summary>
+		/// Creates a new instance of PageSearchEngineDirectivesController
+		/// </summary>
+		/// <param name="modelMapper">An instance of IModelMapper, usually provided by dependency injection.</param>
 		public PageSearchEngineDirectivesController(IModelMapper modelMapper)
 		{
 			ModelMapper = modelMapper;
@@ -18,9 +27,17 @@ namespace Constellation.Feature.PageTagging.Controllers
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// The instance of IModelMapper to use when mapping Item fields to model properties.
+		/// </summary>
 		protected IModelMapper ModelMapper { get; }
 		#endregion
 
+		/// <summary>
+		/// The Action that should be assigned to the Sitecore Controller Rendering. Note that "Index" is the default
+		/// value for Controller Actions in Sitecore configuration.
+		/// </summary>
+		/// <returns>A string containing the meta:robots tags with valid values.</returns>
 		public ActionResult Index()
 		{
 			var model = BuildModel(RenderingContext.Current.PageContext.Item);

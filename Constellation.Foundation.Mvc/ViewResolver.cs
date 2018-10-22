@@ -22,6 +22,9 @@ namespace Constellation.Foundation.Mvc
 
 		#region Properties
 
+		/// <summary>
+		/// Gets or sets the Rendering Definition Item to use for View file path resolution.
+		/// </summary>
 		protected RenderingItem RenderingItem { get; set; }
 
 		/// <summary>

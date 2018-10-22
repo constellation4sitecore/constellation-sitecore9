@@ -11,12 +11,21 @@ namespace Constellation.Foundation.SitemapXml.Repositories
 	/// </summary>
 	public class SitemapRepository
 	{
+		/// <summary>
+		/// Used to determine if the Site should be crawled and a sitemap.xml should be generated.
+		/// </summary>
+		/// <param name="site">The site to inspect.</param>
+		/// <returns>true if the configuration files indicate this site should be ignored.</returns>
 		public static bool IsOnIgnoreList(SiteContext site)
 		{
 			return IsOnIgnoreList(site.SiteInfo);
 		}
 
-
+		/// <summary>
+		/// Used to determine if the Site should be crawled and a sitemap.xml should be generated.
+		/// </summary>
+		/// <param name="site">The site to inspect.</param>
+		/// <returns>true if the configuration files indicate this site should be ignored.</returns>
 		public static bool IsOnIgnoreList(SiteInfo site)
 		{
 			return SitemapXmlConfiguration.Current.SitesToIgnore.Contains(site.Name);

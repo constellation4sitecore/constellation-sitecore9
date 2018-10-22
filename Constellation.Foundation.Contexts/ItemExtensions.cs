@@ -4,6 +4,9 @@
 	using Sitecore.Diagnostics;
 	using Sitecore.Sites;
 
+	/// <summary>
+	/// Context extraction extension methods for Sitecore Items.
+	/// </summary>
 	public static class ItemExtensions
 	{
 		/// <summary>

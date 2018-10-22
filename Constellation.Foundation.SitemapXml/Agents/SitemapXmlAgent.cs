@@ -3,8 +3,16 @@ using Sitecore.Diagnostics;
 
 namespace Constellation.Foundation.SitemapXml.Agents
 {
+	/// <summary>
+	/// This is an Agent that should be scheduled to run at regular intervals to generate the sitemap.xml
+	/// files for all sites on the installation, and cache them for fast retrieval by actual requesting
+	/// search engines.
+	/// </summary>
 	public class SitemapXmlAgent
 	{
+		/// <summary>
+		/// This is the method the Scheduler should call when executing this agent.
+		/// </summary>
 		public void Refresh()
 		{
 			// Get all the sites in the system

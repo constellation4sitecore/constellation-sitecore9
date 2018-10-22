@@ -28,10 +28,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Constellation.Foundation.SitemapXml.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Foundation.Caching, Version=9.0.3.24083, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Caching.9.0.3.24083\lib\net462\Constellation.Foundation.Caching.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Caching, Version=9.0.4.23528, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Caching.9.0.4.23528\lib\net462\Constellation.Foundation.Caching.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.NoReferences.9.0.171002\lib\NET462\Sitecore.Kernel.dll</HintPath>
@@ -57,7 +58,6 @@
     <Compile Include="EventHandlers\RegenerateSitemapXml.cs" />
     <Compile Include="HttpHandlers\RobotsTxtHandler.cs" />
     <Compile Include="HttpHandlers\SitemapXmlHandler.cs" />
-    <Compile Include="NodePipeline.cs" />
     <Compile Include="Nodes\DefaultSitemapNode.cs" />
     <Compile Include="Nodes\ISitemapNode.cs" />
     <Compile Include="Nodes\ItemBasedSitemapNode.cs" />
@@ -76,13 +76,11 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <Content Include="Constellation.License.txt" />
     <Content Include="Web.config.install.xdt" />
     <Content Include="Web.config.uninstall.xdt">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Constellation.License.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

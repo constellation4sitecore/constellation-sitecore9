@@ -1,7 +1,7 @@
-﻿using Sitecore.Diagnostics;
+﻿using System.Text;
+using Sitecore.Diagnostics;
 using Sitecore.Mvc.Common;
 using Sitecore.Mvc.Pipelines.Response.RenderRendering;
-using System.Text;
 using WebMarkupMin.Core;
 
 namespace Constellation.Foundation.Mvc.Pipelines.RenderRendering
@@ -20,6 +20,11 @@ namespace Constellation.Foundation.Mvc.Pipelines.RenderRendering
 	/// </remarks>
 	public class MinifyAndAddRecordedHtmlToCache : AddRecordedHtmlToCache
 	{
+		/// <summary>
+		/// Override of the base class. This performs the magic of compressing the rendering output and putting it in the cache.
+		/// </summary>
+		/// <param name="cacheKey"></param>
+		/// <param name="args"></param>
 		protected override void UpdateCache(string cacheKey, RenderRenderingArgs args)
 		{
 			var recordingTextWriter = args.Writer as RecordingTextWriter;
