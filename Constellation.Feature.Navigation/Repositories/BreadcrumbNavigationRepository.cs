@@ -3,6 +3,7 @@ using Constellation.Feature.Navigation.Models;
 using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping;
 using Sitecore.Data.Items;
+using Sitecore.Diagnostics;
 using Sitecore.Web;
 
 namespace Constellation.Feature.Navigation.Repositories
@@ -40,7 +41,15 @@ namespace Constellation.Feature.Navigation.Repositories
 		{
 			var breadcrumbs = new List<Breadcrumb>();
 			var ancestors = contextItem.Axes.GetAncestors();
-			var homeItem = contextItem.Database.GetItem(site.StartItem);
+			var path = site.RootPath + site.StartItem;
+
+			var homeItem = contextItem.Database.GetItem(path);
+
+			if (homeItem == null)
+			{
+				Log.Warn($"Constellation.Feature.Navigation BreadcrumbNavigationRepository: no homeItem found for site {site.Name}", this);
+				return breadcrumbs.ToArray();
+			}
 
 			foreach (var ancestor in ancestors)
 			{
@@ -54,14 +63,13 @@ namespace Constellation.Feature.Navigation.Repositories
 					continue; // We only list Pages in breadcrumbs, since they're clickable.
 				}
 
-				var breadcrumb = ModelMapper.MapItemToNew<Breadcrumb>(ancestor);
-				breadcrumbs.Add(breadcrumb);
-
-				if (breadcrumb.ID.Equals(contextItem.ID))
-				{
-					breadcrumb.IsContextItem = true;
-				}
+				breadcrumbs.Add(ModelMapper.MapItemToNew<Breadcrumb>(ancestor));
 			}
+
+			var breadcrumb = ModelMapper.MapItemToNew<Breadcrumb>(contextItem);
+			breadcrumb.IsContextItem = true;
+
+			breadcrumbs.Add(breadcrumb);
 
 			return breadcrumbs.ToArray();
 		}

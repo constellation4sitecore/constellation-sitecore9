@@ -45,7 +45,7 @@ Configured for use with Sitecore 9.0.
 Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 Requires the installation of the included Package.
 	</description>
-	<releaseNotes>Now with Intellisense!</releaseNotes>
+	<releaseNotes>Fixed a null reference exception in BreadcrumbsNavigationRepository, it works now.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>
