@@ -20,7 +20,7 @@ namespace Constellation.Feature.PageTagging.SitemapXml
 		/// <returns>True if IncludeInSitemap is true and SearchEngineIndexesPage is true or SearchEngineFollowsLinks is true.</returns>
 		protected override bool ShouldTheItemBeIndexedBySearchEngines(Item item)
 		{
-			var model = item.MapToNew<PageSitemapBehavior>();
+			var model = MappingContext.Current.MapItemToNew<PageSitemapBehavior>(item);
 
 			if (!model.IncludeInSitemap)
 			{
@@ -42,7 +42,7 @@ namespace Constellation.Feature.PageTagging.SitemapXml
 		/// <returns>The change frequency.</returns>
 		protected override ChangeFrequency WhatIsTheItemsChangeFrequency(Item item)
 		{
-			var model = item.MapToNew<PageSitemapBehavior>();
+			var model = MappingContext.Current.MapItemToNew<PageSitemapBehavior>(item);
 
 			if (model.ChangeFrequency == null)
 			{
