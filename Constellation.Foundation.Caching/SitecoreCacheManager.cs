@@ -1,6 +1,6 @@
-﻿using Sitecore.Caching;
+﻿using System.Collections.Generic;
+using Sitecore.Caching;
 using Sitecore.Configuration;
-using System.Collections.Generic;
 
 namespace Constellation.Foundation.Caching
 {
@@ -14,7 +14,7 @@ namespace Constellation.Foundation.Caching
 	/// Using ClearCache will attempt to clear a cache within the scoping
 	/// parameters supplied. If the cache doesn't exist, nothing happens.
 	/// </remarks>
-	public class SitecoreCacheManager
+	internal class SitecoreCacheManager
 	{
 		#region Locals
 		/// <summary>

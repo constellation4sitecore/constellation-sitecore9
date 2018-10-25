@@ -4,6 +4,9 @@ using Sitecore.Diagnostics;
 
 namespace Constellation.Foundation.ModelMapping
 {
+	/// <summary>
+	/// Stores all Mapping Plans.
+	/// </summary>
 	public class PlanCache
 	{
 		#region Locals
@@ -14,6 +17,9 @@ namespace Constellation.Foundation.ModelMapping
 
 		#region Constructors
 
+		/// <summary>
+		/// Creates a new instance of PlanCache
+		/// </summary>
 		protected PlanCache()
 		{
 			Cache = new SortedDictionary<string, MappingPlan>();
@@ -21,8 +27,15 @@ namespace Constellation.Foundation.ModelMapping
 		#endregion
 
 		#region Properties
-		protected readonly SortedDictionary<string, MappingPlan> Cache;
 
+		/// <summary>
+		/// The currently stored Mapping Plans
+		/// </summary>
+		public readonly SortedDictionary<string, MappingPlan> Cache;
+
+		/// <summary>
+		/// The current PlanCache instance.
+		/// </summary>
 		public static PlanCache Current
 		{
 			get
@@ -45,6 +58,12 @@ namespace Constellation.Foundation.ModelMapping
 
 		#region Methods
 
+		/// <summary>
+		/// Given a Type and an Item Template ID, return the mapping plan that was used to successfully map the Item to the Type previously.
+		/// </summary>
+		/// <param name="typeFullName">The full name of the Model Type.</param>
+		/// <param name="templateID">The ID of the Item's Template.</param>
+		/// <returns>The matching MappingPlan or null.</returns>
 		public static MappingPlan GetPlan(string typeFullName, ID templateID)
 		{
 			var key = GetKey(typeFullName, templateID);
@@ -58,6 +77,10 @@ namespace Constellation.Foundation.ModelMapping
 			return Current.Cache[key];
 		}
 
+		/// <summary>
+		/// Adds a Plan to the cache.
+		/// </summary>
+		/// <param name="plan">The plan to add.</param>
 		public static void AddPlan(MappingPlan plan)
 		{
 			var key = GetKey(plan);

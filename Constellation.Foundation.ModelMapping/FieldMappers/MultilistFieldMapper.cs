@@ -5,8 +5,13 @@ using Sitecore.Data.Fields;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
+	/// <inheritdoc />
+	/// <summary>
+	/// Given a Sitecore Field that stores multiple IDs, Load the Target Items and convert them to a Collection of objects as specified by the Model's Property Type.
+	/// </summary>
 	public class MultilistFieldMapper : FieldMapper<IEnumerable>
 	{
+		/// <inheritdoc />
 		protected override bool PropertyTypeMatches()
 		{
 			if (!Property.Is<IEnumerable>())
@@ -28,6 +33,10 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			return canAssign;
 		}
 
+		/// <summary>
+		/// Creates an IEnumerable of ViewModels representing the Items in the Field
+		/// </summary>
+		/// <returns>An Enumerable that is assignable to the Property.</returns>
 		protected override IEnumerable ExtractTypedValueFromField()
 		{
 			var itemType = Property.PropertyType.GetGenericArguments()[0];

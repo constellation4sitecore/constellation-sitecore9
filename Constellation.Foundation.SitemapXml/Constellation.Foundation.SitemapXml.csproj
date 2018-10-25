@@ -31,8 +31,11 @@
     <DocumentationFile>bin\Release\Constellation.Foundation.SitemapXml.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Foundation.Caching, Version=9.0.4.23528, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Caching.9.0.4.23528\lib\net462\Constellation.Foundation.Caching.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Caching, Version=9.0.5.24342, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Caching.9.0.5.24342\lib\net462\Constellation.Foundation.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.NoReferences.9.0.171002\lib\NET462\Sitecore.Kernel.dll</HintPath>
@@ -72,6 +75,7 @@
     <Content Include="App_Config\Include\Constellation\Constellation.Foundation.SitemapXml.config">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="App_Config\Include\Constellation\Constellation.Foundation.Caching.config" />
     <None Include="Constellation.Foundation.SitemapXml.nuspec">
       <SubType>Designer</SubType>
     </None>

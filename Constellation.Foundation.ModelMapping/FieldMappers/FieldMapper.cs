@@ -9,6 +9,11 @@ using Sitecore.Web.UI.WebControls;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
+	/// <inheritdoc />
+	/// <summary>
+	/// The base class for mapping a Sitecore Item Field's Value to a Property on a given Model.
+	/// </summary>
+	/// <typeparam name="T">the Type of the Property on the Model that will receive the Field's value.</typeparam>
 	public abstract class FieldMapper<T> : IFieldMapper
 	{
 		#region Fields
@@ -20,10 +25,19 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 		#region Properties
 
+		/// <summary>
+		/// The Model being initialized.
+		/// </summary>
 		protected object Model { get; set; }
 
+		/// <summary>
+		/// The Field being parsed.
+		/// </summary>
 		protected Field Field { get; set; }
 
+		/// <summary>
+		/// The Name of the Property on the Model that will receive the Field Value.
+		/// </summary>
 		protected virtual string PropertyName
 		{
 			get
@@ -37,6 +51,9 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			}
 		}
 
+		/// <summary>
+		/// The Property on the Modle that will receive the Field Value.
+		/// </summary>
 		protected PropertyInfo Property
 		{
 			get
@@ -52,6 +69,13 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 		#endregion
 
+		/// <summary>
+		/// Given the Field, Finds a matching Property of type "T" on the Model and moves the value from the Field to the
+		/// discovered Property.
+		/// </summary>
+		/// <param name="modelInstance">The Model to inspect.</param>
+		/// <param name="field">The Field to inspect.</param>
+		/// <returns>A status indicating if the mapping was successful along with useful performance data.</returns>
 		public virtual FieldMapStatus Map(object modelInstance, Field field)
 		{
 			Model = modelInstance;
@@ -123,16 +147,29 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			}
 		}
 
+		/// <summary>
+		/// Takes the value of the Field and returns it for insertion into the Model's Property.
+		/// Override this if you cannot support FieldRenderer.Render as the default.
+		/// </summary>
+		/// <returns>The string to assign to the Property. Default is FieldRenderer.Render() output.</returns>
 		protected virtual string ExtractStringValueFromField()
 		{
 			return FieldRenderer.Render(Field.Item, Field.Name);
 		}
 
+		/// <summary>
+		/// Does the Type of the Model's Property match the type "T" of this Field Mapper's declaration?
+		/// </summary>
+		/// <returns>True if the Property can be assigned "T"</returns>
 		protected virtual bool PropertyTypeMatches()
 		{
 			return Property.Is<T>();
 		}
 
+		/// <summary>
+		/// Takes the Field value and converts it to "T" for assignment to the Property.
+		/// </summary>
+		/// <returns>The value of the Field as "T"</returns>
 		protected abstract T ExtractTypedValueFromField();
 	}
 }

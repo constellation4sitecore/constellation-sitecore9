@@ -56,7 +56,7 @@ namespace Constellation.Foundation.SitemapXml.Repositories
 
 			if (SitemapXmlConfiguration.Current.CacheEnabled)
 			{
-				document = Cache.Get<XmlDocument>(key);
+				document = CachingContext.Current.Get<XmlDocument>(key);
 			}
 
 			if (document == null || forceRegenerate)
@@ -68,7 +68,7 @@ namespace Constellation.Foundation.SitemapXml.Repositories
 				if (SitemapXmlConfiguration.Current.CacheEnabled)
 				{
 					var cacheTimeout = site.GetSitemapXmlCacheTimeout();
-					Cache.Add(key, document, DateTime.Now.AddMinutes(cacheTimeout));
+					CachingContext.Current.Add(key, document, DateTime.Now.AddMinutes(cacheTimeout));
 				}
 			}
 

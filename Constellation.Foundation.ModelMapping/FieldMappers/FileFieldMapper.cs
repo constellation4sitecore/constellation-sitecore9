@@ -10,6 +10,10 @@ using Sitecore.Web.UI.WebControls;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
+	/// <inheritdoc />
+	/// <summary>
+	/// Given a Sitecore File Field, extract the Field's Value and assign it to the Model's Property.
+	/// </summary>
 	public class FileFieldMapper : IFieldMapper
 	{
 		#region Fields
@@ -21,10 +25,19 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 		#region Properties
 
+		/// <summary>
+		/// The Model to populate.
+		/// </summary>
 		protected object Model { get; set; }
 
+		/// <summary>
+		/// The Field to extract the value from.
+		/// </summary>
 		protected Field Field { get; set; }
 
+		/// <summary>
+		/// The expected name of the Property on the Model.
+		/// </summary>
 		protected virtual string PropertyName
 		{
 			get
@@ -38,6 +51,9 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			}
 		}
 
+		/// <summary>
+		/// The Property on the Model to fill with the Field Value.
+		/// </summary>
 		protected PropertyInfo Property
 		{
 			get
@@ -53,6 +69,8 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 		#endregion
 
+
+		/// <inheritdoc />
 		public virtual FieldMapStatus Map(object modelInstance, Field field)
 		{
 			Model = modelInstance;
@@ -118,6 +136,10 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			}
 		}
 
+		/// <summary>
+		/// Gets the value of the Field as a string. Default is to use FieldRenderer.Render()
+		/// </summary>
+		/// <returns>A string value to assign to the Property.</returns>
 		protected string ExtractStringValueFromField()
 		{
 			var urlAttribute = Property.GetCustomAttribute<RenderAsUrlAttribute>();

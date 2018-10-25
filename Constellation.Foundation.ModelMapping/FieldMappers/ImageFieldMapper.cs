@@ -10,6 +10,10 @@ using Sitecore.Web.UI.WebControls;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
+	/// <inheritdoc />
+	/// <summary>
+	/// Given an Image Field, assign the main Value to the Model's Property.
+	/// </summary>
 	public class ImageFieldMapper : IFieldMapper
 	{
 		#region Fields
@@ -19,10 +23,19 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// The Model to assign to.
+		/// </summary>
 		protected object Model { get; set; }
 
+		/// <summary>
+		/// The Field to extract the Value from.
+		/// </summary>
 		protected Field Field { get; set; }
 
+		/// <summary>
+		/// The expected name of the Property on the Model.
+		/// </summary>
 		protected virtual string PropertyName
 		{
 			get
@@ -36,6 +49,9 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			}
 		}
 
+		/// <summary>
+		/// The Property to write the value to.
+		/// </summary>
 		protected PropertyInfo Property
 		{
 			get
@@ -51,6 +67,7 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 		#endregion
 
+		/// <inheritdoc />
 		public virtual FieldMapStatus Map(object modelInstance, Field field)
 		{
 			Model = modelInstance;
@@ -110,6 +127,10 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			}
 		}
 
+		/// <summary>
+		/// Returns the Field's primary value as a string. Default is FieldRenderer.Render()
+		/// </summary>
+		/// <returns>A string to assign to the Property.</returns>
 		protected string ExtractStringValueFromField()
 		{
 			var urlAttribute = Property.GetCustomAttribute<RenderAsUrlAttribute>();

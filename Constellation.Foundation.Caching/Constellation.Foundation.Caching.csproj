@@ -32,6 +32,9 @@
     <DocumentationFile>bin\Release\Constellation.Foundation.Caching.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.NoReferences.9.0.171002\lib\NET462\Sitecore.Kernel.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
@@ -43,19 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheManager.cs" />
     <Compile Include="Cache.cs" />
     <Compile Include="CacheClearingAgent.cs" />
+    <Compile Include="CachingContext.cs" />
+    <Compile Include="ICacheManager.cs" />
+    <Compile Include="ServicesConfigurator.cs" />
     <Compile Include="SitecoreCacheManager.cs" />
     <Compile Include="KeyAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Caching.config" />
     <None Include="Constellation.Foundation.Caching.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Constellation.License.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

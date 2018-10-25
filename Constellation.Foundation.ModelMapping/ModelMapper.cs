@@ -3,8 +3,10 @@ using Sitecore.Data.Items;
 
 namespace Constellation.Foundation.ModelMapping
 {
+	/// <inheritdoc />
 	public class ModelMapper : IModelMapper
 	{
+		/// <inheritdoc />
 		public ICollection<T> MapToCollectionOf<T>(ICollection<Item> items) where T : class, new()
 		{
 			var list = new List<T>();
@@ -18,6 +20,7 @@ namespace Constellation.Foundation.ModelMapping
 			return list;
 		}
 
+		/// <inheritdoc />
 		public IEnumerable<T> MapToEnumerableOf<T>(IEnumerable<Item> items) where T : class, new()
 		{
 			var list = new List<T>();
@@ -31,6 +34,7 @@ namespace Constellation.Foundation.ModelMapping
 			return list;
 		}
 
+		/// <inheritdoc />
 		public T MapItemToNew<T>(Item item) where T : class, new()
 		{
 			if (item == null)
@@ -45,6 +49,7 @@ namespace Constellation.Foundation.ModelMapping
 			return model;
 		}
 
+		/// <inheritdoc />
 		public void MapTo(Item item, object model)
 		{
 			ModelBuilder.MapItemToModel(item, model);

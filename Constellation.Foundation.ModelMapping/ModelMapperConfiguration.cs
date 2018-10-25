@@ -6,6 +6,9 @@ using Sitecore.Diagnostics;
 
 namespace Constellation.Foundation.ModelMapping
 {
+	/// <summary>
+	/// The Runtime settings for ModelMapper.
+	/// </summary>
 	public class ModelMapperConfiguration
 	{
 		#region Locals
@@ -14,6 +17,9 @@ namespace Constellation.Foundation.ModelMapping
 		private static readonly object LockObject = new object();
 		#endregion
 
+		/// <summary>
+		/// Creates a new instance of ModelMapperConfiguration
+		/// </summary>
 		protected ModelMapperConfiguration()
 		{
 			FieldMapperTypes = new SortedDictionary<string, ICollection<Type>>();
@@ -21,6 +27,9 @@ namespace Constellation.Foundation.ModelMapping
 
 		#region Properties
 
+		/// <summary>
+		/// The current runtime settings for ModelMapper.
+		/// </summary>
 		public static ModelMapperConfiguration Current
 		{
 			get
@@ -40,17 +49,34 @@ namespace Constellation.Foundation.ModelMapping
 			}
 		}
 
+		/// <summary>
+		/// The list of all FieldMapper Types.
+		/// </summary>
 		protected SortedDictionary<string, ICollection<Type>> FieldMapperTypes { get; }
 
+		/// <summary>
+		/// The Type to use when a given Sitecore field type does not have an explicit Mapper set.
+		/// </summary>
 		public Type DefaultFieldMapperType { get; private set; }
 
+		/// <summary>
+		/// Whether the Mapper should gracefully "eat" errors or fail hard. We recommend setting this to true in production.
+		/// </summary>
 		public bool ContinueOnError { get; private set; }
 
+		/// <summary>
+		/// Whether the Mapper should attempt to map Sitecore's "Standard" template fields. This should normally be true.
+		/// </summary>
 		public bool IgnoreStandardFields { get; private set; }
 		#endregion
 
 		#region Methods
 
+		/// <summary>
+		/// For a given Sitecore Field Type, return the Mapper types to process the field value.
+		/// </summary>
+		/// <param name="type">The Sitecore Field Type string.</param>
+		/// <returns>A colleciton of Mapper types to instatiate.</returns>
 		public ICollection<Type> GetMappersForFieldType(string type)
 		{
 			ICollection<Type> types = new List<Type> { DefaultFieldMapperType };

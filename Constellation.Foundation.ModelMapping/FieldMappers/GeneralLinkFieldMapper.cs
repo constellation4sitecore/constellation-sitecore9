@@ -7,6 +7,10 @@ using Sitecore.Web.UI.WebControls;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
+	/// <inheritdoc />
+	/// <summary>
+	///	Given a General Link Field, Assign the Field's main value to the Model's Property
+	/// </summary>
 	public class GeneralLinkFieldMapper : IFieldMapper
 	{
 		#region Fields
@@ -16,10 +20,19 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// The Model to populate.
+		/// </summary>
 		protected object Model { get; set; }
 
+		/// <summary>
+		/// The Field to extract the value from.
+		/// </summary>
 		protected Field Field { get; set; }
 
+		/// <summary>
+		/// The expected Property Name based on the Field Name.
+		/// </summary>
 		protected virtual string PropertyName
 		{
 			get
@@ -33,6 +46,9 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			}
 		}
 
+		/// <summary>
+		/// The Property to assign the value to.
+		/// </summary>
 		protected PropertyInfo Property
 		{
 			get
@@ -48,6 +64,7 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 		#endregion
 
+		/// <inheritdoc />
 		public FieldMapStatus Map(object modelInstance, Field field)
 		{
 			Model = modelInstance;
