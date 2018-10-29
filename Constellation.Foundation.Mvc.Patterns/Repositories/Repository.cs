@@ -1,21 +1,15 @@
-﻿using Constellation.Foundation.Mvc.Patterns.ModelBuilders;
-
-namespace Constellation.Foundation.Mvc.Patterns.Repositories
+﻿namespace Constellation.Foundation.Mvc.Patterns.Repositories
 {
-	public abstract class Repository<TModel> : IRepository<TModel>
-	where TModel : class, new()
+	/// <inheritdoc />
+	public abstract class Repository<TModel> : IRepository
+	where TModel : class
 	{
-		#region Constructors
-		protected Repository(IModelBuilder modelBuilder)
-		{
-			ModelBuilder = modelBuilder;
-		}
-		#endregion
-
-		#region Properties
-		protected IModelBuilder ModelBuilder { get; }
-		#endregion
-
+		/// <summary>
+		/// Given the RepositoryContext, retrieve the appropriate data from Sitecore and create an
+		/// instance of TModel.
+		/// </summary>
+		/// <param name="context">The Context of the data request.</param>
+		/// <returns>An instance of TModel that represents the results of the request.</returns>
 		public abstract TModel GetModel(RepositoryContext context);
 	}
 }

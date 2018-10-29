@@ -10,14 +10,14 @@ namespace Constellation.Foundation.Mvc.Patterns.Controllers
 	/// The Controller uses ModelMapper to map the Item to a ViewModel which is then handed to the View.
 	/// </summary>
 	/// <typeparam name="TModel">A class that can be mapped from an Item using ModelMapper.</typeparam>
-	public abstract class SimpleRenderingController<TModel> : ConventionController
+	public abstract class DatasourceRenderingController<TModel> : ConventionController
 	where TModel : class, new()
 	{
 		/// <summary>
-		/// Creates a new instance of DatasourceController
+		/// Creates a new instance of DatasourceRenderingController
 		/// </summary>
 		/// <param name="modelMapper">An instance of ModelMapper, typically provided by Dependency Injection.</param>
-		protected SimpleRenderingController(IModelMapper modelMapper)
+		protected DatasourceRenderingController(IModelMapper modelMapper)
 		{
 			ModelMapper = modelMapper;
 		}
