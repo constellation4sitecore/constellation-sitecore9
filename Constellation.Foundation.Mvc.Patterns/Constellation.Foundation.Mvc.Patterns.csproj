@@ -32,6 +32,9 @@
     <DocumentationFile>bin\Release\Constellation.Foundation.Mvc.Patterns.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Constellation.Foundation.Caching, Version=9.0.5.24342, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Caching.9.0.5.24342\lib\net462\Constellation.Foundation.Caching.dll</HintPath>
+    </Reference>
     <Reference Include="Constellation.Foundation.Data, Version=9.0.6.23290, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Data.9.0.6.23290\lib\net462\Constellation.Foundation.Data.dll</HintPath>
     </Reference>
@@ -92,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Controllers\ListController.cs" />
     <Compile Include="ModelBuilders\IModelBuilder.cs" />
+    <Compile Include="ModelBuilders\ModelBuilder.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\ItemListRepository.cs" />
     <Compile Include="Controllers\SimpleRenderingController.cs" />
@@ -99,12 +103,16 @@
     <Compile Include="Repositories\PaginatedItemListRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\SingleItemRepository.cs" />
+    <Compile Include="RepositoryContext.cs" />
+    <Compile Include="ServicesConfigurator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Constellation.License.txt" />
     <None Include="app.config" />
     <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Mvc.config" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Caching.config" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Mvc.Patterns.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

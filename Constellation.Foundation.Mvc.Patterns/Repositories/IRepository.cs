@@ -1,6 +1,7 @@
 ﻿namespace Constellation.Foundation.Mvc.Patterns.Repositories
 {
-	public interface IRepository
+	public interface IRepository<TModel>
+	where TModel : class, new()
 	{
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using Constellation.Foundation.ModelMapping;
 using Sitecore.Data.Items;
 
-namespace Constellation.Foundation.Mvc.Patterns
+namespace Constellation.Foundation.Mvc.Patterns.Controllers
 {
 	/// <inheritdoc />
 	/// <summary>
@@ -29,6 +29,7 @@ namespace Constellation.Foundation.Mvc.Patterns
 		protected IModelMapper ModelMapper { get; }
 		#endregion
 
+		/// <inheritdoc />
 		protected override object GetModel(Item datasource, Item contextItem)
 		{
 			return ModelMapper.MapItemToNew<TModel>(datasource);

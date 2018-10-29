@@ -1,8 +1,12 @@
-﻿using Constellation.Foundation.Mvc.Patterns.Repositories;
+﻿using Constellation.Foundation.Caching;
+using Constellation.Foundation.Mvc.Patterns.ModelBuilders;
 
-namespace Constellation.Foundation.Mvc.Patterns
+namespace Constellation.Foundation.Mvc.Patterns.Repositories
 {
-	public class SingleItemRepository : IRepository
+	public class SingleItemRepository : Repository
 	{
+		public SingleItemRepository(RepositoryContext context, ICacheManager cacheManager, IModelBuilder modelBuilder) : base(context, cacheManager, modelBuilder)
+		{
+		}
 	}
 }

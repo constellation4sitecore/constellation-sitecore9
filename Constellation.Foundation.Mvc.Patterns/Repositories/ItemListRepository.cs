@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
-using Constellation.Foundation.Mvc.Patterns.Repositories;
-using Sitecore.Data.Items;
+﻿using Constellation.Foundation.Caching;
+using Constellation.Foundation.Mvc.Patterns.ModelBuilders;
 
-namespace Constellation.Foundation.Mvc.Patterns
+namespace Constellation.Foundation.Mvc.Patterns.Repositories
 {
-	public abstract class ItemListRepository : IRepository
+	public abstract class ItemListRepository : Repository
 	{
-		public abstract ICollection<Item> GetItems(Item datasource, Item contextItem);
+		protected ItemListRepository(RepositoryContext context, ICacheManager cacheManager, IModelBuilder modelBuilder) : base(context, cacheManager, modelBuilder)
+		{
+		}
 	}
 }

@@ -2,12 +2,13 @@
 
 namespace Constellation.Foundation.Mvc.Patterns.Repositories
 {
-	public abstract class Repository : IRepository
+	public abstract class Repository<TModel> : IRepository<TModel>
+	where TModel : class, new()
 	{
 		#region Constructors
-		protected Repository()
+		protected Repository(IModelBuilder modelBuilder)
 		{
-
+			ModelBuilder = modelBuilder;
 		}
 		#endregion
 
@@ -15,6 +16,6 @@ namespace Constellation.Foundation.Mvc.Patterns.Repositories
 		protected IModelBuilder ModelBuilder { get; }
 		#endregion
 
-
+		public abstract TModel GetModel(RepositoryContext context);
 	}
 }
