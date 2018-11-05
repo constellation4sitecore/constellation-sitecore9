@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
+using AppDomain = System.AppDomain;
 
 namespace Constellation.Foundation.Mvc.Patterns
 {
@@ -19,7 +20,8 @@ namespace Constellation.Foundation.Mvc.Patterns
 		/// <param name="serviceCollection">The service collection to append.</param>
 		public void Configure(IServiceCollection serviceCollection)
 		{
-			AddMvcControllers(serviceCollection, Configuration.Current.AssembliesToRegister.ToArray());
+			var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+			AddMvcControllers(serviceCollection, assemblies);
 		}
 
 		private static void AddMvcControllers(IServiceCollection serviceCollection, params Assembly[] assemblies)

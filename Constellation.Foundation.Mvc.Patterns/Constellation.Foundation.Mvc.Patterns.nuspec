@@ -34,7 +34,7 @@ ItemListController - Use when a Rendering will present a number of Items that ha
 
 Configured for use with Sitecore 9.0.
 	</description>
-	<releaseNotes>Corrected a typo in the config file. Also made sure the controller and repository names were consistent with each other.</releaseNotes>
+	<releaseNotes>On Sitecore startup, this package will now scan all assemblies for IController and IRepository implementations and automatically add them to Dependency Injection.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

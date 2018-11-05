@@ -11,7 +11,7 @@
     <AssemblyName>Constellation.Foundation.Mvc.Patterns</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <Deterministic>false</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,6 +52,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.NoReferences.9.0.171002\lib\NET462\Sitecore.Kernel.dll</HintPath>
@@ -104,7 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyCrawler.cs" />
-    <Compile Include="Configuration.cs" />
     <Compile Include="RepositoryRegistration.cs" />
     <Compile Include="Controllers\ItemListController.cs" />
     <Compile Include="Repositories\IRepository.cs" />
@@ -116,7 +116,6 @@
     <Compile Include="Repositories\SingleItemRepository.cs" />
     <Compile Include="RepositoryContext.cs" />
     <Compile Include="ControllerRegistration.cs" />
-    <Compile Include="ServicesConfigurator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Constellation.License.txt" />

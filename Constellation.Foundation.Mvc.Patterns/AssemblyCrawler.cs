@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 
 namespace Constellation.Foundation.Mvc.Patterns
 {
-	public static class AssemblyCrawler
+	internal static class AssemblyCrawler
 	{
-		public static Type[] GetTypesImplementing<T>(params Assembly[] assemblies)
+		internal static Type[] GetTypesImplementing<T>(params Assembly[] assemblies)
 		{
 			if (assemblies == null || assemblies.Length == 0)
 			{
@@ -18,9 +19,9 @@ namespace Constellation.Foundation.Mvc.Patterns
 			var targetType = typeof(T);
 
 			return assemblies
-				.Where(assembly => !assembly.IsDynamic)
+				.Where(assembly => !assembly.IsDynamic && !assembly.FullName.StartsWith("Sitecore"))
 				.SelectMany(GetExportedTypes)
-				.Where(type => !type.IsAbstract && !type.IsGenericTypeDefinition && targetType.IsAssignableFrom(type))
+				.Where(type => !type.IsInterface && !type.IsAbstract && !type.IsGenericTypeDefinition && targetType.IsAssignableFrom(type))
 				.ToArray();
 		}
 
@@ -29,6 +30,16 @@ namespace Constellation.Foundation.Mvc.Patterns
 			try
 			{
 				return assembly.GetExportedTypes();
+			}
+			catch (FileLoadException)
+			{
+				// Probably a type version mismatch, likely not custom code and can be skipped reliably
+				return Type.EmptyTypes;
+			}
+			catch (TypeLoadException)
+			{
+				// Garbage, we can reliably skip this.
+				return Type.EmptyTypes;
 			}
 			catch (NotSupportedException)
 			{

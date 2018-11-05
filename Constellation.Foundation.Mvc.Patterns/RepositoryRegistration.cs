@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System;
 using System.Reflection;
 using Constellation.Foundation.Mvc.Patterns.Repositories;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +17,8 @@ namespace Constellation.Foundation.Mvc.Patterns
 		/// <param name="serviceCollection">The service collection to append.</param>
 		public void Configure(IServiceCollection serviceCollection)
 		{
-			AddRepositories(serviceCollection, Configuration.Current.AssembliesToRegister.ToArray());
+			var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+			AddRepositories(serviceCollection, assemblies);
 		}
 
 		private static void AddRepositories(IServiceCollection serviceCollection, params Assembly[] assemblies)
