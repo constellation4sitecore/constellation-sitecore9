@@ -21,7 +21,7 @@ namespace Constellation.Foundation.Mvc.Patterns
 			return assemblies
 				.Where(assembly => !assembly.IsDynamic && !assembly.FullName.StartsWith("Sitecore"))
 				.SelectMany(GetExportedTypes)
-				.Where(type => !type.IsInterface && !type.IsAbstract && !type.IsGenericTypeDefinition && targetType.IsAssignableFrom(type))
+				.Where(type => !type.IsAbstract && !type.IsGenericTypeDefinition && targetType.IsAssignableFrom(type))
 				.ToArray();
 		}
 

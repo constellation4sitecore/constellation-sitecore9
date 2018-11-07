@@ -21,7 +21,7 @@ namespace Constellation.Foundation.Mvc.Patterns
 			AddRepositories(serviceCollection, assemblies);
 		}
 
-		private static void AddRepositories(IServiceCollection serviceCollection, params Assembly[] assemblies)
+		private void AddRepositories(IServiceCollection serviceCollection, params Assembly[] assemblies)
 		{
 			var repositories = AssemblyCrawler.GetTypesImplementing<IRepository>(assemblies);
 

@@ -24,7 +24,7 @@ namespace Constellation.Foundation.Mvc.Patterns
 			AddMvcControllers(serviceCollection, assemblies);
 		}
 
-		private static void AddMvcControllers(IServiceCollection serviceCollection, params Assembly[] assemblies)
+		private void AddMvcControllers(IServiceCollection serviceCollection, params Assembly[] assemblies)
 		{
 			var controllers = AssemblyCrawler.GetTypesImplementing<IController>(assemblies)
 				.Where(controller => controller.Name.EndsWith("Controller", StringComparison.Ordinal));
