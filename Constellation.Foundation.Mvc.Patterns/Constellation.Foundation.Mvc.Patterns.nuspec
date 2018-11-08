@@ -14,28 +14,31 @@ Constellation is a collection of utilities for .NET CMS implementers.
 
 The Foundation.Mvc.Patterns library is an opinionated library that provides some base Controller and Repository classes for jumpstarting
 a Sitecore project. The purpose is to get developers to better separate data access logic from controllers and also to hide some uninteresting concerns.
-		
+
 Repositories: Classes which accept a context to specify the conditions for accessing data in Sitecore along with facts for use in the query. The Repository
 is responsible for getting the results of a query, any caching, and any transformation into ViewModel output.
-		
+
 Base Repositories:
 Repository - Just the basics of setting up the relationship between the repository and the controller.
 CachingRepository - Adds caching of the repository's output to the mix.
 SingleItemRepository - Includes both of above and is centered around queries that will retrieve a single Item.
 ItemListRepository - Includes the first two and is centered around queries taht will retrieve multiple Items.
-		
+
 Controllers: Classes which are responsible for handling the transition from Sitecore to the View, including setting up a Repository Context, and getting the
 results from the Repository for sending to the View.
-		
+
 Base Controllers:
 DatasourceRenderingController - Use when a Rendering has a Datasource Item and that Item is what's being rendered.
 ItemListController - Use when a Rendering will present a number of Items that have to be looked up in some fashion.
 
+On Sitecore startup, this package will scan all assemblies for IController and IRepository implementations and automatically add them to Dependency Injection.
+This feature can be disabled/changed via the config file for this package.
+
 
 Configured for use with Sitecore 9.0.
 	</description>
-	<releaseNotes>On Sitecore startup, this package will now scan all assemblies for IController and IRepository implementations and automatically add them to Dependency Injection.</releaseNotes>
-	<copyright>Copyright 2017</copyright>
-	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
+	<releaseNotes></releaseNotes>
+	<copyright>Copyright 2018</copyright>
+	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
 </package>
