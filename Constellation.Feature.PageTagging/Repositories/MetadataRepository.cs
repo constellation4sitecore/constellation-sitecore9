@@ -58,7 +58,7 @@ namespace Constellation.Feature.PageTagging.Repositories
 					return; // Prevents escalating up the tree past /sitecore/content
 				}
 
-				var candidate = context.MapToNew<PageMetadata>();
+				var candidate = ModelMapper.MapItemToNew<PageMetadata>(context);
 
 				if (candidate.HasValidAuthorAndPublisher)
 				{

@@ -74,7 +74,7 @@ namespace Constellation.Feature.PageTagging.Repositories
 					return; // Prevents escalating up the tree past /sitecore/content
 				}
 
-				var candidate = context.MapToNew<PageSocialMetadata>();
+				var candidate = ModelMapper.MapItemToNew<PageSocialMetadata>(context);
 
 				if (string.IsNullOrEmpty(model.TwitterCreator))
 				{
