@@ -38,7 +38,7 @@
 		Configured for use with Sitecore 9.0.
 		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Updates to ModelMapping dependency.</releaseNotes>
+	<releaseNotes>Fixed missing renderings in package.zip</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

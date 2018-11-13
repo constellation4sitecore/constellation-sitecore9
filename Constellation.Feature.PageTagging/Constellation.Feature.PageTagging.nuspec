@@ -41,7 +41,7 @@
 
 		Configured for use with Sitecore 9.0.
 	</description>
-	<releaseNotes>Fixed typo in config file.</releaseNotes>
+	<releaseNotes>Updated config of PackageVerifier.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>
