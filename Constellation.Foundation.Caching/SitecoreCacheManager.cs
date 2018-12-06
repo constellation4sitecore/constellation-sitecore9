@@ -25,6 +25,7 @@ namespace Constellation.Foundation.Caching
 		/// <summary>
 		/// The caching collection singleton to hold the caching references
 		/// </summary>
+		// ReSharper disable once CollectionNeverUpdated.Local
 		private static readonly Dictionary<string, ICache> CacheCollection = new Dictionary<string, ICache>();
 		#endregion
 

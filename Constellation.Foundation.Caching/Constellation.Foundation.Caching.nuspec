@@ -10,7 +10,9 @@
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix-compatible library to enhance access to Sitecore Caching APIs.</summary>
 	<description>
-VERSION 9.0.5 contains a breaking change from previous versions!
+VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+Requires Sitecore 9.1
+Requires .NET 4.7.1
 
 Constellation is a collection of utilities for .NET CMS implementers.
 The Foundation.Caching namespace contains a Cache facade class that allows a developer to cache an object to
@@ -21,15 +23,12 @@ In addition to providing quick access to these APIs, the facade also provides su
 * Site
 * Database
 
-Now with Dependency Injection support. Request an ICacheManager from your service locator to use. Static Cache methods will be removed
-from a future release.
-
-Configured for use with Sitecore 9.0
+Request an ICacheManager from your service locator to use in your Controllers.
 
 Portions based on work by Christopher Giddings: https://cjgiddings.wordpress.com/2012/02/03/sitecore-caching-utility/ updated heavily
-for modularity and to support Sitecore 9.0
+for modularity and to support Sitecore 9.x
 	</description>
-	<releaseNotes>Now with Intellisense!</releaseNotes>
+	<releaseNotes>Compiled for use with Sitecore 9.1</releaseNotes>
 	<copyright>Copyright 2016</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
