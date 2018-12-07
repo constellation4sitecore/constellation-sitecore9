@@ -6,18 +6,17 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/foundation/globalization/</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library with shims for multi-site/multi-language support in Sitecore</summary>
 	<description>
-		Constellation is a collection of utilities for .NET CMS implementers.
-		The Foundation.Datasources namespace contains extension methods for Item, Language, and SiteInfo specifically related
-		to determining and specifying language at runtime.
+		VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+		Requires Sitecore 9.1
+		Requires .NET 4.7.1
 
-		Configured for use with Sitecore 9.0.
-		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+		Constellation is a collection of utilities for .NET CMS implementers. The Foundation.Globalization namespace contains extension methods for Item, Language, and SiteInfo specifically related to determining and specifying language at runtime.
 	</description>
-	<releaseNotes>Now with Intellisense!</releaseNotes>
+	<releaseNotes>Compiled for use with Sitecore 9.1</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

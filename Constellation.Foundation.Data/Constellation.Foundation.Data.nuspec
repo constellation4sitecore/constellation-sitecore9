@@ -6,23 +6,24 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral, Chris Lees, Ed Lane</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/foundation/data/</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library extending Item with utilities to check ancestry, template derivation, and to retrieve Item children of a specific template.</summary>
 	<description>
-		Constellation is a collection of utilities for .NET CMS implementers.
-		The Foundation.Data namespace contains an Item extension class that allows the developer to:
-		- Get an Item's ancestor based on Template
-		- Test an Item's Template inheritance
-		- Retrieve an Item's children based on a specific Template
-		- Retrieve the URL for the Item using the currently active LinkManager configuration.
-		- Determine if the Item is in the Context Site.
-		- Find or create an Item's child given a name and a Template ID.
+VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+Requires Sitecore 9.1
+Requires .NET 4.7.1
 
-		Configured for use with Sitecore 9.0.
-		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+Constellation is a collection of utilities for .NET CMS implementers.
+The Foundation.Data namespace contains an Item extension class that allows the developer to:
+- Get an Item's ancestor based on Template
+- Test an Item's Template inheritance
+- Retrieve an Item's children based on a specific Template
+- Retrieve the URL for the Item using the currently active LinkManager configuration.
+- Determine if the Item is in the Context Site.
+- Find or create an Item's child given a name and a Template ID.
 	</description>
-	<releaseNotes>Now with Intellisense!. Also Item.GetUrl() now includes full media URL option support along with media request protection.</releaseNotes>
+	<releaseNotes>Fixed issue where it was building for .NET 4.7.2 It is now correctly targeting 4.7.1</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

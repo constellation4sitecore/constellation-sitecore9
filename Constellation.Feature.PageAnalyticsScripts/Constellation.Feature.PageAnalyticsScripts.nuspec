@@ -6,39 +6,40 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/feature/page-analytics-scripts/</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix-style library that provides bare-essentials support for page metadata.</summary>
 	<description>
-		Constellation is a collection of utilities for .NET CMS implementers.
+VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+Requires Sitecore 9.1
+Requires .NET 4.7.1
 
-		The Feature.PageAnalyticsScripts namespace contains controllers that will render 3rd party analytics and reporting
-		scripts to the page. To get the controllers and supporting Data Templates, the included Sitecore package must be installed
-		This should happen automatically when you build and deploy your project.
-		
-		After installation, some configuration within Sitecore is required. 
-		1. You need to select a location for Page Analytics Scripts Items.
-		2. For each of the Controller Renderings provided in the package, you need to set the Datasource Folder field to 
-		the above location.
-		3. It is recommended that you create placeholders for the Html Header tag as well as the top and bottom of the Body
-		tags. You can then assign the provided Controller Renderings to those locations in the Standard Values of your most
-		basic Page Items.
-		
-		This module isolates the analytics script kit from actual pages, so you may share scripts on multiple pages (typically
-		every page on a site references the same datasource). You can also "stack" scripts by adding multiple instances of the
-		controller renderings with different datasources.
-		
-		This module does not directly support page/experience editor because:
-		1. Scripts are invisible
-		2. Their location in the HTML document may make it difficult to provide access to the rendering.
-		
-		Because maintaining these scripts requires knowledge of Javascript and Marketing Technology, it is recommended that only
-		users familiar with the Presentation Details dialog maintain these objects.
+Constellation is a collection of utilities for .NET CMS implementers.
 
-		Configured for use with Sitecore 9.0.
-		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+The Feature.PageAnalyticsScripts namespace contains controllers that will render 3rd party analytics and reporting
+scripts to the page. To get the controllers and supporting Data Templates, the included Sitecore package must be installed
+This should happen automatically when you build and deploy your project.
+
+After installation, some configuration within Sitecore is required.
+1. You need to select a location for Page Analytics Scripts Items.
+2. For each of the Controller Renderings provided in the package, you need to set the Datasource Folder field to
+the above location.
+3. It is recommended that you create placeholders for the Html Header tag as well as the top and bottom of the Body
+tags. You can then assign the provided Controller Renderings to those locations in the Standard Values of your most
+basic Page Items.
+
+This module isolates the analytics script kit from actual pages, so you may share scripts on multiple pages (typically
+every page on a site references the same datasource). You can also "stack" scripts by adding multiple instances of the
+controller renderings with different datasources.
+
+This module does not directly support page/experience editor because:
+1. Scripts are invisible
+2. Their location in the HTML document may make it difficult to provide access to the rendering.
+
+Because maintaining these scripts requires knowledge of Javascript and Marketing Technology, it is recommended that only
+users familiar with the Presentation Details dialog maintain these objects.
 	</description>
-	<releaseNotes>Fixed missing renderings in package.zip</releaseNotes>
+	<releaseNotes>Compiled for use with Sitecore 9.1</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

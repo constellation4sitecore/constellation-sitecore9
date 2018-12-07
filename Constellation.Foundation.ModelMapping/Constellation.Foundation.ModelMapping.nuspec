@@ -6,18 +6,17 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/foundation/modelmapping/</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
-WARNING RELEASE 9.0.27 CONTAINS A BREAKING CHANGE
+VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+Requires Sitecore 9.1
+Requires .NET 4.7.1
 
 Constellation is a collection of utilities for .NET CMS implementers.
 
-The Foundation.ModelMapping library is inspired by AutoMapper and is designed to provide a quick, non-ORM method of
-mapping Sitecore Items to ViewModels. String properties on your ViewModel will be mapped to FieldRendered values from fields with the
-same names. Integer and DateTime property types can also be handled automatically, although you will not get page editor support
-for these types. There are a number of Attributes that you can assign to your ViewModel's properties to change the behavior of the Mapper.
+The Foundation.ModelMapping library is inspired by AutoMapper and is designed to provide a quick, non-ORM method of mapping Sitecore Items to ViewModels. String properties on your ViewModel will be mapped to FieldRendered values from fields with the same names. Integer and DateTime property types can also be handled automatically, although you will not get page editor support for these types. There are a number of Attributes that you can assign to your ViewModel's properties to change the behavior of the Mapper.
 
 Usage:
 var modelMapper = (IModelMapper)ServiceLocator.ServiceProvider.GetService(typeof(IModelMapper)); // Dependency Injection of an IModelMapper is supported
@@ -25,9 +24,8 @@ var modelMapper = (IModelMapper)ServiceLocator.ServiceProvider.GetService(typeof
 TModel viewModel = modelMapper.MapItemToNew&lt;TModel&gt;(sourceItem);
 Or: TModel viewmodel = item.MapToNew&lt;TModel&gt;();
 Or: modelMapper.MapTo(item, model);
-		
-When using Item or ItemList extensions for mapping, the context IModelMapper is requested from the ServiceLocator, so any moc objects you use for testing
-are supported with these extension methods.
+
+When using Item or ItemList extensions for mapping, the context IModelMapper is requested from the ServiceLocator, so any moc objects you use for testing are supported with these extension methods.
 
 Constraints:
 - Your ViewModel must have a public, parameterless constructor.
@@ -61,11 +59,8 @@ Support for LinkField.TargetItem - use Model.FieldNameTargetItem and supply a cl
 Support for MultilistField.GetItems - use Model.FieldName and supply a generic ICollection&lt;T&gt; where "T" is new() and has properties you can map.
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
-
-Configured for use with Sitecore 9.0.
-Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Now with Intellisense</releaseNotes>
+	<releaseNotes>Compiled for use with Sitecore 9.1</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

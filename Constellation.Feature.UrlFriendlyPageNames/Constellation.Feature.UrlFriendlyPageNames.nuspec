@@ -6,15 +6,19 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/feature/url-friendly-page-names/</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix-style library for transforming human-entered Item Names into SEO-friendly URL slugs.</summary>
 	<description>
+VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+Requires Sitecore 9.1
+Requires .NET 4.7.1
+
 Constellation is a collection of utilities for .NET CMS implementers.
 
 This small Feature contains a Sitecore Rule Action which must be installed in order to take advantage
 of this library. The package should self-install once you build and deploy your project.
-		
+
 To use, an Item Saved rule must be created. The rule must have a condition that specifies that an Item is a "page" and therefore
 needs an SEO-friendly URL. The rule action should be the one included in this kit. Rule options include:
 - Replace Diacritics
@@ -22,15 +26,12 @@ needs an SEO-friendly URL. The rule action should be the one included in this ki
 - Specify illegal characters to remove (Regex "\s" is a good choice.)
 - Replace spaces or remove spaces from names
 - Force lowercase
-		
+
 It is up to the implementer to determine the nature of "page" Items. We recommend looking at Constellation.Foundation.Datasources for
 rule conditions that are suitable for this specific task.
-		
+
 Note that the Illegal Characters option and the Replace Spaces option can conflict, a "-" will be removed if you use the "\W" regex,
 resulting in behavior similar to "Remove Spaces" We strongly recommend using "\s".
-
-Configured for use with Sitecore 9.0.
-Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
 	<releaseNotes>Updated NuGet dependencies. Help text changes, now with Intellisense support!</releaseNotes>
 	<copyright>Copyright 2017</copyright>

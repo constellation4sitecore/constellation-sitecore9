@@ -6,42 +6,44 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://constellation4sitecore.com/</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/feature/page-tagging/</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix-style library that provides bare-essentials support for page metadata.</summary>
 	<description>
-		Constellation is a collection of utilities for .NET CMS implementers.
+VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+Requires Sitecore 9.1
+Requires .NET 4.7.1
 
-		The Feature.PageTagging namespace contains controllers that will render the following meta tags when installed on page:
-		- name=keywords
-		- name=description
-		- name=publisher
-		- name=author
-		- name=robots
-		- name=twitter:card
-		- name=twitter:creator
-		- name=twitter:site
-		- property=og:url
-		- property=og:title
-		- property=og:description
-		- property=og:image
+Constellation is a collection of utilities for .NET CMS implementers.
 
-		These tags provide good SEO support as well as good support for Facebook and Twitter.
+The Feature.PageTagging namespace contains controllers that will render the following meta tags when installed on page:
+- name=keywords
+- name=description
+- name=publisher
+- name=author
+- name=robots
+- name=twitter:card
+- name=twitter:creator
+- name=twitter:site
+- property=og:url
+- property=og:title
+- property=og:description
+- property=og:image
 
-		The Sitecore Package in /Installation-Packages must be installed to take advantage of this library. The package includes:
-		- Data Templates for the fields required to support these tags. Your pages should inherit from these to take advantage of this library.
-		- List items where fields have a limited choice of values.
-		- Rendering definitions.
-		The package should self-install when you build and deploy your project.
+These tags provide good SEO support as well as good support for Facebook and Twitter.
 
-		To use, in your Layout, at the appropriate location enter the following:
-		@Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page tagging/page metadata")
-		@Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page tagging/page search engine directives")
-		@Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page tagging/page social metadata")
+The Sitecore Package in /Installation-Packages must be installed to take advantage of this library. The package includes:
+- Data Templates for the fields required to support these tags. Your pages should inherit from these to take advantage of this library.
+- List items where fields have a limited choice of values.
+- Rendering definitions.
+The package should self-install when you build and deploy your project.
 
-		Configured for use with Sitecore 9.0.
+To use, in your Layout, at the appropriate location enter the following:
+@Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page tagging/page metadata")
+@Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page tagging/page search engine directives")
+@Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page tagging/page social metadata")
 	</description>
-	<releaseNotes>Updated config of PackageVerifier.</releaseNotes>
+	<releaseNotes>Compiled for Sitecore 9.1</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

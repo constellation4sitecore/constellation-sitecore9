@@ -6,23 +6,23 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/foundation/sitemap-xml/</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix-style library that adds Sitemap XML generation to the Page Tagging library.</summary>
 	<description>
-		Constellation is a collection of utilities for .NET CMS implementers.
+VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+Requires Sitecore 9.1
+Requires .NET 4.7.1
 
-		The Feature.PageTagging.SitemapXml namespace is an extension of the base Feature that adds explicit support for 
-		Foundation.SitemapXml, based upon the Page Search Engine Directive fields available in the PageTagging module.
-		
-		This feature is shipped separately in case the user is not using Constellation.Foundation.SitemapXml or has a different
-		implementation that is not compatible with the PageTagging feature.
+Constellation is a collection of utilities for .NET CMS implementers.
 
+The Feature.PageTagging.SitemapXml namespace is an extension of the base Feature that adds explicit support for
+Foundation.SitemapXml, based upon the Page Search Engine Directive fields available in the PageTagging module.
 
-		Configured for use with Sitecore 9.0.
-		Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+This feature is shipped separately in case the user is not using Constellation.Foundation.SitemapXml or has a different
+implementation that is not compatible with the PageTagging feature.
 	</description>
-	<releaseNotes>Updated PageTagging dependency.</releaseNotes>
+	<releaseNotes>Compiled for Sitecore 9.1</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

@@ -6,10 +6,14 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/foundation-datasources/</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library for classifying content based on whether the content is a page, a page fragment, and/or reusable.</summary>
 	<description>
+VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+Requires Sitecore 9.1
+Requires .NET 4.7.1
+
 Constellation is a collection of utilities for .NET CMS implementers.
 The Foundation.Datasources library is an opinionated information architecture for Sitecore. It includes "base" templates and Item
 information rules to enforce the architecture.
@@ -22,16 +26,12 @@ Context Datasource: A "page" Item in Sitecore, has a URL, has presentation, load
 Subcontent: A "page fragment" Item in Sitecore, specifically an Item designed to be used as the DataSource for a Rendering. It is required
 for the Rendering to render. Subcontent is optional page content, but is unique to the page it appears on.
 
-Widget: Also a "page fragment" Item in Sitecore, specifically an Item designed to be used as the DataSource for a Rendering. It is required
-for the Rendering to render. Widgets are optional page content, but are designed to be shared by multiple pages.
+Widget: Also a "page fragment" Item in Sitecore, specifically an Item designed to be used as the DataSource for a Rendering. It is required for the Rendering to render. Widgets are optional page content, but are designed to be shared by multiple pages.
 
 
-The primary information architecture for this design involves the storage of SubContent vs Widgets. All Pages on a site should get a _subcontent
-folder beneath them which is where Items of type Subcontent should be stored. This allows for Renderings to specify their Datasource location
-as "./_subcontent"
+The primary information architecture for this design involves the storage of SubContent vs Widgets. All Pages on a site should get a _subcontent folder beneath them which is where Items of type Subcontent should be stored. This allows for Renderings to specify their Datasource location as "./_subcontent"
 
-Widgets should be stored beneath the /tenant/site node (using Helix methodology) typically in a /widgets folder, possibly broken up by widget
-type or marketing intentions.
+Widgets should be stored beneath the /tenant/site node (using Helix methodology) typically in a /widgets folder, possibly broken up by widget type or marketing intentions.
 
 You can use the following Rule Conditions to enforce this Information Architecture:
 * ItemIsContextDatasource
@@ -50,13 +50,9 @@ After setting up this rule, ensure that your Renderings are organized into Widge
 
 
 Installation:
-Add this NuGet package to a Web Application project. After building and deploying, this library will automatically install the Sitecore package containing
-the necessary rules and templates to support this architecture.
-
-Configured for use with Sitecore 9.0.
-Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
+Add this NuGet package to a Web Application project. After building and deploying, this library will automatically install the Sitecore package containing the necessary rules and templates to support this architecture.
 	</description>
-	<releaseNotes>Now with Intellisense support. Now includes a Supports Subcontent item save rule.</releaseNotes>
+	<releaseNotes>Compiled for use with Sitecore 9.1</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

@@ -6,15 +6,19 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/foundation/sitemap-xml/</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix-style library that handles requests for /ROBOTS.TXT and /SITEMAP.XML dynamically based on Sitecore content.</summary>
 	<description>
+VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+Requires Sitecore 9.1
+Requires .NET 4.7.1
+
 Constellation is a collection of utilities for .NET CMS implementers.
 
-The Foundation.SitemapXml namespace contains Http Handlers which intercept the request before it hits Sitecore. 
-		
-		
+The Foundation.SitemapXml namespace contains Http Handlers which intercept the request before it hits Sitecore.
+
+
 Robots.TXT Handler:
 
 Returns a basic document that either allows or disallows all agents. The document also includes basic disallows for /sitecore urls to prevent the login page
@@ -23,40 +27,37 @@ within the config file.
 
 
 Sitemap.XML Handler:
-		
+
 Returns an on-the-fly document (there are cache options available) for each configured Site in your installation. The document is created by having one or more
 "crawlers" inspect the Content Tree generating the necessary Item facts and URLs required to produce the Sitemap. You can specify a set of default crawlers
 for your installation, as well as override the crawler list on a site-by-site basis. There are also provisions for excluding sites from returning a sitemap.xml
 document if it is not appropriate.
-		
+
 
 Default Functionality:
-		
+
 The system will function on a basic level "out of the box". There is a default Content Tree crawler that will start at the root of the current Site and include Items
-		that have presentation details. The crawlers operate in the extranet\anonymous role and thus security can be used to "hide" Items or branches from the crawler.
-		
+that have presentation details. The crawlers operate in the extranet\anonymous role and thus security can be used to "hide" Items or branches from the crawler.
+
 Crawler output has extensive support for "validating" whether an Item should be included in the sitemap or not. Facts available through the API include:
 
 - Does the Item have presentation?
 - Does the Item have explicit rules to prevent Search Indexing?
 - Does the Item represent a "Page"?
-		
+
 It is up to the developer to supply meaningful decisions behind these facts, but answering "no" to any of them will result in the Item not being included.
-		
-This library outputs substantial amounts of troubleshooting warnings to the Sitecore log file. If you're having trouble, search for 
+
+This library outputs substantial amounts of troubleshooting warnings to the Sitecore log file. If you're having trouble, search for
 Constellation.Foundation.SitemapXml in your log file.
-		
+
 
 Installation Warning:
-		
+
 Your web.config must have a system.webServer/handlers section, and that section must have at least one handler in it (an "add" element) in order
 to install this package successfully. If you're using the default Sitecore web.config this won't be an issue. The handlers provided in this package must be
 inserted at the top of the stack of handlers.
-
-Configured for use with Sitecore 9.0.X
-Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Updated Constellation Caching dependency.</releaseNotes>
+	<releaseNotes>Compiled for use with Sitecore 9.1.</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

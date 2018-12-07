@@ -6,15 +6,17 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/feature/navigation/</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library for building out static navigation that doesn't necessarily reflect the shape or names of Items in the content tree.</summary>
 	<description>
-VERSION 9.0.20 HAS BREAKING CHANGES FROM 9.0.19
-			
+VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+Requires Sitecore 9.1
+Requires .NET 4.7.1
+
 Constellation is a collection of utilities for .NET CMS implementers.
 The Feature.Navigation library addresses the three most common forms of Navigation on Sitecore sites:
-		
+
 Declared (static) Navigation: (explicitly defined, may differ from the shape of the content tree)
 
 - DeclaredNavigationRepository.GetNavigation - Accepts a Navigation Menu item and assembles a full tree-like ViewModel for immediate processing in your View. If you need context highlighting in your navigation, be sure to pass in the Context Item as well.
@@ -30,7 +32,7 @@ supply the best fit. The strategy is based on overriding the concept of "name". 
 Branch (Context) Navigation: (implicitly defined. It follows the shape of the Content Tree)
 
 - BranchNavigationRepository.GetNavigation - Accepts the request Context Item (should be a Page) and generates a tree of BranchNodes representing
-the nearest LandingPage, its children, as well as the descendants of any children that are Ancestors of the Context Item. (will also create Children for the Context Item node 
+the nearest LandingPage, its children, as well as the descendants of any children that are Ancestors of the Context Item. (will also create Children for the Context Item node
 in the tree). Use this to produce the expanded navigation seen on many sites with deep content.
 
 Breadcrumbs: (implicitly defined. It walks up the Content Tree to get the path)
@@ -40,10 +42,6 @@ The breadcrumbs will start on your Site's StartItem and end with the supplied Co
 Uses the Item.Axes.GetAncestors() method to generate the list of breadcrumbs.
 
 The included package must be installed to use this library. This should happen automatically after you build and deploy your project.
-
-Configured for use with Sitecore 9.0.
-Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
-Requires the installation of the included Package.
 	</description>
 	<releaseNotes>Fixed a typo in the config file.</releaseNotes>
 	<copyright>Copyright 2017</copyright>

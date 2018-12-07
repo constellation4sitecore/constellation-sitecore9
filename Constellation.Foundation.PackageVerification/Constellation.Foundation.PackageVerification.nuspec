@@ -6,28 +6,29 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral.</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/foundation/package-verification/</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library to enhance development in Sitecore.</summary>
 	<description>
+VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+Requires Sitecore 9.1
+Requires .NET 4.7.1
+
 Constellation is a collection of utilities for .NET CMS implementers.
-		
+
 The Foundation.PackageVerification library can be used to create NuGet packages that "self install" Items in Sitecore
 during the Sitecore initialization process. This can be very handy if your library requires a few "traffic control"
 Items or some Core/Sheer/SPEAK Items in order to run. It can also be used to prevent users from breaking your install.
-		
+
 To use, install this NuGet package and review the provided example configuration file. for each Package you want to
 "verify," supply the name of the package (must be in the /packages folder) and the ID and database of Items you can use
 to determine if the package was previously installed. If these Items are not located, the package provided will be
 installed. Results are logged.
-		
+
 It is possible to create your own package processor if your verification needs are more substantial. See the provided
 configuration example for where to override package processing on a package-by-package basis.
-
-Configured for use with Sitecore 9.0.
-Requires Sitecore 9.0 NuGet packages, available here: https://sitecore.myget.org/F/sc-packages/api/v3/index.json
 	</description>
-	<releaseNotes>Now with Intellisense!</releaseNotes>
+	<releaseNotes>Compiled for Sitecore 9.1</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
   </metadata>

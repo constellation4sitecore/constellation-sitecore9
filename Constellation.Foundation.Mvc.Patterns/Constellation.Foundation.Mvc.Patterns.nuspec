@@ -10,6 +10,10 @@
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
+VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+Requires Sitecore 9.1
+Requires .NET 4.7.1
+
 Constellation is a collection of utilities for .NET CMS implementers.
 
 The Foundation.Mvc.Patterns library is an opinionated library that provides some base Controller and Repository classes for jumpstarting
@@ -33,9 +37,6 @@ ItemListController - Use when a Rendering will present a number of Items that ha
 
 On Sitecore startup, this package will scan all assemblies for IController and IRepository implementations and automatically add them to Dependency Injection.
 This feature can be disabled/changed via the config file for this package.
-
-
-Configured for use with Sitecore 9.0.
 	</description>
 	<releaseNotes></releaseNotes>
 	<copyright>Copyright 2018</copyright>

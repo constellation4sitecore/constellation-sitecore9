@@ -4,52 +4,49 @@
 	<id>$id$</id>
 	<version>$version$</version>
 	<title>$title$</title>
-	<authors>Richard J. Cabral. Portions from Hedgehog</authors>
+	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
-	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/foundation/mvc/</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
+VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
+Requires Sitecore 9.1
+Requires .NET 4.7.1
+
 Constellation is a collection of utilities for .NET CMS implementers.
 The Foundation.Mvc assembly contains enhancements to Sitecore's MVC Rendering system:
-		
 
 GenerateRenderingSpecificCacheKey Mvc.RenderRendering pipeline processor:
-Replaces the default GenerateCacheKey processor. Includes the ID of the Rendering in the cache key, this allows for multiple renderings with different presentation 
-		to use the same Datasource and be cached by Datasource without issues.
-		
-		
+Replaces the default GenerateCacheKey processor. Includes the ID of the Rendering in the cache key, this allows for multiple renderings with different presentation
+to use the same Datasource and be cached by Datasource without issues.
+
 MinifyAndAddRecordedHtmlToCache Mvc.RenderRendering pipeline processor:
 Replaces the default AddRecordedHtmlToCache processor. Uses the WebMarkupMin library to process the output HTML, Javascript, and CSS and minify it to improve page
-		delivery time through file size reduction. The default settings are "safe" but effective, however WebMarkupMin offers far more aggressive minification settings
-		for the bold.
+delivery time through file size reduction. The default settings are "safe" but effective, however WebMarkupMin offers far more aggressive minification settings
+for the bold.
 
-		
 GetControllerRenderer Mvc.GetRenderer pipeline processor:
-		Replaces the default GetControllerRenderer. Allows the developer to rely on the name of the Rendering to locate the appropriate controller to execute
-		(convention over configuration). Very handy for Renderings that have a dedicated controller with one action that always produces the same output.
-		
+Replaces the default GetControllerRenderer. Allows the developer to rely on the name of the Rendering to locate the appropriate controller to execute
+(convention over configuration). Very handy for Renderings that have a dedicated controller with one action that always produces the same output.
 
 ConventionController:
-		Provides a good base-class controller for Sitecore implementations:
-		* Forces the use of the Index() controller action (overrides possible)
-		* Provides the programmer with immediate access to the Rendering's DataSource and ContextItem (PageContext)
-		* Requires the programmer to assemble the model from the above Items.
-		* Automatically finds the View based upon the Rendering's XPath location in Sitecore
-		
-EditorCompatibleView:
-		Replaces the stock MVC View, and provides methods for determining if the Page Mode "IsExperienceEditor" and "IsExperienceEditorEditing" which are
-		of particular use if the View needs to change behavior to support editors.
-		
-ViewResolver:
-		Independent engine for locating a View based on the Rendering Item's path in Sitecore. It has two configuration settings that allow the programmer
-		to specify the location of Renderings in Sitecore (to trim the uneeded parts of the path) and also the location of the Views on disk. Areas are
-		supported through a token replacement. See the provided config file for details.
-		
+Provides a good base-class controller for Sitecore implementations:
+* Forces the use of the Index() controller action (overrides possible)
+* Provides the programmer with immediate access to the Rendering's DataSource and ContextItem (PageContext)
+* Requires the programmer to assemble the model from the above Items.
+* Automatically finds the View based upon the Rendering's XPath location in Sitecore
 
-Configured for use with Sitecore 9.0.
+EditorCompatibleView:
+Replaces the stock MVC View, and provides methods for determining if the Page Mode "IsExperienceEditor" and "IsExperienceEditorEditing" which are
+of particular use if the View needs to change behavior to support editors.
+
+ViewResolver:
+Independent engine for locating a View based on the Rendering Item's path in Sitecore. It has two configuration settings that allow the programmer
+to specify the location of Renderings in Sitecore (to trim the uneeded parts of the path) and also the location of the Views on disk. Areas are
+supported through a token replacement. See the provided config file for details.
 	</description>
-	<releaseNotes>Now with Intellisense!</releaseNotes>
+	<releaseNotes>Compiled for use with Sitecore 9.1</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>
