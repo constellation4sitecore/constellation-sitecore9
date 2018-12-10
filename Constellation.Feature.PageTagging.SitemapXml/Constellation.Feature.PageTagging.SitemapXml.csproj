@@ -32,8 +32,8 @@
     <DocumentationFile>bin\Release\Constellation.Feature.PageTagging.SitemapXml.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Feature.PageTagging, Version=9.1.0.23383, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Feature.PageTagging.9.1.0.23383\lib\net471\Constellation.Feature.PageTagging.dll</HintPath>
+    <Reference Include="Constellation.Feature.PageTagging, Version=9.1.1.28738, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Feature.PageTagging.9.1.1.28738\lib\net471\Constellation.Feature.PageTagging.dll</HintPath>
     </Reference>
     <Reference Include="Constellation.Foundation.Caching, Version=9.1.0.18554, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Caching.9.1.0.18554\lib\net471\Constellation.Foundation.Caching.dll</HintPath>
