@@ -122,13 +122,25 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			{
 				if (Property.IsHtml())
 				{
-					Property.SetValue(Model, new HtmlString(ExtractStringValueFromField()));
+					var stringValue = ExtractStringValueFromField();
+					Property.SetValue(Model, new HtmlString(stringValue));
+
+					if (string.IsNullOrEmpty(stringValue))
+					{
+						return FieldMapStatus.FieldEmpty;
+					}
 					return FieldMapStatus.Success;
 				}
 
 				if (Property.IsString())
 				{
-					Property.SetValue(Model, ExtractStringValueFromField());
+					var stringValue = ExtractStringValueFromField();
+					Property.SetValue(Model, stringValue);
+
+					if (string.IsNullOrEmpty(stringValue))
+					{
+						return FieldMapStatus.FieldEmpty;
+					}
 					return FieldMapStatus.Success;
 				}
 
@@ -137,7 +149,15 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 					return FieldMapStatus.TypeMismatch;
 				}
 
-				Property.SetValue(Model, ExtractTypedValueFromField());
+				var objectValue = ExtractTypedValueFromField();
+
+				Property.SetValue(Model, objectValue);
+
+				if (objectValue == null)
+				{
+					return FieldMapStatus.ValueEmpty;
+				}
+
 				return FieldMapStatus.Success;
 			}
 			catch (Exception ex)
