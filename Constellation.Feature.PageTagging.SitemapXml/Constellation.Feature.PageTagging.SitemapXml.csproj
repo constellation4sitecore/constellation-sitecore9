@@ -32,8 +32,8 @@
     <DocumentationFile>bin\Release\Constellation.Feature.PageTagging.SitemapXml.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Feature.PageTagging, Version=9.1.1.28738, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Feature.PageTagging.9.1.1.28738\lib\net471\Constellation.Feature.PageTagging.dll</HintPath>
+    <Reference Include="Constellation.Feature.PageTagging, Version=9.1.2.17831, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Feature.PageTagging.9.1.2.17831\lib\net471\Constellation.Feature.PageTagging.dll</HintPath>
     </Reference>
     <Reference Include="Constellation.Foundation.Caching, Version=9.1.0.18554, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Caching.9.1.0.18554\lib\net471\Constellation.Foundation.Caching.dll</HintPath>
@@ -41,8 +41,8 @@
     <Reference Include="Constellation.Foundation.Data, Version=9.1.0.29048, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Data.9.1.0.29048\lib\net471\Constellation.Foundation.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.1.0.16301, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.1.0.16301\lib\net471\Constellation.Foundation.ModelMapping.dll</HintPath>
+    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.1.1.23876, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.1.1.23876\lib\net471\Constellation.Foundation.ModelMapping.dll</HintPath>
     </Reference>
     <Reference Include="Constellation.Foundation.PackageVerification, Version=9.1.0.29104, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.1.0.29104\lib\net471\Constellation.Foundation.PackageVerification.dll</HintPath>

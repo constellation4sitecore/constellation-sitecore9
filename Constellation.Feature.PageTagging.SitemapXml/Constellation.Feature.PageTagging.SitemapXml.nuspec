@@ -22,7 +22,7 @@ Foundation.SitemapXml, based upon the Page Search Engine Directive fields availa
 This feature is shipped separately in case the user is not using Constellation.Foundation.SitemapXml or has a different
 implementation that is not compatible with the PageTagging feature.
 	</description>
-	<releaseNotes>Back-revved MVC nuget reference to 5.2.4 to match Sitecore 9.1</releaseNotes>
+	<releaseNotes>Updated ModelMapping reference.</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>
