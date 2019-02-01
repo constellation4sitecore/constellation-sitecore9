@@ -21,12 +21,28 @@ namespace Constellation.Foundation.Mvc
 	public abstract class ConventionController : Controller
 	{
 		/// <summary>
+		/// Creates a new instance of ConventionController
+		/// </summary>
+		/// <param name="viewPathResolver">An implementation of IViewPathResolver</param>
+		protected ConventionController(IViewPathResolver viewPathResolver)
+		{
+			ViewPathResolver = viewPathResolver;
+		}
+
+		#region Properties
+		/// <summary>
+		/// Gets or Sets the object responsible for determining the location of the View on disk.
+		/// </summary>
+		protected IViewPathResolver ViewPathResolver { get; set; }
+		#endregion
+
+		/// <summary>
 		/// Fallback action based on known Sitecore and MVC defaults.
 		/// </summary>
 		/// <returns></returns>
 		public virtual ActionResult Index()
 		{
-			var viewPath = GetViewPath(RenderingContext.Current.Rendering.RenderingItem);
+			var viewPath = ViewPathResolver.ResolveViewPath(RenderingContext.Current.Rendering.RenderingItem);
 			var model = GetModel(RenderingContext.Current.Rendering.Item, RenderingContext.Current.ContextItem);
 			return Render(viewPath, model);
 		}
@@ -40,18 +56,6 @@ namespace Constellation.Foundation.Mvc
 		protected virtual ActionResult Render(string viewPath, object model)
 		{
 			return View(viewPath, model);
-		}
-
-		/// <summary>
-		/// Passes the RenderingItem to the ViewResolver for path resolution.
-		/// </summary>
-		/// <param name="renderingItem">The RenderingContext RenderingItem</param>
-		/// <returns></returns>
-		protected virtual string GetViewPath(RenderingItem renderingItem)
-		{
-			var resolver = new ViewResolver(renderingItem);
-
-			return resolver.ResolveViewPath();
 		}
 
 		/// <summary>

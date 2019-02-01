@@ -16,8 +16,9 @@ namespace Constellation.Foundation.Mvc.Patterns.Controllers
 		/// <summary>
 		/// Creates a new instance of DatasourceRenderingController
 		/// </summary>
+		/// <param name="viewPathResolver">The view path resolver.</param>
 		/// <param name="modelMapper">An instance of ModelMapper, typically provided by Dependency Injection.</param>
-		protected DatasourceRenderingController(IModelMapper modelMapper)
+		protected DatasourceRenderingController(IViewPathResolver viewPathResolver, IModelMapper modelMapper) : base(viewPathResolver)
 		{
 			ModelMapper = modelMapper;
 		}

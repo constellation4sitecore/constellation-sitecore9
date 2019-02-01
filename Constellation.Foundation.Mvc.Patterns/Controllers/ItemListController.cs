@@ -16,8 +16,9 @@ namespace Constellation.Foundation.Mvc.Patterns.Controllers
 		/// <summary>
 		/// Creates a new instance of ItemListController
 		/// </summary>
+		/// <param name="viewPathResolver">The view path resolver.</param>
 		/// <param name="repository">The repository used to retrieve the collection of ViewModels to display.</param>
-		protected ItemListController(ItemListRepository<TListRecord> repository)
+		protected ItemListController(IViewPathResolver viewPathResolver, ItemListRepository<TListRecord> repository) : base(viewPathResolver)
 		{
 			Repository = repository;
 		}

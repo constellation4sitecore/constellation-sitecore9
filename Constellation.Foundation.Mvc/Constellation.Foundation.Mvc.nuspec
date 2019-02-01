@@ -10,6 +10,7 @@
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
+VERSION 9.1.1 Contains Breaking Changes around ConventionController and ViewResolver.
 VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
 Requires Sitecore 9.1
 Requires .NET 4.7.1
@@ -41,12 +42,12 @@ EditorCompatibleView:
 Replaces the stock MVC View, and provides methods for determining if the Page Mode "IsExperienceEditor" and "IsExperienceEditorEditing" which are
 of particular use if the View needs to change behavior to support editors.
 
-ViewResolver:
+ViewPathResolver:
 Independent engine for locating a View based on the Rendering Item's path in Sitecore. It has two configuration settings that allow the programmer
 to specify the location of Renderings in Sitecore (to trim the uneeded parts of the path) and also the location of the Views on disk. Areas are
 supported through a token replacement. See the provided config file for details.
 	</description>
-	<releaseNotes>Back-revved MVC nuget reference to 5.2.4 to match Sitecore 9.1</releaseNotes>
+	<releaseNotes>ViewResolver renamed to ViewPathResolver. ViewPathResolver is now Injected into ConventionController.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>

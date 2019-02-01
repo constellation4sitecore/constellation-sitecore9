@@ -39,11 +39,11 @@
     <Reference Include="Constellation.Foundation.Data, Version=9.1.0.29048, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Data.9.1.0.29048\lib\net471\Constellation.Foundation.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.1.0.16301, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.1.0.16301\lib\net471\Constellation.Foundation.ModelMapping.dll</HintPath>
+    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.1.1.23876, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.1.1.23876\lib\net471\Constellation.Foundation.ModelMapping.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.Mvc, Version=9.1.1.28543, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Mvc.9.1.1.28543\lib\net471\Constellation.Foundation.Mvc.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Mvc, Version=9.1.2.15281, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Mvc.9.1.2.15281\lib\net471\Constellation.Foundation.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
@@ -224,7 +224,7 @@
     <None Include="app.config" />
     <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Mvc.Patterns.config" />
     <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Caching.config" />
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
+    <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.Mvc.config" />
     <None Include="Constellation.Foundation.Mvc.Patterns.nuspec">
       <SubType>Designer</SubType>

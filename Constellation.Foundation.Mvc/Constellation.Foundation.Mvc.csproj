@@ -194,13 +194,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EditorCompatibleView.cs" />
+    <Compile Include="IViewPathResolver.cs" />
     <Compile Include="Pipelines\GetRenderer\GetControllerRenderer.cs" />
     <Compile Include="Pipelines\RenderRendering\MinifyAndAddRecordedHtmlToCache.cs" />
     <Compile Include="Pipelines\RenderRendering\GenerateRenderingSpecificCacheKey.cs" />
     <Compile Include="ConventionController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NameConverter.cs" />
-    <Compile Include="ViewResolver.cs" />
+    <Compile Include="ServicesConfigurator.cs" />
+    <Compile Include="ViewPathResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Constellation.License.txt" />
