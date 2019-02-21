@@ -1,0 +1,33 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+	<id>$id$</id>
+	<version>$version$</version>
+	<title>$title$</title>
+	<authors>Elizabeth Spranzani, Steven Striga, Richard Levia, Richard J. Cabral</authors>
+	<owners>Richard J. Cabral</owners>
+	<projectUrl>https://constellation4sitecore.com/feature/redirects/</projectUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>Sitecore Helix-style library that adds author-controlled Http Redirect capabilities.</summary>
+	<description>
+Requires Sitecore 9.1
+Requires .NET 4.7.1
+
+Constellation is a collection of utilities for .NET CMS implementers.
+
+The Feature.Redirects namespace contains two discrete functional components:
+
+Page Redirects: Items that are meant to be interspersed with Page type Items in the content tree so that dynamically generated navigation
+will list these Items as if they were part of that tree branch, although the actual target is elsewhere, or an entirely different site altogether.
+
+Marketing Redirects: Items that represent "short, catchy" URLs that then redirect deeper into the site. Also a way to teach search engines
+about URLs that have been permanently relocated. Marketing Redirects are managed through a discrete "application" in the Sitecore desktop.
+Exporting and importing redirect lists is supported. All redirects are tested for validity before they are allowed to be imported.
+
+The porting and development of this library has been kindly supported by Verndale (verndale.com)
+	</description>
+	<releaseNotes>Initial Release.</releaseNotes>
+	<copyright>Copyright 2019</copyright>
+	<tags>Sitecore,  Sitecore Helix</tags>
+  </metadata>
+</package>

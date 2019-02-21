@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xamlControls
+  xmlns:x="http://www.sitecore.net/xaml"
+  xmlns:ajax="http://www.sitecore.net/ajax"
+  xmlns:rest="http://www.sitecore.net/rest"
+  xmlns:r="http://www.sitecore.net/renderings"
+  xmlns:xmlcontrol="http://www.sitecore.net/xmlcontrols"
+  xmlns:p="http://schemas.sitecore.net/Visual-Studio-Intellisense"
+  xmlns:asp="http://www.sitecore.net/microsoft/webcontrols"
+  xmlns:html="http://www.sitecore.net/microsoft/htmlcontrols"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+	<Sitecore.SitecoreModule.Shell.Redirect.EditRedirect x:inherits="Constellation.Feature.Redirects.UI.EditRedirect,Constellation.Feature.Redirects">
+		<Sitecore.Controls.DialogPage Header="Edit Redirect" Icon="Applications/32x32/replace2.png" Text="Edit the redirect." runat="server">
+			<AjaxScriptManager runat="server"/>
+			<ContinuationManager runat="server" />
+
+			<div style="padding:0px 0px 0px 0px">
+				<Literal Text="The URLs need to be relative i.e. '&lt;b&gt;/new-page&lt;/b&gt;'." runat="server"/>
+			</div>
+
+			<div style="padding:8px 0px 0px 0px">
+				<Literal Text="Site Name:" runat="server"/>
+			</div>
+
+			<div style="padding:4px 0px 0px 0px">
+				<asp:DropDownList ID="SiteName" Width="100%" runat="server"/>
+			</div>
+
+			<div style="padding:8px 0px 0px 0px">
+				<Literal Text="Old URL:" runat="server"/>
+			</div>
+
+			<div style="padding:4px 0px 0px 0px">
+				<asp:TextBox ID="OldUrl" Width="100%" runat="server"/>
+			</div>
+
+			<div style="padding:8px 0px 0px 0px">
+				<Literal Text="New URL:" runat="server"/>
+			</div>
+
+			<div style="padding:4px 0px 0px 0px">
+				<asp:TextBox ID="NewUrl" Width="100%" runat="server"/>
+			</div>
+
+			<div style="padding:8px 0px 0px 0px">
+				<Literal Text="Redirect Type:" runat="server"/>
+			</div>
+
+			<div style="padding:4px 0px 0px 0px">
+				<asp:DropDownList ID="Type" Width="100%" runat="server"/>
+			</div>
+
+		</Sitecore.Controls.DialogPage>
+	</Sitecore.SitecoreModule.Shell.Redirect.EditRedirect>
+</xamlControls>

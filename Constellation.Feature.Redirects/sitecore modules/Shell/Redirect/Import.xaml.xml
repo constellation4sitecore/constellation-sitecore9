@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xamlControls
+  xmlns:x="http://www.sitecore.net/xaml"
+  xmlns:ajax="http://www.sitecore.net/ajax"
+  xmlns:rest="http://www.sitecore.net/rest"
+  xmlns:r="http://www.sitecore.net/renderings"
+  xmlns:xmlcontrol="http://www.sitecore.net/xmlcontrols"
+  xmlns:p="http://schemas.sitecore.net/Visual-Studio-Intellisense"
+  xmlns:asp="http://www.sitecore.net/microsoft/webcontrols"
+  xmlns:html="http://www.sitecore.net/microsoft/htmlcontrols"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <Sitecore.SitecoreModule.Shell.Redirect.Import x:inherits="Constellation.Feature.Redirects.UI.Import,Constellation.Feature.Redirects">
+    <Sitecore.Controls.DialogPage Header="Import" Icon="Business/32x32/data_into.png" Text="Import all redirects from your .CSV file into redirect database" runat="server">
+      <AjaxScriptManager runat="server"/>
+      <ContinuationManager runat="server" />
+
+      <div style="padding:0px 0px 0px 0px">
+        <asp:FileUpload ID="fileImport" runat="server" />
+        <asp:Button ID="Upload" runat="server" Text="Upload" />
+        <asp:Label Id="lblSuccessMessage" runat="server" Visible="false"></asp:Label>
+      </div>
+
+    </Sitecore.Controls.DialogPage>
+  </Sitecore.SitecoreModule.Shell.Redirect.Import>
+</xamlControls>
