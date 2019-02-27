@@ -119,7 +119,8 @@
     <Compile Include="SwitchingLinkManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.Linking.config" />
+    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Linking.config" />
+    <Content Include="Constellation.License.txt" />
     <None Include="Constellation.Foundation.Linking.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
