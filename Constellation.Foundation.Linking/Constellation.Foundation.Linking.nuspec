@@ -6,7 +6,7 @@
 	<title>$title$</title>
 	<authors>Kamruz Jaman, Richard J. Cabral</authors>
 	<owners>Constellation</owners>
-	<projectUrl>https://github.com/Constellation-Corp/Constellation-helix-catalog</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/foundation/linking/</projectUrl>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix library providing Site-specific LinkProviders and LinkProvider configurations.</summary>
 	<description>
