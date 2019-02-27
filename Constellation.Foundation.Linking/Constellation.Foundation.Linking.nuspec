@@ -1,0 +1,30 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+	<id>$id$</id>
+	<version>$version$</version>
+	<title>$title$</title>
+	<authors>Kamruz Jaman, Richard J. Cabral</authors>
+	<owners>Constellation</owners>
+	<projectUrl>https://github.com/Constellation-Corp/Constellation-helix-catalog</projectUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>Sitecore Helix library providing Site-specific LinkProviders and LinkProvider configurations.</summary>
+	<description>
+Compatible with Sitecore 9.1
+Requires Sitecore 9.1
+Requires .NET Framework 4.7.1
+
+Constellation Helix Catalog is a collection of utilities for the Sitecore .NET CMS.
+The Foundation.Linking library contains a SwitchingLinkManager that allows the developer to specify discrete LinkProviders (and their configuration settings)
+on a site-by-site basis while maintaining support for the default Sitecore LinkProvider for Sitecore console sites.
+
+By itself, this library simply installs and configures the SwitchingLinkManager. It is up to the developer to provide new LinkProviders or to customize
+LinkProvider settings as needed.
+
+This library is transcribed with permission from JammyKam's original code here: https://jammykam.wordpress.com/2017/09/22/switching-link-manager/
+	</description>
+	<releaseNotes>Compiled for Sitecore 9.1</releaseNotes>
+	<copyright>Copyright 2018</copyright>
+	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
+  </metadata>
+</package>
