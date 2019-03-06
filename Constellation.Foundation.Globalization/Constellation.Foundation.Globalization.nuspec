@@ -16,7 +16,7 @@
 
 		Constellation is a collection of utilities for .NET CMS implementers. The Foundation.Globalization namespace contains extension methods for Item, Language, and SiteInfo specifically related to determining and specifying language at runtime.
 	</description>
-	<releaseNotes>Compiled for use with Sitecore 9.1</releaseNotes>
+	<releaseNotes>Updated to renumbered Sitecore NuGet packages</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

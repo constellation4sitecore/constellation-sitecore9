@@ -47,7 +47,7 @@ Independent engine for locating a View based on the Rendering Item's path in Sit
 to specify the location of Renderings in Sitecore (to trim the uneeded parts of the path) and also the location of the Views on disk. Areas are
 supported through a token replacement. See the provided config file for details.
 	</description>
-	<releaseNotes>ViewResolver renamed to ViewPathResolver. ViewPathResolver is now Injected into ConventionController.</releaseNotes>
+	<releaseNotes>Removed an auto-generated MVC file.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>

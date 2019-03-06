@@ -23,7 +23,7 @@ The Foundation.Data namespace contains an Item extension class that allows the d
 - Determine if the Item is in the Context Site.
 - Find or create an Item's child given a name and a Template ID.
 	</description>
-	<releaseNotes>Fixed issue where it was building for .NET 4.7.2 It is now correctly targeting 4.7.1</releaseNotes>
+	<releaseNotes>Updated to renumbered Sitecore NuGet Packages</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

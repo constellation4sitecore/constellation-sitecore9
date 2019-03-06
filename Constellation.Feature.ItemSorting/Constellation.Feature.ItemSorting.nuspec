@@ -39,7 +39,7 @@ Usage Details
 3. Create a new Item Saved rule that specifies when an Item is of Template "Press Release" it should be moved to a Date Folder. Set the appropriate parameters.
 4. Enjoy!
 	</description>
-	<releaseNotes>Compiled for use with Sitecore 9.1</releaseNotes>
+	<releaseNotes>Updated to renumbered Sitecore NuGet packages</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Feature</tags>
   </metadata>

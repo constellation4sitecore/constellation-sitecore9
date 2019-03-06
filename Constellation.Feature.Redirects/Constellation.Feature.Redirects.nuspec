@@ -26,7 +26,7 @@ Exporting and importing redirect lists is supported. All redirects are tested fo
 
 The porting and development of this library has been kindly supported by Verndale (verndale.com)
 	</description>
-	<releaseNotes>Initial Release.</releaseNotes>
+	<releaseNotes>Updated to renumbered Sitecore NuGet packages</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

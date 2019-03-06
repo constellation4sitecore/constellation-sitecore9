@@ -23,7 +23,7 @@ LinkProvider settings as needed.
 
 This library is transcribed with permission from JammyKam's original code here: https://jammykam.wordpress.com/2017/09/22/switching-link-manager/
 	</description>
-	<releaseNotes>Fixed a missing configuration file.</releaseNotes>
+	<releaseNotes>Updated to renumbered Sitecore NuGet packages</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

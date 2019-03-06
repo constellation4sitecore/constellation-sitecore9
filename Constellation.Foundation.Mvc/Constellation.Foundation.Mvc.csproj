@@ -32,8 +32,8 @@
     <DocumentationFile>bin\Release\Constellation.Foundation.Mvc.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Foundation.Data, Version=9.1.0.29048, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Data.9.1.0.29048\lib\net471\Constellation.Foundation.Data.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Data, Version=9.1.1.20720, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Data.9.1.1.20720\lib\net471\Constellation.Foundation.Data.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
@@ -101,32 +101,25 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=12.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Kernel.12.0.0\lib\net471\Sitecore.Kernel.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Kernel.9.1.0\lib\net471\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Logging, Version=12.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Logging.12.0.0\lib\net471\Sitecore.Logging.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Logging.9.1.0\lib\net471\Sitecore.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Logging.Client, Version=12.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Logging.Client.12.0.0\lib\net471\Sitecore.Logging.Client.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Logging.Client.9.1.0\lib\net471\Sitecore.Logging.Client.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Mvc, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Mvc.3.0.0\lib\net471\Sitecore.Mvc.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Mvc.9.1.0\lib\net471\Sitecore.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.NVelocity, Version=9.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.NVelocity.9.0.0\lib\net471\Sitecore.NVelocity.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.NVelocity.9.1.0\lib\net471\Sitecore.NVelocity.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Web, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Web.3.0.0\lib\net471\Sitecore.Web.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Web.9.1.0\lib\net471\Sitecore.Web.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Zip, Version=12.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Zip.12.0.0\lib\net471\Sitecore.Zip.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Zip.9.1.0\lib\net471\Sitecore.Zip.dll</HintPath>
     </Reference>
     <Reference Include="sysglobl" />
     <Reference Include="System" />
@@ -217,9 +210,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Start\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

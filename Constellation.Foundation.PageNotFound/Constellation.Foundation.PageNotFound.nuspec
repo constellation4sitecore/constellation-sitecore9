@@ -51,7 +51,7 @@ is the 404 page and will add the 404 code to the Response.
 Please note that the customizations in this processor will only run for databases and sites as configured, and should intentionally not
 run for Sitecore system sites.
 	</description>
-	<releaseNotes>Initial release</releaseNotes>
+	<releaseNotes>Updated to renumbered Sitecore NuGet packages</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

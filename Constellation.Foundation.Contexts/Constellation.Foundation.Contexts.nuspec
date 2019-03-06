@@ -21,7 +21,7 @@ the sensitive instances' runtime settings against their configured scope.
 The purpose of this library is to provide scoped pipeline handlers and rules to Sitecore to prevent developers from unintentionally executing
 their customizations outside the scope of their current tenant|site|request.
 	</description>
-	<releaseNotes>Compiled for use with Sitecore 9.1</releaseNotes>
+	<releaseNotes>Removed an MVC-auto generated class.</releaseNotes>
 	<copyright>Copyright 2016</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

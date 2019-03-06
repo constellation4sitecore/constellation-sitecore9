@@ -3,9 +3,9 @@ using System.Web.Mvc;
 using System.Web.WebPages;
 using RazorGenerator.Mvc;
 
-[assembly: WebActivatorEx.PostApplicationStartMethod(typeof(Constellation.Foundation.Mvc.Patterns.RazorGeneratorMvcStart), "Start")]
+[assembly: WebActivatorEx.PostApplicationStartMethod(typeof(Constellation.Feature.SitemapXml.RazorGeneratorMvcStart), "Start")]
 
-namespace Constellation.Foundation.Mvc.Patterns {
+namespace Constellation.Feature.SitemapXml {
     public static class RazorGeneratorMvcStart {
         public static void Start() {
             var engine = new PrecompiledMvcEngine(typeof(RazorGeneratorMvcStart).Assembly) {

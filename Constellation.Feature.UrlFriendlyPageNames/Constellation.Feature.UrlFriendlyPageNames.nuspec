@@ -33,7 +33,7 @@ rule conditions that are suitable for this specific task.
 Note that the Illegal Characters option and the Replace Spaces option can conflict, a "-" will be removed if you use the "\W" regex,
 resulting in behavior similar to "Remove Spaces" We strongly recommend using "\s".
 	</description>
-	<releaseNotes>Updated NuGet dependencies. Help text changes, now with Intellisense support!</releaseNotes>
+	<releaseNotes>Updated to renumbered Sitecore NuGet packages</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix</tags>
   </metadata>

@@ -33,17 +33,17 @@
     <DocumentationFile>bin\Release\Constellation.Foundation.Mvc.Patterns.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Foundation.Caching, Version=9.1.0.18554, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Caching.9.1.0.18554\lib\net471\Constellation.Foundation.Caching.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Caching, Version=9.1.1.24827, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Caching.9.1.1.24827\lib\net471\Constellation.Foundation.Caching.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.Data, Version=9.1.0.29048, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Data.9.1.0.29048\lib\net471\Constellation.Foundation.Data.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Data, Version=9.1.1.20720, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Data.9.1.1.20720\lib\net471\Constellation.Foundation.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.1.1.23876, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.1.1.23876\lib\net471\Constellation.Foundation.ModelMapping.dll</HintPath>
+    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.1.2.24353, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.1.2.24353\lib\net471\Constellation.Foundation.ModelMapping.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.Mvc, Version=9.1.2.15281, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Mvc.9.1.2.15281\lib\net471\Constellation.Foundation.Mvc.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Mvc, Version=9.1.3.25116, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Mvc.9.1.3.25116\lib\net471\Constellation.Foundation.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
@@ -110,32 +110,25 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=12.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Kernel.12.0.0\lib\net471\Sitecore.Kernel.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Kernel.9.1.0\lib\net471\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Logging, Version=12.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Logging.12.0.0\lib\net471\Sitecore.Logging.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Logging.9.1.0\lib\net471\Sitecore.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Logging.Client, Version=12.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Logging.Client.12.0.0\lib\net471\Sitecore.Logging.Client.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Logging.Client.9.1.0\lib\net471\Sitecore.Logging.Client.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Mvc, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Mvc.3.0.0\lib\net471\Sitecore.Mvc.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Mvc.9.1.0\lib\net471\Sitecore.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.NVelocity, Version=9.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.NVelocity.9.0.0\lib\net471\Sitecore.NVelocity.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.NVelocity.9.1.0\lib\net471\Sitecore.NVelocity.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Web, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Web.3.0.0\lib\net471\Sitecore.Web.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Web.9.1.0\lib\net471\Sitecore.Web.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Zip, Version=12.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Zip.12.0.0\lib\net471\Sitecore.Zip.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Sitecore.Zip.9.1.0\lib\net471\Sitecore.Zip.dll</HintPath>
     </Reference>
     <Reference Include="sysglobl" />
     <Reference Include="System" />
@@ -223,7 +216,7 @@
     <Content Include="Constellation.License.txt" />
     <None Include="app.config" />
     <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Mvc.Patterns.config" />
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Caching.config" />
+    <None Include="App_Config\Include\Constellation\Constellation.Foundation.Caching.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.Mvc.config" />
     <None Include="Constellation.Foundation.Mvc.Patterns.nuspec">
@@ -231,8 +224,6 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Start\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

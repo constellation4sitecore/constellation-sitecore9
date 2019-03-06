@@ -28,7 +28,7 @@ installed. Results are logged.
 It is possible to create your own package processor if your verification needs are more substantial. See the provided
 configuration example for where to override package processing on a package-by-package basis.
 	</description>
-	<releaseNotes>Compiled for Sitecore 9.1</releaseNotes>
+	<releaseNotes>Updated to renumbered Sitecore NuGet packages</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
   </metadata>

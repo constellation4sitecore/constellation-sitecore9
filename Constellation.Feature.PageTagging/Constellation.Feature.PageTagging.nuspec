@@ -43,7 +43,7 @@ To use, in your Layout, at the appropriate location enter the following:
 @Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page tagging/page search engine directives")
 @Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page tagging/page social metadata")
 	</description>
-	<releaseNotes>Updated reference to ModelMapping</releaseNotes>
+	<releaseNotes>Updated to renumbered Sitecore NuGet packages</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>
