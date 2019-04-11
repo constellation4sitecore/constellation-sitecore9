@@ -6,8 +6,11 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
+    <license type="expression">MIT</license>
 	<projectUrl>https://constellation4sitecore.com/foundation/mvc/</projectUrl>
+    <repository type="git" url="https://github.com/sitecorerick/constellation-sitecore9.git"/>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
 VERSION 9.1.1 Contains Breaking Changes around ConventionController and ViewResolver.
@@ -47,8 +50,8 @@ Independent engine for locating a View based on the Rendering Item's path in Sit
 to specify the location of Renderings in Sitecore (to trim the uneeded parts of the path) and also the location of the Views on disk. Areas are
 supported through a token replacement. See the provided config file for details.
 	</description>
-	<releaseNotes>Removed an auto-generated MVC file.</releaseNotes>
+	<releaseNotes>Updated to support Sitecore 9.1.1</releaseNotes>
 	<copyright>Copyright 2017</copyright>
-	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation, Sitecore Mvc</tags>
+	<tags>Sitecore, Sitecore Helix, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>
 </package>

@@ -6,8 +6,11 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
+    <license type="expression">MIT</license>
 	<projectUrl>https://constellation4sitecore.com/foundation/page-not-found-module/</projectUrl>
+    <repository type="git" url="https://github.com/sitecorerick/constellation-sitecore9.git"/>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library for managing site-specific 404 pages.</summary>
 	<description>
 Compatible with Sitecore 9.1
@@ -51,7 +54,7 @@ is the 404 page and will add the 404 code to the Response.
 Please note that the customizations in this processor will only run for databases and sites as configured, and should intentionally not
 run for Sitecore system sites.
 	</description>
-	<releaseNotes>Updated to renumbered Sitecore NuGet packages</releaseNotes>
+	<releaseNotes>Updated to support Sitecore 9.1.1</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

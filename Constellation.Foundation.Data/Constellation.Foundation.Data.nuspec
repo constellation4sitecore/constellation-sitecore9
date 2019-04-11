@@ -6,8 +6,11 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral, Chris Lees, Ed Lane</authors>
 	<owners>Richard J. Cabral</owners>
+    <license type="expression">MIT</license>
 	<projectUrl>https://constellation4sitecore.com/foundation/data/</projectUrl>
+    <repository type="git" url="https://github.com/sitecorerick/constellation-sitecore9.git"/>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library extending Item with utilities to check ancestry, template derivation, and to retrieve Item children of a specific template.</summary>
 	<description>
 VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
@@ -23,8 +26,8 @@ The Foundation.Data namespace contains an Item extension class that allows the d
 - Determine if the Item is in the Context Site.
 - Find or create an Item's child given a name and a Template ID.
 	</description>
-	<releaseNotes>Updated to renumbered Sitecore NuGet Packages</releaseNotes>
+	<releaseNotes>Updated to support Sitecore 9.1.1</releaseNotes>
 	<copyright>Copyright 2017</copyright>
-	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
+	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
 </package>

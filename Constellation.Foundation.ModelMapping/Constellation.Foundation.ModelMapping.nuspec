@@ -6,8 +6,11 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
+    <license type="expression">MIT</license>
 	<projectUrl>https://constellation4sitecore.com/foundation/modelmapping/</projectUrl>
+    <repository type="git" url="https://github.com/sitecorerick/constellation-sitecore9.git"/>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
 VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
@@ -60,8 +63,8 @@ Support for MultilistField.GetItems - use Model.FieldName and supply a generic I
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 	</description>
-	<releaseNotes>Updated to renumbered Sitecore NuGet packages</releaseNotes>
+	<releaseNotes>Updated to support Sitecore 9.1.1</releaseNotes>
 	<copyright>Copyright 2017</copyright>
-	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
+	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
 </package>

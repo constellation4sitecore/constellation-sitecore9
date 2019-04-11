@@ -6,8 +6,11 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
+    <license type="expression">MIT</license>
 	<projectUrl>https://constellation4sitecore.com/feature/page-analytics-scripts/</projectUrl>
+    <repository type="git" url="https://github.com/sitecorerick/constellation-sitecore9.git"/>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix-style library that provides bare-essentials support for page metadata.</summary>
 	<description>
 VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
@@ -39,7 +42,7 @@ This module does not directly support page/experience editor because:
 Because maintaining these scripts requires knowledge of Javascript and Marketing Technology, it is recommended that only
 users familiar with the Presentation Details dialog maintain these objects.
 	</description>
-	<releaseNotes>Updated to renumbered Sitecore NuGet packages</releaseNotes>
+	<releaseNotes>Updated to support Sitecore 9.1.1</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

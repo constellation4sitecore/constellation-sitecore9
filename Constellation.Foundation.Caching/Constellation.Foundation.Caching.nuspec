@@ -7,9 +7,10 @@
 	<authors>Richard J. Cabral, Christopher Giddings</authors>
 	<owners>Richard J. Cabral</owners>
 		<license type="expression">MIT</license>
-	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+	<projectUrl>https://constellation4sitecore.com/foundation/cache/</projectUrl>
 		<repository type="git" url="https://github.com/sitecorerick/constellation-sitecore9.git"/>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix-compatible library to enhance access to Sitecore Caching APIs.</summary>
 	<description>
 VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
