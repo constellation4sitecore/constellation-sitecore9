@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0"?>
 <package >
-  <metadata>
+	<metadata>
 	<id>$id$</id>
 	<version>$version$</version>
 	<title>$title$</title>
 	<authors>Richard J. Cabral, Christopher Giddings</authors>
 	<owners>Richard J. Cabral</owners>
+		<license type="expression">MIT</license>
 	<projectUrl>https://github.com/sitecorerick/constellation-sitecore9</projectUrl>
+		<repository type="git" url="https://github.com/sitecorerick/constellation-sitecore9.git"/>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<summary>Sitecore Helix-compatible library to enhance access to Sitecore Caching APIs.</summary>
 	<description>
@@ -28,8 +30,8 @@ Request an ICacheManager from your service locator to use in your Controllers.
 Portions based on work by Christopher Giddings: https://cjgiddings.wordpress.com/2012/02/03/sitecore-caching-utility/ updated heavily
 for modularity and to support Sitecore 9.x
 	</description>
-	<releaseNotes>Removed an auto-generated MVC file.</releaseNotes>
+	<releaseNotes>Updated to support Sitecore 9.1.1</releaseNotes>
 	<copyright>Copyright 2016</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
-  </metadata>
+	</metadata>
 </package>
