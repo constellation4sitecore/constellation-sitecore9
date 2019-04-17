@@ -56,6 +56,8 @@ namespace Constellation.Foundation.Caching
 					//cache = ICache.FindCacheByName(key) ?? new Sitecore.Caching.Cache(key, Settings.GetSetting("Caching.CacheSize", "100MB"));
 
 					cache = Sitecore.Caching.CacheManager.GetNamedInstance(key, Sitecore.StringUtil.ParseSizeString(Settings.GetSetting("Caching.CacheSize", "100MB")), true);
+
+					CacheCollection.Add(key, cache);
 				}
 			}
 
