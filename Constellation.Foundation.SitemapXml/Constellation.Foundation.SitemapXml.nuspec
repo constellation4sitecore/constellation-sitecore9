@@ -6,11 +6,11 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
-    <license type="expression">MIT</license>
+	<license type="expression">MIT</license>
 	<projectUrl>https://constellation4sitecore.com/foundation/sitemap-xml/</projectUrl>
-    <repository type="git" url="https://github.com/sitecorerick/constellation-sitecore9.git"/>
+	<repository type="git" url="https://github.com/sitecorerick/constellation-sitecore9.git"/>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
+	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix-style library that handles requests for /ROBOTS.TXT and /SITEMAP.XML dynamically based on Sitecore content.</summary>
 	<description>
 VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
@@ -60,7 +60,7 @@ Your web.config must have a system.webServer/handlers section, and that section 
 to install this package successfully. If you're using the default Sitecore web.config this won't be an issue. The handlers provided in this package must be
 inserted at the top of the stack of handlers.
 	</description>
-	<releaseNotes>Updated to support Sitecore 9.1.1</releaseNotes>
+	<releaseNotes>Fixed a bug in Caching</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

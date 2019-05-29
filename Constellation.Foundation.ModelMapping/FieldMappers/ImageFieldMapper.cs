@@ -148,6 +148,8 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			ImageField field = Field;
 			var targetImage = field.MediaItem;
 
+			
+
 			if (targetImage != null)
 			{
 
