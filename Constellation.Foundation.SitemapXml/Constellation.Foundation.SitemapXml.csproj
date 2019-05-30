@@ -35,6 +35,9 @@
     <Reference Include="Constellation.Foundation.Caching, Version=9.1.3.26256, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Caching.9.1.3.26256\lib\net471\Constellation.Foundation.Caching.dll</HintPath>
     </Reference>
+    <Reference Include="Constellation.Foundation.Linking, Version=9.1.3.28630, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Linking.9.1.3.28630\lib\net471\Constellation.Foundation.Linking.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.Kernel, Version=12.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.9.1.1\lib\net471\Sitecore.Kernel.dll</HintPath>
     </Reference>
@@ -60,6 +63,7 @@
     <Compile Include="EventHandlers\RegenerateSitemapXml.cs" />
     <Compile Include="HttpHandlers\RobotsTxtHandler.cs" />
     <Compile Include="HttpHandlers\SitemapXmlHandler.cs" />
+    <Compile Include="NodeLinkManager.cs" />
     <Compile Include="Nodes\DefaultSitemapNode.cs" />
     <Compile Include="Nodes\ISitemapNode.cs" />
     <Compile Include="Nodes\ItemBasedSitemapNode.cs" />
@@ -76,6 +80,7 @@
     </Content>
     <None Include="app.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.Caching.config" />
+    <None Include="App_Config\Include\Constellation\Constellation.Foundation.Linking.config" />
     <None Include="Constellation.Foundation.SitemapXml.nuspec">
       <SubType>Designer</SubType>
     </None>

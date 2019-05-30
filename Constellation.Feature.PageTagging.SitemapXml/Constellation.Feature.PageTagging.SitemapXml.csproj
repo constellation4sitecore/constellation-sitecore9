@@ -41,14 +41,17 @@
     <Reference Include="Constellation.Foundation.Data, Version=9.1.2.20242, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Data.9.1.2.20242\lib\net471\Constellation.Foundation.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Constellation.Foundation.Linking, Version=9.1.3.28630, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Linking.9.1.3.28630\lib\net471\Constellation.Foundation.Linking.dll</HintPath>
+    </Reference>
     <Reference Include="Constellation.Foundation.ModelMapping, Version=9.1.4.28433, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.1.4.28433\lib\net471\Constellation.Foundation.ModelMapping.dll</HintPath>
     </Reference>
     <Reference Include="Constellation.Foundation.PackageVerification, Version=9.1.2.20552, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.1.2.20552\lib\net471\Constellation.Foundation.PackageVerification.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.SitemapXml, Version=9.1.4.18803, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.SitemapXml.9.1.4.18803\lib\net471\Constellation.Foundation.SitemapXml.dll</HintPath>
+    <Reference Include="Constellation.Foundation.SitemapXml, Version=9.1.5.26323, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.SitemapXml.9.1.5.26323\lib\net471\Constellation.Foundation.SitemapXml.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Sitecore.Kernel, Version=12.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -81,6 +84,7 @@
     <Content Include="Constellation.License.txt" />
     <None Include="App_Config\Include\Constellation\Constellation.Feature.PageTagging.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.Caching.config" />
+    <None Include="App_Config\Include\Constellation\Constellation.Foundation.Linking.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.SitemapXml.config" />

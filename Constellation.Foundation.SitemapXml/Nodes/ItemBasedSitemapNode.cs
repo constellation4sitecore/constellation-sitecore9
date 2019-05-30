@@ -1,7 +1,5 @@
 ﻿using System;
 using Sitecore.Data.Items;
-using Sitecore.Links;
-using Sitecore.Sites;
 using Sitecore.Web;
 
 namespace Constellation.Foundation.SitemapXml.Nodes
@@ -113,7 +111,7 @@ namespace Constellation.Foundation.SitemapXml.Nodes
 		{
 			ChangeFrequency = WhatIsTheItemsChangeFrequency(Item);
 			IsPage = IsItemAPage(Item);
-			Location = GetLocationUrl(Item);
+			Location = GetLocationUrl(Item, Site);
 			Priority = WhatIsTheItemsIndexingPriority(Item);
 			ShouldIndex = ShouldTheItemBeIndexedBySearchEngines(Item);
 			HasPresentation = DoesTheItemHavePresentation(Item);
@@ -170,47 +168,11 @@ namespace Constellation.Foundation.SitemapXml.Nodes
 		/// Gets the Item's absolute Url.
 		/// </summary>
 		/// <param name="item">The item.</param>
-		/// <returns>an absolute url.</returns>
-		protected virtual string GetLocationUrl(Item item)
-		{
-			var options = LinkManager.GetDefaultUrlOptions();
-
-			return GetLocationUrl(item, options.LanguageEmbedding, options.LanguageLocation);
-		}
-
-		/// <summary>
-		/// Gets the Item's absolute Url.
-		/// </summary>
-		/// <param name="item">The item.</param>
-		/// <param name="languageEmbedding">Whether language embedding should be used when generating the url.</param>
-		/// <param name="languageLocation">Where in the URL language parameters should be placed.</param>
+		/// <param name="site">The site to use for hostname, scheme, and custom linkProvider parameters.</param>
 		/// <returns></returns>
-		protected virtual string GetLocationUrl(Item item, LanguageEmbedding languageEmbedding,
-			LanguageLocation languageLocation)
+		protected virtual string GetLocationUrl(Item item, SiteInfo site)
 		{
-			return GetLocationUrl(item, Site, languageEmbedding, languageLocation);
-		}
-
-		/// <summary>
-		/// Gets the Item's absolute Url.
-		/// </summary>
-		/// <param name="item">The item.</param>
-		/// <param name="site">The site to use for hostname and scheme parameters.</param>
-		/// <param name="languageEmbedding">Whether language embedding should be used when generating the url.</param>
-		/// <param name="languageLocation">Where in the URL language parameters should be placed.</param>
-		/// <returns></returns>
-		protected virtual string GetLocationUrl(Item item, SiteInfo site, LanguageEmbedding languageEmbedding,
-			LanguageLocation languageLocation)
-		{
-			var options = LinkManager.GetDefaultUrlOptions();
-
-			options.LanguageEmbedding = languageEmbedding;
-			options.LanguageLocation = languageLocation;
-			options.Language = item.Language;
-			options.Site = new SiteContext(site);
-			options.AlwaysIncludeServerUrl = true;
-
-			return LinkManager.GetItemUrl(item, options);
+			return NodeLinkManager.GetNodeLocationUrl(item, site);
 		}
 		#endregion
 	}

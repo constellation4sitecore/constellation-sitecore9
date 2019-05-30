@@ -60,7 +60,7 @@ Your web.config must have a system.webServer/handlers section, and that section 
 to install this package successfully. If you're using the default Sitecore web.config this won't be an issue. The handlers provided in this package must be
 inserted at the top of the stack of handlers.
 	</description>
-	<releaseNotes>Fixed a bug in Caching</releaseNotes>
+	<releaseNotes>Ensured compatibility with Constellation.Foundation.Linking's ability to specify the LinkProvider and Provider options on a site-by-site basis.</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
