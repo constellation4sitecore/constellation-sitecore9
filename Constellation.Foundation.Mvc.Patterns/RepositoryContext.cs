@@ -84,7 +84,7 @@ namespace Constellation.Foundation.Mvc.Patterns
 		{
 			var output = new RepositoryContext
 			{
-				Datasource = context.ContextItem,
+				Datasource = context.Rendering.Item,
 				RequestItem = context.PageContext.Item,
 				Database = context.ContextItem.Database,
 				Language = context.ContextItem.Language,
