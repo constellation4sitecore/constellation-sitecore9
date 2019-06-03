@@ -50,6 +50,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FieldMappers\ImageSvgMapper.cs" />
     <Compile Include="FieldMappers\ImageSrcMapper.cs" />
     <Compile Include="ServicesConfigurator.cs" />
     <Compile Include="FieldMappers\CheckboxFieldMapper.cs" />

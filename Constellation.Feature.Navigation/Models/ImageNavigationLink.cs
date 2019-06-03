@@ -28,5 +28,10 @@ namespace Constellation.Feature.Navigation.Models
 		/// The Height of the image, if that value is specified on the Image Navigation Link Item's Image field.
 		/// </summary>
 		public string ImageHeight { get; set; }
+
+		/// <summary>
+		/// If the target MediaItem is an SVG, this property will output the SVG XML to include inline.
+		/// </summary>
+		public string ImageSvg { get; set; }
 	}
 }

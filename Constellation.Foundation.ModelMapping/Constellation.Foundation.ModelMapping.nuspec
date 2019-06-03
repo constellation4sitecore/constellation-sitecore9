@@ -63,7 +63,7 @@ Support for MultilistField.GetItems - use Model.FieldName and supply a generic I
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 	</description>
-	<releaseNotes>Now supports the "Src" suffix on Image fields to return the Field's URL property.</releaseNotes>
+	<releaseNotes>Now supports rendering the contents of SVG media items directly to string for use as inline-SVG code. Suffix an HtmlString field with "Svg" and assign an SVG type MediaItem to your Image field.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

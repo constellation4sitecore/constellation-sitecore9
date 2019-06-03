@@ -5,7 +5,7 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
 	/// <inheritdoc />
 	/// <summary>
-	/// Maps the "Alt" Attribute of an Image field to a Model Property suffixed with the word "Alt".
+	/// Maps the MediaManager URL of an Image field to a Model Property suffixed with the word "Src".
 	/// </summary>
 	public class ImageSrcMapper : FieldAttributeMapper
 	{
