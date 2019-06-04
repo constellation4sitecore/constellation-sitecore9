@@ -110,10 +110,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Constellation\Constellation.Feature.Redirects.config" />
-    <Content Include="App_Data\packages\Constellation-Feature-Redirects-Items.zip" />
     <None Include="app.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config" />
     <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
+    <Content Include="App_Data\packages\Constellation-Feature-Redirects-Items.zip" />
     <None Include="Constellation.Feature.Redirects.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
