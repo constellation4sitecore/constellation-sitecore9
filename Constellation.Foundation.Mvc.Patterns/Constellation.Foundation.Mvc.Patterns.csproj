@@ -39,8 +39,8 @@
     <Reference Include="Constellation.Foundation.Data, Version=9.1.2.20242, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Data.9.1.2.20242\lib\net471\Constellation.Foundation.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.1.5.27908, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.1.5.27908\lib\net471\Constellation.Foundation.ModelMapping.dll</HintPath>
+    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.1.6.15984, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.1.6.15984\lib\net471\Constellation.Foundation.ModelMapping.dll</HintPath>
     </Reference>
     <Reference Include="Constellation.Foundation.Mvc, Version=9.1.4.23692, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.Mvc.9.1.4.23692\lib\net471\Constellation.Foundation.Mvc.dll</HintPath>

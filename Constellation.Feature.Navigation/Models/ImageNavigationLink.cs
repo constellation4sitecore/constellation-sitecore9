@@ -1,4 +1,5 @@
-﻿using Constellation.Foundation.ModelMapping.MappingAttributes;
+﻿using System.Web;
+using Constellation.Foundation.ModelMapping.MappingAttributes;
 
 namespace Constellation.Feature.Navigation.Models
 {
@@ -32,6 +33,6 @@ namespace Constellation.Feature.Navigation.Models
 		/// <summary>
 		/// If the target MediaItem is an SVG, this property will output the SVG XML to include inline.
 		/// </summary>
-		public string ImageSvg { get; set; }
+		public HtmlString ImageSvg { get; set; }
 	}
 }

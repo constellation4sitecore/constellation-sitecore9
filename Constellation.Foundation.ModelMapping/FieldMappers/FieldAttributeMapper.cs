@@ -34,7 +34,7 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 		/// <param name="modelInstance">The model to inspect.</param>
 		/// <param name="field">The field to inspect.</param>
 		/// <returns>A MappingStatus indicating whether the mapping was successful and other useful performance facts.</returns>
-		public FieldMapStatus Map(object modelInstance, Field field)
+		public virtual FieldMapStatus Map(object modelInstance, Field field)
 		{
 			Model = modelInstance;
 			Field = field;
