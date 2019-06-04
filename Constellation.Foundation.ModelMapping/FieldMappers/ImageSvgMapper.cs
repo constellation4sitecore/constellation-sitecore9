@@ -5,7 +5,6 @@ using System.Web;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.Resources.Media;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
@@ -102,7 +101,7 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 				return string.Empty;
 			}
 
-			using (var reader = new StreamReader(MediaManager.GetMedia(mediaItem).GetStream().Stream))
+			using (var reader = new StreamReader(mediaItem.GetMediaStream()))
 			{
 				Log.Debug("ImageSvgMapper: reading Media Stream to Model.");
 				return reader.ReadToEnd();
