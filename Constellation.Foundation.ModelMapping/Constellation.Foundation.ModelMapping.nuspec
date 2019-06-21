@@ -8,7 +8,7 @@
 	<owners>Richard J. Cabral</owners>
 	<license type="expression">MIT</license>
 	<projectUrl>https://constellation4sitecore.com/foundation/modelmapping/</projectUrl>
-	<repository type="git" url="https://github.com/sitecorerick/constellation-sitecore9.git"/>
+	<repository type="git" url="https://github.com/constellation4sitecore/constellation-sitecore9.git"/>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>

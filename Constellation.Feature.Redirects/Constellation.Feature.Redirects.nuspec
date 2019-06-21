@@ -8,7 +8,7 @@
 	<owners>Richard J. Cabral</owners>
 	<license type="expression">MIT</license>
 	<projectUrl>https://constellation4sitecore.com/feature/redirects/</projectUrl>
-	<repository type="git" url="https://github.com/sitecorerick/constellation-sitecore9.git"/>
+	<repository type="git" url="https://github.com/constellation4sitecore/constellation-sitecore9.git"/>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix-style library that adds author-controlled Http Redirect capabilities.</summary>

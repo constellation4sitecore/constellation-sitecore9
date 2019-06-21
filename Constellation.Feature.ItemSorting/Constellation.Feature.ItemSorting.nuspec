@@ -6,11 +6,11 @@
 	<title>$title$</title>
 	<authors>Richard J. Cabral</authors>
 	<owners>Richard J. Cabral</owners>
-    <license type="expression">MIT</license>
+	<license type="expression">MIT</license>
 	<projectUrl>https://constellation4sitecore.com/feature/item-sorting/</projectUrl>
-    <repository type="git" url="https://github.com/sitecorerick/constellation-sitecore9.git"/>
+	<repository type="git" url="https://github.com/constellation4sitecore/constellation-sitecore9.git"/>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
+	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library for automatically classifying Items based on name or a named date field.</summary>
 	<description>
 VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
@@ -42,7 +42,7 @@ Usage Details
 3. Create a new Item Saved rule that specifies when an Item is of Template "Press Release" it should be moved to a Date Folder. Set the appropriate parameters.
 4. Enjoy!
 	</description>
-	<releaseNotes>Updated to support Sitecore 9.1.1</releaseNotes>
+	<releaseNotes>Covered an unusual case where the name of the Item to be sorted started with the year that it was to be sorted by.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Feature</tags>
   </metadata>

@@ -87,7 +87,7 @@ namespace Constellation.Feature.ItemSorting.Rules.Actions
 
 			var folderLevel = this.GetOrganizingRoot(item);
 			var oldFilePath = item.Paths.FullPath;
-			var datePath = "/" + theYear;
+			var datePath = "/" + theYear + "/";
 			if (!oldFilePath.Contains(datePath))
 			{
 				this.MoveItem(theYear, item, folderLevel);
@@ -96,7 +96,7 @@ namespace Constellation.Feature.ItemSorting.Rules.Actions
 
 			if (this.FolderDepth != DateSortOptions.OnlyYear)
 			{
-				datePath = datePath + "/" + theMonth;
+				datePath = datePath + theMonth + "/";
 				if (!oldFilePath.Contains(datePath))
 				{
 					folderLevel = this.AdvanceFolderLevel(folderLevel, item);
@@ -106,7 +106,7 @@ namespace Constellation.Feature.ItemSorting.Rules.Actions
 
 				if (this.FolderDepth == DateSortOptions.YearAndMonthAndDay)
 				{
-					datePath = datePath + "/" + theDay;
+					datePath = datePath + theDay + "/";
 					if (!oldFilePath.Contains(datePath))
 					{
 						folderLevel = this.AdvanceFolderLevel(folderLevel, item);
