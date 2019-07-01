@@ -44,7 +44,7 @@ namespace Constellation.Feature.PageTagging.Controllers
 			var directives = GetDirectives(model);
 			var content = GetContent(directives);
 
-			return Content($"<meta name=\"robots=\" content=\"{content}\" />");
+			return Content($"<meta name=\"robots\" content=\"{content}\" />");
 		}
 
 		private PageSearchEngineDirectives BuildModel(Item contextItem)

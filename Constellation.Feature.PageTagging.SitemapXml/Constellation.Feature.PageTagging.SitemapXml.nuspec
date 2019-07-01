@@ -25,7 +25,7 @@ Foundation.SitemapXml, based upon the Page Search Engine Directive fields availa
 This feature is shipped separately in case the user is not using Constellation.Foundation.SitemapXml or has a different
 implementation that is not compatible with the PageTagging feature.
 	</description>
-	<releaseNotes>ModelMapping update.</releaseNotes>
+	<releaseNotes>PageTagging update.</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>
