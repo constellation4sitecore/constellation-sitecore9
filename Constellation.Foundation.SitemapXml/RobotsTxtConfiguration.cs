@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Sitecore.Diagnostics;
+using System;
 using System.Collections.Generic;
 using System.Xml;
-using Sitecore.Diagnostics;
 
 namespace Constellation.Foundation.SitemapXml
 {
@@ -41,11 +41,6 @@ namespace Constellation.Foundation.SitemapXml
 		}
 
 		/// <summary>
-		/// Determines if robots are allowed to crawl any site on the current installation.
-		/// </summary>
-		public bool Allowed { get; private set; }
-
-		/// <summary>
 		/// List of disallow rows that should be included in all generated robots.txt files.
 		/// </summary>
 		public ICollection<string> GlobalDisallows { get; private set; }
@@ -74,11 +69,6 @@ namespace Constellation.Foundation.SitemapXml
 				var ex = new Exception(" No constellation/robotsTxt configuration found.");
 				Log.Error("Constellation.Foundation.SitemapXml: error loading configuration.", ex, output);
 				throw ex;
-			}
-
-			if (bool.TryParse(root.Attributes?["allowed"]?.Value, out var allowed))
-			{
-				output.Allowed = allowed;
 			}
 
 			var globalsNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/robotsTxt/globalDisallows");

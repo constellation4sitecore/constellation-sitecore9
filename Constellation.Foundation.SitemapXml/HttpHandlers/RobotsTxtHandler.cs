@@ -1,6 +1,6 @@
-﻿using System.Text;
+﻿using Sitecore.Sites;
+using System.Text;
 using System.Web;
-using Sitecore.Sites;
 
 namespace Constellation.Foundation.SitemapXml.HttpHandlers
 {
@@ -33,32 +33,33 @@ namespace Constellation.Foundation.SitemapXml.HttpHandlers
 
 			builder.AppendLine("User-agent: *");
 
-			if (!RobotsTxtConfiguration.Current.Allowed)
-			{
-				builder.AppendLine("Disallow: /");
-			}
-			else
-			{
-				var globalDisallows = RobotsTxtConfiguration.Current.GlobalDisallows;
+			var globalDisallows = RobotsTxtConfiguration.Current.GlobalDisallows;
+			var rootIsDisallowed = false;
 
-				foreach (var disallow in globalDisallows)
+			foreach (var disallow in globalDisallows)
+			{
+				builder.AppendLine($"Disallow: {disallow}");
+				if (disallow == "/")
+				{
+					rootIsDisallowed = true;
+				}
+			}
+
+			var site = SiteContextFactory.GetSiteContext(context.Request.Url.Host, context.Request.Url.LocalPath, context.Request.Url.Port);
+
+			if (RobotsTxtConfiguration.Current.SiteDisallows.ContainsKey(site.Name))
+			{
+				var disallows = RobotsTxtConfiguration.Current.SiteDisallows[site.Name];
+				foreach (var disallow in disallows)
 				{
 					builder.AppendLine($"Disallow: {disallow}");
 				}
+			}
 
-				var site = SiteContextFactory.GetSiteContext(context.Request.Url.Host, context.Request.Url.LocalPath, context.Request.Url.Port);
-
-				if (RobotsTxtConfiguration.Current.SiteDisallows.ContainsKey(site.Name))
-				{
-					var disallows = RobotsTxtConfiguration.Current.SiteDisallows[site.Name];
-					foreach (var disallow in disallows)
-					{
-						builder.AppendLine($"Disallow: {disallow}");
-					}
-				}
-
+			if (!rootIsDisallowed)
+			{
 				builder.AppendLine();
-				builder.AppendLine("Sitemap: " + context.Request.Url.GetLeftPart(System.UriPartial.Authority) + "/sitemap.xml");
+				builder.AppendLine($"Sitemap: {context.Request.Url.GetLeftPart(System.UriPartial.Authority)}/sitemap.xml");
 			}
 
 			context.Response.Clear();
