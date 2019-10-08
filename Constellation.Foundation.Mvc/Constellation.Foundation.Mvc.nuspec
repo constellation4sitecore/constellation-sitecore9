@@ -50,7 +50,7 @@ Independent engine for locating a View based on the Rendering Item's path in Sit
 to specify the location of Renderings in Sitecore (to trim the uneeded parts of the path) and also the location of the Views on disk. Areas are
 supported through a token replacement. See the provided config file for details.
 	</description>
-	<releaseNotes>Updated to support Sitecore 9.1.1</releaseNotes>
+	<releaseNotes>Now includes a placeholder for Helix folders in Rendering Paths (Foundatin, Feature Project). This allows you to auto-discover View paths for Renderings that exist at the Feature level _and_ the Project level. Helix folders do not show up in Areas.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>

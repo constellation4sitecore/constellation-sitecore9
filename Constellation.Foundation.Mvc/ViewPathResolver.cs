@@ -1,5 +1,5 @@
-﻿using System;
-using Sitecore.Data.Items;
+﻿using Sitecore.Data.Items;
+using System;
 
 namespace Constellation.Foundation.Mvc
 {
@@ -128,16 +128,36 @@ namespace Constellation.Foundation.Mvc
 		public string ResolveViewPath(RenderingItem renderingItem)
 		{
 			var area = renderingItem.InnerItem["Area"];
-			var viewRoot = ViewRootPath;
+			var viewRoot = ViewRootPath.ToLower();
 			var renderingRoot = RenderingItemPathRoot.ToLower();
 
 			if (!string.IsNullOrEmpty(area))
 			{
-				renderingRoot = RenderingItemPathRoot.Replace("$Area", area).ToLower();
-				viewRoot = viewRoot.Replace("$Area", area).ToLower();
+				renderingRoot = renderingRoot.Replace("$area", area).ToLower();
+				viewRoot = viewRoot.Replace("$area", area).ToLower();
 			}
 
-			var path = NameConverter.ConvertItemPathToClassPath(renderingItem.InnerItem.Paths.FullPath).ToLower();
+			// We need to figure out if there's a Helix folder in the Rendering path and ensure it gets removed from the View's path.
+			// Helix folders don't show up in View Paths because MVC Areas aren't complex enough to support it.
+			var fullPath = renderingItem.InnerItem.Paths.FullPath;
+
+			if (fullPath.Contains("/Foundation/"))
+			{
+				renderingRoot = renderingRoot.Replace("$helix", "foundation");
+			}
+
+			if (fullPath.Contains("/Feature/"))
+			{
+				renderingRoot = renderingRoot.Replace("$helix", "feature");
+			}
+
+			if (fullPath.Contains("/Project/"))
+			{
+				renderingRoot = renderingRoot.Replace("$helix", "project");
+			}
+
+			var path = NameConverter.ConvertItemPathToClassPath(fullPath).ToLower();
+
 			var truncatedPath = path.Replace(renderingRoot, string.Empty);
 
 			var viewLocation = viewRoot + truncatedPath + ".cshtml";
