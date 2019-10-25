@@ -1,9 +1,10 @@
 ﻿using Sitecore.Data.Items;
+using Sitecore.Diagnostics;
 
 namespace Constellation.Foundation.Mvc
 {
-	using System.Web.Mvc;
 	using Sitecore.Mvc.Presentation;
+	using System.Web.Mvc;
 
 	/// <summary>
 	/// A Controller that assumes the location of the matching view based upon the Rendering Item's path.
@@ -44,6 +45,15 @@ namespace Constellation.Foundation.Mvc
 		{
 			var viewPath = ViewPathResolver.ResolveViewPath(RenderingContext.Current.Rendering.RenderingItem);
 			var model = GetModel(RenderingContext.Current.Rendering.Item, RenderingContext.Current.ContextItem);
+
+			if (model == null)
+			{
+				Log.Warn(
+					$"{this.GetType().Name}: Attempted to Render but the Model was null. An EmptyResult was returned instead. Is your Datasource published?",
+					this);
+				return new EmptyResult();
+			}
+
 			return Render(viewPath, model);
 		}
 
