@@ -1,10 +1,10 @@
-﻿using System;
-using System.Reflection;
-using Constellation.Foundation.Data;
+﻿using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping.FieldMappers;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
+using System;
+using System.Reflection;
 
 namespace Constellation.Foundation.ModelMapping
 {
@@ -119,7 +119,7 @@ namespace Constellation.Foundation.ModelMapping
 									Log.Error($"Mapping field {field.Name} on Item {item.Name}: Exception handled by field mapper.", typeof(ModelBuilder));
 									break;
 								case FieldMapStatus.TypeMismatch:
-									Log.Warn($"Mapping field {field.Name} on Item {item.Name} to Model {type.Name} failed.", typeof(ModelBuilder));
+									Log.Warn($"Mapping field {field.Name} on Item {item.Name} to Model {type.Name} failed. The cause of the failure is usually a type mismatch. Is the right field mapper running for this field?", typeof(ModelBuilder));
 									break;
 								case FieldMapStatus.ExplicitIgnore:
 									Log.Debug($"Mapping field {field.Name} on Item {item.Name}: explicitly ignored", typeof(ModelBuilder));

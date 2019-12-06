@@ -63,7 +63,7 @@ Support for MultilistField.GetItems - use Model.FieldName and supply a generic I
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 	</description>
-	<releaseNotes>SVG image mapping now supports mapping to string or HtmlString. Appropriate map status and logging now present.</releaseNotes>
+	<releaseNotes>Fix to config file which had a misspelling of the Sitecore field type "Datetime", resulting in failure to map Datetime fields using the DateFieldMapper.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

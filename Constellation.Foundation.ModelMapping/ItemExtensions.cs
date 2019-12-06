@@ -1,5 +1,5 @@
-﻿using System;
-using Sitecore.Data.Items;
+﻿using Sitecore.Data.Items;
+using System;
 
 namespace Constellation.Foundation.ModelMapping
 {
