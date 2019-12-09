@@ -29,7 +29,7 @@ Exporting and importing redirect lists is supported. All redirects are tested fo
 
 The porting and development of this library has been kindly supported by Verndale (verndale.com)
 	</description>
-	<releaseNotes>Fixed the broken Item package. thanks to @retohugi for reporting the bug.</releaseNotes>
+	<releaseNotes>Fixed the inheritance on the Page Redirect controller.</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

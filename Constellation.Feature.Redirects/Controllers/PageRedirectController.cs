@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-using Constellation.Foundation.ModelMapping;
-using Sitecore.Diagnostics;
+﻿using Sitecore.Diagnostics;
+using Sitecore.Mvc.Controllers;
 using Sitecore.Mvc.Presentation;
+using System.Web.Mvc;
 
 
 namespace Constellation.Feature.Redirects.Controllers
@@ -9,33 +9,18 @@ namespace Constellation.Feature.Redirects.Controllers
 	/// <summary>
 	/// An Item Controller that should be assigned to the Page Redirect Item Template
 	/// </summary>
-	public class PageRedirectController : Controller
+	public class PageRedirectController : SitecoreController
 	{
-		#region Constructor
-		/// <summary>
-		/// Creates a new instance of Page Redirect Controller.
-		/// </summary>
-		/// <param name="modelMapper">The ModelMapper instance to use.</param>
-		public PageRedirectController(IModelMapper modelMapper)
-		{
-			ModelMapper = modelMapper;
-		}
-		#endregion
-
-		#region Properties
-		/// <summary>
-		/// An instance of ModelMapper
-		/// </summary>
-		public IModelMapper ModelMapper { get; }
-		#endregion
 
 		/// <summary>
 		/// the Action for this Controller that performs the redirect.
 		/// </summary>
 		/// <returns>A redirct result.</returns>
-		public ActionResult Index()
+		public override ActionResult Index()
 		{
-			var model = ModelMapper.MapItemToNew<Models.PageRedirect>(RenderingContext.Current.PageContext.Item);
+			var mapper = Constellation.Foundation.ModelMapping.MappingContext.Current;
+
+			var model = mapper.MapItemToNew<Models.PageRedirect>(RenderingContext.Current.PageContext.Item);
 
 			Log.Debug($"PageRedirectController redirecting request for {model.DisplayName} to {model.RedirectLinkUrl}.", this);
 
