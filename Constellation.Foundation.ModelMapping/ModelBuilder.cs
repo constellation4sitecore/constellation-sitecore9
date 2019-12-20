@@ -68,6 +68,14 @@ namespace Constellation.Foundation.ModelMapping
 				urlProperty.SetValue(model, item.GetUrl());
 			}
 
+			var mediaUrlProperty = type.GetProperty("MediaUrl", BindingFlags.Instance | BindingFlags.Public);
+
+			if (mediaUrlProperty != null)
+			{
+				var mediaItem = new MediaItem(item);
+				mediaUrlProperty.SetValue(model, mediaItem.GetUrl());
+			}
+
 			var parentProperty = type.GetProperty("Parent", BindingFlags.Instance | BindingFlags.Public);
 
 			if (parentProperty != null)
