@@ -29,7 +29,7 @@ Exporting and importing redirect lists is supported. All redirects are tested fo
 
 The porting and development of this library has been kindly supported by Verndale (verndale.com)
 	</description>
-	<releaseNotes>Republished fix of PageRedirectController to use Sitecore.Context.Item instead of the RenderingContext, because it's not in the Mvc Rendering pipeline.</releaseNotes>
+	<releaseNotes>Updated Constellation.Foundation.ModelMapping</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>
