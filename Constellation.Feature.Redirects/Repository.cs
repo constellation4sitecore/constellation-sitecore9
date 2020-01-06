@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Constellation.Feature.Redirects.Models;
+﻿using Constellation.Feature.Redirects.Models;
 using Constellation.Foundation.ModelMapping;
 using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.Linq;
 using Sitecore.Data;
 using Sitecore.Data.Items;
+using Sitecore.Data.Query;
 using Sitecore.Diagnostics;
 using Sitecore.Web;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using FieldIDs = Constellation.Feature.Redirects.Data.FieldIDs;
 using ItemIDs = Constellation.Feature.Redirects.Data.ItemIDs;
 
@@ -237,7 +238,7 @@ namespace Constellation.Feature.Redirects
 		{
 			string hostNameRegex = @"^([a-zA-Z]+:\/\/)?([^\/]+)\/.*?$";
 
-			return Regex.IsMatch(candidate.OldUrl, hostNameRegex);
+			return Regex.IsMatch(candidate.OldUrl, hostNameRegex); // there should not be a match.
 		}
 
 		/// <summary>
@@ -247,21 +248,44 @@ namespace Constellation.Feature.Redirects
 		/// <returns>True if the Site + Old Url value pair does not exist in the database</returns>
 		public bool CandidateIsUnique(MarketingRedirect candidate)
 		{
-			using (IProviderSearchContext context = Index.CreateSearchContext())
+			var root = Database.GetItem(ItemIDs.MarketingRedirectBucketID);
+
+			var item = Query.SelectSingleItem($"./*/*/*/*/*/*[@#Old Url# = \"{candidate.OldUrl}\"]", root);
+
+			if (item == null)
 			{
-				IQueryable<MarketingRedirect> query = context.GetQueryable<MarketingRedirect>();
-				query = query.Filter(i => i.Paths.Contains(ItemIDs.MarketingRedirectBucketID))
-					.Filter(i => i.TemplateId == ItemIDs.MarketingRedirectTemplateID)
-					.Filter(i => i.SiteName == candidate.SiteName);
-
-
-				if (ID.IsNullOrEmpty(candidate.ItemId))
-				{
-					return !query.Any(i => i.OldUrl == candidate.OldUrl);
-				}
-
-				return !query.Any(i => i.OldUrl == candidate.OldUrl && i.ItemId != candidate.ItemId);
+				return true;
 			}
+
+			if (!ID.IsNullOrEmpty(candidate.ItemId) && item.ID.Equals(candidate.ItemId))
+			{
+				return true;
+			}
+
+			return false;
+
+
+			// Switching from SOLR to XPATH due to the way SOLR "matches" and "equals" text fields.
+			//using (IProviderSearchContext context = Index.CreateSearchContext())
+			//{
+			//	IQueryable<MarketingRedirect> query = context.GetQueryable<MarketingRedirect>();
+			//	query = query.Filter(i => i.Paths.Contains(ItemIDs.MarketingRedirectBucketID))
+			//		.Filter(i => i.TemplateId == ItemIDs.MarketingRedirectTemplateID)
+			//		.Filter(i => i.SiteName == candidate.SiteName);
+
+			//	int matches;
+
+			//	if (ID.IsNullOrEmpty(candidate.ItemId))
+			//	{
+			//		matches = query.Count(i => i.OldUrl.Equals(candidate.OldUrl));
+			//		Log.Info($"TEST - CandidateIsUnique - {candidate.OldUrl} - number of matches found: {matches}", this);
+			//		return matches == 0; // no existing records for the proposed new record, which is good.
+			//	}
+
+			//	matches = query.Count(i => i.OldUrl.Equals(candidate.OldUrl) && i.ItemId.Equals(candidate.ItemId));
+
+			//	return matches == 0; // no existing records for the proposed changes, which is good.
+			//}
 		}
 
 		/// <summary>
@@ -271,15 +295,24 @@ namespace Constellation.Feature.Redirects
 		/// <returns>True if New Url matches an Old Url on another record for a given Site Name.</returns>
 		public bool CandidateTargetIsRedirect(MarketingRedirect candidate)
 		{
-			using (IProviderSearchContext context = Index.CreateSearchContext())
-			{
-				IQueryable<MarketingRedirect> query = context.GetQueryable<MarketingRedirect>();
-				query = query.Filter(i => i.Paths.Contains(ItemIDs.MarketingRedirectBucketID))
-					.Filter(i => i.TemplateId == ItemIDs.MarketingRedirectTemplateID)
-					.Filter(i => i.SiteName == candidate.SiteName);
+			var root = Database.GetItem(ItemIDs.MarketingRedirectBucketID);
 
-				return query.Any(i => i.OldUrl == candidate.NewUrl);
-			}
+			var item = Query.SelectSingleItem($"./*/*/*/*/*/*[@#Old Url# = \"{candidate.NewUrl}\"]", root);
+
+			return item != null;
+
+			// Switching to XPATH instead of SOLR due to the way solr "matches" using "Equals"
+			//using (IProviderSearchContext context = Index.CreateSearchContext())
+			//{
+			//	IQueryable<MarketingRedirect> query = context.GetQueryable<MarketingRedirect>();
+			//	query = query.Filter(i => i.Paths.Contains(ItemIDs.MarketingRedirectBucketID))
+			//		.Filter(i => i.TemplateId == ItemIDs.MarketingRedirectTemplateID)
+			//		.Filter(i => i.SiteName == candidate.SiteName);
+
+			//	var matches = query.Filter(i => i.OldUrl.Equals(candidate.NewUrl)).Count();
+
+			//	return matches > 0; // if we find a match, it means we're creating a loopback which is bad.
+			//}
 		}
 
 		/// <summary>
@@ -303,16 +336,37 @@ namespace Constellation.Feature.Redirects
 			Assert.ArgumentNotNull(site, "site");
 			Assert.ArgumentNotNullOrEmpty(requestUrl, "requestUrl");
 
-			using (IProviderSearchContext context = Index.CreateSearchContext())
+
+			var root = Database.GetItem(ItemIDs.MarketingRedirectBucketID);
+
+			var item = Query.SelectSingleItem($"./*/*/*/*/*/*[@#Site Name# = \"{site.Name}\" and @#Old Url# = \"{requestUrl}\"]", root);
+
+			if (item == null)
 			{
-				IQueryable<MarketingRedirect> query = context.GetQueryable<MarketingRedirect>();
-				query = query.Filter(i => i.Paths.Contains(ItemIDs.MarketingRedirectBucketID))
-					.Filter(i => i.TemplateId == ItemIDs.MarketingRedirectTemplateID)
-					.Filter(i => i.SiteName == site.Name);
-
-
-				return query.FirstOrDefault(i => i.OldUrl == requestUrl);
+				return null;
 			}
+
+			var redirect = MappingContext.Current.MapItemToNew<MarketingRedirect>(item);
+
+			// these properties were covered by Solr, but ModelMapper won't handle them natively.
+			redirect.DatabaseName = item.Database.Name;
+			redirect.ItemId = item.ID;
+			redirect.Language = item.Language.Name;
+			redirect.TemplateId = item.TemplateID;
+
+			return redirect;
+
+			// Switching to XPATH instead of SOLR due to the way solr "matches" using "Equals"
+			//using (IProviderSearchContext context = Index.CreateSearchContext())
+			//{
+			//	IQueryable<MarketingRedirect> query = context.GetQueryable<MarketingRedirect>();
+			//	query = query.Filter(i => i.Paths.Contains(ItemIDs.MarketingRedirectBucketID))
+			//		.Filter(i => i.TemplateId == ItemIDs.MarketingRedirectTemplateID)
+			//		.Filter(i => i.SiteName == site.Name)
+			//		.Filter(i => i.OldUrl.Equals(requestUrl));
+
+			//	return query.FirstOrDefault();
+			//}
 		}
 	}
 }
