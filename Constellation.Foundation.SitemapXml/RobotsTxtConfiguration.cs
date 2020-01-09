@@ -41,21 +41,30 @@ namespace Constellation.Foundation.SitemapXml
 		}
 
 		/// <summary>
-		/// List of disallow rows that should be included in all generated robots.txt files.
+		/// List of disallow rows that will be included in all generated robots.txt files.
 		/// </summary>
-		public ICollection<string> GlobalDisallows { get; private set; }
+		public ICollection<RobotsTxtRule> GlobalRules { get; private set; }
 
 		/// <summary>
-		/// List of disallow rows for each site, keyed by site name.
+		/// List of disallow rows that will be included in all robots.txt files where the Site
+		/// does not have specific overrides.
 		/// </summary>
-		public IDictionary<string, ICollection<string>> SiteDisallows { get; private set; }
+		public ICollection<RobotsTxtRule> DefaultRules { get; private set; }
+
+		/// <summary>
+		/// List of allow/disallow rules that will be included in a specific site's robots.txt file.
+		/// Note that if a Site defines specific rules, the Default rules will not be included, but the
+		/// Global rules will still appear.
+		/// </summary>
+		public IDictionary<string, ICollection<RobotsTxtRule>> SiteRules { get; private set; }
 
 		#endregion
 
 		private RobotsTxtConfiguration()
 		{
-			GlobalDisallows = new List<string>();
-			SiteDisallows = new Dictionary<string, ICollection<string>>();
+			GlobalRules = new List<RobotsTxtRule>();
+			DefaultRules = new List<RobotsTxtRule>();
+			SiteRules = new Dictionary<string, ICollection<RobotsTxtRule>>();
 		}
 
 		private static RobotsTxtConfiguration CreateNewConfiguration()
@@ -71,17 +80,27 @@ namespace Constellation.Foundation.SitemapXml
 				throw ex;
 			}
 
-			var globalsNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/robotsTxt/globalDisallows");
+			var globalsNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/robotsTxt/globalRules");
 
 			if (globalsNode != null && globalsNode.HasChildNodes)
 			{
-				foreach (XmlNode disallow in globalsNode.ChildNodes)
+				foreach (XmlNode node in globalsNode.ChildNodes)
 				{
-					output.GlobalDisallows.Add(disallow.InnerText);
+					output.GlobalRules.Add(new RobotsTxtRule(node));
 				}
 			}
 
-			var sitesNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/robotsTxt/siteDisallows");
+			var defaultsNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/robotsTxt/defaultRules");
+
+			if (defaultsNode != null && defaultsNode.HasChildNodes)
+			{
+				foreach (XmlNode node in defaultsNode.ChildNodes)
+				{
+					output.GlobalRules.Add(new RobotsTxtRule(node));
+				}
+			}
+
+			var sitesNode = Sitecore.Configuration.Factory.GetConfigNode("constellation/robotsTxt/siteRules");
 
 			if (sitesNode != null && sitesNode.HasChildNodes)
 			{
@@ -92,14 +111,14 @@ namespace Constellation.Foundation.SitemapXml
 						continue;
 					}
 
-					var list = new List<string>();
+					var list = new List<RobotsTxtRule>();
 
-					foreach (XmlNode disallow in site.ChildNodes)
+					foreach (XmlNode node in site.ChildNodes)
 					{
-						list.Add(disallow.InnerText);
+						list.Add(new RobotsTxtRule(node));
 					}
 
-					output.SiteDisallows.Add(site.Name, list);
+					output.SiteRules.Add(site.Name, list);
 				}
 			}
 

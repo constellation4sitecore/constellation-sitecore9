@@ -1,4 +1,5 @@
 ﻿using Sitecore.Sites;
+using System;
 using System.Text;
 using System.Web;
 
@@ -29,34 +30,64 @@ namespace Constellation.Foundation.SitemapXml.HttpHandlers
 		/// <param name="context">The current request context.</param>
 		public void ProcessRequest(HttpContext context)
 		{
+			var site = SiteContextFactory.GetSiteContext(context.Request.Url.Host, context.Request.Url.LocalPath, context.Request.Url.Port);
+
 			var builder = new StringBuilder();
 
 			builder.AppendLine("User-agent: *");
 
-			var globalDisallows = RobotsTxtConfiguration.Current.GlobalDisallows;
-			var rootIsDisallowed = false;
+			var globalRules = RobotsTxtConfiguration.Current.GlobalRules;
+			var defaultRules = RobotsTxtConfiguration.Current.DefaultRules;
+			var siteRules = defaultRules; // in case the site does not have its own custom rules.
 
-			foreach (var disallow in globalDisallows)
+			if (RobotsTxtConfiguration.Current.SiteRules.ContainsKey(site.Name))
 			{
-				builder.AppendLine($"Disallow: {disallow}");
-				if (disallow == "/")
+				siteRules = RobotsTxtConfiguration.Current.SiteRules[site.Name]; // load the site's custom rules.
+			}
+
+			var includeSitemap = true;
+
+			foreach (var rule in globalRules)
+			{
+				switch (rule.Permission)
 				{
-					rootIsDisallowed = true;
+					case RobotsTxtRule.RulePermission.Allow:
+						builder.AppendLine($"Allow: {rule.Path}");
+						break;
+
+					case RobotsTxtRule.RulePermission.Deny:
+						builder.AppendLine($"Disallow: {rule.Path}");
+
+						if (rule.Path.Equals("/", StringComparison.InvariantCultureIgnoreCase))
+						{
+							includeSitemap = false;
+						}
+
+						break;
 				}
 			}
 
-			var site = SiteContextFactory.GetSiteContext(context.Request.Url.Host, context.Request.Url.LocalPath, context.Request.Url.Port);
-
-			if (RobotsTxtConfiguration.Current.SiteDisallows.ContainsKey(site.Name))
+			foreach (var rule in siteRules)
 			{
-				var disallows = RobotsTxtConfiguration.Current.SiteDisallows[site.Name];
-				foreach (var disallow in disallows)
+				switch (rule.Permission)
 				{
-					builder.AppendLine($"Disallow: {disallow}");
+					case RobotsTxtRule.RulePermission.Allow:
+						builder.AppendLine($"Allow: {rule.Path}");
+						break;
+
+					case RobotsTxtRule.RulePermission.Deny:
+						builder.AppendLine($"Disallow: {rule.Path}");
+
+						if (rule.Path.Equals("/", StringComparison.InvariantCultureIgnoreCase))
+						{
+							includeSitemap = false;
+						}
+
+						break;
 				}
 			}
 
-			if (!rootIsDisallowed)
+			if (includeSitemap)
 			{
 				builder.AppendLine();
 				builder.AppendLine($"Sitemap: {context.Request.Url.GetLeftPart(System.UriPartial.Authority)}/sitemap.xml");

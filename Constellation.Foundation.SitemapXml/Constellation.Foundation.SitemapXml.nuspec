@@ -16,6 +16,7 @@
 VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
 Requires Sitecore 9.1
 Requires .NET 4.7.1
+Version 9.1.7 contains breaking changes!
 
 Constellation is a collection of utilities for .NET CMS implementers.
 
@@ -24,9 +25,9 @@ The Foundation.SitemapXml namespace contains Http Handlers which intercept the r
 
 Robots.TXT Handler:
 
-Returns a basic document that either allows or disallows all agents. The document also includes basic disallows for /sitecore urls to prevent the login page
-from being indexed. Additional global disallows or site specific disallows can be added through the supplied configuration file. See instructions
-within the config file.
+Returns a basic document that automatically applies to all search engine agents. The stock configuration has disallows for /sitecore urls to prevent the login page
+from being indexed. Additional default or site specific rules can be added through the supplied configuration file. See instructions
+within the config file. Assuming a given Site's robots.txt does not deny the root of a site, the robots.txt file will include a link to the site's sitemap.xml file.
 
 
 Sitemap.XML Handler:
@@ -60,7 +61,7 @@ Your web.config must have a system.webServer/handlers section, and that section 
 to install this package successfully. If you're using the default Sitecore web.config this won't be an issue. The handlers provided in this package must be
 inserted at the top of the stack of handlers.
 	</description>
-	<releaseNotes>Removed the global robots.txt disallow flag in favor of specifying root disallows explicitly in the disallow list. This gets around an sc:patch issue. Read the config file!</releaseNotes>
+	<releaseNotes>Now supports allow and disallow rules, Now supports "default" rules for all sites as well as site-specific overrides. See the config file.</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
