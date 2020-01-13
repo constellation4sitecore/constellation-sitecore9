@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using System.Web.Mvc;
-using Constellation.Feature.PageTagging.Models;
+﻿using Constellation.Feature.PageTagging.Models;
 using Constellation.Foundation.ModelMapping;
 using Sitecore.Data.Items;
 using Sitecore.Mvc.Presentation;
+using System.Collections.Generic;
+using System.Text;
+using System.Web.Mvc;
 
 namespace Constellation.Feature.PageTagging.Controllers
 {
@@ -56,6 +56,17 @@ namespace Constellation.Feature.PageTagging.Controllers
 		{
 
 			var directives = new List<string>();
+
+			var site = Sitecore.Context.Site.SiteInfo;
+
+			var overrides = site.GetRobotsMetatagOverride();
+
+			if (!string.IsNullOrEmpty(overrides))
+			{
+				directives.Add(overrides);
+				return directives;
+			}
+
 
 			if (model.SearchEngineIndexesPage)
 			{

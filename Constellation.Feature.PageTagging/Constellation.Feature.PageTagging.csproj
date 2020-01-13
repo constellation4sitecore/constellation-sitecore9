@@ -75,6 +75,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\SocialMetadataRepository.cs" />
     <Compile Include="ServicesConfigurator.cs" />
+    <Compile Include="SiteInfoExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Constellation\Constellation.Feature.PageTagging.config" />
