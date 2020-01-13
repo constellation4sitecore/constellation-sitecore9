@@ -96,7 +96,7 @@ namespace Constellation.Foundation.SitemapXml
 			{
 				foreach (XmlNode node in defaultsNode.ChildNodes)
 				{
-					output.GlobalRules.Add(new RobotsTxtRule(node));
+					output.DefaultRules.Add(new RobotsTxtRule(node));
 				}
 			}
 
