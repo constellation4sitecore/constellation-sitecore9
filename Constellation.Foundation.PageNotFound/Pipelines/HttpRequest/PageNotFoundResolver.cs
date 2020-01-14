@@ -1,7 +1,7 @@
-﻿using System.Web;
-using Constellation.Foundation.PageNotFound.Repositories;
+﻿using Constellation.Foundation.PageNotFound.Repositories;
 using Sitecore.Diagnostics;
 using Sitecore.Pipelines.HttpRequest;
+using System.Web;
 
 namespace Constellation.Foundation.PageNotFound.Pipelines.HttpRequest
 {
@@ -20,6 +20,12 @@ namespace Constellation.Foundation.PageNotFound.Pipelines.HttpRequest
 			if (Sitecore.Context.Item != null)
 			{
 				Log.Debug($"Constellation.Foundation.PageNotFound PageNotFoundResolver: Found Context Item. Exiting.");
+				return;
+			}
+
+			if (args.PermissionDenied)
+			{
+				Log.Debug("Constellation.Foundation.PageNotFound PageNotFoundResolver: Context Item cannot be accessed by the currrent user. Will not serve a 404 to allow Sitecore to redirect to a login page.");
 				return;
 			}
 

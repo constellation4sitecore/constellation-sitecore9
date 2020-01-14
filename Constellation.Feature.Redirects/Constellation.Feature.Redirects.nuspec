@@ -29,7 +29,7 @@ Exporting and importing redirect lists is supported. All redirects are tested fo
 
 The porting and development of this library has been kindly supported by Verndale (verndale.com)
 	</description>
-	<releaseNotes>Complete re-think on the data-access level to prevent partial matches (thanks Solr) on both input validation and actual 301 matches.</releaseNotes>
+	<releaseNotes>The handler will now ignore requests for "protected" content to prevent blocking the Sitecore login redirect logic in ExecuteRequest().</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

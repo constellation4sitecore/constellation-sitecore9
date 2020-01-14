@@ -1,9 +1,9 @@
-﻿using System;
-using System.Web;
-using Constellation.Feature.Redirects.Models;
+﻿using Constellation.Feature.Redirects.Models;
 using Sitecore.ContentSearch;
 using Sitecore.Diagnostics;
 using Sitecore.Pipelines.HttpRequest;
+using System;
+using System.Web;
 
 namespace Constellation.Feature.Redirects.Pipelines.HttpRequest
 {
@@ -32,6 +32,12 @@ namespace Constellation.Feature.Redirects.Pipelines.HttpRequest
 			if (Sitecore.Context.Site == null)
 			{
 				Log.Debug("Constellation RedirectResolver: No Context Site. Exiting.");
+			}
+
+			if (args.PermissionDenied)
+			{
+				Log.Debug("Constellation RedirectResolver: Request was for an Item the current user cannot access, no redirect attempt should be made in this case.");
+				return;
 			}
 
 			Uri url = new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Query));
