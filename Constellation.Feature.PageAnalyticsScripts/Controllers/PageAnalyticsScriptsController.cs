@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-using Constellation.Feature.PageAnalyticsScripts.Models;
+﻿using Constellation.Feature.PageAnalyticsScripts.Models;
 using Constellation.Foundation.ModelMapping;
 using Sitecore.Mvc.Presentation;
+using System.Web.Mvc;
 
 namespace Constellation.Feature.PageAnalyticsScripts.Controllers
 {
@@ -46,6 +46,11 @@ namespace Constellation.Feature.PageAnalyticsScripts.Controllers
 			var item = RenderingContext.Current.Rendering.Item;
 
 			var model = ModelMapper.MapItemToNew<PageAnalyticsScriptsModel>(item);
+
+			if (model == null)
+			{
+				return Content("<!-- Page Analytics Script: no datasource -->");
+			}
 
 			return Content(GetScriptToRender(model));
 		}

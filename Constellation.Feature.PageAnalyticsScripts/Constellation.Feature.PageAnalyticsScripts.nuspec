@@ -42,7 +42,7 @@ This module does not directly support page/experience editor because:
 Because maintaining these scripts requires knowledge of Javascript and Marketing Technology, it is recommended that only
 users familiar with the Presentation Details dialog maintain these objects.
 	</description>
-	<releaseNotes>Updated Constellation.Foundation.ModelMapping</releaseNotes>
+	<releaseNotes>Ensured graceful failure if the datasource Item was not available for some reason.</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>
