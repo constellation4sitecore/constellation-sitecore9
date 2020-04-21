@@ -46,7 +46,7 @@ Uses the Item.Axes.GetAncestors() method to generate the list of breadcrumbs.
 
 The included package must be installed to use this library. This should happen automatically after you build and deploy your project.
 	</description>
-	<releaseNotes>Updated Constellation.Foundation.ModelMapping</releaseNotes>
+	<releaseNotes>Deprecated the NavigationLink.Link property in favor of the newer, more correct LinkUrl property.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

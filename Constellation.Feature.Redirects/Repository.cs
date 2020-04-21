@@ -262,6 +262,13 @@ namespace Constellation.Feature.Redirects
 				return true;
 			}
 
+			var found = MappingContext.Current.MapItemToNew<MarketingRedirect>(item);
+
+			if (found.SiteName != candidate.SiteName)
+			{
+				return true;
+			}
+
 			return false;
 
 

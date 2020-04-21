@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using Constellation.Foundation.ModelMapping.MappingAttributes;
+﻿using Constellation.Foundation.ModelMapping.MappingAttributes;
+using System;
+using System.Collections.Generic;
 
 namespace Constellation.Feature.Navigation.Models
 {
@@ -21,7 +22,17 @@ namespace Constellation.Feature.Navigation.Models
 		/// external, or media item link.
 		/// </summary>
 		[RenderAsUrl(false)]
-		public string Link { get; set; }
+		[Obsolete("Use LinkUrl instead")]
+		[DoNotMap]
+		public string Link
+		{
+			get { return LinkUrl; }
+		}
+
+		/// <summary>
+		/// The URL of the link represented by this object. Can be internal, external or media URL.
+		/// </summary>
+		public string LinkUrl { get; set; }
 
 		/// <summary>
 		/// The Class value of the General Link field of this Navigation Link Item. Represents the CSS class to apply to the anchor tag.
