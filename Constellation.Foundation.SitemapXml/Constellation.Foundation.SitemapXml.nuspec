@@ -61,7 +61,8 @@ Your web.config must have a system.webServer/handlers section, and that section 
 to install this package successfully. If you're using the default Sitecore web.config this won't be an issue. The handlers provided in this package must be
 inserted at the top of the stack of handlers.
 	</description>
-	<releaseNotes>Added a Name attribute to the default crawler to allow it to be more easily removed from downstream config patches.</releaseNotes>
+	<releaseNotes>Ensured that any generated Sitemap.xml ends up in the HtmlCache for the corresponding site. This ensures the sitemap.xml document is cleared after publication, 
+		assuming that event handler is set up correctly for each site in the installation.</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

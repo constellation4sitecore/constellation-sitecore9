@@ -1,8 +1,6 @@
-﻿using System;
-using System.Xml;
-using Constellation.Foundation.Caching;
-using Sitecore.Sites;
+﻿using Sitecore.Sites;
 using Sitecore.Web;
+using System.Xml;
 
 namespace Constellation.Foundation.SitemapXml.Repositories
 {
@@ -32,47 +30,43 @@ namespace Constellation.Foundation.SitemapXml.Repositories
 		}
 
 		/// <summary>
-		/// Returns a sitemap.xml XmlDocument for the supplied site.
+		/// Returns a sitemap.xml document string for the supplied site.
 		/// </summary>
 		/// <param name="site">The site to crawl.</param>
 		/// <param name="forceRegenerate">Whether the document can be retrieved from cache, or whether a fresh document should be generated.</param>
-		/// <returns>An XML document representing the supplied site's crawl-able links</returns>
-		public static XmlDocument GetSitemap(SiteContext site, bool forceRegenerate = false)
+		/// <returns>An XML string representing sitemap.xml document.</returns>
+		public static string GetSitemap(SiteContext site, bool forceRegenerate = false)
 		{
-			return GetSitemap(site.SiteInfo, forceRegenerate);
-		}
 
-		/// <summary>
-		/// Returns a sitemap.xml XmlDocument for the supplied site.
-		/// </summary>
-		/// <param name="site">The site to crawl.</param>
-		/// <param name="forceRegenerate">Whether the document can be retrieved from cache, or whether a fresh document should be generated.</param>
-		/// <returns>An XML document representing the supplied site's crawl-able links</returns>
-		public static XmlDocument GetSitemap(SiteInfo site, bool forceRegenerate = false)
-		{
 			var key = typeof(SitemapRepository).FullName + site.Name;
+			var cache = Sitecore.Caching.CacheManager.GetHtmlCache(site);
+			string output = null;
 
-			XmlDocument document = null;
-
-			if (SitemapXmlConfiguration.Current.CacheEnabled)
+			if (cache != null)
 			{
-				document = CachingContext.Current.Get<XmlDocument>(key);
+				output = cache.GetHtml(key);
 			}
 
-			if (document == null || forceRegenerate)
+			if (SitemapXmlConfiguration.Current.CacheEnabled && cache != null)
 			{
-				var generator = new SitemapGenerator(site);
+				output = cache.GetHtml(key);
+			}
 
-				document = generator.Generate();
+			if (forceRegenerate || !SitemapXmlConfiguration.Current.CacheEnabled || output == null)
+			{
+				var generator = new SitemapGenerator(site.SiteInfo);
 
-				if (SitemapXmlConfiguration.Current.CacheEnabled)
+				XmlDocument document = generator.Generate();
+				output = document.OuterXml;
+
+
+				if (SitemapXmlConfiguration.Current.CacheEnabled && cache != null)
 				{
-					var cacheTimeout = site.GetSitemapXmlCacheTimeout();
-					CachingContext.Current.Add(key, document, DateTime.Now.AddMinutes(cacheTimeout));
+					cache.SetHtml(key, output);
 				}
 			}
 
-			return document;
+			return output;
 		}
 	}
 }

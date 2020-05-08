@@ -1,5 +1,6 @@
 ﻿using Constellation.Foundation.SitemapXml.Repositories;
 using Sitecore.Diagnostics;
+using Sitecore.Sites;
 
 namespace Constellation.Foundation.SitemapXml.Agents
 {
@@ -29,7 +30,7 @@ namespace Constellation.Foundation.SitemapXml.Agents
 				}
 
 				Log.Info($"Constellation.Foundation.SitemapXml generating {site.Name} sitemap.xml", this);
-				SitemapRepository.GetSitemap(site, false); // we want to catch when the cache is expired, no need to do work that's not needed.
+				SitemapRepository.GetSitemap(new SiteContext(site), false); // we want to catch when the cache is expired, no need to do work that's not needed.
 				Log.Info($"Constellation.Foundation.SitemapXml {site.Name} sitemap.xml generated.", this);
 			}
 		}

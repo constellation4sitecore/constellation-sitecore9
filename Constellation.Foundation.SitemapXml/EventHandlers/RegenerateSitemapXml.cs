@@ -1,8 +1,9 @@
 ﻿
 
-using System;
 using Constellation.Foundation.SitemapXml.Repositories;
 using Sitecore.Diagnostics;
+using Sitecore.Sites;
+using System;
 
 namespace Constellation.Foundation.SitemapXml.EventHandlers
 {
@@ -35,7 +36,7 @@ namespace Constellation.Foundation.SitemapXml.EventHandlers
 				}
 
 				Log.Info($"Constellation.Foundation.SitemapXml generating {site.Name} sitemap.xml", this);
-				SitemapRepository.GetSitemap(site, true);
+				SitemapRepository.GetSitemap(new SiteContext(site), true);
 				Log.Info($"Constellation.Foundation.SitemapXml {site.Name} sitemap.xml generated.", this);
 			}
 		}

@@ -1,6 +1,6 @@
-﻿using System.Web;
-using Constellation.Foundation.SitemapXml.Repositories;
+﻿using Constellation.Foundation.SitemapXml.Repositories;
 using Sitecore.Sites;
+using System.Web;
 
 namespace Constellation.Foundation.SitemapXml.HttpHandlers
 {
@@ -42,7 +42,7 @@ namespace Constellation.Foundation.SitemapXml.HttpHandlers
 
 			context.Response.Clear();
 			context.Response.ContentType = "text/xml";
-			document.Save(context.Response.OutputStream);
+			context.Response.Output.Write(document);
 			context.Response.End();
 		}
 		#endregion

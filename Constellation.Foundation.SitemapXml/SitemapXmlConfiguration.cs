@@ -62,11 +62,6 @@ namespace Constellation.Foundation.SitemapXml
 		public bool CacheEnabled { get; private set; }
 
 		/// <summary>
-		/// The length of time sitemap.xml documents should be cached. Can be overridden by each site.
-		/// </summary>
-		public int DefaultCacheTimeout { get; private set; }
-
-		/// <summary>
 		/// Whether the (obsolete) change frequency attribute should be written to nodes in the sitemap.xml document.
 		/// </summary>
 		public bool IncludeChangeFrequency { get; private set; }
@@ -125,12 +120,6 @@ namespace Constellation.Foundation.SitemapXml
 			}
 
 			output.CacheEnabled = rootNode?.Attributes?["cacheEnabled"]?.Value != null && bool.Parse(rootNode.Attributes["cacheEnabled"].Value);
-
-
-
-			output.DefaultCacheTimeout = rootNode?.Attributes?["defaultCacheTimeout"]?.Value == null
-				? 45
-				: int.Parse(rootNode.Attributes["defaultCacheTimeout"].Value);
 
 			output.IncludeChangeFrequency = rootNode?.Attributes?["includeChangeFrequency"]?.Value != null && bool.Parse(rootNode.Attributes["includeChangeFrequency"].Value);
 
