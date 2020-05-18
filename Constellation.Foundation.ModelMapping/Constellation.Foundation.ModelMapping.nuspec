@@ -13,16 +13,16 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
-VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
-Requires Sitecore 9.1
-Requires .NET 4.7.1
+VERSION 8.1.3 is compiled for Sitecore 8.1 Update 3 use and will not work on earlier versions.
+Requires Sitecore 8.1 Update 3
+Requires .NET 4.6.2
 
 Constellation is a collection of utilities for .NET CMS implementers.
 
 The Foundation.ModelMapping library is inspired by AutoMapper and is designed to provide a quick, non-ORM method of mapping Sitecore Items to ViewModels. String properties on your ViewModel will be mapped to FieldRendered values from fields with the same names. Integer and DateTime property types can also be handled automatically, although you will not get page editor support for these types. There are a number of Attributes that you can assign to your ViewModel's properties to change the behavior of the Mapper.
 
 Usage:
-var modelMapper = (IModelMapper)ServiceLocator.ServiceProvider.GetService(typeof(IModelMapper)); // Dependency Injection of an IModelMapper is supported
+var modelMapper = MappingContext.Current
 
 TModel viewModel = modelMapper.MapItemToNew&lt;TModel&gt;(sourceItem);
 Or: TModel viewmodel = item.MapToNew&lt;TModel&gt;();
@@ -63,7 +63,7 @@ Support for MultilistField.GetItems - use Model.FieldName and supply a generic I
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 	</description>
-	<releaseNotes>Fixed a bug in GeneralLink URL attribute mapper. It now correctly calls LinkField.GetFriendlyUrl for internal links.</releaseNotes>
+	<releaseNotes>Back ported to support Sitecore 8.1 Update 3</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

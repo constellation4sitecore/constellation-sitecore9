@@ -1,4 +1,4 @@
-﻿using Sitecore.DependencyInjection;
+﻿//using Sitecore.DependencyInjection;
 
 namespace Constellation.Foundation.ModelMapping
 {
@@ -12,7 +12,13 @@ namespace Constellation.Foundation.ModelMapping
 		/// </summary>
 		public static IModelMapper Current
 		{
-			get { return (IModelMapper)ServiceLocator.ServiceProvider.GetService(typeof(IModelMapper)); }
+			get
+			{
+				return new ModelMapper();
+
+				// Dependency Injection is disabled because this library was originally set up for Sitecore 9.x Dependency Injection.
+				//return (IModelMapper)ServiceLocator.ServiceProvider.GetService(typeof(IModelMapper));
+			}
 		}
 	}
 }
