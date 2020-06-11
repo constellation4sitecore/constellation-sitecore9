@@ -13,8 +13,8 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
-VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
-Requires Sitecore 9.1
+VERSION 9.3 is compiled for Sitecore 9.3 use and will not work on earlier versions.
+Requires Sitecore 9.3
 Requires .NET 4.7.1
 
 Constellation is a collection of utilities for .NET CMS implementers.
@@ -63,7 +63,7 @@ Support for MultilistField.GetItems - use Model.FieldName and supply a generic I
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 	</description>
-	<releaseNotes>Fixed a bug in GeneralLink URL attribute mapper. It now correctly calls LinkField.GetFriendlyUrl for internal links.</releaseNotes>
+	<releaseNotes>Updated Sitecore references to 9.3 minimum</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

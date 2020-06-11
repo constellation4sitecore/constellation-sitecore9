@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using Sitecore.Data;
+﻿using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Globalization;
 using Sitecore.Links;
+using Sitecore.Links.UrlBuilders;
 using Sitecore.Resources.Media;
 using Sitecore.Web;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace Constellation.Foundation.Data
 {
@@ -95,9 +96,11 @@ namespace Constellation.Foundation.Data
 		{
 			if (item != null)
 			{
-				var urlOptions = (UrlOptions)UrlOptions.DefaultOptions.Clone();
 
-				urlOptions.SiteResolving = Sitecore.Configuration.Settings.Rendering.SiteResolving;
+				var urlOptions = new ItemUrlBuilderOptions
+				{
+					SiteResolving = Sitecore.Configuration.Settings.Rendering.SiteResolving
+				};
 
 				return LinkManager.GetItemUrl(item, urlOptions);
 			}
@@ -117,7 +120,7 @@ namespace Constellation.Foundation.Data
 		/// <returns>a Media URL with Media Asset Protection hash (if enabled).</returns>
 		public static string GetUrl(this MediaItem item, Language language = null, int width = 0, int height = 0, int maxWidth = 0, int maxHeight = 0)
 		{
-			var options = new MediaUrlOptions();
+			var options = new MediaUrlBuilderOptions();
 
 			if (language != null)
 			{
@@ -153,7 +156,7 @@ namespace Constellation.Foundation.Data
 		/// <param name="item">The Media Item</param>
 		/// <param name="options">The Url Options to use.</param>
 		/// <returns>a Media URL with Media Asset Protection hash (if enabled).</returns>
-		public static string GetUrl(this MediaItem item, MediaUrlOptions options)
+		public static string GetUrl(this MediaItem item, MediaUrlBuilderOptions options)
 		{
 			var innerUrl = MediaManager.GetMediaUrl(item, options);
 			var url = HashingUtils.ProtectAssetUrl(innerUrl);

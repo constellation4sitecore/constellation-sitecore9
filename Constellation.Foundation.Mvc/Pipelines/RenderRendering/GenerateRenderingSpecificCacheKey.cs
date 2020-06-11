@@ -13,13 +13,18 @@ namespace Constellation.Foundation.Mvc.Pipelines.RenderRendering
 	/// An example of this shortcoming would be if you had a rendering that generated navigation based on a starting point in the Datasource
 	/// but had another rendering that used fields on the same Datasource Item to display text. Even though there are two Renderings
 	/// defined in Sitecore, because they share a controller and a datasource, they will share an HTML Cache Key, even though they will
-	/// resolve to discrete views using MagicController.
+	/// resolve to discrete views using ConventionController.
 	/// 
 	/// This adds the ID of the RenderingItem to the cache key, ensuring that each Rendering Item gets its own cache entry, even
 	/// if they use the same datasource.
 	/// </remarks>
 	public class GenerateRenderingSpecificCacheKey : Sitecore.Mvc.Pipelines.Response.RenderRendering.GenerateCacheKey
 	{
+		/// <inheritdoc />
+		public GenerateRenderingSpecificCacheKey(RendererCache rendererCache) : base(rendererCache)
+		{
+		}
+
 		/// <summary>
 		/// Generates the Cache Key for the rendering.
 		/// </summary>

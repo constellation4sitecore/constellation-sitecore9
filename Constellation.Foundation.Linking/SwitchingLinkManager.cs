@@ -1,11 +1,13 @@
-﻿using System.Web;
-using Sitecore.Abstractions;
+﻿using Sitecore.Abstractions;
 using Sitecore.Configuration;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Links;
+using Sitecore.Links.UrlBuilders;
 using Sitecore.Sites;
 using Sitecore.Web;
+using System;
+using System.Web;
 
 namespace Constellation.Foundation.Linking
 {
@@ -75,9 +77,16 @@ namespace Constellation.Foundation.Linking
 		}
 
 		/// <inheritdoc />
+		[Obsolete]
 		public override UrlOptions GetDefaultUrlOptions()
 		{
 			return Assert.ResultNotNull(Provider.GetDefaultUrlOptions());
+		}
+
+		/// <inheritdoc />
+		public override ItemUrlBuilderOptions GetDefaultUrlBuilderOptions()
+		{
+			return null;
 		}
 
 		/// <inheritdoc />
@@ -104,6 +113,11 @@ namespace Constellation.Foundation.Linking
 			var provider = GetSiteProvider(options.Site);
 
 			return provider.GetItemUrl(item, options);
+		}
+
+		public override string GetItemUrl(Item item, ItemUrlBuilderOptions options)
+		{
+			throw new System.NotImplementedException();
 		}
 
 		/// <inheritdoc />

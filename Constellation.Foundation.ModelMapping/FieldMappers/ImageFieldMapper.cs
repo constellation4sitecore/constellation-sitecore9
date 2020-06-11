@@ -1,12 +1,13 @@
-﻿using System;
-using System.Reflection;
-using System.Web;
-using Constellation.Foundation.Data;
+﻿using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping.MappingAttributes;
 using Sitecore.Data.Fields;
 using Sitecore.Diagnostics;
+using Sitecore.Links.UrlBuilders;
 using Sitecore.Resources.Media;
 using Sitecore.Web.UI.WebControls;
+using System;
+using System.Reflection;
+using System.Web;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
@@ -148,12 +149,12 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			ImageField field = Field;
 			var targetImage = field.MediaItem;
 
-			
+
 
 			if (targetImage != null)
 			{
 
-				var options = new MediaUrlOptions()
+				var options = new MediaUrlBuilderOptions()
 				{
 					Language = targetImage.Language
 				};

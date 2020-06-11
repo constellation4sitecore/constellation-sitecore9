@@ -13,9 +13,8 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
-VERSION 9.1.1 Contains Breaking Changes around ConventionController and ViewResolver.
-VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
-Requires Sitecore 9.1
+VERSION 9.3 is compiled for Sitecore 9.3 use and will not work on earlier versions.
+Requires Sitecore 9.3
 Requires .NET 4.7.1
 
 Constellation is a collection of utilities for .NET CMS implementers.
@@ -50,7 +49,7 @@ Independent engine for locating a View based on the Rendering Item's path in Sit
 to specify the location of Renderings in Sitecore (to trim the uneeded parts of the path) and also the location of the Views on disk. Areas are
 supported through a token replacement. See the provided config file for details.
 	</description>
-	<releaseNotes>Convention Controller will no longer attempt to load views if the Model is null. Instead it will return an Empty Result and log the issue.</releaseNotes>
+	<releaseNotes>Updated Sitecore package reference to 9.3 minium</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>

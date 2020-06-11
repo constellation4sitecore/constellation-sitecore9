@@ -1,4 +1,5 @@
 ﻿using Sitecore.Data.Fields;
+using Sitecore.Links.UrlBuilders;
 using Sitecore.Resources.Media;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
@@ -29,7 +30,7 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			if (targetImage != null)
 			{
 
-				var options = new MediaUrlOptions()
+				var options = new MediaUrlBuilderOptions()
 				{
 					Language = targetImage.Language
 				};

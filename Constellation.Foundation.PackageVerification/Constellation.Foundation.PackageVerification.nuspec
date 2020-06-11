@@ -13,8 +13,8 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library to enhance development in Sitecore.</summary>
 	<description>
-VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
-Requires Sitecore 9.1
+VERSION 9.3 is compiled for Sitecore 9.3 use and will not work on earlier versions.
+Requires Sitecore 9.3
 Requires .NET 4.7.1
 
 Constellation is a collection of utilities for .NET CMS implementers.
@@ -31,7 +31,7 @@ installed. Results are logged.
 It is possible to create your own package processor if your verification needs are more substantial. See the provided
 configuration example for where to override package processing on a package-by-package basis.
 	</description>
-	<releaseNotes>Updated to support Sitecore 9.1.1</releaseNotes>
+	<releaseNotes>Updated Sitecore references to 9.3 minimum</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Foundation</tags>
   </metadata>
