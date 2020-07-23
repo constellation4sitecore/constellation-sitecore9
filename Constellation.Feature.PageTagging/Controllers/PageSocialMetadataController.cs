@@ -62,7 +62,7 @@ namespace Constellation.Feature.PageTagging.Controllers
 				}
 			}
 
-			var options = LinkManager.GetDefaultUrlOptions(true);
+			var options = LinkManager.GetDefaultUrlBuilderOptions();
 			options.AlwaysIncludeServerUrl = true;
 			options.SiteResolving = true;
 			options.LowercaseUrls = true;

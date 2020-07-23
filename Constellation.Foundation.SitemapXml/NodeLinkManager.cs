@@ -2,6 +2,7 @@
 using Sitecore.Data.Items;
 using Sitecore.DependencyInjection;
 using Sitecore.Links;
+using Sitecore.Links.UrlBuilders;
 using Sitecore.Sites;
 using Sitecore.Web;
 
@@ -33,11 +34,12 @@ namespace Constellation.Foundation.SitemapXml
 			var siteContext = new SiteContext(site);
 			var provider = GetSiteProvider(siteContext);
 
-			var options = provider.GetDefaultUrlOptions();
-			options.Site = siteContext;
-			options.AlwaysIncludeServerUrl = true;
+			var options = provider.GetDefaultUrlBuilderOptions();
 
-			return provider.GetItemUrl(item, options);
+            Sitecore.Context.Site = siteContext;
+            options.AlwaysIncludeServerUrl = true;
+			
+            return provider.GetItemUrl(item, options);
 		}
 
 		/// <summary>

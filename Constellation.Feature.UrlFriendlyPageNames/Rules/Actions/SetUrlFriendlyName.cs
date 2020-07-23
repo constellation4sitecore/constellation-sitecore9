@@ -9,7 +9,6 @@ namespace Constellation.Feature.UrlFriendlyPageNames.Rules.Actions
 	/// Parameters are defined by the user in the calling Rule.
 	/// </summary>
 	/// <typeparam name="T">Instance of Sitecore.Rules.RuleContext.</typeparam>
-	[UsedImplicitly]
 	public class SetUrlFriendlyName<T> : Constellation.Foundation.Contexts.Rules.ContextSensitiveRuleAction<T>
 		 where T : global::Sitecore.Rules.RuleContext
 	{

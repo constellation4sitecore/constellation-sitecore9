@@ -21,15 +21,17 @@ namespace Constellation.Foundation.Linking
 	public class SwitchingLinkManager : BaseLinkManager
 	{
 		private readonly ProviderHelper<LinkProvider, LinkProviderCollection> _providerHelper;
+        private readonly IItemSiteResolver _itemSiteResolver;
 
 		/// <summary>
 		/// Creates a new instance of SwitchingLinkManager
 		/// </summary>
 		/// <param name="providerHelper">The providerHelper</param>
-		public SwitchingLinkManager(ProviderHelper<LinkProvider, LinkProviderCollection> providerHelper)
+		public SwitchingLinkManager(ProviderHelper<LinkProvider, LinkProviderCollection> providerHelper, IItemSiteResolver itemSiteResolver)
 		{
 			_providerHelper = providerHelper;
-		}
+            _itemSiteResolver = itemSiteResolver;
+        }
 
 		/// <summary>
 		/// The site-specific LinkProvider if there is a context site and the site has a provider, else the default provider.
@@ -86,7 +88,7 @@ namespace Constellation.Foundation.Linking
 		/// <inheritdoc />
 		public override ItemUrlBuilderOptions GetDefaultUrlBuilderOptions()
 		{
-			return null;
+            return Assert.ResultNotNull(Provider.GetDefaultUrlBuilderOptions());
 		}
 
 		/// <inheritdoc />
@@ -104,20 +106,15 @@ namespace Constellation.Foundation.Linking
 		/// <inheritdoc />
 		public override string GetItemUrl(Item item)
 		{
-			return Provider.GetItemUrl(item, GetDefaultUrlOptions());
+			return Provider.GetItemUrl(item, GetDefaultUrlBuilderOptions());
 		}
 
 		/// <inheritdoc />
-		public override string GetItemUrl(Item item, UrlOptions options)
+		public override string GetItemUrl(Item item, ItemUrlBuilderOptions options)
 		{
 			var provider = GetSiteProvider(options.Site);
 
 			return provider.GetItemUrl(item, options);
-		}
-
-		public override string GetItemUrl(Item item, ItemUrlBuilderOptions options)
-		{
-			throw new System.NotImplementedException();
 		}
 
 		/// <inheritdoc />
@@ -139,11 +136,13 @@ namespace Constellation.Foundation.Linking
 		}
 
 		/// <inheritdoc />
-		public override SiteInfo ResolveTargetSite(Item item)
-		{
-			Assert.ArgumentNotNull(item, nameof(item));
-			return Provider.ResolveTargetSite(item);
-		}
+        //TODO: 9.3 check IItemSiteResolver Injection
+        [Obsolete("Please use IItemSiteResolver instead.")]
+        public override SiteInfo ResolveTargetSite(Item item)
+        {
+            Assert.ArgumentNotNull(item, nameof(item));
+            return _itemSiteResolver.ResolveSite(item);
+        }
 
 		/// <inheritdoc />
 		public override SiteContext GetPreviewSiteContext(Item item)

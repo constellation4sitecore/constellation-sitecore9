@@ -4,7 +4,7 @@
 	<id>$id$</id>
 	<version>$version$</version>
 	<title>$title$</title>
-	<authors>Richard J. Cabral</authors>
+	<authors>Richard J. Cabral, Richard Leiva</authors>
 	<owners>Richard J. Cabral</owners>
 	<license type="expression">MIT</license>
 	<projectUrl>https://constellation4sitecore.com/foundation/sitemap-xml/</projectUrl>
