@@ -13,9 +13,9 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix-style library that provides bare-essentials support for page metadata.</summary>
 	<description>
-VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
-Requires Sitecore 9.1
-Requires .NET 4.7.1
+Compatible with Sitecore 9.3
+Requires Sitecore 9.3
+Requires .NET Framework 4.7.1
 
 Constellation is a collection of utilities for .NET CMS implementers.
 
@@ -46,7 +46,7 @@ To use, in your Layout, at the appropriate location enter the following:
 @Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page tagging/page search engine directives")
 @Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page tagging/page social metadata")
 	</description>
-	<releaseNotes>New feature allows for an attribute on a site element to override the meta-robots values for the given site. See the Constellation.Feature.PageTagging.config file for details.</releaseNotes>
+	<releaseNotes>Sitecore 9.3 Compatible.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

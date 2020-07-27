@@ -32,11 +32,11 @@
     <DocumentationFile>bin\Release\Constellation.Feature.UrlFriendlyPageNames.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Foundation.Contexts, Version=9.1.2.19985, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Contexts.9.1.2.19985\lib\net471\Constellation.Foundation.Contexts.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Contexts, Version=9.3.0.27338, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Contexts.9.3.0.27338\lib\net471\Constellation.Foundation.Contexts.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.PackageVerification, Version=9.1.2.20552, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.1.2.20552\lib\net471\Constellation.Foundation.PackageVerification.dll</HintPath>
+    <Reference Include="Constellation.Foundation.PackageVerification, Version=9.3.0.27935, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.3.0.27935\lib\net471\Constellation.Foundation.PackageVerification.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=14.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.9.3.0\lib\net471\Sitecore.Kernel.dll</HintPath>

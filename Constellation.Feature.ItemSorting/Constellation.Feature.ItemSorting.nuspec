@@ -13,9 +13,9 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library for automatically classifying Items based on name or a named date field.</summary>
 	<description>
-VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
-Requires Sitecore 9.1
-Requires .NET 4.7.1
+Compatible with Sitecore 9.3
+Requires Sitecore 9.3
+Requires .NET Framework 4.7.1
 
 Constellation is a collection of utilities for .NET CMS implementers.
 The Feature.ItemSorting library solves the frequently occurring problem of managing a collection of Items that users will not organize themselves, but which they
@@ -42,8 +42,8 @@ Usage Details
 3. Create a new Item Saved rule that specifies when an Item is of Template "Press Release" it should be moved to a Date Folder. Set the appropriate parameters.
 4. Enjoy!
 	</description>
-	<releaseNotes>Covered an unusual case where the name of the Item to be sorted started with the year that it was to be sorted by.</releaseNotes>
+	<releaseNotes>Supports Sitecore 9.3</releaseNotes>
 	<copyright>Copyright 2017</copyright>
-	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore SXA, Sitecore Feature</tags>
+	<tags>Sitecore,  Sitecore Helix, Sitecore Habitat, Sitecore Feature</tags>
   </metadata>
 </package>
