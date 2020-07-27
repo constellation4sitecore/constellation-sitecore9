@@ -21,17 +21,18 @@ namespace Constellation.Foundation.Linking
 	public class SwitchingLinkManager : BaseLinkManager
 	{
 		private readonly ProviderHelper<LinkProvider, LinkProviderCollection> _providerHelper;
-        private readonly IItemSiteResolver _itemSiteResolver;
+		private readonly IItemSiteResolver _itemSiteResolver;
 
 		/// <summary>
 		/// Creates a new instance of SwitchingLinkManager
 		/// </summary>
 		/// <param name="providerHelper">The providerHelper</param>
+		/// <param name="itemSiteResolver">The itemSiteResolver</param>
 		public SwitchingLinkManager(ProviderHelper<LinkProvider, LinkProviderCollection> providerHelper, IItemSiteResolver itemSiteResolver)
 		{
 			_providerHelper = providerHelper;
-            _itemSiteResolver = itemSiteResolver;
-        }
+			_itemSiteResolver = itemSiteResolver;
+		}
 
 		/// <summary>
 		/// The site-specific LinkProvider if there is a context site and the site has a provider, else the default provider.
@@ -88,7 +89,7 @@ namespace Constellation.Foundation.Linking
 		/// <inheritdoc />
 		public override ItemUrlBuilderOptions GetDefaultUrlBuilderOptions()
 		{
-            return Assert.ResultNotNull(Provider.GetDefaultUrlBuilderOptions());
+			return Assert.ResultNotNull(Provider.GetDefaultUrlBuilderOptions());
 		}
 
 		/// <inheritdoc />
@@ -136,13 +137,13 @@ namespace Constellation.Foundation.Linking
 		}
 
 		/// <inheritdoc />
-        //TODO: 9.3 check IItemSiteResolver Injection
-        [Obsolete("Please use IItemSiteResolver instead.")]
-        public override SiteInfo ResolveTargetSite(Item item)
-        {
-            Assert.ArgumentNotNull(item, nameof(item));
-            return _itemSiteResolver.ResolveSite(item);
-        }
+		//TODO: 9.3 check IItemSiteResolver Injection
+		[Obsolete("Please use IItemSiteResolver instead.")]
+		public override SiteInfo ResolveTargetSite(Item item)
+		{
+			Assert.ArgumentNotNull(item, nameof(item));
+			return _itemSiteResolver.ResolveSite(item);
+		}
 
 		/// <inheritdoc />
 		public override SiteContext GetPreviewSiteContext(Item item)

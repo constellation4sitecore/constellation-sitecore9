@@ -13,10 +13,9 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix-style library that handles requests for /ROBOTS.TXT and /SITEMAP.XML dynamically based on Sitecore content.</summary>
 	<description>
-VERSION 9.1 is compiled for Sitecore 9.1 use and will not work on earlier versions.
-Requires Sitecore 9.1
-Requires .NET 4.7.1
-Version 9.1.7 contains breaking changes!
+Compatible with Sitecore 9.3
+Requires Sitecore 9.3
+Requires .NET Framework 4.7.1
 
 Constellation is a collection of utilities for .NET CMS implementers.
 
@@ -61,8 +60,7 @@ Your web.config must have a system.webServer/handlers section, and that section 
 to install this package successfully. If you're using the default Sitecore web.config this won't be an issue. The handlers provided in this package must be
 inserted at the top of the stack of handlers.
 	</description>
-	<releaseNotes>Ensured that any generated Sitemap.xml ends up in the HtmlCache for the corresponding site. This ensures the sitemap.xml document is cleared after publication, 
-		assuming that event handler is set up correctly for each site in the installation.</releaseNotes>
+	<releaseNotes>Compiled for use with Sitecore 9.3</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
