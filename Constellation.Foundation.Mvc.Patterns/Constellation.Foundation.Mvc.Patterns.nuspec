@@ -41,7 +41,7 @@ ItemListController - Use when a Rendering will present a number of Items that ha
 On Sitecore startup, this package will scan all assemblies for IController and IRepository implementations and automatically add them to Dependency Injection.
 This feature can be disabled/changed via the config file for this package.
 	</description>
-	<releaseNotes>Supports Sitecore 9.3</releaseNotes>
+	<releaseNotes>Updates to Constellation.Foundation.Mvc</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
