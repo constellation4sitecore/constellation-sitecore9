@@ -13,9 +13,9 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix-style library for transforming human-entered Item Names into SEO-friendly URL slugs.</summary>
 	<description>
-Compatible with Sitecore 9.3
-Requires Sitecore 9.3
-Requires .NET Framework 4.7.1
+Compatible with Sitecore 10.0
+Requires Sitecore 10.0
+Requires .NET Framework 4.8
 
 Constellation is a collection of utilities for .NET CMS implementers.
 
@@ -36,7 +36,7 @@ rule conditions that are suitable for this specific task.
 Note that the Illegal Characters option and the Replace Spaces option can conflict, a "-" will be removed if you use the "\W" regex,
 resulting in behavior similar to "Remove Spaces" We strongly recommend using "\s".
 	</description>
-	<releaseNotes>Sitecore 9.3 compatible.</releaseNotes>
+	<releaseNotes>Sitecore 10.0 compatible.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix</tags>
   </metadata>

@@ -13,13 +13,13 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library with shims for multi-site/multi-language support in Sitecore</summary>
 	<description>
-		VERSION 9.3 is compiled for Sitecore 9.3 use and will not work on earlier versions.
-		Requires Sitecore 9.3
-		Requires .NET 4.7.1
+		VERSION 10.0 is compiled for Sitecore 10.0 use and will not work on earlier versions.
+		Requires Sitecore 10.0
+		Requires .NET 4.8
 
 		Constellation is a collection of utilities for .NET CMS implementers. The Foundation.Globalization namespace contains extension methods for Item, Language, and SiteInfo specifically related to determining and specifying language at runtime.
 	</description>
-	<releaseNotes>Updated Sitecore package reference to 9.3 minimum</releaseNotes>
+	<releaseNotes>Updated Sitecore package reference to 10.0 minimum</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

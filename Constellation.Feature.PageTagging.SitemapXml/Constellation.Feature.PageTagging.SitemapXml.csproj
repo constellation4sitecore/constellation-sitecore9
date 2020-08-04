@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Constellation.Feature.PageTagging.SitemapXml</RootNamespace>
     <AssemblyName>Constellation.Feature.PageTagging.SitemapXml</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -32,55 +32,37 @@
     <DocumentationFile>bin\Release\Constellation.Feature.PageTagging.SitemapXml.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Feature.PageTagging, Version=9.3.0.19376, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Feature.PageTagging.9.3.0.19376\lib\net471\Constellation.Feature.PageTagging.dll</HintPath>
+    <Reference Include="Constellation.Feature.PageTagging, Version=10.0.0.24145, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Feature.PageTagging.10.0.0.24145\lib\net48\Constellation.Feature.PageTagging.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.Caching, Version=9.3.0.27247, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Caching.9.3.0.27247\lib\net471\Constellation.Foundation.Caching.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Caching, Version=10.0.0.21896, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Caching.10.0.0.21896\lib\net48\Constellation.Foundation.Caching.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.Data, Version=9.3.0.27860, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Data.9.3.0.27860\lib\net471\Constellation.Foundation.Data.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Data, Version=10.0.0.22111, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Data.10.0.0.22111\lib\net48\Constellation.Foundation.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.Linking, Version=9.3.0.16413, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Linking.9.3.0.16413\lib\net471\Constellation.Foundation.Linking.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Linking, Version=10.0.0.22540, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Linking.10.0.0.22540\lib\net48\Constellation.Foundation.Linking.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.3.0.29450, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.3.0.29450\lib\net471\Constellation.Foundation.ModelMapping.dll</HintPath>
+    <Reference Include="Constellation.Foundation.ModelMapping, Version=10.0.0.23188, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.ModelMapping.10.0.0.23188\lib\net48\Constellation.Foundation.ModelMapping.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.PackageVerification, Version=9.3.0.27935, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.3.0.27935\lib\net471\Constellation.Foundation.PackageVerification.dll</HintPath>
+    <Reference Include="Constellation.Foundation.PackageVerification, Version=10.0.0.22406, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.PackageVerification.10.0.0.22406\lib\net48\Constellation.Foundation.PackageVerification.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.SitemapXml, Version=9.3.0.17031, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.SitemapXml.9.3.0.17031\lib\net471\Constellation.Foundation.SitemapXml.dll</HintPath>
+    <Reference Include="Constellation.Foundation.SitemapXml, Version=10.0.0.22989, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.SitemapXml.10.0.0.22989\lib\net48\Constellation.Foundation.SitemapXml.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Sitecore.Kernel, Version=14.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Kernel.9.3.0\lib\net471\Sitecore.Kernel.dll</HintPath>
+    <Reference Include="Sitecore.Kernel, Version=15.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Kernel.10.0.0\lib\net48\Sitecore.Kernel.dll</HintPath>
     </Reference>
-    <Reference Include="sysglobl" />
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
-    <Reference Include="System.Design" />
-    <Reference Include="System.DirectoryServices" />
-    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Linq" />
-    <Reference Include="System.Linq.Expressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Linq.Expressions.4.1.0\lib\net463\System.Linq.Expressions.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Runtime" />
-    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.InteropServices" />
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Threading.Thread" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TreeCrawler.cs" />

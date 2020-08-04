@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Constellation.Feature.PageAnalyticsScripts</RootNamespace>
     <AssemblyName>Constellation.Feature.PageAnalyticsScripts</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -32,47 +32,34 @@
     <DocumentationFile>bin\Release\Constellation.Feature.PageAnalyticsScripts.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Foundation.Data, Version=9.3.0.27860, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Data.9.3.0.27860\lib\net471\Constellation.Foundation.Data.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Data, Version=10.0.0.22111, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Data.10.0.0.22111\lib\net48\Constellation.Foundation.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.ModelMapping, Version=9.3.0.29450, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.ModelMapping.9.3.0.29450\lib\net471\Constellation.Foundation.ModelMapping.dll</HintPath>
+    <Reference Include="Constellation.Foundation.ModelMapping, Version=10.0.0.23188, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.ModelMapping.10.0.0.23188\lib\net48\Constellation.Foundation.ModelMapping.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.PackageVerification, Version=9.3.0.27935, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.PackageVerification.9.3.0.27935\lib\net471\Constellation.Foundation.PackageVerification.dll</HintPath>
+    <Reference Include="Constellation.Foundation.PackageVerification, Version=10.0.0.22406, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.PackageVerification.10.0.0.22406\lib\net48\Constellation.Foundation.PackageVerification.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Kernel, Version=14.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Kernel.9.3.0\lib\net471\Sitecore.Kernel.dll</HintPath>
+    <Reference Include="Sitecore.Kernel, Version=15.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Kernel.10.0.0\lib\net48\Sitecore.Kernel.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Mvc, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Mvc.9.3.0\lib\net471\Sitecore.Mvc.dll</HintPath>
+    <Reference Include="Sitecore.Mvc, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Mvc.10.0.0\lib\net48\Sitecore.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="sysglobl" />
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
-    <Reference Include="System.Design" />
-    <Reference Include="System.DirectoryServices" />
-    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Linq" />
     <Reference Include="System.Runtime" />
-    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.InteropServices" />
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Threading.Thread" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BodyTopScriptsController.cs" />

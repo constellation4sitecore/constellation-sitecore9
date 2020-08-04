@@ -13,9 +13,9 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix-style library that adds Sitemap XML generation to the Page Tagging library.</summary>
 	<description>
-Compatible with Sitecore 9.3
-Requires Sitecore 9.3
-Requires .NET Framework 4.7.1
+Compatible with Sitecore 10.0
+Requires Sitecore 10.0
+Requires .NET Framework 4.8
 
 Constellation is a collection of utilities for .NET CMS implementers.
 
@@ -25,7 +25,7 @@ Foundation.SitemapXml, based upon the Page Search Engine Directive fields availa
 This feature is shipped separately in case the user is not using Constellation.Foundation.SitemapXml or has a different
 implementation that is not compatible with the PageTagging feature.
 	</description>
-	<releaseNotes>Sitecore 9.3 compatible.</releaseNotes>
+	<releaseNotes>Sitecore 10.0 compatible.</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

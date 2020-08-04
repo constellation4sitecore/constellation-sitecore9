@@ -13,9 +13,9 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library extending Item with utilities to check ancestry, template derivation, and to retrieve Item children of a specific template.</summary>
 	<description>
-VERSION 9.3 is compiled for Sitecore 9.3 use and will not work on earlier versions.
-Requires Sitecore 9.3
-Requires .NET 4.7.1
+VERSION 10.0 is compiled for Sitecore 10.0 use and will not work on earlier versions.
+Requires Sitecore 10.0
+Requires .NET 4.8
 
 Constellation is a collection of utilities for .NET CMS implementers.
 The Foundation.Data namespace contains an Item extension class that allows the developer to:
@@ -26,7 +26,7 @@ The Foundation.Data namespace contains an Item extension class that allows the d
 - Determine if the Item is in the Context Site.
 - Find or create an Item's child given a name and a Template ID.
 	</description>
-	<releaseNotes>Updated Sitecore references to 9.3 minimum.</releaseNotes>
+	<releaseNotes>Updated Sitecore references to 10.0 minimum.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
