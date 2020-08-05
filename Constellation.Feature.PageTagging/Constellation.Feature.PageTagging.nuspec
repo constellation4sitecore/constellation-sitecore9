@@ -46,7 +46,7 @@ To use, in your Layout, at the appropriate location enter the following:
 @Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page tagging/page search engine directives")
 @Html.Sitecore().Rendering("/sitecore/layout/renderings/feature/constellation/page tagging/page social metadata")
 	</description>
-	<releaseNotes>Sitecore 10.0 Compatible.</releaseNotes>
+	<releaseNotes>Moved config file to official Feature folder to ensure execution order.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

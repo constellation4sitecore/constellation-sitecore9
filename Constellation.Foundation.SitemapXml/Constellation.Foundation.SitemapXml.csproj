@@ -32,8 +32,8 @@
     <DocumentationFile>bin\Release\Constellation.Foundation.SitemapXml.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Constellation.Foundation.Linking, Version=10.0.0.22540, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.Linking.10.0.0.22540\lib\net48\Constellation.Foundation.Linking.dll</HintPath>
+    <Reference Include="Constellation.Foundation.Linking, Version=10.0.1.23852, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Linking.10.0.1.23852\lib\net48\Constellation.Foundation.Linking.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=15.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.10.0.0\lib\net48\Sitecore.Kernel.dll</HintPath>
@@ -71,11 +71,11 @@
     <Compile Include="SitemapXmlConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.SitemapXml.config">
+    <Content Include="App_Config\Include\Foundation\Constellation.Foundation.SitemapXml.config">
       <SubType>Designer</SubType>
     </Content>
     <None Include="app.config" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.Linking.config" />
+    <None Include="App_Config\Include\Foundation\Constellation.Foundation.Linking.config" />
     <None Include="Constellation.Foundation.SitemapXml.nuspec">
       <SubType>Designer</SubType>
     </None>

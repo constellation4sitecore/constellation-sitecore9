@@ -55,12 +55,11 @@
     <Compile Include="Rules\Actions\SetUrlFriendlyName.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Constellation\Constellation.Feature.UrlFriendlyPageNames.config" />
+    <Content Include="App_Config\Include\Feature\Constellation.Feature.UrlFriendlyPageNames.config" />
     <Content Include="App_Data\packages\Constellation-Feature-UrlFriendlyPageNames-Items.zip" />
     <Content Include="App_Data\packages\PutPackagesHere.txt" />
     <Content Include="Constellation.License.txt" />
     <None Include="app.config" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
     <None Include="Constellation.Feature.UrlFriendlyPageNames.nuspec">
       <SubType>Designer</SubType>
     </None>

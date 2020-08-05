@@ -71,11 +71,11 @@
     <Compile Include="Rules\Conditions\ItemSupportsSubcontent.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Datasources.config" />
+    <Content Include="App_Config\Include\Foundation\Constellation.Foundation.Datasources.config" />
     <Content Include="App_Data\packages\Constellation-Foundation-Datasources-Items.zip" />
     <Content Include="App_Data\packages\PutPackagesHere.txt" />
     <Content Include="Constellation.License.txt" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
+    <None Include="App_Config\Include\Foundation\Constellation.Foundation.PackageVerification.config.example" />
     <None Include="Constellation.Foundation.Datasources.nuspec">
       <SubType>Designer</SubType>
     </None>

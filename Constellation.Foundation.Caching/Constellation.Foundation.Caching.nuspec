@@ -31,7 +31,7 @@ Request an ICacheManager from your service locator to use in your Controllers.
 Portions based on work by Christopher Giddings: https://cjgiddings.wordpress.com/2012/02/03/sitecore-caching-utility/ updated heavily
 for modularity and to support Sitecore 9.x
 	</description>
-	<releaseNotes>Updated Sitecore references to 10.0 minimum</releaseNotes>
+	<releaseNotes>Moved configuration file to official Foundation folder to ensure correct execution order.</releaseNotes>
 	<copyright>Copyright 2016</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
 	</metadata>

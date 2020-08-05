@@ -69,7 +69,7 @@
     <Compile Include="SiteInfoExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.PageNotFound.config" />
+    <Content Include="App_Config\Include\Foundation\Constellation.Foundation.PageNotFound.config" />
     <Content Include="Constellation.License.txt" />
     <None Include="Constellation.Foundation.PageNotFound.nuspec" />
     <None Include="packages.config" />

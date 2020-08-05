@@ -106,7 +106,7 @@
     <Content Include="Constellation.License.txt" />
     <None Include="web.config.uninstall.xdt" />
     <None Include="web.config.install.xdt" />
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Mvc.config">
+    <Content Include="App_Config\Include\Foundation\Constellation.Foundation.Mvc.config">
       <SubType>Designer</SubType>
     </Content>
     <None Include="Constellation.Foundation.Mvc.nuspec">

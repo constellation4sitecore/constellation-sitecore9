@@ -73,7 +73,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.Caching.config" />
+    <Content Include="App_Config\Include\Foundation\Constellation.Foundation.Caching.config" />
     <None Include="app.config" />
     <None Include="Constellation.Foundation.Caching.nuspec" />
     <None Include="packages.config" />

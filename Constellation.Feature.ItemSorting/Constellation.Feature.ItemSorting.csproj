@@ -70,11 +70,10 @@
     <Compile Include="Rules\Actions\MoveToDateFolder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Constellation\Constellation.Feature.ItemSorting.config" />
+    <Content Include="App_Config\Include\Feature\Constellation.Feature.ItemSorting.config" />
     <Content Include="App_Data\packages\PutPackagesHere.txt" />
     <Content Include="Constellation.License.txt" />
     <None Include="app.config" />
-    <None Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
     <None Include="Constellation.Feature.ItemSorting.nuspec">
       <SubType>Designer</SubType>
     </None>

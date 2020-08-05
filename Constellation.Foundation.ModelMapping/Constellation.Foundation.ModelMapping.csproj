@@ -122,7 +122,7 @@
     <Compile Include="PropertyInfoExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.ModelMapper.config">
+    <Content Include="App_Config\Include\Foundation\Constellation.Foundation.ModelMapper.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Constellation.License.txt" />
