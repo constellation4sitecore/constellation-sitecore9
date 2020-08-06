@@ -1,4 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+	THIS IS AN EXAMPLE DOCUMENT DO NOT MODIFY
+	
+	PackageVerifier does almost nothing by itself, it's meant as a way for your
+	Helix components to install supporting Items into Sitecore without manual intervention.
+	
+	The XML in this document would typically be included in the config file of your Helix
+	component, customized for the specific Package and Items required by your component.
+	
+	
+	You must have the Initialize pipeline processor installed as below or it will not work.
+	
+	You must have a packageVerifier element to specify how to install your Sitecore Zip Package 
+	and how to verify that it is correctly installed after future restarts.
+-->
+
+
 <configuration xmlns:patch="http://www.sitecore.net/xmlconfig/"  xmlns:role="http://www.sitecore.net/xmlconfig/role/">
 	<sitecore>
 		<pipelines>

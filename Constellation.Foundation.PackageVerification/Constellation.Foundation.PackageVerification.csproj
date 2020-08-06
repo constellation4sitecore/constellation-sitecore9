@@ -74,7 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Constellation\Constellation.Foundation.PackageVerification.config.example" />
+    <Content Include="App_Config\Include\Foundation\Constellation.Foundation.PackageVerification.config.example" />
     <None Include="app.config" />
     <None Include="Constellation.Foundation.PackageVerification.nuspec">
       <SubType>Designer</SubType>
