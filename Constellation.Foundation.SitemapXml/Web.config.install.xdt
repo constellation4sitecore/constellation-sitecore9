@@ -2,6 +2,11 @@
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
 	<system.webServer>
 		<handlers>
+			<!-- remove if already in the file -->
+			<add verb="*" name="robots" path="robots.txt" type="Constellation.Foundation.SitemapXml.HttpHandlers.RobotsTxtHandler, Constellation.Foundation.SitemapXml" xdt:Transform="Remove" xdt:Locator="Match(type)" />
+			<add verb="*" name="sitemap" path="sitemap.xml" type="Constellation.Foundation.SitemapXml.HttpHandlers.SitemapXmlHandler, Constellation.Foundation.SitemapXml" xdt:Transform="Remove" xdt:Locator="Match(type)" />
+
+			<!-- add the handlers into the solution at the top of the stack -->
 			<add verb="*" name="robots" path="robots.txt" type="Constellation.Foundation.SitemapXml.HttpHandlers.RobotsTxtHandler, Constellation.Foundation.SitemapXml" xdt:Transform="InsertBefore(/configuration/system.webServer/handlers/add)" />
 			<add verb="*" name="sitemap" path="sitemap.xml" type="Constellation.Foundation.SitemapXml.HttpHandlers.SitemapXmlHandler, Constellation.Foundation.SitemapXml" xdt:Transform="InsertBefore(/configuration/system.webServer/handlers/add)" />
 		</handlers>

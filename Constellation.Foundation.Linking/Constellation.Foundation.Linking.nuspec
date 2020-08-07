@@ -26,7 +26,7 @@ LinkProvider settings as needed.
 
 This library is transcribed with permission from JammyKam's original code here: https://jammykam.wordpress.com/2017/09/22/switching-link-manager/
 	</description>
-	<releaseNotes>Moved the config file to the official Foundation folder for correct execution order.</releaseNotes>
+	<releaseNotes>Fix for circular reference in SwitchingLinkManager</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

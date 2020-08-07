@@ -21,17 +21,14 @@ namespace Constellation.Foundation.Linking
 	public class SwitchingLinkManager : BaseLinkManager
 	{
 		private readonly ProviderHelper<LinkProvider, LinkProviderCollection> _providerHelper;
-		private readonly IItemSiteResolver _itemSiteResolver;
 
 		/// <summary>
 		/// Creates a new instance of SwitchingLinkManager
 		/// </summary>
 		/// <param name="providerHelper">The providerHelper</param>
-		/// <param name="itemSiteResolver">The itemSiteResolver</param>
-		public SwitchingLinkManager(ProviderHelper<LinkProvider, LinkProviderCollection> providerHelper, IItemSiteResolver itemSiteResolver)
+		public SwitchingLinkManager(ProviderHelper<LinkProvider, LinkProviderCollection> providerHelper)
 		{
 			_providerHelper = providerHelper;
-			_itemSiteResolver = itemSiteResolver;
 		}
 
 		/// <summary>
@@ -142,7 +139,7 @@ namespace Constellation.Foundation.Linking
 		public override SiteInfo ResolveTargetSite(Item item)
 		{
 			Assert.ArgumentNotNull(item, nameof(item));
-			return _itemSiteResolver.ResolveSite(item);
+			return this.Provider.ResolveTargetSite(item);
 		}
 
 		/// <inheritdoc />
@@ -152,7 +149,7 @@ namespace Constellation.Foundation.Linking
 			return Provider.GetPreviewSiteContext(item);
 		}
 
-
+		#region Internals - these are the methods that differ from the base class.
 		/// <summary>
 		/// Give a Site Context attempts to resolve the linkProvider to a named configuration of Provider.
 		/// </summary>
@@ -180,5 +177,7 @@ namespace Constellation.Foundation.Linking
 
 			return setting;
 		}
+		#endregion
+
 	}
 }
