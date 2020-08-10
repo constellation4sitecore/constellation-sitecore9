@@ -44,8 +44,8 @@
     <Reference Include="Constellation.Foundation.ModelMapping, Version=10.0.1.23906, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.ModelMapping.10.0.1.23906\lib\net48\Constellation.Foundation.ModelMapping.dll</HintPath>
     </Reference>
-    <Reference Include="Constellation.Foundation.PackageVerification, Version=10.0.0.22406, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Constellation.Foundation.PackageVerification.10.0.0.22406\lib\net48\Constellation.Foundation.PackageVerification.dll</HintPath>
+    <Reference Include="Constellation.Foundation.PackageVerification, Version=10.0.1.16481, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.PackageVerification.10.0.1.16481\lib\net48\Constellation.Foundation.PackageVerification.dll</HintPath>
     </Reference>
     <Reference Include="Constellation.Foundation.SitemapXml, Version=10.0.3.28510, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Constellation.Foundation.SitemapXml.10.0.3.28510\lib\net48\Constellation.Foundation.SitemapXml.dll</HintPath>
@@ -77,6 +77,7 @@
     <None Include="App_Config\Include\Feature\Constellation.Feature.PageTagging.config" />
     <None Include="App_Config\Include\Foundation\Constellation.Foundation.Caching.config" />
     <None Include="App_Config\Include\Foundation\Constellation.Foundation.ModelMapper.config" />
+    <None Include="App_Config\Include\Foundation\Constellation.Foundation.PackageVerification.config.example" />
     <None Include="App_Config\Include\Foundation\Constellation.Foundation.SitemapXml.config" />
     <None Include="App_Data\packages\Constellation-Feature-PageTagging-Items.zip" />
     <None Include="Constellation.Feature.PageTagging.SitemapXml.nuspec" />
