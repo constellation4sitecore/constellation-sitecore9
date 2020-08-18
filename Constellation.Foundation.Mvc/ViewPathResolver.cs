@@ -1,5 +1,9 @@
-﻿using Sitecore.Data.Items;
+﻿using Constellation.Foundation.Data;
+using Sitecore.Data.Items;
 using System;
+using System.IO;
+using System.Web;
+// ReSharper disable StringLiteralTypo
 
 namespace Constellation.Foundation.Mvc
 {
@@ -8,161 +12,96 @@ namespace Constellation.Foundation.Mvc
 	/// </summary>
 	public class ViewPathResolver : IViewPathResolver
 	{
-		private string _renderingItemPathRoot;
-
-		private string _viewRootPath;
-
-		/// <summary>
-		/// Creates a new instance of ViewResolver
-		/// </summary>
-		/// <param name="renderingItem">The renderingItem to use when creating the view's filepath.</param>
-		[Obsolete("Use the empty constructor and supply the RenderingItem to the ResolveViewPath() method.")]
-		public ViewPathResolver(RenderingItem renderingItem)
+		private enum ModuleType
 		{
-			RenderingItem = renderingItem;
+			Foundation,
+			Feature,
+			Project,
+			Unknown
 		}
 
-		/// <summary>
-		/// Creates a new instance of ViewResolver
-		/// </summary>
-		public ViewPathResolver()
-		{
-
-		}
-
-		#region Properties
-
-		/// <summary>
-		/// Gets or sets the Rendering Definition Item to use for View file path resolution.
-		/// </summary>
-		protected RenderingItem RenderingItem { get; set; }
-
-		/// <inheritdoc />
-		/// <summary>
-		/// Gets or sets the portion of the RenderingItem's FullPath that should be truncated
-		/// when attempting to resolve the Rendering's View path on disk. Default value
-		/// is "/sitecore/layout/renderings" Value can be set globally by adding a Sitecore setting for:
-		/// "Constellation.Foundation.Mvc.RenderingItemPathRoot"
-		/// </summary>
-		protected string RenderingItemPathRoot
-		{
-			get
-			{
-				if (string.IsNullOrEmpty(_renderingItemPathRoot))
-				{
-					var setting = Sitecore.Configuration.Settings.GetSetting("Constellation.Foundation.Mvc.RenderingItemPathRoot");
-
-					if (string.IsNullOrEmpty(setting))
-					{
-						_renderingItemPathRoot = "/sitecore/layout/renderings";
-					}
-					else
-					{
-						_renderingItemPathRoot = setting;
-					}
-				}
-
-				return _renderingItemPathRoot;
-			}
-
-			set
-			{
-				_renderingItemPathRoot = value;
-			}
-		}
-
-
-		/// <inheritdoc />
-		/// <summary>
-		/// Gets or sets the root folder for the application path to the View inferred from the RenderingItem's location in the content tree.
-		/// Default Value is "~/Views". Value can be set globally by adding a Sitecore setting for:
-		/// "Constellation.Foundation.Mvc.ViewRootPath"
-		/// </summary>
-		protected string ViewRootPath
-		{
-			get
-			{
-				if (string.IsNullOrEmpty(_viewRootPath))
-				{
-
-					var setting = Sitecore.Configuration.Settings.GetSetting("Constellation.Foundation.Mvc.ViewRootPath");
-
-					if (string.IsNullOrEmpty(setting))
-					{
-						_viewRootPath = "~/Views";
-					}
-					else
-					{
-						_viewRootPath = setting;
-					}
-				}
-
-				return _viewRootPath;
-			}
-
-			set
-			{
-				_viewRootPath = value;
-			}
-		}
-
-		#endregion
-		/// <summary>
-		/// Creates a Virtual Path to the view associated with the RenderingItem associated with this instance.
-		/// Uses RenderingItemPathRoot and ViewRootPath to establish the valid part of the path from Sitecore as well
-		/// as the starting point for the virtual path.
-		/// </summary>
-		/// <returns>The virtual path to the view.</returns>
-		[Obsolete("Use ResolveViewPath(RenderingItem) instead.")]
-		public string ResolveViewPath()
-		{
-			if (this.RenderingItem == null)
-			{
-				throw new Exception("ViewResolver.RenderingItem property was null");
-			}
-
-			return ResolveViewPath(this.RenderingItem);
-		}
 
 		/// <inheritdoc />
 		public string ResolveViewPath(RenderingItem renderingItem)
 		{
-			var area = renderingItem.InnerItem["Area"];
-			var viewRoot = ViewRootPath.ToLower();
-			var renderingRoot = RenderingItemPathRoot.ToLower();
+			var config = ViewPathResolverConfiguration.Current;
+			string renderingRootPath;
+			string viewRoot;
+			string moduleName;
+			string lowerPath;
 
-			if (!string.IsNullOrEmpty(area))
+
+			var fullPath = renderingItem.InnerItem.Paths.FullPath.ToLower();
+			var moduleType = GetModuleTypeFromRenderingPath(fullPath);
+
+			switch (moduleType)
 			{
-				renderingRoot = renderingRoot.Replace("$area", area).ToLower();
-				viewRoot = viewRoot.Replace("$area", area).ToLower();
+				case ModuleType.Project:
+					renderingRootPath = config.ProjectRenderingItemPathRoot.ToLower();
+					viewRoot = config.ProjectViewPath.ToLower();
+					break;
+				case ModuleType.Feature:
+					renderingRootPath = config.FeatureRenderingItemPathRoot.ToLower();
+					viewRoot = config.FeatureViewPath.ToLower();
+					break;
+				case ModuleType.Foundation:
+					renderingRootPath = config.FoundationRenderingItemPathRoot.ToLower();
+					viewRoot = config.FoundationViewPath.ToLower();
+					break;
+				default:
+					// Not in a Helix folder, so use stock View resolution.
+					return renderingItem.Name.AsClassName();
 			}
 
-			// We need to figure out if there's a Helix folder in the Rendering path and ensure it gets removed from the View's path.
-			// Helix folders don't show up in View Paths because MVC Areas aren't complex enough to support it.
-			var fullPath = renderingItem.InnerItem.Paths.FullPath;
+			lowerPath = NameConverter.ConvertItemPathToClassPath(fullPath.Replace(renderingRootPath, ""));
+			moduleName = lowerPath.Substring(0, lowerPath.IndexOf("/", StringComparison.Ordinal));
+			lowerPath = lowerPath.Replace(moduleName + "/", "");
 
-			if (fullPath.Contains("/Foundation/"))
+			viewRoot = viewRoot.Replace("{modulename}", moduleName);
+			var siteName = Sitecore.Context.Site.Name.ToLower();
+
+			// This section allows a Site to override a View from a higher-level module (Feature or Foundation usually)
+			// Since "sites" are also typically "projects" we need to make sure that we don't self-override.
+			if (config.AllowSiteOverrides && moduleName != siteName)
 			{
-				renderingRoot = renderingRoot.Replace("$helix", "foundation");
+				var viewOverrideRoot = config.SiteOverrideViewPath.ToLower();
+				viewOverrideRoot = viewOverrideRoot.Replace("{sitename}", siteName);
+				viewOverrideRoot = viewOverrideRoot.Replace("{modulename}", moduleName);
+
+				var overridePath = viewOverrideRoot + lowerPath + ".cshtml";
+				var physicalPath = HttpContext.Current.Server.MapPath(overridePath);
+				if (File.Exists(physicalPath))
+				{
+					return overridePath;
+				}
 			}
 
-			if (fullPath.Contains("/Feature/"))
+			var viewPath = viewRoot + lowerPath + ".cshtml";
+
+			return viewPath;
+		}
+
+
+		private static ModuleType GetModuleTypeFromRenderingPath(string fullPath)
+		{
+			var path = fullPath.ToLower();
+
+			if (path.Contains("/project/"))
 			{
-				renderingRoot = renderingRoot.Replace("$helix", "feature");
+				return ModuleType.Project;
 			}
 
-			if (fullPath.Contains("/Project/"))
+			if (path.Contains("/feature/"))
 			{
-				renderingRoot = renderingRoot.Replace("$helix", "project");
+				return ModuleType.Feature;
 			}
 
-			var path = NameConverter.ConvertItemPathToClassPath(fullPath).ToLower();
+			if (path.Contains("/foundation/"))
+			{
+				return ModuleType.Foundation;
+			}
 
-			var truncatedPath = path.Replace(renderingRoot, string.Empty);
-
-			var viewLocation = viewRoot + truncatedPath + ".cshtml";
-
-			return viewLocation;
+			return ModuleType.Unknown;
 		}
 	}
 }

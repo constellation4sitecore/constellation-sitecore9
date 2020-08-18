@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="EditorCompatibleView.cs" />
     <Compile Include="IViewPathResolver.cs" />
+    <Compile Include="ViewPathResolverConfiguration.cs" />
     <Compile Include="Pipelines\GetRenderer\GetControllerRenderer.cs" />
     <Compile Include="Pipelines\RenderRendering\MinifyAndAddRecordedHtmlToCache.cs" />
     <Compile Include="Pipelines\RenderRendering\GenerateRenderingSpecificCacheKey.cs" />
