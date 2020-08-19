@@ -1,6 +1,5 @@
 ﻿using Constellation.Foundation.ModelMapping.MappingAttributes;
 using System;
-using System.Collections.Generic;
 
 namespace Constellation.Feature.Navigation.Models
 {
@@ -9,13 +8,6 @@ namespace Constellation.Feature.Navigation.Models
 	/// </summary>
 	public class NavigationLink : DeclaredNode
 	{
-		/// <summary>
-		/// Creates a new instance of NavigationLink
-		/// </summary>
-		public NavigationLink()
-		{
-			ChildLinks = new List<NavigationLink>();
-		}
 
 		/// <summary>
 		/// The link represented by this Navigation Link instance. Can be an internal,
@@ -69,11 +61,6 @@ namespace Constellation.Feature.Navigation.Models
 		/// The DisplayName of the current Navigation Link Item.
 		/// </summary>
 		public string DisplayName { get; set; }
-
-		/// <summary>
-		/// Any Navigation Link Items that are children of the current Navigation Link Item.
-		/// </summary>
-		public ICollection<NavigationLink> ChildLinks { get; set; }
 
 		/// <summary>
 		/// Inspects all available title-style properties to find the "best fit" text for hyperlinks. If "UseThisDisplayName" is true, DisplayName is returned.

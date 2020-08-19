@@ -4,6 +4,7 @@ using Constellation.Foundation.ModelMapping;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
+#pragma warning disable 618
 
 namespace Constellation.Feature.Navigation.Repositories
 {
@@ -43,89 +44,65 @@ namespace Constellation.Feature.Navigation.Repositories
 		{
 			var output = ModelMapper.MapItemToNew<NavigationMenu>(datasource);
 
-			ProcessGroupChildren(datasource, output, contextItem);
+			ProcessChildren(datasource, output, contextItem);
 
 			return output;
 		}
 
-		private void ProcessGroupChildren(Item parent, LinkGroup parentGroup, Item contextItem)
+
+		private void ProcessChildren(Item parent, DeclaredNode parentNode, Item contextItem)
 		{
 			var children = parent.GetChildren();
 
 			foreach (Item child in children)
 			{
-				if (child.IsDerivedFrom(NavigationTemplateIDs.LinkGroupID))
+				if (child.IsDerivedFrom(NavigationTemplateIDs.ImageNavigationLinkID))
 				{
-					var group = BuildLinkGroup(parentGroup, child);
-					parentGroup.ChildGroups.Add(group);
-					ProcessGroupChildren(child, group, contextItem);
+					var imageLink = ModelMapper.MapItemToNew<ImageNavigationLink>(child);
+					imageLink.Parent = parentNode;
+					imageLink.IsActive = LinkTargetIsAncestorOfContext(child, contextItem);
+					parentNode.Children.Add(imageLink);
+					parentNode.ChildLinks.Add(imageLink);
+
+					ProcessChildren(child, imageLink, contextItem);
 					continue;
 				}
 
-				var link = BuildNavigationLink(parentGroup, child, contextItem);
-				if (link == null) continue;
-				parentGroup.ChildLinks.Add(link);
-				ProcessLinkChildren(child, link, contextItem);
+				if (child.IsDerivedFrom(NavigationTemplateIDs.NavigationLinkID))
+				{
+					var link = ModelMapper.MapItemToNew<NavigationLink>(child);
+					link.Parent = parentNode;
+					link.IsActive = LinkTargetIsAncestorOfContext(child, contextItem);
+					parentNode.Children.Add(link);
+					parentNode.ChildLinks.Add(link);
+
+					ProcessChildren(child, link, contextItem);
+					continue;
+				}
+
+				if (child.IsDerivedFrom(NavigationTemplateIDs.LinkGroupID))
+				{
+					var group = ModelMapper.MapItemToNew<LinkGroup>(child);
+					group.Parent = parentNode;
+					parentNode.Children.Add(group);
+					parentNode.ChildGroups.Add(group);
+
+					ProcessChildren(child, group, contextItem);
+					continue;
+				}
+
+				// If we get here and the Item hasn't been processed, it's an unknown Item type.
+				Log.Warn($"Declared Navigation Repository could not process an unsupported Item type: {child.TemplateName} for Item: {child.Paths.FullPath}.", this);
 			}
-		}
-
-		private void ProcessLinkChildren(Item parent, NavigationLink parentLink, Item contextItem)
-		{
-			var children = parent.GetChildren();
-
-			foreach (Item child in children)
-			{
-				var link = BuildNavigationLink(parentLink, child, contextItem);
-				if (link == null) continue;
-				parentLink.ChildLinks.Add(link);
-				ProcessLinkChildren(child, link, contextItem);
-			}
-		}
-
-		private LinkGroup BuildLinkGroup(DeclaredNode parent, Item child)
-		{
-			var group = ModelMapper.MapItemToNew<LinkGroup>(child);
-			group.Parent = parent;
-
-			return group;
-		}
-
-		private NavigationLink BuildNavigationLink(DeclaredNode parent, Item child, Item contextItem)
-		{
-			if (!child.IsDerivedFrom(NavigationTemplateIDs.NavigationLinkID))
-			{
-				LogIncompatibleItemWarning(child);
-				return null;
-			}
-
-			NavigationLink link = null;
-
-			if (child.IsDerivedFrom(NavigationTemplateIDs.ImageNavigationLinkID))
-			{
-				link = ModelMapper.MapItemToNew<ImageNavigationLink>(child);
-			}
-			else
-			{
-				link = ModelMapper.MapItemToNew<NavigationLink>(child);
-			}
-
-			link.Parent = parent;
-
-			if (contextItem == null)
-			{
-				return link;
-			}
-
-			if (LinkTargetIsAncestorOfContext(child, contextItem))
-			{
-				link.IsActive = true;
-			}
-
-			return link;
 		}
 
 		private static bool LinkTargetIsAncestorOfContext(Item linkItem, Item contextItem)
 		{
+			if (contextItem == null)
+			{
+				return false;
+			}
+
 			LinkField field = linkItem.Fields["Link"];
 
 			if (!field.IsInternal)
@@ -139,13 +116,6 @@ namespace Constellation.Feature.Navigation.Repositories
 			}
 
 			return field.TargetItem.Axes.IsAncestorOf(contextItem);
-		}
-
-		private static void LogIncompatibleItemWarning(Item item)
-		{
-			Log.Warn(
-				$"Navigation Repository encountered an Item in navigation that does not descend from Link Group or Navigation Link. Item {item.Paths.FullPath} ignored.",
-				typeof(DeclaredNavigationRepository));
 		}
 	}
 }
