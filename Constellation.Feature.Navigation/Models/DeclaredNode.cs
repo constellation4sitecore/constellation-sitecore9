@@ -7,12 +7,12 @@ namespace Constellation.Feature.Navigation.Models
 	/// <summary>
 	/// A member of a "static" navigation menu.
 	/// </summary>
-	public abstract class DeclaredNode
+	public class DeclaredNode
 	{
 		/// <summary>
 		/// Creates an instance of DeclaredNode
 		/// </summary>
-		protected DeclaredNode()
+		public DeclaredNode()
 		{
 			Children = new List<DeclaredNode>();
 			ChildLinks = new List<NavigationLink>();
