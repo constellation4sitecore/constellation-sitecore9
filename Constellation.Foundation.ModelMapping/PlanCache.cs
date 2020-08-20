@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Sitecore.Data;
+﻿using Sitecore.Data;
 using Sitecore.Diagnostics;
+using System.Collections.Generic;
 
 namespace Constellation.Foundation.ModelMapping
 {
@@ -87,9 +87,12 @@ namespace Constellation.Foundation.ModelMapping
 
 			if (Current.Cache.ContainsKey(key))
 			{
-				Log.Debug($"MappingPlan: Plan for class {plan.TypeFullName} and template {plan.TemplateID} already cached. Replacing.", typeof(PlanCache));
-				Current.Cache[key] = plan;
+				Log.Warn($"MappingPlan: Plan for class {plan.TypeFullName} and template {plan.TemplateID} already cached. Ignoring.", typeof(PlanCache));
 				return;
+
+				//Log.Debug($"MappingPlan: Plan for class {plan.TypeFullName} and template {plan.TemplateID} already cached. Replacing.", typeof(PlanCache));
+				//Current.Cache[key] = plan;
+				//return;
 			}
 
 			Log.Debug($"ModelMapping.PlanCache: Plan for class {plan.TypeFullName} added.", typeof(PlanCache));
