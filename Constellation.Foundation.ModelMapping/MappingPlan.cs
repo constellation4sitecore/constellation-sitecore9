@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Sitecore.Data;
+﻿using Sitecore.Data;
 using Sitecore.Diagnostics;
+using System.Collections.Generic;
 
 namespace Constellation.Foundation.ModelMapping
 {
@@ -51,11 +51,10 @@ namespace Constellation.Foundation.ModelMapping
 		/// <param name="id"></param>
 		public void AddField(ID id)
 		{
-			if (!FieldIDs.Contains(id))
-			{
-				FieldIDs.Add(id);
-				Log.Debug($"ModelMapping.MappingPlan: Added {id} to the Mapping Plan for type {TypeFullName} and template {TemplateID}", this);
-			}
+			if (FieldIDs.Contains(id)) return;
+
+			FieldIDs.Add(id);
+			Log.Debug($"ModelMapping.MappingPlan: Added {id} to the Mapping Plan for type {TypeFullName} and template {TemplateID}", this);
 		}
 
 		/// <summary>
@@ -64,7 +63,12 @@ namespace Constellation.Foundation.ModelMapping
 		/// <returns></returns>
 		public ICollection<ID> GetFieldIDs()
 		{
-			return FieldIDs;
+			// This is done to ensure the local FieldIDs collection can be modified independent of any code that needs the current list.
+			var output = new List<ID>();
+
+			output.AddRange(FieldIDs);
+
+			return output;
 		}
 		#endregion
 	}

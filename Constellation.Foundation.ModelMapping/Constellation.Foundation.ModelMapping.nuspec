@@ -63,7 +63,7 @@ Support for MultilistField.GetItems - use Model.FieldName and supply a generic I
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 	</description>
-	<releaseNotes>Ensured that the first attempt to add to the PlanCache was the winner for a given template/model combo.</releaseNotes>
+	<releaseNotes>Troubleshooting Plan Field ID list access to prevent cross-threading issues.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
