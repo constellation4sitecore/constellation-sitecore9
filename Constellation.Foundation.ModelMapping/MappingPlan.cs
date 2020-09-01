@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Sitecore.Data;
+﻿using Sitecore.Data;
 using Sitecore.Diagnostics;
+using System.Collections.Generic;
 
 namespace Constellation.Foundation.ModelMapping
 {
@@ -64,7 +64,12 @@ namespace Constellation.Foundation.ModelMapping
 		/// <returns></returns>
 		public ICollection<ID> GetFieldIDs()
 		{
-			return FieldIDs;
+			// This is done to ensure the local FieldIDs collection can be modified independent of any code that needs the current list.
+			var output = new List<ID>();
+
+			output.AddRange(FieldIDs);
+
+			return output;
 		}
 		#endregion
 	}
