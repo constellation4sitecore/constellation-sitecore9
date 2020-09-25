@@ -43,6 +43,8 @@ You can use the Field's Display Name for better human legibility and keep the Fi
 - - DateTimes
 - - Other ViewModels (recommended for DropLink, DropTree)
 - - ICollection Generics of other ViewModels (recommended for Multilist, Treelist)
+- - ModelMapping.Model.ImageModel (for Image Fields, gives access to all field properties and permits generating different kinds of image URLs on the View.)
+- - ModelMapping.Model.GeneralLinkModel (for General Link fields, gives access to all field properties through a single object.)
 - - Random Plain Old Classes as long as they are Where T: class, new()
 
 The following Model properties are mapped to Item properties rather than Item fields:
@@ -63,7 +65,7 @@ Support for MultilistField.GetItems - use Model.FieldName and supply a generic I
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 	</description>
-	<releaseNotes>Troubleshooting Plan Field ID list access to prevent cross-threading issues.</releaseNotes>
+	<releaseNotes>Added ImageModel and GeneralLinkModel as supported ViewModel property types for their respective XML fields. ImageModel allows Views to customize the MediaItem's URL without requiring ViewModels to have View concerns as Property decorators.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

@@ -79,6 +79,8 @@
   <ItemGroup>
     <Compile Include="FieldMappers\ImageSvgMapper.cs" />
     <Compile Include="FieldMappers\ImageSrcMapper.cs" />
+    <Compile Include="FieldModels\GeneralLinkModel.cs" />
+    <Compile Include="FieldModels\ImageModel.cs" />
     <Compile Include="ServicesConfigurator.cs" />
     <Compile Include="FieldMappers\CheckboxFieldMapper.cs" />
     <Compile Include="FieldMappers\DateFieldMapper.cs" />
@@ -132,5 +134,6 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
