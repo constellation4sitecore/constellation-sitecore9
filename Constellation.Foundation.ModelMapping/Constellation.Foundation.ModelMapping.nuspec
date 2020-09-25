@@ -33,7 +33,7 @@ When using Item or ItemList extensions for mapping, the context IModelMapper is 
 Constraints:
 - Your ViewModel must have a public, parameterless constructor.
 - Only Writable, Public Instance properties will be mapped.
-- Within Sitecore, your field names can be human-legible. ModelMapper will attempt to convert the field name to a valid Property name. Simpler names work best. 
+- Within Sitecore, your field names can be human-legible. ModelMapper will attempt to convert the field name to a valid Property name. Simpler names work best.
 You can use the Field's Display Name for better human legibility and keep the Field's actual name closer to a legit C# entity name.
 - ViewModel properties can be:
 - - Strings
@@ -43,11 +43,13 @@ You can use the Field's Display Name for better human legibility and keep the Fi
 - - DateTimes
 - - Other ViewModels (recommended for DropLink, DropTree)
 - - ICollection Generics of other ViewModels (recommended for Multilist, Treelist)
+- - ModelMapping.Model.ImageModel (for Image Fields, gives access to all field properties and permits generating different kinds of image URLs on the View.)
+- - ModelMapping.Model.GeneralLinkModel (for General Link fields, gives access to all field properties through a single object.)
 - - Random Plain Old Classes as long as they are Where T: class, new()
 
 The following Model properties are mapped to Item properties rather than Item fields:
 - ID - Maps to the Item.ID - Make sure you use Sitecore.Data.ID as the property type.
-- Name - Maps to the Item.Name 
+- Name - Maps to the Item.Name
 - DisplayName - Maps to Item.DisplayName
 - Url - Should be a string, not a Uri. Causes the current context LinkManager to generate a Url for the Item.
 - Parent - Maps to the ViewModel you provide based on the Item.Parent.
@@ -63,7 +65,7 @@ Support for MultilistField.GetItems - use Model.FieldName and supply a generic I
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 	</description>
-	<releaseNotes>Updated Sitecore references to 9.3 minimum</releaseNotes>
+	<releaseNotes>Added ImageModel and GeneralLinkModel as supported ViewModel property types for their respective XML fields. ImageModel allows Views to customize the MediaItem's URL without requiring ViewModels to have View concerns as Property decorators.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

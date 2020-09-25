@@ -1,9 +1,10 @@
-﻿using System.Reflection;
-using System.Web;
-using Constellation.Foundation.Data;
+﻿using Constellation.Foundation.Data;
+using Constellation.Foundation.ModelMapping.FieldModels;
 using Constellation.Foundation.ModelMapping.MappingAttributes;
 using Sitecore.Data.Fields;
 using Sitecore.Web.UI.WebControls;
+using System.Reflection;
+using System.Web;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
@@ -80,6 +81,12 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 				return FieldMapStatus.ExplicitIgnore;
 			}
 
+			if (PropertyIsGeneralLinkModel())
+			{
+				Property.SetValue(Model, new GeneralLinkModel(Field));
+				return FieldMapStatus.Success;
+			}
+
 			if (Property.GetCustomAttribute<RawValueOnlyAttribute>() != null)
 			{
 				if (Property.IsHtml())
@@ -91,6 +98,8 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 				Property.SetValue(Model, Field.Value);
 				return FieldMapStatus.Success;
 			}
+
+
 
 			var paramsAttribute = Property.GetCustomAttribute<FieldRendererParamsAttribute>();
 
@@ -125,6 +134,11 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 
 			Property.SetValue(Model, linkField.GetFriendlyUrl()); // Sitecore API has all the tricks for getting specific URL types out of this field.
 			return FieldMapStatus.Success;
+		}
+
+		private bool PropertyIsGeneralLinkModel()
+		{
+			return typeof(GeneralLinkModel).IsAssignableFrom(Property.PropertyType);
 		}
 	}
 }

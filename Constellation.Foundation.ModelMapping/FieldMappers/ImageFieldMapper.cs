@@ -1,4 +1,5 @@
 ﻿using Constellation.Foundation.Data;
+using Constellation.Foundation.ModelMapping.FieldModels;
 using Constellation.Foundation.ModelMapping.MappingAttributes;
 using Sitecore.Data.Fields;
 using Sitecore.Diagnostics;
@@ -82,6 +83,12 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			if (Property.GetCustomAttribute<DoNotMapAttribute>() != null)
 			{
 				return FieldMapStatus.ExplicitIgnore;
+			}
+
+			if (PropertyIsImageModel())
+			{
+				Property.SetValue(Model, new ImageModel(Field));
+				return FieldMapStatus.Success;
 			}
 
 			if (Property.GetCustomAttribute<RawValueOnlyAttribute>() != null)
@@ -178,6 +185,11 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			}
 
 			return string.Empty;
+		}
+
+		private bool PropertyIsImageModel()
+		{
+			return typeof(ImageModel).IsAssignableFrom(Property.PropertyType);
 		}
 	}
 }
