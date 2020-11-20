@@ -48,7 +48,7 @@ ViewPathResolver:
 Independent engine for locating a View based on the Rendering Item's path in Sitecore. It has  configuration settings that allow the programmer
 to specify the location of Renderings in Sitecore and how they map to the location of the Views on disk. See the provided config file for details.
 	</description>
-	<releaseNotes>Significant rewrite of ViewPathResolver to independently and explicitly support Helix module mapping, as well as site-level view overrides. See the config for details.</releaseNotes>
+	<releaseNotes>Fix for a potential bug where Item.GetUrl() didn't respect the context settings of LinkManager</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>

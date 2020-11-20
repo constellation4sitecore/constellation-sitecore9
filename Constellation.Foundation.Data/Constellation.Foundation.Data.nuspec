@@ -26,7 +26,7 @@ The Foundation.Data namespace contains an Item extension class that allows the d
 - Determine if the Item is in the Context Site.
 - Find or create an Item's child given a name and a Template ID.
 	</description>
-	<releaseNotes>Updated Sitecore references to 10.0 minimum.</releaseNotes>
+	<releaseNotes>Fixed an issue where the Item.GetUrl() method would not take into account the Context LinkManager settings.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

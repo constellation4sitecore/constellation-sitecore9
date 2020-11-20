@@ -42,7 +42,7 @@ This module does not directly support page/experience editor because:
 Because maintaining these scripts requires knowledge of Javascript and Marketing Technology, it is recommended that only
 users familiar with the Presentation Details dialog maintain these objects.
 	</description>
-	<releaseNotes>Moved config file to official Feature folder to ensure execution order.</releaseNotes>
+	<releaseNotes>Updated reference to Constellation.Foundation.Data</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

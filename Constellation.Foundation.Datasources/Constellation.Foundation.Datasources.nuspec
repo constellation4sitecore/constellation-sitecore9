@@ -55,7 +55,7 @@ After setting up this rule, ensure that your Renderings are organized into Widge
 Installation:
 Add this NuGet package to a Web Application project. After building and deploying, this library will automatically install the Sitecore package containing the necessary rules and templates to support this architecture.
 	</description>
-	<releaseNotes>Moved the config file to the official Foundation folder to enusre correct execution order.</releaseNotes>
+	<releaseNotes>Fixed a bug where Item.GetUrl() didn't respect the context settings of LinkManager</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

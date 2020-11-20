@@ -97,10 +97,8 @@ namespace Constellation.Foundation.Data
 			if (item != null)
 			{
 
-				var urlOptions = new ItemUrlBuilderOptions
-				{
-					SiteResolving = Sitecore.Configuration.Settings.Rendering.SiteResolving
-				};
+				var urlOptions = LinkManager.GetDefaultUrlBuilderOptions();
+				urlOptions.SiteResolving = Sitecore.Configuration.Settings.Rendering.SiteResolving;
 
 				return LinkManager.GetItemUrl(item, urlOptions);
 			}

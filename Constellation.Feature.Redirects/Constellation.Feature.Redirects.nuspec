@@ -30,7 +30,7 @@ Exporting and importing redirect lists is supported. All redirects are tested fo
 
 The porting and development of this library has been kindly supported by Verndale (verndale.com)
 	</description>
-	<releaseNotes>Moved config file to official Feature folder to ensure execution order.</releaseNotes>
+	<releaseNotes>Fixed a potential bug where Item.GetUrl() would not respect the context settings of LinkManager</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

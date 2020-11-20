@@ -1,10 +1,10 @@
-﻿using System.Web;
-using Sitecore.Data;
+﻿using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Links.UrlBuilders;
 using Sitecore.Resources.Media;
 using Sitecore.Web.UI.WebControls;
+using System.Web;
 
 namespace Constellation.Foundation.ModelMapping.FieldModels
 {
@@ -115,7 +115,7 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 			}
 			private set
 			{
-				if (HttpContext.Current != null)
+				if (HttpContext.Current != null && !HttpContext.Current.Items.Contains(_requestCacheKey))
 				{
 					HttpContext.Current.Items.Add(_requestCacheKey, value);
 				}

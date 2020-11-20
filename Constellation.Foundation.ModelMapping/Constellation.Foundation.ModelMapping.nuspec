@@ -65,7 +65,7 @@ Support for MultilistField.GetItems - use Model.FieldName and supply a generic I
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 	</description>
-	<releaseNotes>Added ImageModel and GeneralLinkModel as supported ViewModel property types for their respective XML fields. ImageModel allows Views to customize the MediaItem's URL without requiring ViewModels to have View concerns as Property decorators.</releaseNotes>
+	<releaseNotes>Fixed a potential bug where Model.Url values did not obey the settings of the current LinkManager context.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
