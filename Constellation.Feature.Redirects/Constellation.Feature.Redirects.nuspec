@@ -29,7 +29,7 @@ Exporting and importing redirect lists is supported. All redirects are tested fo
 
 The porting and development of this library has been kindly supported by Verndale (verndale.com)
 	</description>
-	<releaseNotes>Fixed an issue in multisite installs where a redirect for one site would prevent a redirect for a similar local path on another site from being created.</releaseNotes>
+	<releaseNotes>Fixed a bug where potential redirects with a querystring parameter did not take the querystring parameters into account.</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>
