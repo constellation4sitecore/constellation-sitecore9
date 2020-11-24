@@ -41,15 +41,14 @@ namespace Constellation.Feature.Redirects.Pipelines.HttpRequest
 			}
 
 			Uri url = new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Query));
-			var localPath = url.LocalPath;
 
 			Log.Debug($"Constellation RedirectResolver processing: '{url}'", this);
 
-			var redirect = FindRedirectRecordFor(localPath);
+			var redirect = FindRedirectRecordFor(url.LocalPath + url.Query);
 
 			if (string.IsNullOrEmpty(redirect?.NewUrl))
 			{
-				Log.Debug($"Constellation RedirectResolver: No redirect for {localPath}", this);
+				Log.Debug($"Constellation RedirectResolver: No redirect for {url}", this);
 				return;
 			}
 
@@ -57,13 +56,13 @@ namespace Constellation.Feature.Redirects.Pipelines.HttpRequest
 
 			if (redirect.IsPermanent)
 			{
-				Log.Info($"Constellation RedirectResolver: permanently redirecting from unresolved {localPath} to {redirect.NewUrl}", this);
+				Log.Info($"Constellation RedirectResolver: permanently redirecting from unresolved {url} to {redirect.NewUrl}", this);
 				HttpContext.Current.Response.RedirectPermanent(newUrl, true);
 
 			}
 			else
 			{
-				Log.Info($"Constellation RedirectResolver: redirecting from unresolved {localPath} to {redirect.NewUrl}", this);
+				Log.Info($"Constellation RedirectResolver: redirecting from unresolved {url} to {redirect.NewUrl}", this);
 				HttpContext.Current.Response.Redirect(newUrl, true);
 			}
 		}

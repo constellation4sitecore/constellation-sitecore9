@@ -30,7 +30,7 @@ Exporting and importing redirect lists is supported. All redirects are tested fo
 
 The porting and development of this library has been kindly supported by Verndale (verndale.com)
 	</description>
-	<releaseNotes>Sitecore 9.3 compatible.</releaseNotes>
+	<releaseNotes>Fix for resolution of URLs with querystring parameters</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>
