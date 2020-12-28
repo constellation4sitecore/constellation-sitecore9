@@ -1,11 +1,11 @@
-﻿using System;
-using System.Reflection;
-using System.Web;
-using Constellation.Foundation.Data;
+﻿using Constellation.Foundation.Data;
 using Constellation.Foundation.ModelMapping.MappingAttributes;
 using Sitecore.Data.Fields;
 using Sitecore.Diagnostics;
 using Sitecore.Web.UI.WebControls;
+using System;
+using System.Reflection;
+using System.Web;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
@@ -99,8 +99,13 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 					return FieldMapStatus.Success;
 				}
 
-				Property.SetValue(Model, Field.Value);
-				return FieldMapStatus.Success;
+				if (Property.IsString())
+				{
+					Property.SetValue(Model, Field.Value);
+					return FieldMapStatus.Success;
+				}
+
+				Log.Warn($"ModelMapper: RawValueOnlyAttribute placed on a non-string Property \"{this.PropertyName}\" of Model \"{this.Model.GetType().Name}\" ignoring attribute.", this);
 			}
 
 			var paramsAttribute = Property.GetCustomAttribute<FieldRendererParamsAttribute>();
@@ -113,8 +118,13 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 					return FieldMapStatus.Success;
 				}
 
-				Property.SetValue(Model, FieldRenderer.Render(Field.Item, Field.Name, paramsAttribute.Params));
-				return FieldMapStatus.Success;
+				if (Property.IsString())
+				{
+					Property.SetValue(Model, FieldRenderer.Render(Field.Item, Field.Name, paramsAttribute.Params));
+					return FieldMapStatus.Success;
+				}
+
+				Log.Warn($"ModelMapper: FieldRendererParamsAttribute placed on a non-string Property \"{this.PropertyName}\" of Model \"{this.Model.GetType().Name}\" ignoring attribute.", this);
 			}
 
 			// Place to handle more complex scenarios.

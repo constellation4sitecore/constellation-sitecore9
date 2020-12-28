@@ -111,61 +111,59 @@ namespace Constellation.Foundation.ModelMapping
 				// Get field mappers
 				var mappers = ModelMapperConfiguration.Current.GetMappersForFieldType(field.Type);
 
-				try
+				foreach (Type mapperType in mappers)
 				{
-					foreach (Type mapperType in mappers)
+					try
 					{
-						try
-						{
-							var mapper = (IFieldMapper)Activator.CreateInstance(mapperType);
+						var mapper = (IFieldMapper)Activator.CreateInstance(mapperType);
 
-							var status = mapper.Map(model, field);
+						var status = mapper.Map(model, field);
 
-							switch (status)
-							{
-								case FieldMapStatus.Exception:
-									Log.Error($"Mapping field {field.Name} on Item {item.Name}: Exception handled by field mapper.", typeof(ModelBuilder));
-									break;
-								case FieldMapStatus.TypeMismatch:
-									Log.Warn($"Mapping field {field.Name} on Item {item.Name} to Model {type.Name} failed. The cause of the failure is usually a type mismatch. Is the right field mapper running for this field?", typeof(ModelBuilder));
-									break;
-								case FieldMapStatus.ExplicitIgnore:
-									Log.Debug($"Mapping field {field.Name} on Item {item.Name}: explicitly ignored", typeof(ModelBuilder));
-									break;
-								case FieldMapStatus.NoProperty:
-									Log.Debug($"Mapping field {field.Name} on Item {item.Name}: no matching property name.", typeof(ModelBuilder));
-									break;
-								case FieldMapStatus.FieldEmpty:
-									Log.Debug($"Mapping field {field.Name} on Item {item.Name}: field was empty.", typeof(ModelBuilder));
-									plan.AddField(field.ID);
-									break;
-								case FieldMapStatus.ValueEmpty:
-									Log.Debug($"Mapping field {field.Name} on Item {item.Name}: processed value was empty.", typeof(ModelBuilder));
-									plan.AddField(field.ID);
-									break;
-								case FieldMapStatus.Success:
-									Log.Debug($"Mapping field {field.Name} on Item {item.Name}: success.", typeof(ModelBuilder));
-									plan.AddField(field.ID);
-									break;
-							}
-						}
-						catch (TypeLoadException ex)
+						switch (status)
 						{
-							Log.Error($"ModelMapper was unable to create FieldMapper type {mapperType.Name}", ex, typeof(ModelBuilder));
-							throw;
-						}
-						catch (Exception ex)
-						{
-							Log.Error($"Mapping field {field.Name} on Item {item.Name} to Model {type.Name} failed.", ex, typeof(ModelBuilder));
-							throw;
+							case FieldMapStatus.Exception:
+								Log.Error($"Mapping field {field.Name} on Item {item.Name}: Exception handled by field mapper.", typeof(ModelBuilder));
+								break;
+							case FieldMapStatus.TypeMismatch:
+								Log.Warn($"Mapping field {field.Name} on Item {item.Name} to Model {type.Name} failed. The cause of the failure is usually a type mismatch. Is the right field mapper running for this field?", typeof(ModelBuilder));
+								break;
+							case FieldMapStatus.ExplicitIgnore:
+								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: explicitly ignored", typeof(ModelBuilder));
+								break;
+							case FieldMapStatus.NoProperty:
+								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: no matching property name.", typeof(ModelBuilder));
+								break;
+							case FieldMapStatus.FieldEmpty:
+								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: field was empty.", typeof(ModelBuilder));
+								plan.AddField(field.ID);
+								break;
+							case FieldMapStatus.ValueEmpty:
+								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: processed value was empty.", typeof(ModelBuilder));
+								plan.AddField(field.ID);
+								break;
+							case FieldMapStatus.Success:
+								Log.Debug($"Mapping field {field.Name} on Item {item.Name}: success.", typeof(ModelBuilder));
+								plan.AddField(field.ID);
+								break;
 						}
 					}
+					catch (TypeLoadException ex)
+					{
+						Log.Error($"ModelMapper was unable to create FieldMapper type {mapperType.Name}", ex, typeof(ModelBuilder));
+					}
+					catch (Exception ex)
+					{
+						Log.Error($"Mapping field {field.Name} on Item {item.Name} to Model {type.Name} failed.", ex, typeof(ModelBuilder));
+					}
+				}
 
+				try
+				{
 					PlanCache.AddPlan(plan);
 				}
-				catch (Exception)
+				catch (Exception ex)
 				{
-					Log.Warn($"ModelMapper did not cache the plan for {item.Name} because there were errors during the mapping process.", typeof(ModelBuilder));
+					Log.Error($"ModelMapper did not cache the plan for {item.Name} because there were errors during the mapping process.", ex, typeof(ModelBuilder));
 				}
 			}
 		}

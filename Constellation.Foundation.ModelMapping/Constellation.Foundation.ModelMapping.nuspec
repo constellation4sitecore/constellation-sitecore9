@@ -65,7 +65,7 @@ Support for MultilistField.GetItems - use Model.FieldName and supply a generic I
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 	</description>
-	<releaseNotes>Fixed a potential bug where Model.Url values did not obey the settings of the current LinkManager context.</releaseNotes>
+	<releaseNotes>Installed better log feedback for failed field mapping. Improved locking around the PlanCache to prevent odd, misleading log errors around reporting model mapping success.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

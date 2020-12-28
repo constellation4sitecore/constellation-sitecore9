@@ -84,16 +84,19 @@ namespace Constellation.Foundation.ModelMapping
 		public static void AddPlan(MappingPlan plan)
 		{
 			var key = GetKey(plan);
-
-			if (Current.Cache.ContainsKey(key))
+			lock (LockObject)
 			{
-				Log.Debug($"MappingPlan: Plan for class {plan.TypeFullName} and template {plan.TemplateID} already cached. Ignoring.", typeof(PlanCache));
-				return;
+				if (Current.Cache.ContainsKey(key))
+				{
+					Log.Debug(
+						$"MappingPlan: Plan for class {plan.TypeFullName} and template {plan.TemplateID} already cached. Ignoring.",
+						typeof(PlanCache));
+					return;
+				}
+
+				Log.Debug($"ModelMapping.PlanCache: Plan for class {plan.TypeFullName} added.", typeof(PlanCache));
+				Current.Cache.Add(key, plan);
 			}
-
-			Log.Debug($"ModelMapping.PlanCache: Plan for class {plan.TypeFullName} added.", typeof(PlanCache));
-			Current.Cache.Add(key, plan);
-
 		}
 
 		private static PlanCache CreateNewPlanCache()
@@ -112,8 +115,6 @@ namespace Constellation.Foundation.ModelMapping
 		{
 			return typeFullName + templateID;
 		}
-
-
 		#endregion
 	}
 }
