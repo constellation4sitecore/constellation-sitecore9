@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Foundation.Data", "Constellation.Foundation.Data\Constellation.Foundation.Data.csproj", "{219879EB-1E95-4820-AAAC-D066312BF5D6}"
 EndProject
@@ -44,6 +44,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Foundation.PageNotFound", "Constellation.Foundation.PageNotFound\Constellation.Foundation.PageNotFound.csproj", "{63C17FA9-E680-42E8-BEEC-445666E17813}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Foundation.Linking", "Constellation.Foundation.Linking\Constellation.Foundation.Linking.csproj", "{7E1543CB-EC7D-42EF-BA1A-A6AB963E4A49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Constellation.Foundation.Images", "Constellation.Foundation.Images\Constellation.Foundation.Images.csproj", "{3ECF550F-6C61-4F84-9CBE-F742C7DFDE49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -127,6 +129,10 @@ Global
 		{7E1543CB-EC7D-42EF-BA1A-A6AB963E4A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E1543CB-EC7D-42EF-BA1A-A6AB963E4A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E1543CB-EC7D-42EF-BA1A-A6AB963E4A49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ECF550F-6C61-4F84-9CBE-F742C7DFDE49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ECF550F-6C61-4F84-9CBE-F742C7DFDE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ECF550F-6C61-4F84-9CBE-F742C7DFDE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ECF550F-6C61-4F84-9CBE-F742C7DFDE49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -151,9 +157,10 @@ Global
 		{D7079E85-BB7E-4285-A327-65E4EDE957BB} = {CE4CC29C-1EB0-416B-BB74-F3DD917D0D0E}
 		{63C17FA9-E680-42E8-BEEC-445666E17813} = {5A7B7ADA-7121-4A30-B215-7C1C57FC2197}
 		{7E1543CB-EC7D-42EF-BA1A-A6AB963E4A49} = {5A7B7ADA-7121-4A30-B215-7C1C57FC2197}
+		{3ECF550F-6C61-4F84-9CBE-F742C7DFDE49} = {5A7B7ADA-7121-4A30-B215-7C1C57FC2197}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {510028F4-B956-492B-9FC6-FD09D5A7B880}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Caching.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Configuration.6.0.1304.0\lib\NET45;
+		SolutionGuid = {510028F4-B956-492B-9FC6-FD09D5A7B880}
 	EndGlobalSection
 EndGlobal
