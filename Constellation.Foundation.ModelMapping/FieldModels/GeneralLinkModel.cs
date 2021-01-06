@@ -1,4 +1,6 @@
-﻿using Sitecore.Data.Fields;
+﻿using Constellation.Foundation.Data;
+using Sitecore.Data.Fields;
+using Sitecore.Data.Items;
 using Sitecore.Web.UI.WebControls;
 using System.Web;
 
@@ -61,6 +63,12 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 			if (field.IsInternal)
 			{
 				return field.GetFriendlyUrl();
+			}
+
+			if (field.IsMediaLink)
+			{
+				var media = (MediaItem)field.TargetItem;
+				return media.GetUrl();
 			}
 
 			return field.Url;
