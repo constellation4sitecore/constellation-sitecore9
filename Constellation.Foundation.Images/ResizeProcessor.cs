@@ -61,7 +61,6 @@ namespace Constellation.Foundation.Images
 				SetTransformationBackgroundColor(transformationOptions);
 				Stream transformedStream;
 
-				// TODO: Use WebPImageEffects instead of stock MediaManager.Effects
 				if (extension == "webp")
 				{
 					transformedStream = new WebPImageEffects().TransformImageStream(outputStream.Stream, transformationOptions);

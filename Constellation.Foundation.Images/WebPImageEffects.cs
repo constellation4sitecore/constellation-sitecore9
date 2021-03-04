@@ -17,7 +17,7 @@ namespace Constellation.Foundation.Images
 		public virtual Stream TransformFile(string filePath, TransformationOptions options)
 		{
 			Assert.ArgumentNotNullOrEmpty(filePath, nameof(filePath));
-			Assert.ArgumentNotNull((object)options, nameof(options));
+			Assert.ArgumentNotNull(options, nameof(options));
 
 			filePath = FileUtil.MapPath(filePath);
 			Assert.IsTrue(FileUtil.FileExists(filePath), "File to be transformed does not exist: {0}", filePath);
