@@ -1,0 +1,32 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+	<id>$id$</id>
+	<version>$version$</version>
+	<title>$title$</title>
+	<authors>Richard J. Cabral</authors>
+	<owners>Richard J. Cabral</owners>
+	<license type="expression">MIT</license>
+	<projectUrl>https://constellation4sitecore.com/</projectUrl>
+	<repository type="git" url="https://github.com/constellation4sitecore/constellation-sitecore9.git"/>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
+	<summary>Sitecore Helix-style library for managing "static" bits of on page text that need translation.</summary>
+	<description>
+Compatible with Sitecore 10.0
+Requires Sitecore 10.0
+Requires .NET Framework 4.8
+
+Constellation is a collection of utilities for .NET CMS implementers.
+
+This small Foundation kit contains classes and attributes to allow for "label" models. These models are handled in a sort of "view bag" parallel strategy to
+the proper Model View Controller paradigm, because labels are usually not the actual model content, but inform the user how to read it. This technology is used
+instead of the typical Sitecore Dictionary strategy, which does not support caching in a graceful manner.
+
+More documentation will follow in the near future.
+	</description>
+	<releaseNotes>Initial release for release testing. Compatible with Sitecore 10.1.</releaseNotes>
+	<copyright>Copyright 2017</copyright>
+	<tags>Sitecore, Sitecore Helix</tags>
+  </metadata>
+</package>

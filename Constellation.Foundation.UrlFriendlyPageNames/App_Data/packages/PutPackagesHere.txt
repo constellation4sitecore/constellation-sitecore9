@@ -1,0 +1,3 @@
+﻿In Sitecore 9, this is the expected location for package files ready for install.
+When shipping your own NuGet packages, include this folder in your NuGet along with
+the Sitecore Package.zip file you wish to have automatically installed.
