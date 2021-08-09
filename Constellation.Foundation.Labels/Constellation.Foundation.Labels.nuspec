@@ -25,7 +25,7 @@ instead of the typical Sitecore Dictionary strategy, which does not support cach
 
 More documentation will follow in the near future.
 	</description>
-	<releaseNotes>Initial release for release testing. Compatible with Sitecore 10.1.</releaseNotes>
+	<releaseNotes>Update to fix missing config file.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix</tags>
   </metadata>

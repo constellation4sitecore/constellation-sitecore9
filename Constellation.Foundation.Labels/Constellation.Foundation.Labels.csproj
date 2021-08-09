@@ -120,7 +120,7 @@
     <None Include="App_Config\Include\Foundation\Constellation.Foundation.ModelMapper.config" />
     <None Include="App_Config\Include\Foundation\Constellation.Foundation.Mvc.config" />
     <None Include="App_Config\Include\Foundation\Constellation.Foundation.PackageVerification.config.example" />
-    <None Include="App_Config\Include\Foundation\Constellation.Foundation.Labels.config" />
+    <Content Include="App_Config\Include\Foundation\Constellation.Foundation.Labels.config" />
     <None Include="App_Config\Include\Foundation\Constellation.Foundation.UrlFriendlyPageNames.config" />
     <Content Include="App_Data\packages\Constellation-Foundation-Labels-10.1.zip" />
     <None Include="App_Data\packages\Constellation-Foundation-UrlFriendlyPageNames-10.1.zip" />
