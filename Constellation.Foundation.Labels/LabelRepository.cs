@@ -4,6 +4,7 @@ using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Data.Query;
 using Sitecore.Diagnostics;
+using Sitecore.Exceptions;
 using Sitecore.Globalization;
 using Sitecore.Web;
 using System;
@@ -101,7 +102,7 @@ namespace Constellation.Foundation.Labels
 			}
 			catch (Exception ex)
 			{
-				Log.Error($"Foundation.Labels - LabelRepository error getting labels based on {typeof(TLabel).Name}.", ex, typeof(LabelRepository));
+				Log.Error($"Constellation.Foundation.Labels - LabelRepository error getting labels based on {typeof(TLabel).Name}.", ex, typeof(LabelRepository));
 				throw;
 			}
 		}
@@ -177,13 +178,13 @@ namespace Constellation.Foundation.Labels
 					{
 						if (type.GetConstructor(Type.EmptyTypes) == null)
 						{
-							Log.Warn($"Foundation.Labels.LabelRepository: Type {type.Name} does not have a parameterless constructor, and cannot be used as a Label ViewModel.", typeof(LabelRepository));
+							Log.Warn($"Constellation.Foundation.Labels.LabelRepository: Type {type.Name} does not have a parameterless constructor, and cannot be used as a Label ViewModel.", typeof(LabelRepository));
 							continue;
 						}
 					}
 					catch (FileLoadException ex)
 					{
-						Log.Warn($"FileLoadException in LabelRepository. Exception: {ex.Message}", typeof(LabelRepository));
+						Log.Warn($"Constellation.Foundation.Labels.LabelRepository: FileLoadException. Exception: {ex.Message}", typeof(LabelRepository));
 						continue;
 					}
 
@@ -199,6 +200,8 @@ namespace Constellation.Foundation.Labels
 					}
 				}
 			}
+
+			Log.Info("Constellation.Foundation.Labels: LabelRepository has found all POCOs with the Label attribute.", typeof(LabelRepository));
 
 			return output;
 		}
@@ -251,8 +254,11 @@ namespace Constellation.Foundation.Labels
 
 			if (string.IsNullOrEmpty(labelFolderName))
 			{
-				Log.Warn($"Foundation.Labels - Missing an XML setting value for {SettingNames.LabelFolderName} Labels cannot be resolved without this value.", typeof(LabelRepository));
-				return null;
+				var message =
+					$"Constellation.Foundation.Labels - Missing an XML setting value for {SettingNames.LabelFolderName} Labels cannot be resolved without this value.";
+				Log.Warn(message, typeof(LabelRepository));
+
+				throw new ConfigurationException(message);
 			}
 
 			var startItemPath = $"{site.RootPath}";
@@ -266,14 +272,14 @@ namespace Constellation.Foundation.Labels
 				return labelItem;
 			}
 
-			Log.Warn($"Foundation.Labels - Unable to locate a LabelGroup Item of the desired Type under site {site.Name}. Search Query: {xPath}. Did you forget to create the Item?", typeof(LabelRepository));
+			Log.Warn($"Constellation.Foundation.Labels - Unable to locate a LabelGroup Item of the desired Type under site {site.Name}. Search Query: {xPath}. Did you forget to create the Item?", typeof(LabelRepository));
 
 			var contentItem = database.GetItem(Constants.ContentPath, language);
 			labelItem = Query.SelectSingleItem(xPath, contentItem);
 
 			if (labelItem == null)
 			{
-				Log.Warn($"Foundation.Labels - Unable to locate a global LabelGroup Item of the desired Type. Search Query: {xPath} Did you forget to create the Item?", typeof(LabelRepository));
+				Log.Warn($"Constellation.Foundation.Labels - Unable to locate a global LabelGroup Item of the desired Type. Search Query: {xPath} Did you forget to create the Item?", typeof(LabelRepository));
 
 			}
 
