@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.UI.WebControls;
 using Constellation.Feature.Redirects.Models;
 using Sitecore.Controls;
@@ -119,7 +120,7 @@ namespace Constellation.Feature.Redirects.UI
 
 		private void PopulateSiteNameDropDownList(MarketingRedirect record)
 		{
-			var sites = Sitecore.Configuration.Factory.GetSiteInfoList();
+			var sites = Sitecore.Configuration.Factory.GetSiteInfoList().Distinct();
 			const string systemSiteNames = ",shell,login,admin,service,modules_shell,modules_website,scheduler,system,publisher,";
 
 			foreach (var site in sites)
