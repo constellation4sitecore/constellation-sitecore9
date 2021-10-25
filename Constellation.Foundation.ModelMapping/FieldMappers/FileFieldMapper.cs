@@ -1,12 +1,13 @@
-﻿using System;
-using System.Reflection;
-using System.Web;
-using Constellation.Foundation.Data;
+﻿using Constellation.Foundation.Data;
+using Constellation.Foundation.ModelMapping.FieldModels;
 using Constellation.Foundation.ModelMapping.MappingAttributes;
 using Sitecore.Data.Fields;
 using Sitecore.Diagnostics;
 using Sitecore.Resources.Media;
 using Sitecore.Web.UI.WebControls;
+using System;
+using System.Reflection;
+using System.Web;
 
 namespace Constellation.Foundation.ModelMapping.FieldMappers
 {
@@ -86,6 +87,12 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 				return FieldMapStatus.ExplicitIgnore;
 			}
 
+			if (PropertyIsFileModel())
+			{
+				Property.SetValue(Model, new FileModel(Field));
+				return FieldMapStatus.Success;
+			}
+
 			if (Property.GetCustomAttribute<RawValueOnlyAttribute>() != null)
 			{
 				if (Property.IsHtml())
@@ -163,6 +170,11 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 			}
 
 			return string.Empty;
+		}
+
+		private bool PropertyIsFileModel()
+		{
+			return typeof(FileModel).IsAssignableFrom(Property.PropertyType);
 		}
 	}
 }
