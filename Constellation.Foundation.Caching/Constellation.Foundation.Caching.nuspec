@@ -13,8 +13,8 @@
 		<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix-compatible library to enhance access to Sitecore Caching APIs.</summary>
 	<description>
-VERSION 10.1 is compiled for Sitecore 10.1 use and will not work on earlier versions.
-Requires Sitecore 10.1
+VERSION 10.2 is compiled for Sitecore 10.2 use and will not work on earlier versions.
+Requires Sitecore 10.2
 Requires .NET 4.8
 
 Constellation is a collection of utilities for .NET CMS implementers.
@@ -31,7 +31,7 @@ Request an ICacheManager from your service locator to use in your Controllers.
 Portions based on work by Christopher Giddings: https://cjgiddings.wordpress.com/2012/02/03/sitecore-caching-utility/ updated heavily
 for modularity and to support Sitecore 9.x
 	</description>
-	<releaseNotes>Updated for Sitecore 10.1</releaseNotes>
+	<releaseNotes>Updated for Sitecore 10.2</releaseNotes>
 	<copyright>Copyright 2016</copyright>
 	<tags>Sitecore,  Sitecore Helix, Sitecore Foundation</tags>
 	</metadata>

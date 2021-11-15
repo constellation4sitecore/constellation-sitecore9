@@ -13,8 +13,7 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library for managing site-specific 404 pages.</summary>
 	<description>
-Compatible with Sitecore 10.1
-Requires Sitecore 10.1
+Requires Sitecore 10.2
 Requires .NET Framework 4.8
 
 Constellation is a collection of utilities for the Sitecore .NET CMS.
@@ -54,7 +53,7 @@ is the 404 page and will add the 404 code to the Response.
 Please note that the customizations in this processor will only run for databases and sites as configured, and should intentionally not
 run for Sitecore system sites.
 	</description>
-	<releaseNotes>Updated the paths to ignore on both Http pipeline processors.</releaseNotes>
+	<releaseNotes>Updated Sitecore reference to 10.2</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

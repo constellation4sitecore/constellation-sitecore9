@@ -13,8 +13,7 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library for building out static navigation that doesn't necessarily reflect the shape or names of Items in the content tree.</summary>
 	<description>
-Compatible with Sitecore 10.1
-Requires Sitecore 10.1
+Requires Sitecore 10.2
 Requires .NET Framework 4.8
 
 Constellation is a collection of utilities for .NET CMS implementers.
@@ -46,7 +45,7 @@ Uses the Item.Axes.GetAncestors() method to generate the list of breadcrumbs.
 
 The included package must be installed to use this library. This should happen automatically after you build and deploy your project.
 	</description>
-	<releaseNotes>Updated Sitecore minimum reference to 10.1</releaseNotes>
+	<releaseNotes>Updated Sitecore minimum reference to 10.2</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

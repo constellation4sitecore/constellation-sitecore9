@@ -13,8 +13,7 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library to enhance MVC development in Sitecore.</summary>
 	<description>
-VERSION 10.1 is compiled for Sitecore 10.1 use and will not work on earlier versions.
-Requires Sitecore 10.1
+Requires Sitecore 10.2
 Requires .NET 4.8
 
 Constellation is a collection of utilities for .NET CMS implementers.
@@ -48,7 +47,7 @@ ViewPathResolver:
 Independent engine for locating a View based on the Rendering Item's path in Sitecore. It has  configuration settings that allow the programmer
 to specify the location of Renderings in Sitecore and how they map to the location of the Views on disk. See the provided config file for details.
 	</description>
-	<releaseNotes>Updated Sitecore minimum reference to 10.1</releaseNotes>
+	<releaseNotes>Updated Sitecore minimum reference to 10.2</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation, Sitecore Mvc</tags>
   </metadata>

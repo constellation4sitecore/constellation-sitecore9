@@ -13,8 +13,8 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix library providing Site-specific LinkProviders and LinkProvider configurations.</summary>
 	<description>
-Compatible with Sitecore 10.1
-Requires Sitecore 10.1
+Compatible with Sitecore 10.2
+Requires Sitecore 10.2
 Requires .NET Framework 4.8
 
 Constellation Helix Catalog is a collection of utilities for the Sitecore .NET CMS.
@@ -26,7 +26,7 @@ LinkProvider settings as needed.
 
 This library is transcribed with permission from JammyKam's original code here: https://jammykam.wordpress.com/2017/09/22/switching-link-manager/
 	</description>
-	<releaseNotes>Updated Sitecore package reference to 10.1 minimum.</releaseNotes>
+	<releaseNotes>Updated Sitecore package reference to 10.2 minimum.</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
