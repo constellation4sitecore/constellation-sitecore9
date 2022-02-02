@@ -1,10 +1,12 @@
 ﻿using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
+using Sitecore.Diagnostics;
 using Sitecore.Links.UrlBuilders;
 using Sitecore.Resources.Media;
 using Sitecore.Web.UI.WebControls;
 using System.Web;
+using System.Xml.Linq;
 
 namespace Constellation.Foundation.ModelMapping.FieldModels
 {
@@ -22,49 +24,47 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 
 		internal ImageModel(ImageField field)
 		{
-			// record facts to reconstitute MediaItem as necessary
-			_languageName = field.InnerField.Item.Language.Name;
-			_databaseName = field.InnerField.Item.Database.Name;
-			_mediaID = field.MediaItem?.ID;
-
-			_requestCacheKey = GetRequestCacheKeyValue(field.InnerField);
-			// park the MediaItem in the Request cache
-			MediaItem = field.MediaItem;
-
 			// populate the stock attributes
 			this.Rendered = new HtmlString(FieldRenderer.Render(field.InnerField.Item, field.InnerField.Name));
 			this.Alt = field.Alt;
 			this.Height = field.Height;
 			this.Width = field.Width;
 
-			var image = field.MediaItem;
+			var element = XElement.Parse(field.Value);
 
-			if (image != null)
+			ContentHubContentType = GetAttributeValue(element, "stylelabs-content-type");
+			Src = GetAttributeValue(element, "src");
+			ThumbnailUrl = GetAttributeValue(element, "thumbnailsrc");
+
+			if (!IsContentHubContent && field.MediaItem != null)
 			{
+				// record facts to reconstitute MediaItem as necessary
+				_languageName = field.InnerField.Item.Language.Name;
+				_databaseName = field.InnerField.Item.Database.Name;
+				_mediaID = field.MediaItem?.ID;
+				_requestCacheKey = GetRequestCacheKeyValue(field.InnerField);
 
+				// park the MediaItem in the Request cache
+				MediaItem = field.MediaItem;
+
+				// Generate the "stock" Media URL for this image.
 				var options = new MediaUrlBuilderOptions()
 				{
-					Language = image.Language
+					Language = field.MediaItem.Language
 				};
 
-				int width;
-				if (int.TryParse(field.Width, out width) && width > 0)
+				if (int.TryParse(Width, out var width) && width > 0)
 				{
 					options.Width = width;
 				}
 
-				int height;
-				if (int.TryParse(field.Height, out height) && height > 0)
+				if (int.TryParse(Height, out var height) && height > 0)
 				{
 					options.Height = height;
 				}
 
-				var innerUrl = MediaManager.GetMediaUrl(image, options);
+				var innerUrl = MediaManager.GetMediaUrl(field.MediaItem, options);
 				Src = HashingUtils.ProtectAssetUrl(innerUrl);
-			}
-			else
-			{
-				Src = string.Empty;
 			}
 		}
 
@@ -90,6 +90,27 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 		/// The Width value set on the Image field
 		/// </summary>
 		public string Width { get; }
+
+		/// <summary>
+		/// True if the Image field references a ContentHub image
+		/// </summary>
+		public bool IsContentHubContent
+		{
+			get
+			{
+				return !string.IsNullOrEmpty(ContentHubContentType);
+			}
+		}
+
+		/// <summary>
+		/// Gets the StyleLabs content type.
+		/// </summary>
+		public string ContentHubContentType { get; }
+
+		/// <summary>
+		/// Ges the URL for the ContentHub thumbnail on the CDN
+		/// </summary>
+		public string ThumbnailUrl { get; }
 
 		/// <summary>
 		/// The result of calling FieldRenderer.Render() on the Image Field.
@@ -122,6 +143,21 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 			}
 		}
 
+		/// <summary>
+		/// Creates a URL that references a specific Transformed image in ContentHub
+		/// </summary>
+		/// <param name="transformationName">The name of the transformation as it appears in ContentHub</param>
+		/// <returns>the transformed Src URL.</returns>
+		public string GetContentHubTransformationSrc(string transformationName)
+		{
+			if (IsContentHubContent)
+			{
+				return Src + "&t=" + transformationName;
+			}
+
+			Log.Debug("ImageModel - ContentHub Transform URL requested for non-ContentHub content. Ignoring!", this);
+			return Src;
+		}
 
 		/// <summary>
 		/// Generate a new Image Src URL using the supplied Height parameter. The image will scale and remain within proportions.
@@ -130,10 +166,17 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 		/// <returns>a URL to use in an image src attribute.</returns>
 		public string GetCustomHeightImageSrc(int height)
 		{
+			if (IsContentHubContent)
+			{
+				Log.Debug("ImageModel - Media Library custom url requested for ContentHub content. Ignoring!", this);
+				return string.Empty;
+			}
+
 			if (MediaItem == null)
 			{
 				return string.Empty;
 			}
+
 			var options = new MediaUrlBuilderOptions
 			{
 				Height = height,
@@ -151,9 +194,13 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 		/// <returns>a URL to use in an image src attribute.</returns>
 		public string GetCustomWidthImageSrc(int width)
 		{
-			var mediaItem = this.MediaItem;
+			if (IsContentHubContent)
+			{
+				Log.Debug("ImageModel - Media Library custom url requested for ContentHub content. Ignoring!", this);
+				return string.Empty;
+			}
 
-			if (mediaItem == null)
+			if (MediaItem == null)
 			{
 				return string.Empty;
 			}
@@ -164,7 +211,7 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 				AllowStretch = false
 			};
 
-			var innerUrl = MediaManager.GetMediaUrl(mediaItem, options);
+			var innerUrl = MediaManager.GetMediaUrl(MediaItem, options);
 			return HashingUtils.ProtectAssetUrl(innerUrl);
 		}
 
@@ -178,9 +225,13 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 		/// <returns>a URL to use in an image src attribute.</returns>
 		public string GetCustomImageSrc(int width, int height, bool allowStretch = false, bool ignoreAspectRatio = false)
 		{
-			var mediaItem = this.MediaItem;
+			if (IsContentHubContent)
+			{
+				Log.Debug("ImageModel - Media Library custom url requested for ContentHub content. Ignoring!", this);
+				return string.Empty;
+			}
 
-			if (mediaItem == null)
+			if (MediaItem == null)
 			{
 				return string.Empty;
 			}
@@ -193,13 +244,26 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 				IgnoreAspectRatio = ignoreAspectRatio
 			};
 
-			var innerUrl = MediaManager.GetMediaUrl(mediaItem, options);
+			var innerUrl = MediaManager.GetMediaUrl(MediaItem, options);
 			return HashingUtils.ProtectAssetUrl(innerUrl);
+		}
+
+		/// <summary>
+		/// Gets the string value of an XML attribute if it exists.
+		/// </summary>
+		/// <param name="element"></param>
+		/// <param name="attributeName"></param>
+		/// <returns></returns>
+		private static string GetAttributeValue(XElement element, string attributeName)
+		{
+			var attribute = element.Attribute(attributeName);
+
+			return attribute?.Value;
 		}
 
 		private static string GetRequestCacheKeyValue(Field field)
 		{
-			return $"imageUrlBuilder{field.Item.ID.ToShortID()}{field.ID.ToShortID()}";
+			return $"imageModel{field.Item.ID.ToShortID()}{field.ID.ToShortID()}";
 		}
 	}
 }
