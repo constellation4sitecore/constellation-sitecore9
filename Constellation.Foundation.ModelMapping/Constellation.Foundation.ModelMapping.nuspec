@@ -64,7 +64,7 @@ Support for MultilistField.GetItems - use Model.FieldName and supply a generic I
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 	</description>
-	<releaseNotes>Added support for ContentHub-hosted Images referenced in Image Fields. Extended ImageModel Check for ImageModel.IsContentHubContent().</releaseNotes>
+	<releaseNotes>Fixed an exception where Image fields did not contain the stock XML scaffolding.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

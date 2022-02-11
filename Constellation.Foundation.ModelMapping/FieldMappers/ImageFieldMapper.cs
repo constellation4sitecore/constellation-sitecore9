@@ -85,10 +85,24 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 				return FieldMapStatus.ExplicitIgnore;
 			}
 
+			if (string.IsNullOrEmpty(field.Value))
+			{
+				return FieldMapStatus.FieldEmpty;
+			}
+
 			if (PropertyIsImageModel())
 			{
-				Property.SetValue(Model, new ImageModel(Field));
-				return FieldMapStatus.Success;
+				try
+				{
+					Property.SetValue(Model, new ImageModel(Field));
+					return FieldMapStatus.Success;
+				}
+				catch (System.Xml.XmlException ex)
+				{
+					Log.Error($"Xml parsing exception. Image field value is malformed. Failed to map Field {Field.Name} of Item {Field.Item.Name}", ex, this);
+					return FieldMapStatus.Exception;
+				}
+
 			}
 
 			if (Property.GetCustomAttribute<RawValueOnlyAttribute>() != null)
