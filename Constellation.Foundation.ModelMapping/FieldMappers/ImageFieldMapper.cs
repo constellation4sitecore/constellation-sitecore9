@@ -85,11 +85,6 @@ namespace Constellation.Foundation.ModelMapping.FieldMappers
 				return FieldMapStatus.ExplicitIgnore;
 			}
 
-			if (string.IsNullOrEmpty(field.Value))
-			{
-				return FieldMapStatus.FieldEmpty;
-			}
-
 			if (PropertyIsImageModel())
 			{
 				try

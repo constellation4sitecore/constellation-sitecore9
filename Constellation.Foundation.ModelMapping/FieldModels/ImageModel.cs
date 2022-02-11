@@ -30,11 +30,14 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 			this.Height = field.Height;
 			this.Width = field.Width;
 
-			var element = XElement.Parse(field.Value);
 
-			ContentHubContentType = GetAttributeValue(element, "stylelabs-content-type");
-			Src = GetAttributeValue(element, "src");
-			ThumbnailUrl = GetAttributeValue(element, "thumbnailsrc");
+			if (!string.IsNullOrEmpty(field.Value))
+			{
+				var element = XElement.Parse(field.Value);
+				ContentHubContentType = GetAttributeValue(element, "stylelabs-content-type");
+				Src = GetAttributeValue(element, "src");
+				ThumbnailUrl = GetAttributeValue(element, "thumbnailsrc");
+			}
 
 			if (!IsContentHubContent && field.MediaItem != null)
 			{
@@ -67,8 +70,6 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 				Src = HashingUtils.ProtectAssetUrl(innerUrl);
 			}
 		}
-
-
 
 		/// <summary>
 		/// The Alt Text of the Image specified by this Field.
@@ -124,6 +125,11 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 		{
 			get
 			{
+				if (IsContentHubContent)
+				{
+					return null;
+				}
+
 				if (HttpContext.Current != null)
 				{
 					return (MediaItem)HttpContext.Current.Items[_requestCacheKey];

@@ -64,7 +64,7 @@ Support for MultilistField.GetItems - use Model.FieldName and supply a generic I
 
 Extensible! See the Constellation.Foundation.ModelMapping.config file to change the way Fields are processed.
 	</description>
-	<releaseNotes>Fixed an exception where Image fields did not contain the stock XML scaffolding.</releaseNotes>
+	<releaseNotes>Image Field mappings will never be null unless they are not mapped. The resulting ImageModel may be incomplete if the field is empty.</releaseNotes>
 	<copyright>Copyright 2017</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>
