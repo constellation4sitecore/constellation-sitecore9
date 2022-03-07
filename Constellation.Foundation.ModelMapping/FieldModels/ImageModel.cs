@@ -130,8 +130,14 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 					return null;
 				}
 
+
 				if (HttpContext.Current != null)
 				{
+					if (string.IsNullOrEmpty(_requestCacheKey))
+					{
+						return null; // field was empty
+					}
+
 					return (MediaItem)HttpContext.Current.Items[_requestCacheKey];
 				}
 
