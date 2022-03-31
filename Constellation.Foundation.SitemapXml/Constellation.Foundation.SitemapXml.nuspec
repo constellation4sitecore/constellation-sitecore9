@@ -59,7 +59,7 @@ Your web.config must have a system.webServer/handlers section, and that section 
 to install this package successfully. If you're using the default Sitecore web.config this won't be an issue. The handlers provided in this package must be
 inserted at the top of the stack of handlers.
 	</description>
-	<releaseNotes>Updated Sitecore package reference to 10.2 minimum.</releaseNotes>
+	<releaseNotes>Fixed the basic crawler which would start having problems if the site was very deep and simultaneously very wide.</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

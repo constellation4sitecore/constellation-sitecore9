@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Constellation.Foundation.SitemapXml.Nodes;
+﻿using Constellation.Foundation.SitemapXml.Nodes;
 using Sitecore.Data;
 using Sitecore.Data.Query;
 using Sitecore.Diagnostics;
 using Sitecore.Globalization;
 using Sitecore.Sites;
 using Sitecore.Web;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Constellation.Foundation.SitemapXml.Crawlers
 {
@@ -71,7 +71,7 @@ namespace Constellation.Foundation.SitemapXml.Crawlers
 
 			for (var i = 0; i < max; i++)
 			{
-				var items = Query.SelectItems(path.ToString(), root);
+				var items = Query.SelectItems($"{path}[not(@__Renderings = \"\")]", root);
 
 				if (items != null)
 				{
