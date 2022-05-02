@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Constellation.Feature.Redirects.Models;
+using Sitecore.Controls;
+using Sitecore.Diagnostics;
+using System;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.UI.WebControls;
-using Constellation.Feature.Redirects.Models;
-using Sitecore.Controls;
-using Sitecore.Diagnostics;
 
 namespace Constellation.Feature.Redirects.UI
 {
@@ -95,7 +95,7 @@ namespace Constellation.Feature.Redirects.UI
 
 						var candidate = new MarketingRedirect();
 
-						candidate.SiteName = matches[0].Value;
+						candidate.SiteName = matches[0].Value.Replace("\"", ""); ;
 						candidate.OldUrl = matches[1].Value.Replace("\"", "");
 						candidate.NewUrl = matches[2].Value.Replace("\t", "").Replace("\"", "");
 						candidate.IsPermanent = matches[3].Value.Replace("\t", "").Replace("\"", "").Equals("301");
