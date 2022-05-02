@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading;
-using Constellation.Feature.Redirects.Models;
+﻿using Constellation.Feature.Redirects.Models;
 using Sitecore;
 using Sitecore.Diagnostics;
 using Sitecore.Globalization;
@@ -9,6 +7,8 @@ using Sitecore.Text;
 using Sitecore.Web.UI.Sheer;
 using Sitecore.Web.UI.WebControls;
 using Sitecore.Web.UI.XamlSharp.Continuations;
+using System;
+using System.Threading;
 using Convert = System.Convert;
 
 namespace Constellation.Feature.Redirects.Commands
@@ -64,7 +64,7 @@ namespace Constellation.Feature.Redirects.Commands
 			{
 				IsPermanent = MainUtil.GetBool(Convert.ToInt32(values[0]), false),
 				OldUrl = values[1].ToLower().Trim(),
-				NewUrl = values[2].ToLower().Trim(),
+				NewUrl = values[2].Trim(),
 				SiteName = values[3]
 			};
 
