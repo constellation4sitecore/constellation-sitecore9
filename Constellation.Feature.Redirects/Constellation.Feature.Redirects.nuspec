@@ -30,7 +30,7 @@ Exporting and importing redirect lists is supported. All redirects are tested fo
 
 The porting and development of this library has been kindly supported by Verndale (verndale.com)
 	</description>
-	<releaseNotes>Updated Sitecore minimum version to 10.1</releaseNotes>
+	<releaseNotes>CSV imports now support quotation marks delimiting each field, note this is optional, and not required. also "target" URLs retain their casing.</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.Threading;
-using Constellation.Feature.Redirects.Models;
+﻿using Constellation.Feature.Redirects.Models;
 using Sitecore;
 using Sitecore.Data;
 using Sitecore.Diagnostics;
@@ -11,6 +8,9 @@ using Sitecore.Text;
 using Sitecore.Web.UI.Sheer;
 using Sitecore.Web.UI.WebControls;
 using Sitecore.Web.UI.XamlSharp.Continuations;
+using System;
+using System.Collections.Specialized;
+using System.Threading;
 using Convert = System.Convert;
 
 namespace Constellation.Feature.Redirects.Commands
@@ -90,7 +90,7 @@ namespace Constellation.Feature.Redirects.Commands
 				changes.ItemId = new ID(args.Parameters["ID"]);
 				changes.IsPermanent = MainUtil.GetBool(Convert.ToInt32(values[0]), false);
 				changes.OldUrl = values[1].ToLower().Trim();
-				changes.NewUrl = values[2].ToLower().Trim();
+				changes.NewUrl = values[2].Trim();
 				changes.SiteName = values[3];
 
 
