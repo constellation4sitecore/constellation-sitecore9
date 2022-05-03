@@ -95,6 +95,9 @@ namespace Constellation.Foundation.SitemapXml.HttpHandlers
 
 			context.Response.Clear();
 			context.Response.ContentType = "text";
+			HttpContext.Current.Response.AppendHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+			HttpContext.Current.Response.AppendHeader("Pragma", "no-cache"); // HTTP 1.0.
+			HttpContext.Current.Response.AppendHeader("Expires", "0"); // Proxies.
 			context.Response.Write(builder.ToString());
 			context.Response.End();
 		}
