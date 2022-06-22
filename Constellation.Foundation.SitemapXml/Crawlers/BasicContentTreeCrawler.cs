@@ -49,6 +49,7 @@ namespace Constellation.Foundation.SitemapXml.Crawlers
 			 */
 			var max = Sitecore.Configuration.Settings.MaxTreeDepth;
 			var siteContext = new SiteContext(site);
+			var withLanguageVariants = site.SupportedLanguages().Count > 1;
 
 			var root = Database.GetItem(siteContext.StartPath, language);
 
@@ -59,7 +60,7 @@ namespace Constellation.Foundation.SitemapXml.Crawlers
 				throw ex;
 			}
 
-			var rootNode = ItemBasedSitemapNode.Create<T>(site, root);
+			var rootNode = ItemBasedSitemapNode.Create<T>(site, root, withLanguageVariants);
 			if (!rootNode.IsValidForInclusionInSitemapXml())
 			{
 				//Nothing to run, we have to stop here.
@@ -68,7 +69,7 @@ namespace Constellation.Foundation.SitemapXml.Crawlers
 
 			output.Add(rootNode);
 
-			var withLanguageVariants = site.SupportedLanguages().Count > 1;
+
 
 			var path = new StringBuilder("./*");
 
