@@ -40,7 +40,9 @@ namespace Constellation.Foundation.SitemapXml.HttpHandlers
 				context.Response.End();
 			}
 
-			var document = SitemapRepository.GetSitemap(site);
+			var path = context.Request.Url.GetLeftPart(UriPartial.Path);
+
+			var document = SitemapRepository.GetSitemap(site, path);
 
 			/*
 			 * Include the last segment of the server's IP address in a custom diagnostic header.

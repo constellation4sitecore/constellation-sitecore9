@@ -32,6 +32,9 @@
     <DocumentationFile>bin\Release\Constellation.Foundation.SitemapXml.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Constellation.Foundation.Globalization, Version=10.1.0.26806, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Constellation.Foundation.Globalization.10.1.0.26806\lib\net48\Constellation.Foundation.Globalization.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.Kernel, Version=16.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Kernel.10.1.0\lib\net48\Sitecore.Kernel.dll</HintPath>
     </Reference>
@@ -66,6 +69,7 @@
     <Compile Include="HttpHandlers\RobotsTxtHandler.cs" />
     <Compile Include="HttpHandlers\SitemapXmlHandler.cs" />
     <Compile Include="NodeLinkManager.cs" />
+    <Compile Include="Nodes\AlternateLanguage.cs" />
     <Compile Include="Nodes\DefaultSitemapNode.cs" />
     <Compile Include="Nodes\ISitemapNode.cs" />
     <Compile Include="Nodes\ItemBasedSitemapNode.cs" />

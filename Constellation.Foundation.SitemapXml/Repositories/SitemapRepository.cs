@@ -33,12 +33,13 @@ namespace Constellation.Foundation.SitemapXml.Repositories
 		/// Returns a sitemap.xml document string for the supplied site.
 		/// </summary>
 		/// <param name="site">The site to crawl.</param>
+		/// <param name="path">The Url of the sitemap.xml request. This potentially allows for multiple sitemap.xml files to be generated per site.</param>
 		/// <param name="forceRegenerate">Whether the document can be retrieved from cache, or whether a fresh document should be generated.</param>
 		/// <returns>An XML string representing sitemap.xml document.</returns>
-		public static string GetSitemap(SiteContext site, bool forceRegenerate = false)
+		public static string GetSitemap(SiteContext site, string path, bool forceRegenerate = false)
 		{
 
-			var key = typeof(SitemapRepository).FullName + site.Name;
+			var key = typeof(SitemapRepository).FullName + site.Name + path;
 			var cache = Sitecore.Caching.CacheManager.GetHtmlCache(site);
 			string output = null;
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Constellation.Foundation.SitemapXml.Nodes
 {
@@ -41,6 +42,10 @@ namespace Constellation.Foundation.SitemapXml.Nodes
 		/// </summary>
 		bool HasPresentation { get; }
 
+		/// <summary>
+		/// A collection of Alternate Language links that need to be included in the Sitemap file.
+		/// </summary>
+		ICollection<AlternateLanguage> AlternateLanguages { get; }
 
 
 		/// <summary>

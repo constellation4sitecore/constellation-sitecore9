@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Constellation.Foundation.Globalization;
 using Sitecore.Data.Items;
+using Sitecore.Globalization;
 using Sitecore.Web;
+using System;
+using System.Collections.Generic;
 
 namespace Constellation.Foundation.SitemapXml.Nodes
 {
@@ -58,6 +61,14 @@ namespace Constellation.Foundation.SitemapXml.Nodes
 
 		/// <inheritdoc />
 		public DateTime LastModified { get; private set; }
+
+		/// <inheritdoc />
+		public ICollection<AlternateLanguage> AlternateLanguages { get; private set; }
+
+		/// <summary>
+		/// Specifies whether to process alternate language variants of the given Item.
+		/// </summary>
+		protected bool IncludeAlternateLanguages { get; private set; }
 		#endregion
 
 		#region Methods
@@ -67,15 +78,17 @@ namespace Constellation.Foundation.SitemapXml.Nodes
 		/// </summary>
 		/// <param name="site">The Site whose sitemap.xml is being generated.</param>
 		/// <param name="item">The Item to interrogate</param>
+		/// <param name="includeAlternateLanguages">Whether to process alternate language variants of the given Item</param>
 		/// <typeparam name="T">A derivative Type of ItemBasedSitemapNode</typeparam>
 		/// <returns></returns>
-		public static ItemBasedSitemapNode Create<T>(SiteInfo site, Item item)
+		public static ItemBasedSitemapNode Create<T>(SiteInfo site, Item item, bool includeAlternateLanguages = false)
 		where T : ItemBasedSitemapNode, new()
 		{
 			var output = new T
 			{
 				Site = site,
-				Item = item
+				Item = item,
+				IncludeAlternateLanguages = includeAlternateLanguages
 			};
 
 			output.Initialize();
@@ -109,6 +122,7 @@ namespace Constellation.Foundation.SitemapXml.Nodes
 		/// </summary>
 		protected void Initialize()
 		{
+			AlternateLanguages = new List<AlternateLanguage>();
 			ChangeFrequency = WhatIsTheItemsChangeFrequency(Item);
 			IsPage = IsItemAPage(Item);
 			Location = GetLocationUrl(Item, Site);
@@ -116,7 +130,14 @@ namespace Constellation.Foundation.SitemapXml.Nodes
 			ShouldIndex = ShouldTheItemBeIndexedBySearchEngines(Item);
 			HasPresentation = DoesTheItemHavePresentation(Item);
 			LastModified = WhenWasTheItemLastModified(Item);
+
+			if (IncludeAlternateLanguages)
+			{
+				GetAlternateLanguages(Item, Site);
+			}
 		}
+
+
 
 		/// <summary>
 		/// Use this method to provide logic for generating the Change Frequency.
@@ -173,6 +194,32 @@ namespace Constellation.Foundation.SitemapXml.Nodes
 		protected virtual string GetLocationUrl(Item item, SiteInfo site)
 		{
 			return NodeLinkManager.GetNodeLocationUrl(item, site);
+		}
+
+		/// <summary>
+		/// For the given Site and Item, adds an AlternateLanguage object to the AlternateLanguages collection for each valid SupportedLanguage.
+		/// </summary>
+		/// <param name="item"></param>
+		/// <param name="site"></param>
+		protected virtual void GetAlternateLanguages(Item item, SiteInfo site)
+		{
+			var languageCodes = site.SupportedLanguages();
+
+			foreach (var code in languageCodes)
+			{
+				if (!Language.TryParse(code, out var language)) continue;
+
+				var altItem = item.Database.GetItem(item.ID, language);
+
+				if (altItem == null || altItem.Empty) continue;
+
+				var alternateLanguage = new AlternateLanguage
+				{
+					Href = NodeLinkManager.GetNodeLocationUrl(altItem, site),
+					HrefLang = code
+				};
+				AlternateLanguages.Add(alternateLanguage);
+			}
 		}
 		#endregion
 	}

@@ -38,8 +38,9 @@ namespace Constellation.Foundation.SitemapXml
 		/// Loads all Crawlers for the Site and runs them, producing an output of Sitemap Nodes
 		/// that can be added to the sitemap.xml document.
 		/// </summary>
+		/// <param name="IncludeLanguageVariants">True if Nodes should include information about alternate language URLs</param>
 		/// <returns>An enumerable of ISitemapNode. Note that these nodes should be inspected for suitability before adding them to the sitemap.xml document.</returns>
-		public IEnumerable<ISitemapNode> InitiateCrawl()
+		public IEnumerable<ISitemapNode> InitiateCrawl(bool IncludeLanguageVariants = false)
 		{
 			var nodes = new List<ISitemapNode>();
 
