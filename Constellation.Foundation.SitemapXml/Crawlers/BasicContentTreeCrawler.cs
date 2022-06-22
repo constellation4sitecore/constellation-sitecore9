@@ -75,6 +75,7 @@ namespace Constellation.Foundation.SitemapXml.Crawlers
 
 			for (var i = 0; i < max; i++)
 			{
+				Sitecore.Context.Language = language;
 				var items = Query.SelectItems($"{path}[not(@__Renderings = \"\")]", root);
 
 				if (items != null)
