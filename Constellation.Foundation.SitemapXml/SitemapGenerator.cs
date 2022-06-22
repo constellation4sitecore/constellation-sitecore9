@@ -98,7 +98,7 @@ namespace Constellation.Foundation.SitemapXml
 
 					var href = Document.CreateAttribute("href");
 					href.Value = variant.Href;
-					xhtmlElement.Attributes.Append(hrefLang);
+					xhtmlElement.Attributes.Append(href);
 
 					url.AppendChild(xhtmlElement);
 				}

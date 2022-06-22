@@ -1,4 +1,5 @@
-﻿using Constellation.Foundation.SitemapXml.Nodes;
+﻿using Constellation.Foundation.Globalization;
+using Constellation.Foundation.SitemapXml.Nodes;
 using Sitecore.Data;
 using Sitecore.Data.Query;
 using Sitecore.Diagnostics;
@@ -67,6 +68,8 @@ namespace Constellation.Foundation.SitemapXml.Crawlers
 
 			output.Add(rootNode);
 
+			var withLanguageVariants = site.SupportedLanguages().Count > 1;
+
 			var path = new StringBuilder("./*");
 
 			for (var i = 0; i < max; i++)
@@ -77,7 +80,7 @@ namespace Constellation.Foundation.SitemapXml.Crawlers
 				{
 					foreach (var item in items)
 					{
-						var node = ItemBasedSitemapNode.Create<T>(site, item);
+						var node = ItemBasedSitemapNode.Create<T>(site, item, withLanguageVariants);
 
 						if (node.IsValidForInclusionInSitemapXml())
 						{

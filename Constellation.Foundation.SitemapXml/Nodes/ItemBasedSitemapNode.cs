@@ -123,12 +123,16 @@ namespace Constellation.Foundation.SitemapXml.Nodes
 		protected void Initialize()
 		{
 			AlternateLanguages = new List<AlternateLanguage>();
-			ChangeFrequency = WhatIsTheItemsChangeFrequency(Item);
+			HasPresentation = DoesTheItemHavePresentation(Item);
 			IsPage = IsItemAPage(Item);
+			ShouldIndex = ShouldTheItemBeIndexedBySearchEngines(Item);
+
+			if (!HasPresentation || !IsPage || !ShouldIndex) return;
+
+
 			Location = GetLocationUrl(Item, Site);
 			Priority = WhatIsTheItemsIndexingPriority(Item);
-			ShouldIndex = ShouldTheItemBeIndexedBySearchEngines(Item);
-			HasPresentation = DoesTheItemHavePresentation(Item);
+			ChangeFrequency = WhatIsTheItemsChangeFrequency(Item);
 			LastModified = WhenWasTheItemLastModified(Item);
 
 			if (IncludeAlternateLanguages)
