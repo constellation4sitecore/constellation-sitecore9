@@ -38,9 +38,9 @@ namespace Constellation.Foundation.SitemapXml
 			options.SetDefaultOptions(provider.GetDefaultUrlBuilderOptions());
 
 			Sitecore.Context.Site = siteContext;
-			Sitecore.Context.Language = item.Language;
 			options.Site = siteContext;
 			options.AlwaysIncludeServerUrl = true;
+			options.Language = item.Language;
 
 			return provider.GetItemUrl(item, options);
 		}
