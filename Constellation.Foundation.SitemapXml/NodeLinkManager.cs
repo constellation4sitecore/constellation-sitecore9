@@ -40,6 +40,7 @@ namespace Constellation.Foundation.SitemapXml
 			Sitecore.Context.Site = siteContext;
 			options.Site = siteContext;
 			options.AlwaysIncludeServerUrl = true;
+			options.Language = item.Language;
 
 			return provider.GetItemUrl(item, options);
 		}

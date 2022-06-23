@@ -52,6 +52,10 @@ It is up to the developer to supply meaningful decisions behind these facts, but
 This library outputs substantial amounts of troubleshooting warnings to the Sitecore log file. If you're having trouble, search for
 Constellation.Foundation.SitemapXml in your log file.
 
+Multi-Language Support:
+For every "site" definition element in your Sitecore configs, add a "supportedLanguages" attribute that is a comma-delimited list of all languages available on your site
+(example: supportedLanguages="en-US,fr-FR,pt-PT") Doing this will force the sitemap.xml file to include "alternate" links for each language the site supports.
+
 
 Installation Warning:
 
@@ -59,7 +63,7 @@ Your web.config must have a system.webServer/handlers section, and that section 
 to install this package successfully. If you're using the default Sitecore web.config this won't be an issue. The handlers provided in this package must be
 inserted at the top of the stack of handlers.
 	</description>
-	<releaseNotes>Disabled downstream caching via cache headers to prevent out of date sitemap.xml files from sticking around longer than they should.</releaseNotes>
+	<releaseNotes>Now will generate language variants in the sitemap.xml document if the supportedLanguages attribute is added to the site definition.</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore, Sitecore Helix, Sitecore Foundation</tags>
   </metadata>

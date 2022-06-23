@@ -1,8 +1,10 @@
-﻿using System.Globalization;
-using System.Xml;
+﻿using Constellation.Foundation.Globalization;
 using Constellation.Foundation.SitemapXml.Nodes;
 using Sitecore.Diagnostics;
 using Sitecore.Web;
+using System.Globalization;
+using System.Xml;
+
 
 namespace Constellation.Foundation.SitemapXml
 {
@@ -11,28 +13,20 @@ namespace Constellation.Foundation.SitemapXml
 	/// </summary>
 	public class SitemapGenerator
 	{
-		private XmlDocument _doc;
-
 		/// <summary>
 		/// The XML Site Map to return in the response.
 		/// </summary>
-		protected XmlDocument Document
-		{
-			get
-			{
-				if (_doc == null)
-				{
-					_doc = InitializeDocument();
-				}
-
-				return _doc;
-			}
-		}
+		protected XmlDocument Document { get; private set; }
 
 		/// <summary>
 		/// Gets the SiteInfo whose sitemap is being generated.
 		/// </summary>
 		protected SiteInfo Site { get; private set; }
+
+		/// <summary>
+		/// Specifies whether to include Language variants for each node in the Sitemap.xml 
+		/// </summary>
+		protected bool WithLanguageVariants { get; private set; }
 
 
 		/// <summary>
@@ -44,6 +38,13 @@ namespace Constellation.Foundation.SitemapXml
 		{
 			Assert.ArgumentNotNull(site, "site");
 			Site = site;
+
+			if (site.SupportedLanguages().Count > 1)
+			{
+				WithLanguageVariants = true;
+			}
+
+			Document = InitializeDocument(WithLanguageVariants);
 		}
 
 		/// <summary>
@@ -82,6 +83,27 @@ namespace Constellation.Foundation.SitemapXml
 			locElement.InnerText = node.Location;
 			url.AppendChild(locElement);
 
+			if (WithLanguageVariants)
+			{
+				foreach (var variant in node.AlternateLanguages)
+				{
+					var xhtmlElement = Document.CreateElement("xhtml:link");
+					var relAlternate = Document.CreateAttribute("rel");
+					relAlternate.Value = "alternate";
+					xhtmlElement.Attributes.Append(relAlternate);
+
+					var hrefLang = Document.CreateAttribute("hreflang");
+					hrefLang.Value = variant.HrefLang;
+					xhtmlElement.Attributes.Append(hrefLang);
+
+					var href = Document.CreateAttribute("href");
+					href.Value = variant.Href;
+					xhtmlElement.Attributes.Append(href);
+
+					url.AppendChild(xhtmlElement);
+				}
+			}
+
 			if (SitemapXmlConfiguration.Current.IncludeLastMod)
 			{
 				var lastModElement = Document.CreateElement("lastmod");
@@ -112,7 +134,7 @@ namespace Constellation.Foundation.SitemapXml
 		/// Creates a new instance of XmlDocument with the appropriate declaration and root node.
 		/// </summary>
 		/// <returns>A new empty sitemap.xml document.</returns>
-		private static XmlDocument InitializeDocument()
+		private static XmlDocument InitializeDocument(bool withLanguageVariants)
 		{
 			var doc = new XmlDocument();
 			var declaration = doc.CreateXmlDeclaration("1.0", "UTF-8", string.Empty);
@@ -124,6 +146,13 @@ namespace Constellation.Foundation.SitemapXml
 			var xmlns = doc.CreateAttribute("xmlns");
 			xmlns.Value = "http://www.sitemaps.org/schemas/sitemap/0.9";
 			urlset.Attributes.Append(xmlns);
+
+			if (withLanguageVariants)
+			{
+				var xhtml = doc.CreateAttribute("xmlns:xhtml");
+				xhtml.Value = "http://www.w3.org/1999/xhtml";
+				urlset.Attributes.Append(xhtml);
+			}
 
 			return doc;
 		}
