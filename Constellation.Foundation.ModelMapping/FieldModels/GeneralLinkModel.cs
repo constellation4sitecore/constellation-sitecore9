@@ -2,6 +2,7 @@
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Web.UI.WebControls;
+using System.Text;
 using System.Web;
 
 namespace Constellation.Foundation.ModelMapping.FieldModels
@@ -11,14 +12,17 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 	/// </summary>
 	public class GeneralLinkModel
 	{
+		private readonly string _url;
+
 		internal GeneralLinkModel(LinkField field)
 		{
 			Anchor = field.Anchor;
 			Class = field.Class;
+			QueryString = field.QueryString;
 			Target = field.Target;
 			Text = field.Text;
 			Title = field.Title;
-			Url = GetUrlValue(field);
+			_url = GetUrlValue(field);
 			Rendered = new HtmlString(FieldRenderer.Render(field.InnerField.Item, field.InnerField.Name));
 		}
 
@@ -50,7 +54,41 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 		/// <summary>
 		/// The Url of the General Link field
 		/// </summary>
-		public string Url { get; }
+		public string Url
+		{
+			get
+			{
+				var result = new StringBuilder(_url);
+
+				if (!string.IsNullOrEmpty(QueryString))
+				{
+					if (!QueryString.StartsWith("?"))
+					{
+						result.Append("?");
+					}
+
+					result.Append(QueryString);
+				}
+
+				if (!string.IsNullOrEmpty(Anchor))
+				{
+					if (!Anchor.StartsWith("#"))
+					{
+						result.Append("#");
+					}
+
+					result.Append(Anchor);
+				}
+
+				return result.ToString();
+			}
+		}
+
+		/// <summary>
+		/// The QueryString of the General Link field
+		/// </summary>
+		public string QueryString { get; }
+
 
 
 		/// <summary>
