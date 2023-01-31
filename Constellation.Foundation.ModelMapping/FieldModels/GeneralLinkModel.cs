@@ -60,7 +60,7 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 			{
 				var result = new StringBuilder(_url);
 
-				if (!string.IsNullOrEmpty(QueryString))
+				if (!string.IsNullOrEmpty(QueryString) && !_url.Contains(QueryString))
 				{
 					if (!QueryString.StartsWith("?"))
 					{
@@ -70,15 +70,14 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 					result.Append(QueryString);
 				}
 
-				if (!string.IsNullOrEmpty(Anchor))
-				{
-					if (!Anchor.StartsWith("#"))
-					{
-						result.Append("#");
-					}
+				if (string.IsNullOrEmpty(Anchor)) return result.ToString();
 
-					result.Append(Anchor);
+				if (!Anchor.StartsWith("#"))
+				{
+					result.Append("#");
 				}
+
+				result.Append(Anchor);
 
 				return result.ToString();
 			}
