@@ -215,7 +215,7 @@ namespace Constellation.Foundation.SitemapXml.Nodes
 
 				var altItem = item.Database.GetItem(item.ID, language);
 
-				if (altItem == null || altItem.Empty) continue;
+				if (altItem.LanguageVersionIsEmpty()) continue;
 
 				var alternateLanguage = new AlternateLanguage
 				{
