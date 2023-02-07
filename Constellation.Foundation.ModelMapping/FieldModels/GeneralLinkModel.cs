@@ -52,7 +52,7 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 		public string Title { get; }
 
 		/// <summary>
-		/// The Url of the General Link field
+		/// The Url of the General Link field, including Querystring and Anchor if these properties have values.
 		/// </summary>
 		public string Url
 		{
@@ -70,7 +70,7 @@ namespace Constellation.Foundation.ModelMapping.FieldModels
 					result.Append(QueryString);
 				}
 
-				if (string.IsNullOrEmpty(Anchor)) return result.ToString();
+				if (string.IsNullOrEmpty(Anchor) || _url.Contains(Anchor)) return result.ToString();
 
 				if (!Anchor.StartsWith("#"))
 				{
