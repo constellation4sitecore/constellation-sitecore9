@@ -27,11 +27,13 @@ namespace Constellation.Feature.Redirects.Pipelines.HttpRequest
 			if (Sitecore.Context.Database == null)
 			{
 				Log.Debug("Constellation RedirectResolver: No Context Database. Exiting.");
+				return;
 			}
 
 			if (Sitecore.Context.Site == null)
 			{
 				Log.Debug("Constellation RedirectResolver: No Context Site. Exiting.");
+				return;
 			}
 
 			if (args.PermissionDenied)

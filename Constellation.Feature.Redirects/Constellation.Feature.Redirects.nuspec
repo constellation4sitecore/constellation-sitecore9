@@ -29,7 +29,7 @@ Exporting and importing redirect lists is supported. All redirects are tested fo
 
 The porting and development of this library has been kindly supported by Verndale (verndale.com)
 	</description>
-	<releaseNotes>No longer forces the target URL to lowercase. Also fixes issues where the "site" column of a CSV is enclosed in quotation marks.</releaseNotes>
+	<releaseNotes>Addressed some guard clauses in the HttpRequestPipeline that didn't exit.</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>
