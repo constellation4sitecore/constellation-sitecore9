@@ -1,7 +1,9 @@
-﻿namespace Constellation.Foundation.Caching
+﻿using Sitecore.Diagnostics;
+
+namespace Constellation.Foundation.Caching
 {
-	using System;
 	using Sitecore.Caching;
+	using System;
 
 
 	/// <inheritdoc />
@@ -17,7 +19,7 @@
 			// no key so return error
 			if (string.IsNullOrEmpty(key))
 			{
-				return default(T);
+				return default;
 			}
 
 			// setup the default object we will use
@@ -110,9 +112,9 @@
 			if (isNoSlidingExpiration)
 			{
 				// make sure it's right
-				if (cacheTimer is DateTime)
+				if (cacheTimer is DateTime time)
 				{
-					absoluteCache = (DateTime)cacheTimer;
+					absoluteCache = time;
 				}
 				else
 				{
@@ -124,9 +126,9 @@
 			else
 			{
 				// make sure it's right
-				if (cacheTimer is TimeSpan)
+				if (cacheTimer is TimeSpan span)
 				{
-					slidingCache = (TimeSpan)cacheTimer;
+					slidingCache = span;
 				}
 				else
 				{
@@ -137,23 +139,46 @@
 			}
 
 			// what type of cache are we using
-			if (useSitecoreCache)
+			try
 			{
 
-				ICache cache = SitecoreCacheManager.GetCache(globalCache, siteName, databaseName);
 
-				if (cache.ContainsKey(key))
+
+				if (useSitecoreCache)
 				{
-					cache.Remove(key);
+
+					ICache cache = SitecoreCacheManager.GetCache(globalCache, siteName, databaseName);
+
+					if (cache.ContainsKey(key))
+					{
+						cache.Remove(key);
+					}
+
+					cache.Add(key, cachingData, slidingCache, absoluteCache);
+				}
+				else
+				{
+					var cacheStartKey = KeyAgent.GetBaseKey(globalCache, siteName, databaseName) + key;
+
+					System.Web.HttpRuntime.Cache.Add(cacheStartKey, cachingData, cacheDep, absoluteCache, slidingCache,
+						priority, callback);
+				}
+			}
+			catch (ArgumentException ex)
+			{
+				// Writing a diagnostic to help developers troubleshoot issues caused by attempts to cache objects "in the past" due to the
+				// start of Daylight Savings Time.
+				var changes = TimeZone.CurrentTimeZone.GetDaylightChanges(DateTime.Now.Year);
+				var nowShortDate = DateTime.Now.ToShortDateString();
+
+				if (changes.Delta.Ticks > 0 && (nowShortDate == changes.Start.ToShortDateString() ||
+					nowShortDate == changes.End.ToShortDateString()))
+				{
+					Log.Error("Constellation.Foundation.Caching: Attempt to cache object failed. Potential Daylight Savings Time calculation error. Continuing without caching.", ex, this);
+					return;
 				}
 
-				cache.Add(key, cachingData, slidingCache, absoluteCache);
-			}
-			else
-			{
-				var cacheStartKey = KeyAgent.GetBaseKey(globalCache, siteName, databaseName) + key;
-
-				System.Web.HttpRuntime.Cache.Add(cacheStartKey, cachingData, cacheDep, absoluteCache, slidingCache, priority, callback);
+				Log.Error("Constellation.Foundation.Caching: Attempt to cache object failed. Continuing without caching.", ex, this);
 			}
 		}
 
