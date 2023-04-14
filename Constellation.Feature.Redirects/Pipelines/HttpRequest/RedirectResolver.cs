@@ -36,6 +36,12 @@ namespace Constellation.Feature.Redirects.Pipelines.HttpRequest
 				return;
 			}
 
+			if (Sitecore.Context.Language == null)
+			{
+				Log.Debug("Consellation RedirectResolver: No Context Language. Exiiting.");
+				return;
+			}
+
 			if (args.PermissionDenied)
 			{
 				Log.Debug("Constellation RedirectResolver: Request was for an Item the current user cannot access, no redirect attempt should be made in this case.");
@@ -49,7 +55,13 @@ namespace Constellation.Feature.Redirects.Pipelines.HttpRequest
 
 			var redirect = FindRedirectRecordFor(url.LocalPath + url.Query);
 
-			if (string.IsNullOrEmpty(redirect?.NewUrl))
+			if (redirect == null)
+			{
+				Log.Debug($"Constellation RedirectResolver: No redirect record for {url}", this);
+				return;
+			}
+
+			if (string.IsNullOrEmpty(redirect.NewUrl))
 			{
 				Log.Debug($"Constellation RedirectResolver: No redirect for {url}", this);
 				return;
@@ -81,7 +93,7 @@ namespace Constellation.Feature.Redirects.Pipelines.HttpRequest
 				this);
 		}
 
-		private string GetAbsoluteNewUrl(MarketingRedirect redirect)
+		private static string GetAbsoluteNewUrl(MarketingRedirect redirect)
 		{
 			if (redirect.NewUrl.StartsWith("http"))
 			{
@@ -100,7 +112,7 @@ namespace Constellation.Feature.Redirects.Pipelines.HttpRequest
 			return authority + path;
 		}
 
-		private string GetNewUrlAuthority()
+		private static string GetNewUrlAuthority()
 		{
 			string scheme = "http";
 
@@ -127,10 +139,18 @@ namespace Constellation.Feature.Redirects.Pipelines.HttpRequest
 		/// </summary>
 		private MarketingRedirect FindRedirectRecordFor(string oldLocalPath)
 		{
-			var siteRoot = Sitecore.Context.Database.GetItem(Sitecore.Context.Site.StartPath, Sitecore.Context.Language);
-			var indexable = new SitecoreIndexableItem(siteRoot);
-			var repository = new Repository(Sitecore.Context.Database, ContentSearchManager.GetIndex(indexable));
-			return repository.GetNewUrl(Sitecore.Context.Site.SiteInfo, oldLocalPath);
+			try
+			{
+				var siteRoot = Sitecore.Context.Database.GetItem(Sitecore.Context.Site.StartPath, Sitecore.Context.Language);
+				var indexable = new SitecoreIndexableItem(siteRoot);
+				var repository = new Repository(Sitecore.Context.Database, ContentSearchManager.GetIndex(indexable));
+				return repository.GetNewUrl(Sitecore.Context.Site.SiteInfo, oldLocalPath);
+			}
+			catch (ArgumentNullException ex)
+			{
+				Log.Error($"Constellation RedirectResolver: Error trying to find redirect for URL \"{oldLocalPath}\":", ex, this);
+				return null;
+			}
 		}
 	}
 }

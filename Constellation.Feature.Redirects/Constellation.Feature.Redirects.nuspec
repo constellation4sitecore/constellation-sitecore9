@@ -29,7 +29,7 @@ Exporting and importing redirect lists is supported. All redirects are tested fo
 
 The porting and development of this library has been kindly supported by Verndale (verndale.com)
 	</description>
-	<releaseNotes>Addressed some guard clauses in the HttpRequestPipeline that didn't exit.</releaseNotes>
+	<releaseNotes>Added more guard clauses to the HttpRequestPipeline handler to deal with some edge cases.</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>
