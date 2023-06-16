@@ -13,7 +13,7 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix-style library that adds author-controlled Http Redirect capabilities.</summary>
 	<description>
-Requires Sitecore 10.2
+Requires Sitecore 10.3
 Requires .NET Framework 4.8
 
 Constellation is a collection of utilities for .NET CMS implementers.
@@ -29,7 +29,7 @@ Exporting and importing redirect lists is supported. All redirects are tested fo
 
 The porting and development of this library has been kindly supported by Verndale (verndale.com)
 	</description>
-	<releaseNotes>Added more guard clauses to the HttpRequestPipeline handler to deal with some edge cases.</releaseNotes>
+	<releaseNotes>Updated Sitecore Version to 10.3.</releaseNotes>
 	<copyright>Copyright 2019</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>

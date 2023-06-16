@@ -13,7 +13,7 @@
 	<iconUrl>https://constellation4sitecore.com/wp-content/uploads/2019/04/Constellation.png</iconUrl>
 	<summary>Sitecore Helix-style library that provides bare-essentials support for page metadata.</summary>
 	<description>
-Requires Sitecore 10.2
+Requires Sitecore 10.3
 Requires .NET Framework 4.8
 
 Constellation is a collection of utilities for .NET CMS implementers.
@@ -41,7 +41,7 @@ This module does not directly support page/experience editor because:
 Because maintaining these scripts requires knowledge of Javascript and Marketing Technology, it is recommended that only
 users familiar with the Presentation Details dialog maintain these objects.
 	</description>
-	<releaseNotes>Updated Sitecore minimum reference to 10.2</releaseNotes>
+	<releaseNotes>Updated Sitecore minimum reference to 10.3</releaseNotes>
 	<copyright>Copyright 2018</copyright>
 	<tags>Sitecore,  Sitecore Helix</tags>
   </metadata>
