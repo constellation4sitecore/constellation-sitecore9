@@ -250,21 +250,14 @@ namespace Constellation.Feature.Redirects
 		{
 			var root = Database.GetItem(ItemIDs.MarketingRedirectBucketID);
 
-			var item = Query.SelectSingleItem($"./*/*/*/*/*/*[@#Old Url# = \"{candidate.OldUrl}\"]", root);
+            var item = Query.SelectSingleItem($"./*/*/*/*/*/*[@#Site Name# = \"{candidate.SiteName}\" and @#Old Url# = \"{candidate.OldUrl}\"]", root);
 
-			if (item == null)
+            if (item == null)
 			{
 				return true;
 			}
 
 			if (!ID.IsNullOrEmpty(candidate.ItemId) && item.ID.Equals(candidate.ItemId))
-			{
-				return true;
-			}
-
-			var found = MappingContext.Current.MapItemToNew<MarketingRedirect>(item);
-
-			if (found.SiteName != candidate.SiteName)
 			{
 				return true;
 			}
