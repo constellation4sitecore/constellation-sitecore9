@@ -43,7 +43,8 @@ namespace Constellation.Foundation.PageNotFound.Pipelines.HttpRequest
 			}
 
 			Sitecore.Context.Item = page; // assign the 404 page to the context.
-		}
+            Sitecore.Context.Items["constellation4sitecore.Foundation.PageNotFound::ItemNotFoundResolved"] = true; // will resolve 404 for wildcard items
+        }
 
 		/// <summary>
 		/// The code to run if the current Pipeline context is not correct for this particular Pipeline processor.
