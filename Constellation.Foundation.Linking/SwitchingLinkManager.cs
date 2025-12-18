@@ -62,8 +62,11 @@ namespace Constellation.Foundation.Linking
 		/// <inheritdoc />
 		public override bool UseDisplayName => Provider.UseDisplayName;
 
-		/// <inheritdoc />
-		public override string ExpandDynamicLinks(string text)
+        public override bool AlwaysExcludeVirtualFolder => Provider.AlwaysExcludeVirtualFolder;
+
+
+        /// <inheritdoc />
+        public override string ExpandDynamicLinks(string text)
 		{
 			Assert.ArgumentNotNull(text, nameof(text));
 			return ExpandDynamicLinks(text, false);
