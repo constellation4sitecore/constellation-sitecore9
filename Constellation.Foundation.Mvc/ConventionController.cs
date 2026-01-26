@@ -44,7 +44,7 @@ namespace Constellation.Foundation.Mvc
 		public virtual ActionResult Index()
 		{
 			var viewPath = ViewPathResolver.ResolveViewPath(RenderingContext.Current.Rendering.RenderingItem);
-			var model = GetModel(RenderingContext.Current.Rendering.Item, RenderingContext.Current.ContextItem);
+			var model = GetModel(RenderingContext.Current.Rendering.Item, RenderingContext.Current.PageContext.Item);
 
 			if (model == null)
 			{
